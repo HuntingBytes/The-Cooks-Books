@@ -1,0 +1,15 @@
+# Extensoes do Intellij e arquivos do Java (log, pacotes, etc)
+*.iml
+*.class
+*.log
+*.jar
+*.zip
+*.tar.gz
+*.nar
+*.ear
+*.rar
+hs_err_pid*
+
+# Pastas do Intellij
+.idea/
+out/
