@@ -1,2 +1,4 @@
-package com.cooksbooks.utils;public enum ExperienciaCulinaria {
+package com.cooksbooks.utils;
+
+public enum ExperienciaCulinaria {
 }
