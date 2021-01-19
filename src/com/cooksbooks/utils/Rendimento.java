@@ -11,7 +11,6 @@ public enum Rendimento {
 
     private String extenso;
 
-
     Rendimento(String extenso) {
         this.extenso=extenso;
     }
