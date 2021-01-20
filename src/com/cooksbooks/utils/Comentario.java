@@ -34,5 +34,35 @@ public class Comentario {
         return Objects.equals(texto, that.texto) && Objects.equals(data, that.data) && Objects.equals(nomeUsuario, that.nomeUsuario) && Objects.equals(nomePerfil, that.nomePerfil);
     }
 
+    public String getTexto() {
+        return texto;
+    }
 
+    public void setTexto(String texto) {
+        this.texto = texto;
+    }
+
+    public LocalDateTime getData() {
+        return data;
+    }
+
+    public void setData(LocalDateTime data) {
+        this.data = data;
+    }
+
+    public String getNomeUsuario() {
+        return nomeUsuario;
+    }
+
+    public void setNomeUsuario(String nomeUsuario) {
+        this.nomeUsuario = nomeUsuario;
+    }
+
+    public String getNomePerfil() {
+        return nomePerfil;
+    }
+
+    public void setNomePerfil(String nomePerfil) {
+        this.nomePerfil = nomePerfil;
+    }
 }

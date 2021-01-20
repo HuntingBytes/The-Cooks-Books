@@ -50,6 +50,8 @@ public class CadernoReceitas {
      * @return todas as categorias das receitas
      * presentes nesse caderno.
      */
-    public List<Categorias> listarCategorias () { return this.categorias; }
+    public List<Categorias> listarCategorias () {
+        return this.categorias;
+    }
 
 }
