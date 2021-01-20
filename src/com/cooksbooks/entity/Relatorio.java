@@ -3,6 +3,7 @@ package com.cooksbooks.entity;
 import com.cooksbooks.utils.Comentario;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,6 +44,12 @@ public class Relatorio {
 
     /**
      * Construtor completo da classe.
+     * @param qtdUsuariosCadastrados quantidade de usuários cadastrados no sistema até a data final.
+     * @param qtdNovosUsuarios quantidade de usuários cadastrados entre as datas inicial e final.
+     * @param qtdUsuariosAtivos quantidade de usuários ativos na plataforma até a data final.
+     * @param dataIncial data inicial do relatório.
+     * @param dataFinal data final do relatório.
+     * @param comentarios lista com os comentários/feedbacks enviados entre as datas inicial e final.
      */
     public Relatorio(long qtdUsuariosCadastrados, long qtdNovosUsuarios, long qtdUsuariosAtivos,
                      LocalDate dataIncial, LocalDate dataFinal, List<Comentario> comentarios) {
@@ -64,6 +71,7 @@ public class Relatorio {
 
     /**
      * Atualiza a quantiade de usuários cadastrados até a data final.
+     * @param qtdUsuariosCadastrados quantidade de usuários cadastrados no sistema até a data final.
      */
     public void setQtdUsuariosCadastrados(long qtdUsuariosCadastrados) {
         this.qtdUsuariosCadastrados = qtdUsuariosCadastrados;
@@ -79,6 +87,7 @@ public class Relatorio {
 
     /**
      * Atualiza a quantiade de novos usuários entre a data inicial e final.
+     * @param qtdNovosUsuarios quantidade de usuários cadastrados entre as datas inicial e final
      */
     public void setQtdNovosUsuarios(long qtdNovosUsuarios) {
         this.qtdNovosUsuarios = qtdNovosUsuarios;
@@ -94,6 +103,7 @@ public class Relatorio {
 
     /**
      * Atualiza a quantiade de usuários ativos entre a data inicial e final.
+     * @param qtdUsuariosAtivos quantidade de usuários ativos na plataforma até a data final
      */
     public void setQtdUsuariosAtivos(long qtdUsuariosAtivos) {
         this.qtdUsuariosAtivos = qtdUsuariosAtivos;
@@ -109,6 +119,7 @@ public class Relatorio {
 
     /**
      * Define a data inicial do relatório.
+     * @param dataIncial data inicial do relatório.
      */
     public void setDataIncial(LocalDate dataIncial) {
         this.dataIncial = dataIncial;
@@ -116,7 +127,7 @@ public class Relatorio {
 
     /**
      * Retorna a data final do relatório.
-     * @return LocalDate com a data final do relatório,
+     * @return LocalDate com a data final do relatório.
      */
     public LocalDate getDataFinal() {
         return this.dataFinal;
@@ -124,6 +135,7 @@ public class Relatorio {
 
     /**
      * Define a data final do relatório.
+     * @param dataFinal data final do relatório
      */
     public void setDataFinal(LocalDate dataFinal) {
         this.dataFinal = dataFinal;
@@ -131,12 +143,16 @@ public class Relatorio {
 
     /**
      * Retorna uma lista com os comentários contidos no relatório.
-     * @return {@code List<Comentario>} com os comentários contidos no relatório.
+     * @return Lista com os comentários contidos no relatório.
      */
     public List<Comentario> listarComentarios() {
         return this.comentarios;
     }
 
+    /**
+     * Define a lista dos comentários do sistema.
+     * @param comentarios lista com os comentários/feedbacks enviados entre as datas inicial e final.
+     */
     public void setComentarios(List<Comentario> comentarios) {
         this.comentarios = comentarios;
     }
@@ -172,15 +188,12 @@ public class Relatorio {
         System.out.printf("Quantidade de novos usuários: %d\n", this.qtdNovosUsuarios);
         System.out.printf("Percentual usuários ativos: %.2f%%\n", this.percentualUsuariosAtivos());
         System.out.printf("Percentual novos usuários: %.2f%%\n", this.percentualAumentoUsuarios());
-        // TODO: Implementar impressão dos comentários aqui
-        /*
-        System.out.printf("Feedbacks recebidos:\n", this.percentualAumentoUsuarios());
+        System.out.printf("%s\n", "Feedbacks recebidos:");
         for(Comentario comentario : this.comentarios) {
-            System.out.printf("%s em %s\n\t%s\n", comentario.getAutor(),
+            System.out.printf("Usuário: %s Data: %s\n\t%s\n", comentario.getNomeUsuario(),
                               dateFormatter.format(comentario.getData()),
                               comentario.getTexto());
         }
-        */
     }
 
     /**
@@ -208,7 +221,13 @@ public class Relatorio {
         relatorio.setQtdNovosUsuarios(10L);
         relatorio.setQtdUsuariosAtivos(90L);
 
-        relatorio.setComentarios(null);
+        List<Comentario> comentarios = new ArrayList<>();
+        comentarios.add(new Comentario("Simplesmente incrível, recomendei para toda minha família!",
+                        LocalDate.now().atStartOfDay(), "moesiof", "Moésio Filho"));
+        comentarios.add(new Comentario("Muito bom! Nota 10!", LocalDate.now().atStartOfDay(),
+                "joao22", "João Pedro"));
+
+        relatorio.setComentarios(comentarios);
 
         relatorio.printRelatorio();
     }
