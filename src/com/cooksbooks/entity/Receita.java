@@ -12,9 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A Classe Receita Ã© responsÃ¡vel por representar uma receita no sistema.
+ * A Classe Receita é responsável por representar uma receita no sistema.
  *
- * Ela possui diversos campos que a caracterizam e mÃ©todos para acessar e atualizar esses campos.
+ * Ela possui diversos campos que a caracterizam e métodos para acessar e atualizar esses campos.
  *
  * @version 1.0
  */
@@ -32,17 +32,17 @@ public class Receita {
 
     // TODO: Adicionar getter/setter para tempoPreparo
 
-    // Talvez adicionar outros construtores com algumas informaÃ§Ãµes parciais
+    // Talvez adicionar outros construtores com algumas informações parciais
     // Algum Receita(titulo, custo, rendimento, dificuldade)
-    // Ou melhor, usando as ideias do JavaBeans poderÃ­amos ter um Ãºnico construtor
+    // Ou melhor, usando as ideias do JavaBeans poderíamos ter um único construtor
     // vazio Receita() e todos os campos seriam preenchidos por meio de getters/setters
 
     /**
-     * Construtor nulo. Inicializa os campos com valores padrÃµes.
-     * Valores padrÃ£o:
+     * Construtor nulo. Inicializa os campos com valores padrões.
+     * Valores padrão:
      * Custo.BARATO; Rendimento.UM; Dificuldade.FACIL;
-     * Listas sÃ£o inicializadas sem elementos;
-     * Strings sÃ£o inicializadas como "".
+     * Listas são inicializadas sem elementos;
+     * Strings são inicializadas como "".
      */
     public Receita() {
         this.titulo = "";
@@ -54,13 +54,13 @@ public class Receita {
         this.ingredientes = new ArrayList<>();
         this.comentarios = new ArrayList<>();
         this.imagens = new ArrayList<>();
-        // TODO: Inicializar tempoPreparo com valores padrÃ£o
+        // TODO: Inicializar tempoPreparo com valores padrão
     }
 
     /**
      * Construtor que recebe um titulo.
-     * Demais elementos sÃ£o inicializados com os valores padrÃµes.
-     * @param titulo o tÃ­tulo da receita.
+     * Demais elementos são inicializados com os valores padrões.
+     * @param titulo o título da receita.
      */
     public Receita(String titulo) {
         this();
@@ -68,16 +68,16 @@ public class Receita {
     }
 
     /**
-     * Retorna o tÃ­tulo da receita.
-     * @return String do tÃ­tulo da receita.
+     * Retorna o título da receita.
+     * @return String do título da receita.
      */
     public String getTitulo() {
         return this.titulo;
     }
 
     /**
-     * Define o tÃ­tulo da receita.
-     * @param  titulo tÃ­tulo da receita.
+     * Define o título da receita.
+     * @param  titulo título da receita.
      */
     public void setTitulo(String titulo) {
         this.titulo = titulo;
@@ -148,17 +148,17 @@ public class Receita {
     }
 
     /**
-     * Adiciona um novo comentÃ¡rio na lista de comentÃ¡rios.
-     * @param comentario o comentÃ¡rio a ser adicionado.
+     * Adiciona um novo comentário na lista de comentários.
+     * @param comentario o comentário a ser adicionado.
      */
     public void adicionarComentario(Comentario comentario) {
         this.comentarios.add(comentario);
     }
 
     /**
-     * Remove um comentÃ¡rio da lista de comentÃ¡rios.
-     * @param comentario o comentÃ¡rio para ser removido.
-     * @return true se o comentÃ¡rio existia e foi removido, false caso contrÃ¡rio.
+     * Remove um comentário da lista de comentários.
+     * @param comentario o comentário para ser removido.
+     * @return true se o comentário existia e foi removido, false caso contrário.
      */
     public boolean removerComentario(Comentario comentario) {
         return this.comentarios.remove(comentario);
@@ -166,7 +166,7 @@ public class Receita {
 
     /**
      * Retorna a lista dos comentarios presentes na Receita.
-     * @return Lista com os comentÃ¡rios.
+     * @return Lista com os comentários.
      */
     public List<Comentario> listarComentarios() {
         return comentarios;
@@ -181,7 +181,7 @@ public class Receita {
     /**
      * Remove uma categoria da lista de categorias.
      * @param categoria a categoria para ser removido.
-     * @return true se a categoria existia e foi removido, false caso contrÃ¡rio.
+     * @return true se a categoria existia e foi removido, false caso contrário.
      */
     public boolean removerCategoria(Categoria categoria) { return this.categorias.remove(categoria);}
 
@@ -204,7 +204,7 @@ public class Receita {
     /**
      * Remove um ingrediente da lista de ingredientes.
      * @param ingrediente o ingrediente para ser removido.
-     * @return true se o ingrediente existia e foi removida, false caso contrÃ¡rio.
+     * @return true se o ingrediente existia e foi removida, false caso contrário.
      */
     public boolean removerIngrediente(Ingrediente ingrediente) { return this.ingredientes.remove(ingrediente); }
 
@@ -227,7 +227,7 @@ public class Receita {
     /**
      * Remove uma imagem da lista de imagens.
      * @param imagem a imagem para ser removido.
-     * @return true se a imagem existia e foi removida, false caso contrÃ¡rio.
+     * @return true se a imagem existia e foi removida, false caso contrário.
      */
     public boolean removerImagem(Imagem imagem) {
         return this.imagens.remove(imagem);
@@ -241,14 +241,14 @@ public class Receita {
         return imagens;
     }
 
-    /* TODO: Implementar o mÃ©todo hashCode (depois revisar o "contrato" da API do Java)
+    /* TODO: Implementar o método hashCode (depois revisar o "contrato" da API do Java)
     @Override
     public int hashCode() {
         return super.hashCode();
     }
      */
 
-    /* TODO: Implementar o mÃ©todo equals (depois revisar o "contrato" da API do Java)
+    /* TODO: Implementar o método equals (depois revisar o "contrato" da API do Java)
     @Override
     public boolean equals(Object obj) {
         return super.equals(obj);
@@ -258,7 +258,7 @@ public class Receita {
     /**
      * Retorna os principais campos do objeto receito de forma organizada.
      * Principais campos: titulo, dificuldade, custo, rendimento, quantidades
-     * @return Retorna a representaÃ§Ã£o do objeto receita em String
+     * @return Retorna a representação do objeto receita em String
      */
     @Override
     public String toString() {
@@ -269,14 +269,14 @@ public class Receita {
                         Rendimento: %s
                         Quantidade Ingredientes: %d
                         Quantidade Imagens: %d
-                        Quantidade ComentÃ¡rios: %d""",
+                        Quantidade Comentários: %d""",
                 this.titulo, this.dificuldade, this.custo, this.rendimento,
                 this.ingredientes.size(), this.imagens.size(), this.comentarios.size());
     }
 
     /**
-     * FunÃ§Ã£o para uso interno, sÃ³ deve ser utilizada para debug.
-     * Realiza algumas operaÃ§Ãµes com a classe e imprime no console.
+     * Função para uso interno, só deve ser utilizada para debug.
+     * Realiza algumas operações com a classe e imprime no console.
      * */
     public static void debug() {
         Receita receita = new Receita();
