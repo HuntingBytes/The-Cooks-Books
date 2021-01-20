@@ -23,7 +23,17 @@ public enum Custo {
     }
 
 
-    public String getIntervaloDePreco() {
+    /**
+     * Retorna uma String com os intervalos dos preços
+     *
+     * */
+    public String imprimeIntervaloDePreco() {
         return String.format("%.2f - %.2f", valorMin, valorMax);
     }
+
+    @Override
+    public String toString() {
+        return String.format("Custo: %s | Intervalo:  %s", this.extenso, this.imprimeIntervaloDePreco());
+    }
+
 }
