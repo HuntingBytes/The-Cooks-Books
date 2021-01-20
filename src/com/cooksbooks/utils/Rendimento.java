@@ -15,14 +15,6 @@ public enum Rendimento {
         this.extenso=extenso;
     }
 
-    public String getExtenso() {
-        return extenso;
-    }
-
-    public void setExtenso(String extenso) {
-        this.extenso = extenso;
-    }
-
     @Override
     public String toString() {
         return this.extenso;
