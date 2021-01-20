@@ -25,6 +25,6 @@ public enum Rendimento {
 
     @Override
     public String toString() {
-        return String.format("Rendimento: %s ",extenso);
+        return this.extenso;
     }
 }
