@@ -1,5 +1,8 @@
 package com.cooksbooks.entity;
 
+import com.cooksbooks.utils.Categoria;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,28 +22,24 @@ public class CadernoReceitas {
     private String nomeCaderno;
     private String informacoesCaderno;
     private boolean visivel;
+    private List<Categoria> categorias;
+    private List<Receita> receitas;
 
     //Construtor completo
     public CadernoReceitas (String nomeCaderno, String informacoesCaderno, boolean visivel) {
         this.nomeCaderno = nomeCaderno;
         this.informacoesCaderno = informacoesCaderno;
         this.visivel = visivel;
+        this.receitas = new ArrayList<>();
     }
 
-    /**
-     * Adiciona uma receita ao caderno
-     *
-     */
+
     public void adicionarReceita (Receita receita) {
-
+        receitas.add(receita);
     }
 
-    /**
-     * Faz o contrário do método anterior
-     *
-     */
     public void removerReceita (Receita receita) {
-
+        receitas.remove(receita);
     }
 
     /**
@@ -50,7 +49,13 @@ public class CadernoReceitas {
      * @return todas as categorias das receitas
      * presentes nesse caderno.
      */
-    public List<Categorias> listarCategorias () {
+    public List<Categoria> listarCategorias () {
+        // TODO: COMPLETAR O MÉTODO
+        /*for (Receita receitaCaderno : this.receitas) {
+            for (Categoria categoria : receitaCaderno.getCategoria()) {
+
+            }
+        }*/
         return this.categorias;
     }
 

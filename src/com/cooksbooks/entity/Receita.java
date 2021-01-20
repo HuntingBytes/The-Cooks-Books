@@ -1,11 +1,7 @@
 package com.cooksbooks.entity;
 
-import com.cooksbooks.utils.Ingredientes;
-import com.cooksbooks.utils.Custo;
-import com.cooksbooks.utils.Rendimento;
-import com.cooksbooks.utils.Dificuldade;
-import com.cooksbooks.utils.Comentario;
-import com.cooksbooks.utils.Imagem;
+import com.cooksbooks.utils.*;
+import com.cooksbooks.utils.Ingrediente;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +21,7 @@ public class Receita {
     private Rendimento rendimento;
     private Dificuldade dificuldade;
     // TODO: Adicionar private List<Categoria> categoria;
-    private List<Ingredientes> ingredientes;
+    private List<Ingrediente> ingredientes;
     private List<Comentario> comentarios;
     private List<Imagem> imagens;
 
@@ -92,7 +88,7 @@ public class Receita {
      * Adiciona um novo ingrediente na lista de ingredientes.
      * @param ingrediente o ingrediente a ser adicionado.
      */
-    public void adicionarIngrediente(Ingredientes ingrediente) {
+    public void adicionarIngrediente(Ingrediente ingrediente) {
         this.ingredientes.add(ingrediente);
     }
 
@@ -101,7 +97,7 @@ public class Receita {
      * @param ingrediente o ingrediente para ser removido.
      * @return true se o ingrediente existia e foi removida, false caso contrário.
      */
-    public boolean removerIngrediente(Ingredientes ingrediente) { return this.ingredientes.remove(ingrediente); }
+    public boolean removerIngrediente(Ingrediente ingrediente) { return this.ingredientes.remove(ingrediente); }
 
     /**
      * Adiciona uma nova imagem na lista de imagens.

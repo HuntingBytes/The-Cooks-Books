@@ -1,7 +1,6 @@
 package com.cooksbooks.entity;
 
 import com.cooksbooks.utils.Comentario;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
