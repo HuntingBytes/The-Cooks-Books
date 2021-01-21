@@ -1,6 +1,8 @@
 package com.cooksbooks.entity;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Period;
 
 /**
  * A Classe Usuario representa cada usuário cadastrado e é única para cada conta
@@ -65,5 +67,13 @@ public class Usuario {
         if(!this.senha.equals(senha) && !senha.trim().equals("")){
             this.senha = senha;
         }
+    }
+
+    //Talvez mudar o tipo de retorno para int
+
+    public long idadeConta(){
+        LocalDate idade = LocalDate.of(dataCriacao.getYear(), dataCriacao.getMonthValue(), dataCriacao.getDayOfMonth());
+        Period periodo = Period.between(idade, LocalDate.now());
+        return periodo.getDays() + periodo.getMonths() * 30L + periodo.getYears() * 365L;
     }
 }
