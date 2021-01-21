@@ -2,7 +2,7 @@ package com.cooksbooks.utils;
 
 public enum Categoria {
 
-    NENHUMA("Sem Categoria"),
+    OUTROS("Outros"),
     REGIONAL("Regional"),
     ITALIANA("Italiana"),
     PIZZA("Pizza"),
