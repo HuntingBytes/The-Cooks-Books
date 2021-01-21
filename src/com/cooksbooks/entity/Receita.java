@@ -7,6 +7,7 @@ import com.cooksbooks.utils.Dificuldade;
 import com.cooksbooks.utils.Imagem;
 import com.cooksbooks.utils.Ingrediente;
 import com.cooksbooks.utils.Rendimento;
+import com.cooksbooks.utils.TempoPreparo;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,13 +16,14 @@ import java.util.List;
  * <p>
  * Ela possui diversos campos que a caracterizam e métodos para acessar e atualizar esses campos.
  * </p>
+ *
  * @version 1.0
  */
 public class Receita {
 
   private String titulo;
   private String modoPreparo;
-  // TODO: Adicionar private TempoPreparo tempoPreparo;
+  private TempoPreparo tempoPreparo;
   private Custo custo;
   private Rendimento rendimento;
   private Dificuldade dificuldade;
@@ -30,13 +32,6 @@ public class Receita {
   private List<Comentario> comentarios;
   private List<Imagem> imagens;
 
-  // TODO: Adicionar getter/setter para tempoPreparo
-
-  // Talvez adicionar outros construtores com algumas informações parciais
-  // Algum Receita(titulo, custo, rendimento, dificuldade)
-  // Ou melhor, usando as ideias do JavaBeans poderíamos ter um único construtor
-  // vazio Receita() e todos os campos seriam preenchidos por meio de getters/setters
-
   /**
    * Construtor nulo. Inicializa os campos com valores padrões.
    * <p>
@@ -44,7 +39,7 @@ public class Receita {
    * </p>
    * <ul>
    * <li>
-   * Custo.BARATO; Rendimento.UM; Dificuldade.FACIL;
+   * Custo.BARATO; Rendimento.UM; Dificuldade.FACIL; TempoPreparo.RAPIDO;
    * </li>
    * <li>
    * Listas são inicializadas sem elementos;
@@ -60,11 +55,11 @@ public class Receita {
     this.custo = Custo.BARATO;
     this.rendimento = Rendimento.UM;
     this.dificuldade = Dificuldade.FACIL;
+    this.tempoPreparo = TempoPreparo.RAPIDO;
     this.categorias = new ArrayList<>();
     this.ingredientes = new ArrayList<>();
     this.comentarios = new ArrayList<>();
     this.imagens = new ArrayList<>();
-    // TODO: Inicializar tempoPreparo com valores padrão
   }
 
   /**
@@ -174,6 +169,21 @@ public class Receita {
    */
   public void setDificuldade(Dificuldade dificuldade) {
     this.dificuldade = dificuldade;
+  }
+
+  /**
+   * Retorna o tempo de preparo da receita.
+   */
+  public TempoPreparo getTempoPreparo() {
+    return tempoPreparo;
+  }
+
+  /**
+   * Define o tempo de preparo da receita.
+   * @param tempoPreparo Tempo de preparo da receita.
+   */
+  public void setTempoPreparo(TempoPreparo tempoPreparo) {
+    this.tempoPreparo = tempoPreparo;
   }
 
   /**
