@@ -34,7 +34,7 @@ public class Administrador extends Usuario {
       return permissoesAdministrador.contains(permissao);
   }
 
-
+  
   /**
    * Retorna a lista de permissões de um Administrador
    *
@@ -51,9 +51,7 @@ public class Administrador extends Usuario {
    * @param permissao permissão a ser adicionada
    */
   public void adicionarPermissao(PermissaoEspecial permissao) {
-    if (!permissoesAdministrador.contains(permissao)) {
       this.permissoesAdministrador.add(permissao);
-    }
   }
 
 
@@ -63,8 +61,6 @@ public class Administrador extends Usuario {
    * @param permissao permissão a ser adicionada
    */
   public void removerPermissao(PermissaoEspecial permissao) {
-    if (permissoesAdministrador.contains(permissao)) {
       this.permissoesAdministrador.remove(permissao);
-    }
   }
 }
