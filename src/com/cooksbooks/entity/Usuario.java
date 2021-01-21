@@ -70,7 +70,6 @@ public class Usuario {
     }
 
     //Talvez mudar o tipo de retorno para int
-
     public long idadeConta(){
         LocalDate idade = LocalDate.of(dataCriacao.getYear(), dataCriacao.getMonthValue(), dataCriacao.getDayOfMonth());
         Period periodo = Period.between(idade, LocalDate.now());
