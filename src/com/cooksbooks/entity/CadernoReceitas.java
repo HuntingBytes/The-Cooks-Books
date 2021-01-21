@@ -1,7 +1,6 @@
 package com.cooksbooks.entity;
 
 import com.cooksbooks.utils.Categoria;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,19 +17,18 @@ public class CadernoReceitas {
   //Atributos
   private final String nomeCaderno;
   private final String informacoesCaderno;
-  private final boolean visivel;
+  private final boolean cadernoPublico;
   private List<Categoria> categorias;
   private final List<Receita> receitas;
 
   //Construtor completo
-  public CadernoReceitas(String nomeCaderno, String informacoesCaderno, boolean visivel) {
+  public CadernoReceitas(String nomeCaderno, String informacoesCaderno, boolean cadernoPublico) {
     this.nomeCaderno = nomeCaderno;
     this.informacoesCaderno = informacoesCaderno;
-    this.visivel = visivel;
+    this.cadernoPublico = cadernoPublico;
     this.categorias = null;
     this.receitas = null;
   }
-
 
   public void adicionarReceita(Receita receita) {
     receitas.add(receita);
@@ -40,13 +38,18 @@ public class CadernoReceitas {
     receitas.remove(receita);
   }
 
-  /**
-   * Listar as categorias das receitas presentes nesse caderno.
-   *
-   * @return todas as categorias das receitas presentes nesse caderno.
-   */
-  public List<Categoria> listarCategorias() {
-    return this.categorias;
+  public List<Categoria> listarCategorias () { return this.categorias; }
+
+  public String getNomeCaderno() {
+    return nomeCaderno;
   }
 
+  public String getInformacoesCaderno() {
+    return informacoesCaderno;
+  }
+
+  public boolean isCadernoPublico() {
+    return cadernoPublico;
+  }
+  
 }
