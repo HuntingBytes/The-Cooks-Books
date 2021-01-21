@@ -1,25 +1,19 @@
 package com.cooksbooks.utils;
 
-import javafx.scene.image.Image;
-
-/**
- *  C
- *
- */
 
 public class Imagem {
 
-    private Image imagem;
+    private String enderecoImagem;
 
-    public Imagem(Image imagem) {
-        this.imagem = imagem;
+    public Imagem(String enderecoImagem) {
+        this.enderecoImagem = enderecoImagem;
     }
 
-    public Image getImagem() {
-        return imagem;
+    public String getEnderecoImagem() {
+        return enderecoImagem;
     }
 
-    public void setImagem(Image imagem) {
-        this.imagem = imagem;
+    public void setEnderecoImagem(String enderecoImagem) {
+        this.enderecoImagem = enderecoImagem;
     }
 }
