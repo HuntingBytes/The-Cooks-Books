@@ -28,10 +28,21 @@ public class Comentario {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Comentario)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Comentario)) {
+            return false;
+        }
         Comentario that = (Comentario) o;
-        return Objects.equals(texto, that.texto) && Objects.equals(data, that.data) && Objects.equals(nomeUsuario, that.nomeUsuario) && Objects.equals(nomePerfil, that.nomePerfil);
+        return Objects.equals(texto, that.texto) && Objects.equals(data, that.data)
+            && Objects.equals(nomeUsuario, that.nomeUsuario) && Objects
+            .equals(nomePerfil, that.nomePerfil);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(texto, data, nomeUsuario, nomePerfil);
     }
 
     public String getTexto() {

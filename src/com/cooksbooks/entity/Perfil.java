@@ -42,7 +42,6 @@ public class Perfil {
     }
 
 
-
     /**
      * Remove a imagem do perfil
      *
