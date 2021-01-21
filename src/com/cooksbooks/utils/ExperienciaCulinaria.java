@@ -6,7 +6,7 @@ public enum ExperienciaCulinaria {
 
     INICIANTE("Iniciante"),
     NOVATO("Novato"),
-    INTERMEDIÁRIO("Intermediário"),
+    INTERMEDIARIO("Intermediário"),
     CASEIRO("Cozinheiro Caseiro"),
     PROFISSIONAL("Cozinheiro Profissional");
 
