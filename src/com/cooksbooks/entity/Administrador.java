@@ -34,7 +34,7 @@ public class Administrador extends Usuario {
       return permissoesAdministrador.contains(permissao);
   }
 
-  
+
   /**
    * Retorna a lista de permissões de um Administrador
    *
