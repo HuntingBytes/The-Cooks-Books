@@ -3,6 +3,13 @@ package com.cooksbooks.utils;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+/**
+ * A classe Comentário permite ao Usuário opinar sobre
+ * o Caderno de Receitas e sobre as Receitas. Além de
+ * também ser exibido no Relatório (classe disponível
+ * para uso do Administrador)
+ */
+
 public class Comentario {
 
     private String texto;
@@ -17,6 +24,11 @@ public class Comentario {
         this.nomePerfil = nomePerfil;
     }
 
+    /**
+     * Permite ao Usuário e ao Administrador editar
+     * comentários já feitos.
+     * @param texto
+     */
     public void editarTexto (String texto) {
         this.texto = texto;
     }
@@ -44,6 +56,8 @@ public class Comentario {
     public int hashCode() {
         return Objects.hash(texto, data, nomeUsuario, nomePerfil);
     }
+
+    //Setters e Getters da classe
 
     public String getTexto() {
         return texto;
