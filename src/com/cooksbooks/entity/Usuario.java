@@ -1,5 +1,6 @@
 package com.cooksbooks.entity;
 
+import com.cooksbooks.utils.ExperienciaCulinaria;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
@@ -11,7 +12,11 @@ public class Usuario {
 
     private String login;
     private String senha;
+    private String nomePerfil;
+    private String biografia;
+    private String caminhoImagemPerfil;
     private final LocalDateTime dataCriacao;
+    private ExperienciaCulinaria experienciaCulinaria;
 
     /**
      * Construtor da classe Usuário que recebe login e senha como parâmetros.
@@ -41,6 +46,14 @@ public class Usuario {
         return this.senha;
     }
 
+    public String getNomePerfil() { return this.nomePerfil; }
+
+    public String getBiografia() { return this.biografia; }
+
+    public String getCaminhoImagemPerfil() { return this.caminhoImagemPerfil; }
+
+    public ExperienciaCulinaria getExperienciaCulinaria() { return this.experienciaCulinaria; }
+
     /**
      * Retorna a data de criação da conta.
      * @return Data de criação da conta
@@ -67,6 +80,22 @@ public class Usuario {
         if(!this.senha.equals(senha) && !senha.trim().equals("")){
             this.senha = senha;
         }
+    }
+
+    public void setNomePerfil(String nomePerfil) {
+        this.nomePerfil = nomePerfil;
+    }
+
+    public void setBiografia(String biografia) {
+        this.biografia = biografia;
+    }
+
+    public void setCaminhoImagemPerfil(String caminhoImagemPerfil) {
+        this.caminhoImagemPerfil = caminhoImagemPerfil;
+    }
+
+    public void setExperienciaCulinaria(ExperienciaCulinaria experienciaCulinaria) {
+        this.experienciaCulinaria = experienciaCulinaria;
     }
 
     //Talvez mudar o tipo de retorno para int
