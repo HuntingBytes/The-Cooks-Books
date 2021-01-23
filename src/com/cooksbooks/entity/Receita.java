@@ -4,7 +4,6 @@ import com.cooksbooks.utils.Categoria;
 import com.cooksbooks.utils.Comentario;
 import com.cooksbooks.utils.Custo;
 import com.cooksbooks.utils.Dificuldade;
-import com.cooksbooks.utils.Imagem;
 import com.cooksbooks.utils.Ingrediente;
 import com.cooksbooks.utils.Rendimento;
 import com.cooksbooks.utils.TempoPreparo;
@@ -30,7 +29,7 @@ public class Receita {
   private List<Categoria> categorias;
   private List<Ingrediente> ingredientes;
   private List<Comentario> comentarios;
-  private List<Imagem> imagens;
+  private List<String> caminhosImagens;
 
   /**
    * Construtor nulo. Inicializa os campos com valores padrões.
@@ -59,7 +58,7 @@ public class Receita {
     this.categorias = new ArrayList<>();
     this.ingredientes = new ArrayList<>();
     this.comentarios = new ArrayList<>();
-    this.imagens = new ArrayList<>();
+    this.caminhosImagens = new ArrayList<>();
   }
 
   /**
@@ -300,20 +299,20 @@ public class Receita {
   /**
    * Adiciona uma nova imagem na lista de imagens.
    *
-   * @param imagem a imagem a ser adicionado.
+   * @param caminhoImagem a imagem a ser adicionado.
    */
-  public void adicionarImagem(Imagem imagem) {
-    this.imagens.add(imagem);
+  public void adicionarImagem(String caminhoImagem) {
+    this.caminhosImagens.add(caminhoImagem);
   }
 
   /**
    * Remove uma imagem da lista de imagens.
    *
-   * @param imagem a imagem para ser removido.
+   * @param caminhoImagem a imagem para ser removido.
    * @return true se a imagem existia e foi removida, false caso contrário.
    */
-  public boolean removerImagem(Imagem imagem) {
-    return this.imagens.remove(imagem);
+  public boolean removerImagem(String caminhoImagem) {
+    return this.caminhosImagens.remove(caminhoImagem);
   }
 
   /**
@@ -321,8 +320,8 @@ public class Receita {
    *
    * @return Lista com as imagens.
    */
-  public List<Imagem> listarImagens() {
-    return imagens;
+  public List<String> listarImagens() {
+    return this.caminhosImagens;
   }
 
     /* TODO: Implementar o método hashCode (depois revisar o "contrato" da API do Java)
@@ -342,10 +341,10 @@ public class Receita {
   /**
    * Altera a referência da lista de imagens.
    *
-   * @param imagens referência para lista de imagens.
+   * @param caminhosImagens referência para lista de imagens.
    */
-  public void setImagens(List<Imagem> imagens) {
-    this.imagens = imagens;
+  public void setImagens(List<String> caminhosImagens) {
+    this.caminhosImagens = caminhosImagens;
   }
 
   /**
@@ -365,6 +364,6 @@ public class Receita {
             Quantidade Imagens: %d
             Quantidade Comentários: %d""",
         this.titulo, this.dificuldade, this.custo, this.rendimento,
-        this.ingredientes.size(), this.imagens.size(), this.comentarios.size());
+        this.ingredientes.size(), this.caminhosImagens.size(), this.comentarios.size());
   }
 }
