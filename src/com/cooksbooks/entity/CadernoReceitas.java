@@ -4,6 +4,8 @@ import com.cooksbooks.utils.Categoria;
 import com.cooksbooks.utils.Comentario;
 import com.cooksbooks.utils.Dificuldade;
 import com.cooksbooks.utils.Nota;
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +18,10 @@ import java.util.List;
  * @version 1.0
  */
 
-public class CadernoReceitas {
+public class CadernoReceitas implements Serializable {
+
+  @Serial
+  private static final long serialVersionUID = 7978808538548640443L;
 
   private final String nomeCaderno;
   private final String informacoesCaderno;
@@ -26,6 +31,8 @@ public class CadernoReceitas {
   private Nota notaCaderno;
   private Dificuldade dificuldadeCaderno;
   private Comentario comentarioCaderno;
+  private String idDono;
+  private String idCaderno;
 
   /**
    * Construtor completo da classe.
@@ -42,7 +49,7 @@ public class CadernoReceitas {
    */
   public CadernoReceitas(String nomeCaderno, String informacoesCaderno, boolean cadernoPublico,
       List<Categoria> categorias, List<Receita> receitas, Nota notaCaderno,
-      Dificuldade dificuldadeCaderno, Comentario comentarioCaderno) {
+      Dificuldade dificuldadeCaderno, Comentario comentarioCaderno, String idDono) {
     this.nomeCaderno = nomeCaderno;
     this.informacoesCaderno = informacoesCaderno;
     this.cadernoPublico = cadernoPublico;
@@ -51,6 +58,7 @@ public class CadernoReceitas {
     this.notaCaderno = notaCaderno;
     this.dificuldadeCaderno = dificuldadeCaderno;
     this.comentarioCaderno = comentarioCaderno;
+    this.idDono = idDono;
   }
 
   public void adicionarReceita(Receita receita) {
@@ -113,5 +121,25 @@ public class CadernoReceitas {
 
   public void setComentarioCaderno(Comentario comentarioCaderno) {
     this.comentarioCaderno = comentarioCaderno;
+  }
+
+  public static long getSerialVersionUID() {
+    return serialVersionUID;
+  }
+
+  public String getIdDono() {
+    return idDono;
+  }
+
+  public void setIdDono(String idDono) {
+    this.idDono = idDono;
+  }
+
+  public String getIdCaderno() {
+    return idCaderno;
+  }
+
+  public void setIdCaderno(String idCaderno) {
+    this.idCaderno = idCaderno;
   }
 }
