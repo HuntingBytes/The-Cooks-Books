@@ -22,6 +22,8 @@ public class Receita {
 
   private String titulo;
   private String modoPreparo;
+  private String idReceita;
+  private String idCadernoDono;
   private TempoPreparo tempoPreparo;
   private Custo custo;
   private Rendimento rendimento;
@@ -51,6 +53,8 @@ public class Receita {
   public Receita() {
     this.titulo = "";
     this.modoPreparo = "";
+    this.idReceita = "";
+    this.idCadernoDono = "";
     this.custo = Custo.BARATO;
     this.rendimento = Rendimento.UM;
     this.dificuldade = Dificuldade.FACIL;
@@ -96,6 +100,37 @@ public class Receita {
    */
   public void setTitulo(String titulo) {
     this.titulo = titulo;
+  }
+
+  /**
+   * Retorna o id da receita.
+   *
+   * @return  id da receita.
+   */
+  public String getIdReceita() {
+    return this.idReceita;
+  }
+
+  /**
+   * Define o id da receita.
+   *
+   * @param idReceita id da receita.
+   */
+  public void setIdReceita(String idReceita) {
+    this.idReceita = idReceita;
+  }
+
+  public String getIdCadernoDono() {
+    return this.idCadernoDono;
+  }
+
+  /**
+   * Define o id do caderno que possui a receita.
+   *
+   * @param idCadernoDono id do caderno que possui a receita.
+   */
+  public void setIdCadernoDono(String idCadernoDono) {
+    this.idCadernoDono = idCadernoDono;
   }
 
   /**
@@ -324,19 +359,19 @@ public class Receita {
     return this.caminhosImagens;
   }
 
-    /* TODO: Implementar o método hashCode (depois revisar o "contrato" da API do Java)
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
-     */
+  /* TODO: Implementar o método hashCode (depois revisar o "contrato" da API do Java)
+   @Override
+   public int hashCode() {
+       return super.hashCode();
+   }
+   */
 
-    /* TODO: Implementar o método equals (depois revisar o "contrato" da API do Java)
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
-    }
-     */
+  /* TODO: Implementar o método equals (depois revisar o "contrato" da API do Java)
+   @Override
+   public boolean equals(Object obj) {
+       return super.equals(obj);
+   }
+   */
 
   /**
    * Altera a referência da lista de imagens.
@@ -355,14 +390,13 @@ public class Receita {
    */
   @Override
   public String toString() {
-    return String.format("""
-            %s
-            Dificuldade: %s
-            Custo: %s
-            Rendimento: %s
-            Quantidade Ingredientes: %d
-            Quantidade Imagens: %d
-            Quantidade Comentários: %d""",
+    return String.format("%s\n"+
+            "Dificuldade: %s\n" +
+            "Custo: %s\n" +
+            "Rendimento: %s\n" +
+            "Quantidade Ingredientes: %d\n" +
+            "Quantidade Imagens: %d\n" +
+            "Quantidade Comentários: %d\n",
         this.titulo, this.dificuldade, this.custo, this.rendimento,
         this.ingredientes.size(), this.caminhosImagens.size(), this.comentarios.size());
   }
