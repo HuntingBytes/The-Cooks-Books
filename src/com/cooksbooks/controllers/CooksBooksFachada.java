@@ -38,13 +38,12 @@ public class CooksBooksFachada implements ICooksBooks {
 
   @Override
   public void cadastrarReceita(Receita receita) {
-    return this.controladorReceita.cadastrarReceita(receita);
+    this.controladorReceita.cadastrarReceita(receita);
   }
 
   @Override
   public void removerReceita(String idReceita) {
     this.controladorReceita.removerReceita(idReceita);
-
   }
 
   @Override
