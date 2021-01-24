@@ -3,7 +3,8 @@ package com.cooksbooks.controllers;
 import com.cooksbooks.entity.CadernoReceitas;
 import com.cooksbooks.entity.Receita;
 import com.cooksbooks.entity.Usuario;
-import com.cooksbooks.utils.MinhasReceitas;
+import com.cooksbooks.utils.MinhasReceitas; // Remover esse import, talvez?
+// Podemos rever se ainda faz sentido manter uma classe "MinhasReceitas"
 import java.util.List;
 
 public interface ICooksBooks {
