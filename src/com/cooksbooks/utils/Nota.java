@@ -2,27 +2,19 @@ package com.cooksbooks.utils;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Comparator;
 
 public class Nota {
 
-    Map<String, Integer> votos = new HashMap<String, Integer>();
+    Map<String, Integer> votos;
 
-    nota () {
-        
+    Nota () {
+        this.votos = new HashMap<>();
     }
 
 
     //Método aparentemente ok
-    public boolean jaVotou(String nomeUsuario)
-    {
-        //if que compara o valor da Map com Null para determinar se Ja votou
-        if(entry.getValue(nomeUsuario) != null){
-            return true;
-        }
-
-        return false;
-        
+    public boolean jaVotou(String nomeUsuario) {
+        return (this.votos.get(nomeUsuario) != null);
     }
 
     //Método aparentemente simples e ok
@@ -37,9 +29,9 @@ public class Nota {
         int mediaNotas = 0;
         int i = 0;
 
-        for(Map.Entry<String, Integer> entry : votos.entrySet())
+        for(Integer value : votos.values())
         {
-            somaNotas = somaNotas + entry.getValue();
+            somaNotas += value;
             i++;
         }
 
@@ -49,8 +41,8 @@ public class Nota {
 
     //Não sei se necessariamente se acessa a Key corretamente
     @Override
-    public String toString(String nomeKey) {
-        return "Usuário " + entry.getKey(nomeKey) + "\tNota: " + entry.getValue(nomeKey);
+    public String toString() {
+        return "";
     }
 
 }

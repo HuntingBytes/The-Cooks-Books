@@ -1,36 +1,26 @@
 package com.cooksbooks.utils;
 
+import java.util.List;
+
 public enum TempoPreparo {
 
-    RAPIDO("Até 30 minutos", 1),
-    MEDIO("Entre 30 minutos e 1 hora", 2),
-    DEMORADO("Mais de 1 hora", 3),
+    RAPIDO("Até 30 minutos"),
+    MEDIO("Entre 30 minutos e 1 hora"),
+    DEMORADO("Mais de 1 hora");
 
     private final String extenso;
-    private final int peso;
 
-    TempoPreparo(String extenso, int peso) {
+    TempoPreparo(String extenso) {
         this.extenso = extenso;
-        this.peso = peso;
-    }
-
-    public int getPeso() {
-        return peso;
     }
     
     @Override
     public String toString(){
-        return "Categoria " + this.extenso + "\tPeso " + this.peso + tempoPreparoMedio ;
+        return this.extenso;
     }
 
-    public TempoPreparo tempoPreparoMedio(List<tempoPreparo> tempoPreparo)
-    {    
-        for(int i = 0; i < tempoPreparo.size(); i++)
-        {
-            TempoPreparo tempoTotal = tempoTotal + tempoPreparo.get(i);
-        }
-
-        return tempoTotal/tempoPreparo.size();
+    public static TempoPreparo tempoPreparoMedio(List<TempoPreparo> tempoPreparo) {
+        return TempoPreparo.MEDIO;
     }
 
 }

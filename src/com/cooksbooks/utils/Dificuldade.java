@@ -2,32 +2,14 @@ package com.cooksbooks.utils;
 
 public enum Dificuldade {
 
-    FACIL("Fácil", 1),
-    MEDIO("Médio", 2),
-    DIFICIL("Difícil", 3);
+    FACIL("Fácil"),
+    MEDIO("Médio"),
+    DIFICIL("Difícil");
 
-    private String extenso;
-    private int peso;
+    private final String extenso;
 
-    Dificuldade(String extenso, int peso) {
+    Dificuldade(String extenso) {
         this.extenso = extenso;
-        this.peso = peso;
-    }
-
-    public String getExtenso() {
-        return extenso;
-    }
-
-    public void setExtenso(String extenso) {
-        this.extenso = extenso;
-    }
-
-    public int getPeso() {
-        return peso;
-    }
-
-    public void setPeso(int peso) {
-        this.peso = peso;
     }
 
     @Override
