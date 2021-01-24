@@ -2,21 +2,37 @@ package com.cooksbooks.utils;
 
 public enum Rendimento {
 
-    UM("1 pessoa"),
-    DOIS("2 pessoas"),
-    QUATRO("4 pessoas"),
-    SEIS("6 pessoas"),
-    OITO("8 pessoas"),
-    MUITAS("Mais de 10 pessoas");
+  /**
+   * A Classe Rendimento é responsável por definir ações que os possiveis rendimentos que um Receita
+   * pode ter
+   *
+   * @version 1.0
+   */
+  UM("1 pessoa"),
+  DOIS("2 pessoas"),
+  QUATRO("4 pessoas"),
+  SEIS("6 pessoas"),
+  OITO("8 pessoas"),
+  MUITAS("Mais de 10 pessoas");
 
-    private String extenso;
+  private final String extenso;
 
-    Rendimento(String extenso) {
-        this.extenso=extenso;
-    }
+  /**
+   * Construtor padrão
+   *
+   * @param extenso é a representação textual do rendimento escolhido
+   */
+  Rendimento(String extenso) {
+    this.extenso = extenso;
+  }
 
-    @Override
-    public String toString() {
-        return this.extenso;
-    }
+  /**
+   * Retorna uma String com a representação textual da permissão.
+   *
+   * @return String que representa a instância
+   */
+  @Override
+  public String toString() {
+    return this.extenso;
+  }
 }
