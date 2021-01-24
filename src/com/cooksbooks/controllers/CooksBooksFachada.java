@@ -43,7 +43,7 @@ public class CooksBooksFachada implements ICooksBooks {
 
   @Override
   public void removerReceita(String idReceita) {
-    return this.controladorReceita.removerReceita(idReceita);
+    this.controladorReceita.removerReceita(idReceita);
 
   }
 
@@ -59,7 +59,7 @@ public class CooksBooksFachada implements ICooksBooks {
 
   @Override
   public void cadastrarCaderno(CadernoReceitas caderno) {
-    return this.controladorCaderno.cadastrarCaderno(caderno);
+    this.controladorCaderno.cadastrarCaderno(caderno);
 
   }
 
@@ -73,8 +73,15 @@ public class CooksBooksFachada implements ICooksBooks {
     return this.controladorCaderno.buscarCaderno(idCaderno);
   }
 
+  /**
+   * ?? Talvez uma tarefa do controlador caderno??
+   *
+   * Retorna
+   * @param nomeUsuario
+   * @return
+   */
   @Override
   public List<CadernoReceitas> listarCadernosDoUsuario(String nomeUsuario) {
-    return this.controladorUsuario.listarCadernosDoUsuario;
+    return this.controladorUsuario.listarCadernosDoUsuario();
   }
 }

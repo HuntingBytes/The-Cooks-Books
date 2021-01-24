@@ -10,7 +10,7 @@ public class RepositorioUsuarios implements IRepositorioUsuario {
 
     private static RepositorioUsuarios instancia;
     private final ArrayList<Usuario> usuariosList;
-    //TODO: estudar SERIALIZABLE
+    //TODO: estudar SERIALIZABLE kkkkkkkkkkk a bronca
 
     /**
      * Construtor do repositório que inicializa o ArrayList de usuários
@@ -32,7 +32,7 @@ public class RepositorioUsuarios implements IRepositorioUsuario {
     }
 
     /**
-     * Copiei na cara dura mesmo.
+     * Copiei na cara dura mesmo. kkkkkkkk
      * TODO: estudar como esse método funciona
      * @return
      */
@@ -131,6 +131,5 @@ public class RepositorioUsuarios implements IRepositorioUsuario {
     public int totalUsuarios(){
         return usuariosList.size();
     }
-
 
 }

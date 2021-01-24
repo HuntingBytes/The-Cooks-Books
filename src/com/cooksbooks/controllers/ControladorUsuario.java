@@ -33,9 +33,13 @@ public class ControladorUsuario {
     return instancia;
   }
 
-
+  /**
+   *  Cadastra um usuário no sistema, caso ele ainda não exista
+   *
+   * @param usuario
+   */
   public void cadastrarUsuario(Usuario usuario) {
-    if (!this.repositorioUsuarios.existeUsuario(usuario)) {
+    if (!this.repositorioUsuarios.existeUsuario(usuario.getLogin())) {
       this.repositorioUsuarios.cadastrarUsuario(usuario);
     }
   }
@@ -47,9 +51,15 @@ public class ControladorUsuario {
     }
   }
 
-
+  /**
+   * Efetua o login do usuário
+   *
+   * @param login login do usuário
+   * @param senha senha do usuário
+   * @return retorna um usuário (UsuarioLogado)
+   */
   public Usuario efetuarLogin(String login, String senha) {
-    for (Usuario usuario : this.repositorioUsuarios.usuarios) {
+    for (Usuario usuario : this.repositorioUsuarios.getUsuariosList) {
       if (login.equals(usuario.getLogin()) && senha.equals(usuario.getSenha())) {
         return usuario;
       }
@@ -57,16 +67,7 @@ public class ControladorUsuario {
     return null;
   }
 
-
-  private Usuario buscarUsuario(String login) {
-    for (Usuario usuario : this.repositorioUsuarios.usuarios) {
-      if (login.equals(usuario)) {
-        return usuario;
-      }
-    }
-    return null;
+  public Usuario buscarUsuario(String login) {
+    return this.repositorioUsuarios.buscarUsuario(login);
   }
-
-
-
 }
