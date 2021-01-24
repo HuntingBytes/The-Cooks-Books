@@ -123,7 +123,7 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
   @Override
   public CadernoReceitas buscarCaderno(String idCaderno) {
     for (CadernoReceitas caderno : this.cadernosSist) {
-      if (caderno.getIdCaderno().equals(idCaderno))){
+      if (existeCaderno(caderno.getIdCaderno())) {
         return caderno;
       }
     }
@@ -159,6 +159,9 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
     return this.cadernosSist.size();
   }
 
+  /**
+   * Método responsável por salvar o repositorio em um arquivo
+   */
 
   @Override
   public void salvarArquivo() {
@@ -186,6 +189,13 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
     }
   }
 
+  /**
+   * Método responsável por alterar o nome de um caderno ja existente no repositorio
+   *
+   * @param idCadernoSubstituido id do caderno que devemos substituir o nome
+   * @param nomeCadernoNovo      nome do caderno que o usuario deseja atualizar, verificaçao feita
+   *                             se o nome é valido no controlador
+   */
 
   @Override
   public void alterarNomeCadernoExistente(String idCadernoSubstituido, String nomeCadernoNovo) {
@@ -196,6 +206,13 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
     }
   }
 
+  /**
+   * Método responsável por alterar as informaçoes de um caderno ja existente no repositorio
+   *
+   * @param idCadernoSubstituido   id do caderno que devemos substituir as informaçoes
+   * @param informacoesCadernoNovo informaçoes do caderno que o usuario deseja atualizar,
+   *                               verificaçao feita se as informaçaoes é valido no controlador
+   */
 
   @Override
   public void alterarinformacoesCadernoExistente(String idCadernoSubstituido,
@@ -208,6 +225,12 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
 
   }
 
+
+  /**
+   * Método responsável por alterar a visibilidade de um caderno ja existente
+   *
+   * @param idCadernoSubstituido id do caderno que vamos alterar a visibilidade
+   */
 
   @Override
   public void alterarCadernoPublicoExistente(String idCadernoSubstituido) {
