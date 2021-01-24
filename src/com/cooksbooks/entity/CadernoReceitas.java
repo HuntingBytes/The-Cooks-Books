@@ -22,7 +22,6 @@ public class CadernoReceitas implements Serializable {
 
   @Serial
   private static final long serialVersionUID = 7978808538548640443L;
-  private final List<Receita> receitas;
   private String nomeCaderno;
   private String informacoesCaderno;
   private boolean cadernoPublico;
@@ -52,7 +51,6 @@ public class CadernoReceitas implements Serializable {
     this.informacoesCaderno = informacoesCaderno;
     this.cadernoPublico = cadernoPublico;
     this.categorias = new ArrayList<>();
-    this.receitas = new ArrayList<>();
     this.notaCaderno = notaCaderno;
     this.dificuldadeCaderno = dificuldadeCaderno;
     this.comentarioCaderno = comentarioCaderno;
@@ -61,14 +59,6 @@ public class CadernoReceitas implements Serializable {
 
   public static long getSerialVersionUID() {
     return serialVersionUID;
-  }
-
-  public void adicionarReceita(Receita receita) {
-    receitas.add(receita);
-  }
-
-  public void removerReceita(Receita receita) {
-    receitas.remove(receita);
   }
 
   public List<Categoria> listarCategorias() {
@@ -110,10 +100,6 @@ public class CadernoReceitas implements Serializable {
 
   public void setCategorias(List<Categoria> categorias) {
     this.categorias = categorias;
-  }
-
-  public List<Receita> getReceitas() {
-    return receitas;
   }
 
   public Nota getNotaCaderno() {
