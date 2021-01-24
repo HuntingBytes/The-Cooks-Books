@@ -67,13 +67,6 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
   }
 
   @Override
-  public void alterarCadernoExistente(String idCadernoSubstituido,
-      CadernoReceitas cadernoComAlteracoes) {
-    removerCaderno(idCadernoSubstituido);
-    cadastrarCaderno(cadernoComAlteracoes);
-  }
-
-  @Override
   public boolean existeCaderno(String idCaderno) {
     for (CadernoReceitas caderno : this.cadernosSist) {
       if (caderno.getIdCaderno().equals(idCaderno)) {
@@ -131,6 +124,35 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
         } catch (IOException e) {
           /* Silent */
         }
+      }
+    }
+  }
+
+  @Override
+  public void alterarNomeCadernoExistente(String idCadernoSubstituido, String nomeCadernoNovo) {
+    for (CadernoReceitas cadernoIdentificar : cadernosSist) {
+      if (cadernoIdentificar.getIdCaderno().equals(idCadernoSubstituido)) {
+        cadernoIdentificar.setNomeCaderno(nomeCadernoNovo);
+      }
+    }
+  }
+
+  @Override
+  public void alterarinformacoesCadernoExistente(String idCadernoSubstituido,
+      String informacoesCadernoNovo) {
+    for (CadernoReceitas cadernoIdentificar : cadernosSist) {
+      if (cadernoIdentificar.getIdCaderno().equals(idCadernoSubstituido)) {
+        cadernoIdentificar.setInformacoesCaderno(informacoesCadernoNovo);
+      }
+    }
+
+  }
+
+  @Override
+  public void alterarCadernoPublicoExistente(String idCadernoSubstituido) {
+    for (CadernoReceitas cadernoIdentificar : cadernosSist) {
+      if (cadernoIdentificar.getIdCaderno().equals(idCadernoSubstituido)) {
+        cadernoIdentificar.setCadernoPublico(!cadernoIdentificar.isCadernoPublico());
       }
     }
   }

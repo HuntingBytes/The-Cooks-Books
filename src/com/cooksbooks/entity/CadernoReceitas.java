@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * CadernoReceita é responsável por agrupar diversas receitas criadas/escolhidas pelo usuário.
- *
+ * <p>
  * CadernoReceita possui métodos responsáveis por adicionar e remover uma receita e listar as
  * Categorias das receitas.
  *
@@ -22,12 +22,11 @@ public class CadernoReceitas implements Serializable {
 
   @Serial
   private static final long serialVersionUID = 7978808538548640443L;
-
-  private final String nomeCaderno;
-  private final String informacoesCaderno;
-  private final boolean cadernoPublico;
-  private List<Categoria> categorias;
   private final List<Receita> receitas;
+  private String nomeCaderno;
+  private String informacoesCaderno;
+  private boolean cadernoPublico;
+  private List<Categoria> categorias;
   private Nota notaCaderno;
   private Dificuldade dificuldadeCaderno;
   private Comentario comentarioCaderno;
@@ -35,8 +34,7 @@ public class CadernoReceitas implements Serializable {
   private String idCaderno;
 
   /**
-   * Construtor completo da classe.
-   * Inicializa também as listas.
+   * Construtor completo da classe. Inicializa também as listas.
    *
    * @param nomeCaderno
    * @param informacoesCaderno
@@ -61,6 +59,10 @@ public class CadernoReceitas implements Serializable {
     this.idDono = idDono;
   }
 
+  public static long getSerialVersionUID() {
+    return serialVersionUID;
+  }
+
   public void adicionarReceita(Receita receita) {
     receitas.add(receita);
   }
@@ -69,22 +71,37 @@ public class CadernoReceitas implements Serializable {
     receitas.remove(receita);
   }
 
-  public List<Categoria> listarCategorias () { return this.categorias; }
+  public List<Categoria> listarCategorias() {
+    return this.categorias;
+  }
 
   /**
    * Métodos Get e Set da classe
+   *
    * @return muitas coisas
    */
   public String getNomeCaderno() {
     return nomeCaderno;
   }
 
+  public void setNomeCaderno(String nomeCaderno) {
+    this.nomeCaderno = nomeCaderno;
+  }
+
   public String getInformacoesCaderno() {
     return informacoesCaderno;
   }
 
+  public void setInformacoesCaderno(String informacoesCaderno) {
+    this.informacoesCaderno = informacoesCaderno;
+  }
+
   public boolean isCadernoPublico() {
     return cadernoPublico;
+  }
+
+  public void setCadernoPublico(boolean cadernoPublico) {
+    this.cadernoPublico = cadernoPublico;
   }
 
   public List<Categoria> getCategorias() {
@@ -123,10 +140,6 @@ public class CadernoReceitas implements Serializable {
     this.comentarioCaderno = comentarioCaderno;
   }
 
-  public static long getSerialVersionUID() {
-    return serialVersionUID;
-  }
-
   public String getIdDono() {
     return idDono;
   }
@@ -142,4 +155,5 @@ public class CadernoReceitas implements Serializable {
   public void setIdCaderno(String idCaderno) {
     this.idCaderno = idCaderno;
   }
+
 }
