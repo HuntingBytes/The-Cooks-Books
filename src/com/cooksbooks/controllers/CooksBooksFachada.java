@@ -59,7 +59,6 @@ public class CooksBooksFachada implements ICooksBooks {
   @Override
   public void cadastrarCaderno(CadernoReceitas caderno) {
     this.controladorCaderno.cadastrarCaderno(caderno);
-
   }
 
   @Override
@@ -75,7 +74,7 @@ public class CooksBooksFachada implements ICooksBooks {
   /**
    * ?? Talvez uma tarefa do controlador caderno??
    *
-   * Retorna
+   * Retorna uma lista de cadernos de receita
    * @param nomeUsuario
    * @return
    */

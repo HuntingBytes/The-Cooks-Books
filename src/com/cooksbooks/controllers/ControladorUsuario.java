@@ -34,9 +34,9 @@ public class ControladorUsuario {
   }
 
   /**
-   *  Cadastra um usuário no sistema, caso ele ainda não exista
+   * Cadastra um usuário no sistema, caso ele ainda não exista
    *
-   * @param usuario
+   * @param usuario usuario a ser cadastrado
    */
   public void cadastrarUsuario(Usuario usuario) {
     if (!this.repositorioUsuarios.existeUsuario(usuario.getLogin())) {
@@ -44,10 +44,14 @@ public class ControladorUsuario {
     }
   }
 
-
+  /**
+   * Remove um usuário do repositório, caso ele exista
+   *
+   * @param nomeUsuario usuario a ser removido
+   */
   public void removerUsuario(String nomeUsuario) {
-    if (this.repositorioUsuarios.existeUsuario(usuario)) {
-      this.repositorioUsuarios.removerUsuario(usuario);
+    if (this.repositorioUsuarios.existeUsuario(nomeUsuario)) {
+      this.repositorioUsuarios.removerUsuario(nomeUsuario);
     }
   }
 
@@ -56,7 +60,7 @@ public class ControladorUsuario {
    *
    * @param login login do usuário
    * @param senha senha do usuário
-   * @return retorna um usuário (UsuarioLogado)
+   * @return um usuário (UsuarioLogado)
    */
   public Usuario efetuarLogin(String login, String senha) {
     for (Usuario usuario : this.repositorioUsuarios.getUsuariosList) {
@@ -67,6 +71,12 @@ public class ControladorUsuario {
     return null;
   }
 
+  /**
+   * Busca por um usuario
+   *
+   * @param login login do usuario a ser buscado
+   * @return um usuario
+   */
   public Usuario buscarUsuario(String login) {
     return this.repositorioUsuarios.buscarUsuario(login);
   }
