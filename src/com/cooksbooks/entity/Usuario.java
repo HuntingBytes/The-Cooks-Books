@@ -1,6 +1,8 @@
 package com.cooksbooks.entity;
 
 import com.cooksbooks.utils.ExperienciaCulinaria;
+import java.io.Serial;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
@@ -8,8 +10,10 @@ import java.time.Period;
 /**
  * A Classe Usuario representa cada usuário cadastrado e é única para cada conta
  */
-public class Usuario {
+public class Usuario implements Serializable {
 
+    @Serial
+    private static final long serialVersionUID = 758247003012106209L;
     private String login;
     private String senha;
     private String nomePerfil;
@@ -67,6 +71,8 @@ public class Usuario {
      * @param login login da conta
      */
     public void setLogin(String login){
+        // A checagem não leva em conta que this.login pode ser nulo
+        // Talvez essa checagem não precise ocorrer aqui, não tenho certeza
         if(!this.login.equals(login) && !login.trim().equals("")){
             this.login = login;
         }
@@ -77,6 +83,8 @@ public class Usuario {
      * @param senha senha da conta
      */
     public void setSenha(String senha){
+        // A checagem não leva em conta que this.senha pode ser nulo
+        // Talvez essa checagem não precise ocorrer aqui, não tenho certeza
         if(!this.senha.equals(senha) && !senha.trim().equals("")){
             this.senha = senha;
         }

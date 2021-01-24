@@ -44,6 +44,8 @@ public class CadernoReceitas implements Serializable {
    * @param dificuldadeCaderno
    * @param comentarioCaderno
    */
+  // Talvez possamos adicionar outras possibilidades de construtores, para não precisar criar um objeto com
+  // todos os atributos inicializados. Aí podemos utilizar os métodos set/get.
   public CadernoReceitas(String nomeCaderno, String informacoesCaderno, boolean cadernoPublico,
       List<Categoria> categorias, List<Receita> receitas, Nota notaCaderno,
       Dificuldade dificuldadeCaderno, Comentario comentarioCaderno, String idDono) {

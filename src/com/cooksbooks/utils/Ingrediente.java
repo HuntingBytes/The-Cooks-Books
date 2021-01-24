@@ -1,7 +1,12 @@
 package com.cooksbooks.utils;
 
-public class Ingrediente {
+import java.io.Serial;
+import java.io.Serializable;
 
+public class Ingrediente implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = -8963710666822889681L;
     private String nome;
     private int quantidade;
     private double valorUnitario;

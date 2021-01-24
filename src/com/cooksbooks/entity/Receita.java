@@ -7,6 +7,8 @@ import com.cooksbooks.utils.Dificuldade;
 import com.cooksbooks.utils.Ingrediente;
 import com.cooksbooks.utils.Rendimento;
 import com.cooksbooks.utils.TempoPreparo;
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,8 +20,10 @@ import java.util.List;
  *
  * @version 1.0
  */
-public class Receita {
+public class Receita implements Serializable {
 
+  @Serial
+  private static final long serialVersionUID = 2272177332565838189L;
   private String titulo;
   private String modoPreparo;
   private String idReceita;

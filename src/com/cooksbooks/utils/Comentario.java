@@ -1,5 +1,7 @@
 package com.cooksbooks.utils;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -10,8 +12,10 @@ import java.util.Objects;
  * para uso do Administrador)
  */
 
-public class Comentario {
+public class Comentario implements Serializable {
 
+    @Serial
+    private static final long serialVersionUID = 648566545391655556L;
     private String texto;
     private LocalDateTime data;
     private String nomeUsuario;

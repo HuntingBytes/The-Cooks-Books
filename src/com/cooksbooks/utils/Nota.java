@@ -1,10 +1,14 @@
 package com.cooksbooks.utils;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Nota {
+public class Nota implements Serializable {
 
+    @Serial
+    private static final long serialVersionUID = 6132471158911713844L;
     Map<String, Integer> votos;
 
     Nota () {
