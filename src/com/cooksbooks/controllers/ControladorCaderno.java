@@ -1,15 +1,24 @@
 package com.cooksbooks.controllers;
 
+import com.cooksbooks.dados.RepositorioCadernoList;
 import com.cooksbooks.dados.interfaces.IRepositorioCaderno;
 import com.cooksbooks.entity.CadernoReceitas;
 import java.util.List;
 
 public class ControladorCaderno {
 
+  private static ControladorCaderno instancia;
   private final IRepositorioCaderno repositorioCadernos;
 
-  public ControladorCaderno(IRepositorioCaderno repositorioCadernos) {
-    this.repositorioCadernos = repositorioCadernos;
+  public ControladorCaderno() {
+    this.repositorioCadernos = RepositorioCadernoList.getInstancia();
+  }
+
+  public static ControladorCaderno getInstancia() {
+    if (instancia == null) {
+      instancia = new ControladorCaderno();
+    }
+    return instancia;
   }
 
   void cadastrarCaderno(CadernoReceitas caderno) {
