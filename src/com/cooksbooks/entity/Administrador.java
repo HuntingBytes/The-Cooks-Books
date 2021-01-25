@@ -1,10 +1,14 @@
 package com.cooksbooks.entity;
 
 import com.cooksbooks.utils.PermissaoEspecial;
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.List;
 
-public class Administrador extends Usuario {
+public class Administrador extends Usuario implements Serializable {
 
+  @Serial
+  private static final long serialVersionUID = -5388433820291172195L;
   /**
    * A Classe Administrador representa um administrador do sistema, um usuário
    * com permissões especiais, como REMOVER COMENTARIO e GERAR RELATORIO

@@ -135,7 +135,7 @@ public class ControladorCaderno {
    *
    * @param nome nome a ser avaliado TODO: implementar as regras da validez de um nome
    */
-
+  // talvez os métodos auxiliares possam ser estáticos
   private boolean nomeCadernoValido(String nome) {
     return true;
   }
@@ -146,6 +146,7 @@ public class ControladorCaderno {
    * @param informacoes informaçoes a ser avaliadas TODO: implementar as regras da validez de uma
    *                    informaçao
    */
+  // talvez os métodos auxiliares possam ser estáticos
   private boolean informaçoesCadernoValido(String informacoes) {
     return true;
   }

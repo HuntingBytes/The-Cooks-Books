@@ -7,6 +7,8 @@ import java.util.List;
 
 public class CooksBooksFachada implements ICooksBooks {
 
+  // Talvez o Usuario não precise ser estático
+  // Seguindo a mesma ideia dos controladores
   private static Usuario usuarioLogado;
   private static CooksBooksFachada instancia;
 
@@ -14,6 +16,7 @@ public class CooksBooksFachada implements ICooksBooks {
   private ControladorCaderno controladorCaderno;
   private ControladorReceita controladorReceita;
 
+  // Podemos adicionar um getInstancia, como o construtor é privado
   private CooksBooksFachada() {
     this.controladorUsuario = ControladorUsuario.getInstancia();
     this.controladorCaderno = ControladorCaderno.getInstancia();
@@ -79,6 +82,8 @@ public class CooksBooksFachada implements ICooksBooks {
    * @return
    */
   @Override
+  // Pode ser uma função da camada de dados
+  // O repositório busca por todos os cadernos que possuem o nome do usuário
   public List<CadernoReceitas> listarCadernosDoUsuario(String nomeUsuario) {
     return this.controladorUsuario.listarCadernosDoUsuario();
   }

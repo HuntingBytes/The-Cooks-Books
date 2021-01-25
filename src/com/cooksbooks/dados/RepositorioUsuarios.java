@@ -16,6 +16,7 @@ public class RepositorioUsuarios implements IRepositorioUsuario {
      * Construtor do repositório que inicializa o ArrayList de usuários
      */
     private RepositorioUsuarios(){
+        // Talvez não seja necessário iniciar com uma capacidade inicial
         this.usuariosList = new ArrayList<>(100);
     }
 
@@ -91,13 +92,16 @@ public class RepositorioUsuarios implements IRepositorioUsuario {
 
 
     @Override
-    public boolean existeUsuario(Usuario usuarioAlvo){
-        for(Usuario u : usuariosList){
+    // Talvez essa função faça mais sentido buscando um Usuario pelo seu login
+    // No lugar de passar um Usuario passaríamos apenas uma String
+    // Ex:. existeUsuario(String loginUsuario)
+    // Não tenho certeza se faz sentido
+    public boolean existeUsuario(Usuario usuarioAlvo) {
+        for(Usuario u : usuariosList) {
             if (u.getLogin().equals(usuarioAlvo.getLogin())) {
                 return true;
             }
         }
-
         return false;
     }
 
@@ -108,6 +112,9 @@ public class RepositorioUsuarios implements IRepositorioUsuario {
 
     @Override
     public void removerUsuario(Usuario usuarioAlvo){
+    // Talvez a remoção possa seguir a mesma ideia da função existeUsuario()
+    // No lugar de passar um Usuario, podemos passar somente o login dele
+    // Não tenho certeza se faz sentido
         for(Usuario u : usuariosList){
             if(u.getLogin().equals(usuarioAlvo.getLogin())){
                 this.usuariosList.remove(u);
@@ -117,6 +124,8 @@ public class RepositorioUsuarios implements IRepositorioUsuario {
     }
 
     @Override
+    // O mesmo ponto das funções anteriores, será que não faz
+    // mais sentido usar apenas o login do usuario que estamos buscando?
     public Usuario buscarUsuario (Usuario usuarioAlvo){
         for(Usuario u : usuariosList){
             if(u.getLogin().equals(usuarioAlvo.getLogin())){

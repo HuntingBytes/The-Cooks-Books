@@ -35,6 +35,8 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
    * @return instancia do Repositorio dos Cadernos
    */
   public static RepositorioCadernoList getInstancia() {
+    // Recursão infinita aqui! Talvez o objetivo fosse:
+    // if (RepositorioCadernoList.instancia == null)
     if (RepositorioCadernoList.getInstancia() == null) {
       RepositorioCadernoList.instancia = RepositorioCadernoList.lerArquivo();
     }
@@ -122,7 +124,11 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
 
   @Override
   public CadernoReceitas buscarCaderno(String idCaderno) {
+    // Esse for acessa todos os CadernoReceitas que existem em this.cadernosSist
     for (CadernoReceitas caderno : this.cadernosSist) {
+      // Talvez esse if interno não seja necessário
+      // Estamos acessando todos os cadernos que estão no sistema,
+      // então não precisamos checar se ele existe
       if (existeCaderno(caderno.getIdCaderno())) {
         return caderno;
       }
@@ -231,7 +237,9 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
    *
    * @param idCadernoSubstituido id do caderno que vamos alterar a visibilidade
    */
-
+  // Talvez seja interessante ter um parâmetro booleano pra conseguirmos
+  // escolher se queremos público ou não (Só por garantia de não realizar
+  // um inversão quando queríamos só ter certeza estar como publico)
   @Override
   public void alterarCadernoPublicoExistente(String idCadernoSubstituido) {
     for (CadernoReceitas cadernoIdentificar : cadernosSist) {
