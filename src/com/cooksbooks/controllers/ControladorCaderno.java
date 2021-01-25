@@ -126,8 +126,8 @@ public class ControladorCaderno {
    * @param idDoCaderno id do caderno que vai ser alterado a visibilidade
    */
 
-  public void alterarCadernoPublico(String idDoCaderno) {
-    repositorioCadernos.alterarCadernoPublicoExistente(idDoCaderno);
+  public void alterarCadernoPublico(String idDoCaderno, boolean visibilidade) {
+    repositorioCadernos.alterarVisibildadeCaderno(idDoCaderno, visibilidade);
   }
 
   /**
