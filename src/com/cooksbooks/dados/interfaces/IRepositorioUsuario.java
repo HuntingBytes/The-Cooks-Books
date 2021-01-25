@@ -15,4 +15,10 @@ public interface IRepositorioUsuario {
 
     Usuario buscarUsuario(Usuario usuarioBuscar);
 
+    void totalUsuario();
+
+    void atualizarNomeUsuarioExistente(String idUsuarioExistente, String nomePerfilNovo);
+
+    void atualizarBiografiaUsuarioExistente(String idUsuarioExistente, String biografiaPerfilNovo);
+
 }
