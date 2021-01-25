@@ -65,7 +65,6 @@ public class RepositorioUsuarios implements IRepositorioUsuario {
      * Outra cópia na cara dura.
      * TODO: estudar isso também (apesar de ser a mesma coisa que o método anterior)
      */
-    @Override
     public void salvarArquivo() {
         if (RepositorioUsuarios.instancia == null) {
             return;
@@ -92,9 +91,9 @@ public class RepositorioUsuarios implements IRepositorioUsuario {
 
 
     @Override
-    public boolean existeUsuario(Usuario usuario){
+    public boolean existeUsuario(Usuario usuarioAlvo){
         for(Usuario u : usuariosList){
-            if (u.getLogin().equals(usuario.getLogin())) {
+            if (u.getLogin().equals(usuarioAlvo.getLogin())) {
                 return true;
             }
         }
@@ -108,9 +107,9 @@ public class RepositorioUsuarios implements IRepositorioUsuario {
     }
 
     @Override
-    public void removerUsuario(Usuario usuario){
+    public void removerUsuario(Usuario usuarioAlvo){
         for(Usuario u : usuariosList){
-            if(u.getLogin().equals(usuario.getLogin())){
+            if(u.getLogin().equals(usuarioAlvo.getLogin())){
                 this.usuariosList.remove(u);
                 break;
             }
@@ -127,8 +126,7 @@ public class RepositorioUsuarios implements IRepositorioUsuario {
         return null;
     }
 
-    @Override
-    public int totalUsuarios(){
+    private int totalUsuarios(){
         return usuariosList.size();
     }
 
