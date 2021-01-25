@@ -1,7 +1,7 @@
 package com.cooksbooks.dados.interfaces;
 
 import com.cooksbooks.entity.Usuario;
-import java.util.List;
+
 
 public interface IRepositorioUsuario {
 

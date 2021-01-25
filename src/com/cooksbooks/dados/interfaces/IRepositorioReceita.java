@@ -11,7 +11,7 @@ public interface IRepositorioReceita {
 
     void cadastrarReceita(Receita receitaAdd);
 
-    void removerReceita(Receita receiraRemove);
+    void removerReceita(Receita receitaRemove);
 
     Receita buscarReceita(Receita receitaBusca);
 

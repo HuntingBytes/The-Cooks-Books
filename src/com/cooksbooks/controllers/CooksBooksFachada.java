@@ -3,6 +3,7 @@ package com.cooksbooks.controllers;
 import com.cooksbooks.entity.CadernoReceitas;
 import com.cooksbooks.entity.Receita;
 import com.cooksbooks.entity.Usuario;
+import com.cooksbooks.utils.ExperienciaCulinaria;
 import java.util.List;
 
 public class CooksBooksFachada implements ICooksBooks {
@@ -23,9 +24,9 @@ public class CooksBooksFachada implements ICooksBooks {
     this.controladorReceita = ControladorReceita.getInstancia();
   }
 
-  public static ControladorUsuario getInstancia() {
+  public static CooksBooksFachada getInstancia() {
     if (instancia == null) {
-      instancia = new ControladorUsuario();
+      instancia = new CooksBooksFachada();
     }
     return instancia;
   }
@@ -38,19 +39,34 @@ public class CooksBooksFachada implements ICooksBooks {
 
   @Override
   public void removerUsuario(String login) {
-    this.controladorUsuario.deletarUsuario(login);
+    this.controladorUsuario.removerUsuario(login);
   }
 
   @Override
-  public void alterarBiografia() {
-    this.
+  public void alterarBiografia(String login, String biografia) {
+    this.controladorUsuario.alterarBiografia(login, biografia);
+  }
 
+  @Override
+  public void alterarNomePerfil(String login, String nomePerfil) {
+    this.controladorUsuario.alterarNomePerfil(login, nomePerfil);
+  }
+
+  @Override
+  public void alterarCaminhoImagemPerfil(String login, String caminhoImagemPerfil) {
+    this.controladorUsuario.alterarCaminhoImagemPerfil(login, caminhoImagemPerfil);
+  }
+
+  @Override
+  public void alterarExperiencia(String login, ExperienciaCulinaria experienciaCulinaria) {
+    this.controladorUsuario.alterarExperienciaCulinaria(login, experienciaCulinaria);
   }
 
   @Override
   public Usuario efetuarLogin(String login, String senha) {
     return this.controladorUsuario.efetuarLogin(login, senha);
   }
+
 
   // Receita
   @Override
@@ -70,7 +86,7 @@ public class CooksBooksFachada implements ICooksBooks {
 
   @Override
   public List<Receita> listarReceitasDoCaderno(String idCaderno) {
-    return this.controladorCaderno.listarReceitasDoCaderno(idCaderno);
+    return this.controladorReceita.listarReceitasDoCaderno(idCaderno);
   }
 
 
@@ -84,6 +100,9 @@ public class CooksBooksFachada implements ICooksBooks {
   public void removerCaderno(String idCaderno) {
     this.controladorCaderno.removerCaderno(idCaderno);
   }
+
+  @Override
+  public void
 
   @Override
   public CadernoReceitas buscarCaderno(String idCaderno) {
