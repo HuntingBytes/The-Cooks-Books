@@ -105,4 +105,24 @@ public class RepositorioReceitas implements IRepositorioReceita {
     private long totalReceitas(){
         return receitasList.size();
     }
+
+    @Override
+    public void alterarTituloReceita(String idReceitaExistente, String novoTituloReceita){
+        for(Receita r : receitasList){
+            if(r.getTitulo().equals(idReceitaExistente)){
+                r.setTitulo(novoTituloReceita);
+                break;
+            }
+        }
+    }
+
+    @Override
+    public void alterarModoPreparoReceita(String idReceitaExistente, String novoModoPreparo){
+        for(Receita r : receitasList){
+            if(r.getTitulo().equals(idReceitaExistente)){
+                r.setModoPreparo(novoModoPreparo);
+                break;
+            }
+        }
+    }
 }
