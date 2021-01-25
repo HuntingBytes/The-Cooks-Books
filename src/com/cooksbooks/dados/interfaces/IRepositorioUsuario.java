@@ -1,6 +1,7 @@
 package com.cooksbooks.dados.interfaces;
 
 import com.cooksbooks.entity.Usuario;
+import com.cooksbooks.utils.ExperienciaCulinaria;
 
 
 public interface IRepositorioUsuario {
@@ -9,7 +10,7 @@ public interface IRepositorioUsuario {
 
     boolean existeUsuario(String usuarioExiste);
 
-    void cadastrarUsuario(String usuarioAdd);
+    void cadastrarUsuario(Usuario usuarioAdd);
 
     void removerUsuario(String usuarioRemove);
 
@@ -25,8 +26,8 @@ public interface IRepositorioUsuario {
 
     void alterarBiografia(String login, String biografia);
 
-    void alterarExperiencia(String login, ExperienciaCulinaria experienciaCulinaria);
 
     void alterarCaminhoImagemPerfil(String login, String caminhoImagemPerfil);
 
+    void alterarExperienciaCulinaria(String login, ExperienciaCulinaria experienciaCulinaria);
 }

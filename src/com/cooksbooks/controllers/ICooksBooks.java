@@ -22,16 +22,16 @@ public interface ICooksBooks {
   void alterarCaminhoImagemPerfil(String login, String caminhoImagemPerfil);
 
 
-  Usuario efetuarLogin(String login, String senha);
+  void efetuarLogin(String login, String senha);
 
 
   void cadastrarReceita(Receita receita);
 
   void removerReceita(String idReceita);
 
-  void alterarModoPreparo(String login, String modoPreparo);
+  void alterarModoPreparo(String idReceita, String modoPreparo);
 
-  void alterarTitulo(String login, String titulo);
+  void alterarTitulo(String idReceita, String titulo);
 
   Receita buscarReceita(String idReceita);
 
@@ -46,7 +46,9 @@ public interface ICooksBooks {
 
   void alterarInformacoesCaderno(String idCaderno, String informacoesCaderno);
 
+  void alterarVisibilidadeCaderno(String idCaderno, boolean estaVisivel);
+
   CadernoReceitas buscarCaderno(String idCaderno);
 
-  List<CadernoReceitas> listarCadernosDoUsuario(String nomeUsuario);
+  List<CadernoReceitas> buscarTodosCadernosDoUsuario(String idUsuario);
 }

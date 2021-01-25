@@ -62,9 +62,18 @@ public class CooksBooksFachada implements ICooksBooks {
     this.controladorUsuario.alterarExperienciaCulinaria(login, experienciaCulinaria);
   }
 
-  @Override
-  public Usuario efetuarLogin(String login, String senha) {
-    return this.controladorUsuario.efetuarLogin(login, senha);
+  /**
+   * Efetua o login do usuário
+   *
+   * @param login login do usuário
+   * @param senha senha do usuário
+   *
+   */
+  public void efetuarLogin(String login, String senha) {
+    Usuario usuarioASerLogado = this.controladorUsuario.buscarUsuario(login);
+    if (usuarioASerLogado != null && usuarioASerLogado.getSenha().equals(senha)) {
+      usuarioLogado = usuarioASerLogado;
+    }
   }
 
 
@@ -77,6 +86,16 @@ public class CooksBooksFachada implements ICooksBooks {
   @Override
   public void removerReceita(String idReceita) {
     this.controladorReceita.removerReceita(idReceita);
+  }
+
+  @Override
+  public void alterarModoPreparo(String idReceita, String modoPreparo) {
+    this.controladorReceita.alterarModoPreparoReceita(idReceita, modoPreparo);
+  }
+
+  @Override
+  public void alterarTitulo(String idReceita, String titulo) {
+    this.controladorReceita.alterarTituloReceita(idReceita, titulo);
   }
 
   @Override
@@ -102,12 +121,19 @@ public class CooksBooksFachada implements ICooksBooks {
   }
 
   @Override
+  public void alterarNomeCaderno(String idCaderno, String nomeCaderno) {
+    this.alterarNomeCaderno(idCaderno, nomeCaderno);
+  }
+
+  @Override
   public void alterarInformacoesCaderno(String idCaderno, String informacoesCaderno) {
 
   }
 
   @Override
-  public void alterar
+  public void alterarVisibilidadeCaderno(String idCaderno, boolean estaVisivel) {
+    this.controladorCaderno.alterarCadernoPublico(idCaderno, estaVisivel);
+  }
 
   @Override
   public CadernoReceitas buscarCaderno(String idCaderno) {
@@ -115,16 +141,15 @@ public class CooksBooksFachada implements ICooksBooks {
   }
 
   /**
-   * ?? Talvez uma tarefa do controlador caderno??
    *
-   * Retorna uma lista de cadernos de receita
+   *Retorna uma lista de cadernos de receita
    * @param nomeUsuario
    * @return
    */
   @Override
   // Pode ser uma função da camada de dados
   // O repositório busca por todos os cadernos que possuem o nome do usuário
-  public List<CadernoReceitas> listarCadernosDoUsuario(String nomeUsuario) {
-    return this.controladorUsuario.listarCadernosDoUsuario();
+  public List<CadernoReceitas> buscarTodosCadernosDoUsuario(String nomeUsuario) {
+    return this.controladorCaderno.listarCadernosDoUsuario(nomeUsuario);
   }
 }

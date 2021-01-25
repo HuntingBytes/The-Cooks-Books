@@ -16,7 +16,7 @@ public class ControladorReceita {
    * Receberá a instância para o repositório
    * de Receitas.
    */
-  public ControladorReceita {
+  public ControladorReceita (){
     this.repositorioReceitas = RepositorioReceitasList.getInstancia();
   }
 

@@ -11,7 +11,7 @@ public interface IRepositorioReceita {
 
     void cadastrarReceita(Receita receitaAdd);
 
-    void removerReceita(Receita receitaRemove);
+    void removerReceita(String receitaRemove);
 
     Receita buscarReceita(String receitaBusca);
 
@@ -20,5 +20,4 @@ public interface IRepositorioReceita {
     void alterarModoPreparo(String login, String modoPreparo);
 
     void alterarTitulo(String login, String titulo);
-    
 }

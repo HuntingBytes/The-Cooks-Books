@@ -1,5 +1,8 @@
 package com.cooksbooks.controllers;
 
+
+import com.cooksbooks.dados.RepositorioUsuariosList;
+import com.cooksbooks.dados.interfaces.IRepositorioUsuario;
 import com.cooksbooks.entity.CadernoReceitas;
 import com.cooksbooks.entity.Usuario;
 import com.cooksbooks.utils.ExperienciaCulinaria;
@@ -7,7 +10,7 @@ import java.util.List;
 
 public class ControladorUsuario {
 
-  private IRepositorioUsuarios repositorioUsuarios;
+  private IRepositorioUsuario repositorioUsuarios;
   private static ControladorUsuario instancia;
 
   /**
@@ -15,8 +18,8 @@ public class ControladorUsuario {
    *
    * Define a instância única do repositório de usuários como atributo
    */
-  public ControladorUsuario {
-    this.repositorioUsuarios = RepositorioUsuarios.getInstancia();
+  public ControladorUsuario (){
+    this.repositorioUsuarios = RepositorioUsuariosList.getInstancia();
   }
 
   /**
@@ -56,21 +59,7 @@ public class ControladorUsuario {
     }
   }
 
-  /**
-   * Efetua o login do usuário
-   *
-   * @param login login do usuário
-   * @param senha senha do usuário
-   * @return um usuário (UsuarioLogado)
-   */
-  public Usuario efetuarLogin(String login, String senha) {
-    for (Usuario usuario : this.repositorioUsuarios.getUsuariosList) {
-      if (login.equals(usuario.getLogin()) && senha.equals(usuario.getSenha())) {
-        return usuario;
-      }
-    }
-    return null;
-  }
+
 
   /**
    * Busca por um usuario
