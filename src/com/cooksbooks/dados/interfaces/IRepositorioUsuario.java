@@ -7,12 +7,18 @@ public interface IRepositorioUsuario {
 
     void salvarArquivo();
 
-    boolean existeUsuario(Usuario usuarioExiste);
+    boolean existeUsuario(String usuarioExiste);
 
-    void cadastrarUsuario(Usuario usuarioAdd);
+    void cadastrarUsuario(String usuarioAdd);
 
-    void removerUsuario(Usuario usuarioRemove);
+    void removerUsuario(String usuarioRemove);
 
-    Usuario buscarUsuario(Usuario usuarioBuscar);
+    Usuario buscarUsuario(String usuarioBuscar);
+
+    void totalUsuario();
+
+    void atualizarNomeUsuarioExistente(String idUsuarioExistente, String nomePerfilNovo);
+
+    void atualizarBiografiaUsuarioExistente(String idUsuarioExistente, String biografiaPerfilNovo);
 
 }

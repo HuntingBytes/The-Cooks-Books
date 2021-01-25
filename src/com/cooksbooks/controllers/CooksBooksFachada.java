@@ -102,7 +102,12 @@ public class CooksBooksFachada implements ICooksBooks {
   }
 
   @Override
-  public void
+  public void alterarInformacoesCaderno(String idCaderno, String informacoesCaderno) {
+
+  }
+
+  @Override
+  public void alterar
 
   @Override
   public CadernoReceitas buscarCaderno(String idCaderno) {

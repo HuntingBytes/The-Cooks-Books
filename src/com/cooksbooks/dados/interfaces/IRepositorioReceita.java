@@ -7,13 +7,13 @@ public interface IRepositorioReceita {
 
     void salvarArquivo(); 
 
-    boolean existeReceita(Receita receitaExiste);
+    boolean existeReceita(String receitaExiste);
 
-    void cadastrarReceita(Receita receitaAdd);
+    void cadastrarReceita(String receitaAdd);
 
     void removerReceita(Receita receitaRemove);
 
-    Receita buscarReceita(Receita receitaBusca);
+    Receita buscarReceita(String receitaBusca);
 
     long totalReceitas();
     
