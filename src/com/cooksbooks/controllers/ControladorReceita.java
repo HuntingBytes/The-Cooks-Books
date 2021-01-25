@@ -15,7 +15,7 @@ public class ControladorReceita {
    * de Receitas.
    */
   public ControladorReceita {
-    this.repositorioReceitas = RepositorioReceita.getInstancia();
+    this.repositorioReceitas = RepositorioReceitas.getInstancia();
   }
 
   /**
@@ -31,28 +31,37 @@ public class ControladorReceita {
     return instancia;
   }
 
+  /**
+   * Crud - Create
+   * @param receita
+   */
   public void cadastrarReceita(Receita receita) {
-    if (!this.repositorioReceitas.existeReceita(receita)) {
-      this.repositorioReceitas.cadastrarReceita(receita);
-    }
-  }
-
-  public void removerReceita(String idReceita) {
-    if (this.repositorioReceitas.existeReceita(idReceita)) {
-      this.repositorioReceitas.removerReceita(idReceita);
+    if (!this.repositorioReceitas.existeReceitas(receita)) {
+      this.repositorioReceitas.cadastrarReceitas(receita);
+      this.repositorioReceitas.salvarArquivo();
     }
   }
 
   /**
-   * Averiguar a funcionalidade dessa
-   * método. buscarReceita sus.
-   *
+   * Crud - Delete
    * @param idReceita
-   * @return
+   */
+
+  public void removerReceita(String idReceita) {
+    if (this.repositorioReceitas.existeReceitas(idReceita)) {
+      this.repositorioReceitas.removerReceitas(idReceita);
+      this.repositorioReceitas.salvarArquivo();
+    }
+  }
+
+  /**
+   * Crud - Read
+   * @param idReceita
+   * @return Receita buscada pelo usuário
    */
   public Receita buscarReceita(String idReceita) {
-    if (this.repositorioReceitas.existeReceita(idReceita)) {
-      return this.repositorioReceitas.buscarReceita(idReceita);
+    if (this.repositorioReceitas.existeReceitas(idReceita)) {
+      return this.repositorioReceitas.buscarReceitas(idReceita);
     } else {
       System.out.println("Infelizmente essa receita não existe na nossa plataforma");
     }
@@ -60,6 +69,29 @@ public class ControladorReceita {
   }
 
   /**
-   * A terminar mais coisas aqui
+   * Crud - Update (Título da Receita)
+   *
+   * @param idReceitaExistente
+   * @param novoTituloReceita
    */
+  public void alterarTituloReceita (String idReceitaExistente, String novoTituloReceita) {
+    if (this.repositorioReceitas.existeReceitas(idReceitaExistente)) {
+      this.repositorioReceitas.alterarTituloReceita(idReceitaExistente, novoTituloReceita);
+      this.repositorioReceitas.salvarArquivo();
+    }
+  }
+
+  /**
+   * Crud - Update (Modo de Preparo)
+   *
+   * @param idReceitaExistente
+   * @param novoModoPreparo
+   */
+  public void alterarModoPreparoReceita (String idReceitaExistente, String novoModoPreparo) {
+    if (this.repositorioReceitas.existeReceitas(idReceitaExistente)) {
+      this.repositorioReceitas.alterarModoPreparo(idReceitaExistente, novoModoPreparo);
+      this.repositorioReceitas.salvarArquivo();
+    }
+  }
+
 }

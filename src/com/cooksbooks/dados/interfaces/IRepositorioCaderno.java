@@ -13,7 +13,7 @@ public interface IRepositorioCaderno {
 
   void alterarinformacoesCadernoExistente(String idCadernoSubstituido, String informacoesCadernoNovo);
 
-  void alterarCadernoPublicoExistente(String idCadernoSubstituido);
+  void alterarVisibildadeCaderno(String idCadernoSubstituido, boolean visibilidade);
 
   boolean existeCaderno(String idCadernoExiste);
 

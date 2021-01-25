@@ -2,6 +2,7 @@ package com.cooksbooks.controllers;
 
 import com.cooksbooks.entity.CadernoReceitas;
 import com.cooksbooks.entity.Usuario;
+import com.cooksbooks.utils.ExperienciaCulinaria;
 import java.util.List;
 
 public class ControladorUsuario {
@@ -80,4 +81,37 @@ public class ControladorUsuario {
   public Usuario buscarUsuario(String login) {
     return this.repositorioUsuarios.buscarUsuario(login);
   }
+
+  // TODO alterarNomePerfil
+  /**
+   *
+   */
+  public void alterarNomePerfil(String login, String nomePerfil) {
+    this.repositorioUsuarios.alterarNomePerfil(login, nomePerfil);
+  }
+
+  // TODO alterarBiografia
+  /**
+   *
+   */
+  public void alterarBiografia(String login, String biografia) {
+    this.repositorioUsuarios.alterarBiografia(login, biografia);
+  }
+
+  // TODO alterarExperienciaCulinaria
+  /**
+   *
+   */
+  public void alterarExperienciaCulinaria(String login, ExperienciaCulinaria experienciaCulinaria) {
+    this.repositorioUsuarios.alterarExperienciaCulinaria(login, experienciaCulinaria);
+  }
+
+  // TODO alterar Imagem
+  /**
+   *
+   */
+  public void alterarCaminhoImagemPerfil(String caminhoImagemPerfil) {
+
+  }
+
 }

@@ -17,13 +17,20 @@ public class CooksBooksFachada implements ICooksBooks {
   private ControladorReceita controladorReceita;
 
   // Podemos adicionar um getInstancia, como o construtor é privado
-  private CooksBooksFachada() {
+  public CooksBooksFachada() {
     this.controladorUsuario = ControladorUsuario.getInstancia();
     this.controladorCaderno = ControladorCaderno.getInstancia();
     this.controladorReceita = ControladorReceita.getInstancia();
   }
 
+  public static ControladorUsuario getInstancia() {
+    if (instancia == null) {
+      instancia = new ControladorUsuario();
+    }
+    return instancia;
+  }
 
+  // Usuário
   @Override
   public void cadastrarUsuario(Usuario usuario) {
     this.controladorUsuario.cadastrarUsuario(usuario);
@@ -35,10 +42,17 @@ public class CooksBooksFachada implements ICooksBooks {
   }
 
   @Override
+  public void alterarBiografia() {
+    this.
+
+  }
+
+  @Override
   public Usuario efetuarLogin(String login, String senha) {
     return this.controladorUsuario.efetuarLogin(login, senha);
   }
 
+  // Receita
   @Override
   public void cadastrarReceita(Receita receita) {
     this.controladorReceita.cadastrarReceita(receita);
@@ -59,6 +73,8 @@ public class CooksBooksFachada implements ICooksBooks {
     return this.controladorCaderno.listarReceitasDoCaderno(idCaderno);
   }
 
+
+  // Caderno
   @Override
   public void cadastrarCaderno(CadernoReceitas caderno) {
     this.controladorCaderno.cadastrarCaderno(caderno);
