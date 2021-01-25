@@ -1,7 +1,9 @@
 package com.cooksbooks.controllers;
 
+import com.cooksbooks.dados.RepositorioReceitasList;
 import com.cooksbooks.dados.interfaces.IRepositorioReceita;
 import com.cooksbooks.entity.Receita;
+import java.util.List;
 
 public class ControladorReceita {
 
@@ -15,7 +17,7 @@ public class ControladorReceita {
    * de Receitas.
    */
   public ControladorReceita {
-    this.repositorioReceitas = RepositorioReceitas.getInstancia();
+    this.repositorioReceitas = RepositorioReceitasList.getInstancia();
   }
 
   /**
@@ -36,8 +38,8 @@ public class ControladorReceita {
    * @param receita
    */
   public void cadastrarReceita(Receita receita) {
-    if (!this.repositorioReceitas.existeReceitas(receita)) {
-      this.repositorioReceitas.cadastrarReceitas(receita);
+    if (!this.repositorioReceitas.existeReceita(receita.getIdReceita())) {
+      this.repositorioReceitas.cadastrarReceita(receita);
       this.repositorioReceitas.salvarArquivo();
     }
   }
@@ -48,8 +50,8 @@ public class ControladorReceita {
    */
 
   public void removerReceita(String idReceita) {
-    if (this.repositorioReceitas.existeReceitas(idReceita)) {
-      this.repositorioReceitas.removerReceitas(idReceita);
+    if (this.repositorioReceitas.existeReceita(idReceita)) {
+      this.repositorioReceitas.removerReceita(idReceita);
       this.repositorioReceitas.salvarArquivo();
     }
   }
@@ -60,8 +62,8 @@ public class ControladorReceita {
    * @return Receita buscada pelo usuário
    */
   public Receita buscarReceita(String idReceita) {
-    if (this.repositorioReceitas.existeReceitas(idReceita)) {
-      return this.repositorioReceitas.buscarReceitas(idReceita);
+    if (this.repositorioReceitas.existeReceita(idReceita)) {
+      return this.repositorioReceitas.buscarReceita(idReceita);
     } else {
       System.out.println("Infelizmente essa receita não existe na nossa plataforma");
     }
@@ -75,8 +77,8 @@ public class ControladorReceita {
    * @param novoTituloReceita
    */
   public void alterarTituloReceita (String idReceitaExistente, String novoTituloReceita) {
-    if (this.repositorioReceitas.existeReceitas(idReceitaExistente)) {
-      this.repositorioReceitas.alterarTituloReceita(idReceitaExistente, novoTituloReceita);
+    if (this.repositorioReceitas.existeReceita(idReceitaExistente)) {
+      this.repositorioReceitas.alterarTitulo(idReceitaExistente, novoTituloReceita);
       this.repositorioReceitas.salvarArquivo();
     }
   }
@@ -88,10 +90,14 @@ public class ControladorReceita {
    * @param novoModoPreparo
    */
   public void alterarModoPreparoReceita (String idReceitaExistente, String novoModoPreparo) {
-    if (this.repositorioReceitas.existeReceitas(idReceitaExistente)) {
+    if (this.repositorioReceitas.existeReceita(idReceitaExistente)) {
       this.repositorioReceitas.alterarModoPreparo(idReceitaExistente, novoModoPreparo);
       this.repositorioReceitas.salvarArquivo();
     }
+  }
+
+  public List<Receita> listarReceitas (String idCaderno) {
+    return repositorioReceitas.buscarTodasReceitas(idCaderno);
   }
 
 }
