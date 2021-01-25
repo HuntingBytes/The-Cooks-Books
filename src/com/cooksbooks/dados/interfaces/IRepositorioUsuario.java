@@ -21,4 +21,12 @@ public interface IRepositorioUsuario {
 
     void atualizarBiografiaUsuarioExistente(String idUsuarioExistente, String biografiaPerfilNovo);
 
+    void alterarNomePerfil(String login, String nomePerfil);
+
+    void alterarBiografia(String login, String biografia);
+
+    void alterarExperiencia(String login, ExperienciaCulinaria experienciaCulinaria);
+
+    void alterarCaminhoImagemPerfil(String login, String caminhoImagemPerfil);
+
 }

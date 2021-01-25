@@ -9,9 +9,9 @@ public interface IRepositorioCaderno {
 
   void removerCaderno(String idCadernoRemover);
 
-  void alterarNomeCadernoExistente(String idCadernoSubstituido, String nomeCadernoNovo);
+  void alterarNomeCaderno(String idCaderno, String nomeCaderno);
 
-  void alterarinformacoesCadernoExistente(String idCadernoSubstituido, String informacoesCadernoNovo);
+  void alterarInformacoesCaderno(String idCaderno, String informacoesCaderno);
 
   void alterarVisibildadeCaderno(String idCadernoSubstituido, boolean visibilidade);
 
