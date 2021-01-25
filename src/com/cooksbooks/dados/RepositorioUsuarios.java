@@ -139,4 +139,25 @@ public class RepositorioUsuarios implements IRepositorioUsuario {
         return usuariosList.size();
     }
 
+    @Override
+    public void atualizarNomeUsuarioExistente(String idUsuarioExistente, String nomePerfilNovo){
+        for(Usuario u : usuariosList){
+            if(u.getLogin().equals(idUsuarioExistente)){
+                u.setNomePerfil(nomePerfilNovo);
+                break;
+            }
+        }
+    }
+
+    @Override
+    public void atualizarBiografiaUsuarioExistente(String idUsuarioExistente, String biografiaPerfilNovo){
+        for(Usuario u : usuariosList){
+            if(u.getLogin().equals(idUsuarioExistente)){
+                u.setBiografia(biografiaPerfilNovo);
+                break;
+            }
+        }
+    }
+
+    
 }
