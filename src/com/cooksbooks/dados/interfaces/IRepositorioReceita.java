@@ -11,7 +11,7 @@ public interface IRepositorioReceita {
 
     void cadastrarReceita(String receitaAdd);
 
-    void removerReceita(String receiraRemove);
+    void removerReceita(Receita receitaRemove);
 
     Receita buscarReceita(String receitaBusca);
 
