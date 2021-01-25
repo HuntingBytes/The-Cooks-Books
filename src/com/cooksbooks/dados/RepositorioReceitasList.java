@@ -6,24 +6,24 @@ import com.cooksbooks.entity.Receita;
 import java.io.*;
 import java.util.ArrayList;
 
-public class RepositorioReceitas implements IRepositorioReceita {
+public class RepositorioReceitasList implements IRepositorioReceita {
 
-    private static RepositorioReceitas instancia;
+    private static RepositorioReceitasList instancia;
     private ArrayList<Receita> receitasList;
 
-    private RepositorioReceitas(){
+    private RepositorioReceitasList(){
         this.receitasList = new ArrayList<>(100);
     }
 
-    public static RepositorioReceitas getInstancia(){
-        if(RepositorioReceitas.instancia == null){
-            RepositorioReceitas.instancia = RepositorioReceitas.lerArquivo();
+    public static RepositorioReceitasList getInstancia(){
+        if(RepositorioReceitasList.instancia == null){
+            RepositorioReceitasList.instancia = RepositorioReceitasList.lerArquivo();
         }
-        return RepositorioReceitas.instancia;
+        return RepositorioReceitasList.instancia;
     }
 
-    private static RepositorioReceitas lerArquivo() {
-        RepositorioReceitas instanciaLocal;
+    private static RepositorioReceitasList lerArquivo() {
+        RepositorioReceitasList instanciaLocal;
 
         File in = new File("usuarios.dat");
         FileInputStream fis;
@@ -32,9 +32,9 @@ public class RepositorioReceitas implements IRepositorioReceita {
             fis = new FileInputStream(in);
             ois = new ObjectInputStream(fis);
             Object o = ois.readObject();
-            instanciaLocal = (RepositorioReceitas) o;
+            instanciaLocal = (RepositorioReceitasList) o;
         } catch (Exception e) {
-            instanciaLocal = new RepositorioReceitas();
+            instanciaLocal = new RepositorioReceitasList();
         } finally {
             if (ois != null) {
                 try {
@@ -48,7 +48,7 @@ public class RepositorioReceitas implements IRepositorioReceita {
     }
 
     public void salvarArquivo() {
-        if (RepositorioReceitas.instancia == null) {
+        if (RepositorioReceitasList.instancia == null) {
             return;
         }
         File out = new File("usuarios.dat");
@@ -58,7 +58,7 @@ public class RepositorioReceitas implements IRepositorioReceita {
         try {
             fos = new FileOutputStream(out);
             oos = new ObjectOutputStream(fos);
-            oos.writeObject(RepositorioReceitas.instancia);
+            oos.writeObject(RepositorioReceitasList.instancia);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -73,9 +73,9 @@ public class RepositorioReceitas implements IRepositorioReceita {
 
     //TODO: decidir assinatura do método(provavelmente recebe o ID da receita)
     @Override
-    public boolean existeReceita(Receita receitaAlvo){
+    public boolean existeReceita(String idReceita){
         for(Receita r : receitasList){
-            if(r.getTitulo().equals(receitaAlvo.getTitulo())){
+            if(r.getTitulo().equals(idReceita)){
                 return true;
             }
         }
@@ -88,8 +88,8 @@ public class RepositorioReceitas implements IRepositorioReceita {
     }
 
     @Override
-    public void removerReceita(Receita receitaAlvo){
-        this.receitasList.remove(receitaAlvo);
+    public void removerReceita(String idReceita){
+        receitasList.removeIf(r -> r.getTitulo().equals(idReceita));
     }
 
     @Override
