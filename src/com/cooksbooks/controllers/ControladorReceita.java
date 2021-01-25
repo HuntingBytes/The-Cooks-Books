@@ -75,19 +75,23 @@ public class ControladorReceita {
    * @param novoTituloReceita
    */
   public void alterarTituloReceita (String idReceitaExistente, String novoTituloReceita) {
-    this.repositorioReceitas.alterarTituloReceita(idReceitaExistente, novoTituloReceita);
-    this.repositorioReceitas.salvarArquivo();
+    if (this.repositorioReceitas.existeReceitas(idReceitaExistente)) {
+      this.repositorioReceitas.alterarTituloReceita(idReceitaExistente, novoTituloReceita);
+      this.repositorioReceitas.salvarArquivo();
+    }
   }
 
   /**
    * Crud - Update (Modo de Preparo)
    *
-   * @param idReceita
+   * @param idReceitaExistente
    * @param novoModoPreparo
    */
-  public void alterarModoPreparoReceita (String idReceita, String novoModoPreparo) {
-    this.repositorioReceitas.alterarModoPreparo(idReceita, modoPreparoASerMudade)
-    this.repositorioReceitas.salvarArquivo();
+  public void alterarModoPreparoReceita (String idReceitaExistente, String novoModoPreparo) {
+    if (this.repositorioReceitas.existeReceitas(idReceitaExistente)) {
+      this.repositorioReceitas.alterarModoPreparo(idReceitaExistente, novoModoPreparo);
+      this.repositorioReceitas.salvarArquivo();
+    }
   }
 
 }
