@@ -9,12 +9,16 @@ public interface IRepositorioReceita {
 
     boolean existeReceita(String receitaExiste);
 
-    void cadastrarReceita(String receitaAdd);
+    void cadastrarReceita(Receita receitaAdd);
 
     void removerReceita(Receita receitaRemove);
 
     Receita buscarReceita(String receitaBusca);
 
     long totalReceitas();
+
+    void alterarModoPreparo(String login, String modoPreparo);
+
+    void alterarTitulo(String login, String titulo);
     
 }
