@@ -110,7 +110,7 @@ public class ControladorUsuario {
   /**
    *
    */
-  public void alterarCaminhoImagemPerfil(String caminhoImagemPerfil) {
+  public void alterarCaminhoImagemPerfil(String login, String caminhoImagemPerfil) {
 
   }
 

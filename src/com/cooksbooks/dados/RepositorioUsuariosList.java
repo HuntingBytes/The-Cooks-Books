@@ -6,16 +6,16 @@ import com.cooksbooks.entity.Usuario;
 import java.io.*;
 import java.util.ArrayList;
 
-public class RepositorioUsuarios implements IRepositorioUsuario {
+public class RepositorioUsuariosList implements IRepositorioUsuario {
 
-    private static RepositorioUsuarios instancia;
+    private static RepositorioUsuariosList instancia;
     private final ArrayList<Usuario> usuariosList;
     //TODO: estudar SERIALIZABLE kkkkkkkkkkk a bronca
 
     /**
      * Construtor do repositório que inicializa o ArrayList de usuários
      */
-    private RepositorioUsuarios(){
+    private RepositorioUsuariosList(){
         // Talvez não seja necessário iniciar com uma capacidade inicial
         this.usuariosList = new ArrayList<>(100);
     }
@@ -24,12 +24,12 @@ public class RepositorioUsuarios implements IRepositorioUsuario {
      *
      * @return  instancia do RepositorioUsuario
      */
-    public static RepositorioUsuarios getInstancia(){
-        if(RepositorioUsuarios.instancia == null){
-            RepositorioUsuarios.instancia = RepositorioUsuarios.lerArquivo();
+    public static RepositorioUsuariosList getInstancia(){
+        if(RepositorioUsuariosList.instancia == null){
+            RepositorioUsuariosList.instancia = RepositorioUsuariosList.lerArquivo();
         }
 
-        return RepositorioUsuarios.instancia;
+        return RepositorioUsuariosList.instancia;
     }
 
     /**
@@ -37,8 +37,8 @@ public class RepositorioUsuarios implements IRepositorioUsuario {
      * TODO: estudar como esse método funciona
      * @return
      */
-    private static RepositorioUsuarios lerArquivo() {
-        RepositorioUsuarios instanciaLocal;
+    private static RepositorioUsuariosList lerArquivo() {
+        RepositorioUsuariosList instanciaLocal;
 
         File in = new File("usuarios.dat");
         FileInputStream fis;
@@ -47,9 +47,9 @@ public class RepositorioUsuarios implements IRepositorioUsuario {
             fis = new FileInputStream(in);
             ois = new ObjectInputStream(fis);
             Object o = ois.readObject();
-            instanciaLocal = (RepositorioUsuarios) o;
+            instanciaLocal = (RepositorioUsuariosList) o;
         } catch (Exception e) {
-            instanciaLocal = new RepositorioUsuarios();
+            instanciaLocal = new RepositorioUsuariosList();
         } finally {
             if (ois != null) {
                 try {
@@ -67,7 +67,7 @@ public class RepositorioUsuarios implements IRepositorioUsuario {
      * TODO: estudar isso também (apesar de ser a mesma coisa que o método anterior)
      */
     public void salvarArquivo() {
-        if (RepositorioUsuarios.instancia == null) {
+        if (RepositorioUsuariosList.instancia == null) {
             return;
         }
         File out = new File("usuarios.dat");
@@ -77,7 +77,7 @@ public class RepositorioUsuarios implements IRepositorioUsuario {
         try {
             fos = new FileOutputStream(out);
             oos = new ObjectOutputStream(fos);
-            oos.writeObject(RepositorioUsuarios.instancia);
+            oos.writeObject(RepositorioUsuariosList.instancia);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -90,15 +90,10 @@ public class RepositorioUsuarios implements IRepositorioUsuario {
         }
     }
 
-
     @Override
-    // Talvez essa função faça mais sentido buscando um Usuario pelo seu login
-    // No lugar de passar um Usuario passaríamos apenas uma String
-    // Ex:. existeUsuario(String loginUsuario)
-    // Não tenho certeza se faz sentido
-    public boolean existeUsuario(Usuario usuarioAlvo) {
+    public boolean existeUsuario(String idUsuario) {
         for(Usuario u : usuariosList) {
-            if (u.getLogin().equals(usuarioAlvo.getLogin())) {
+            if (u.getLogin().equals(idUsuario)) {
                 return true;
             }
         }
@@ -111,24 +106,14 @@ public class RepositorioUsuarios implements IRepositorioUsuario {
     }
 
     @Override
-    public void removerUsuario(Usuario usuarioAlvo){
-    // Talvez a remoção possa seguir a mesma ideia da função existeUsuario()
-    // No lugar de passar um Usuario, podemos passar somente o login dele
-    // Não tenho certeza se faz sentido
-        for(Usuario u : usuariosList){
-            if(u.getLogin().equals(usuarioAlvo.getLogin())){
-                this.usuariosList.remove(u);
-                break;
-            }
-        }
+    public void removerUsuario(String idUsuario){
+        usuariosList.removeIf(u -> u.getLogin().equals(idUsuario));
     }
 
     @Override
-    // O mesmo ponto das funções anteriores, será que não faz
-    // mais sentido usar apenas o login do usuario que estamos buscando?
-    public Usuario buscarUsuario (Usuario usuarioAlvo){
+    public Usuario buscarUsuario (String idUsuario){
         for(Usuario u : usuariosList){
-            if(u.getLogin().equals(usuarioAlvo.getLogin())){
+            if(u.getLogin().equals(idUsuario)){
                 return u;
             }
         }
@@ -159,5 +144,4 @@ public class RepositorioUsuarios implements IRepositorioUsuario {
         }
     }
 
-    
 }
