@@ -1,10 +1,12 @@
 package com.cooksbooks.dados;
 
 import com.cooksbooks.dados.interfaces.IRepositorioReceita;
+import com.cooksbooks.entity.CadernoReceitas;
 import com.cooksbooks.entity.Receita;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class RepositorioReceitasList implements IRepositorioReceita {
 
@@ -102,7 +104,7 @@ public class RepositorioReceitasList implements IRepositorioReceita {
         return null;
     }
 
-    private long totalReceitas(){
+    public long totalReceitas(){
         return receitasList.size();
     }
 
@@ -124,5 +126,16 @@ public class RepositorioReceitasList implements IRepositorioReceita {
                 break;
             }
         }
+    }
+
+    @Override
+    public List<Receita> listarReceitasCaderno(String idCaderno) {
+        List<Receita> receitasCaderno = new ArrayList<>();
+        for (Receita r : this.receitasList) {
+            if (r.getIdCadernoDono().equals(idCaderno)) {
+                receitasCaderno.add(r);
+            }
+        }
+        return receitasCaderno;
     }
 }
