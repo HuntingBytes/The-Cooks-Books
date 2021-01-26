@@ -59,6 +59,17 @@ public class CadernoReceitas implements Serializable {
     this.idDono = idDono;
   }
 
+  public CadernoReceitas() {
+    this.nomeCaderno = "";
+    this.informacoesCaderno = "";
+    this.cadernoPublico = true;
+    this.categorias = new ArrayList<>();
+    this.notaCaderno = null;
+    this.dificuldadeCaderno = Dificuldade.FACIL;
+    this.comentarioCaderno = null;
+    this.idDono = "";
+  }
+
   public static long getSerialVersionUID() {
     return serialVersionUID;
   }

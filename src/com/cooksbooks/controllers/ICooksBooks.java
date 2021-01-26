@@ -22,10 +22,11 @@ public interface ICooksBooks {
   void alterarCaminhoImagemPerfil(String login, String caminhoImagemPerfil);
 
 
-  void efetuarLogin(String login, String senha);
+  boolean efetuarLogin(String login, String senha);
 
+  Usuario getUsuarioLogado();
 
-  void cadastrarReceita(Receita receita);
+  void cadastrarReceita(Receita receita, String idCadernoDono);
 
   void removerReceita(String idReceita);
 
@@ -51,4 +52,6 @@ public interface ICooksBooks {
   CadernoReceitas buscarCaderno(String idCaderno);
 
   List<CadernoReceitas> buscarTodosCadernosDoUsuario(String idUsuario);
+
+  List<CadernoReceitas> buscarTodosCadernosDoUsuarioAtual();
 }

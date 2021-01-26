@@ -42,9 +42,7 @@ public class ControladorCaderno {
    */
 
   void cadastrarCaderno(CadernoReceitas caderno) {
-    if (cadernoValido(caderno)) {
-      caderno.setIdCaderno(String.format("%s-%d", caderno.getIdDono(),
-          repositorioCadernos.quantidadeCadernosCadastrados()));
+    if (cadernoValido(caderno) && !repositorioCadernos.existeCaderno(caderno.getIdCaderno())) {
       repositorioCadernos.cadastrarCaderno(caderno);
       repositorioCadernos.salvarArquivo();
     }
@@ -58,6 +56,7 @@ public class ControladorCaderno {
 
   void removerCaderno(String idCaderno) {
     repositorioCadernos.removerCaderno(idCaderno);
+    repositorioCadernos.salvarArquivo();
   }
 
 
@@ -103,7 +102,8 @@ public class ControladorCaderno {
 
   public void alterarNomeCaderno(String idDoCaderno, String nomeNovo) {
     if (nomeCadernoValido(nomeNovo)) {
-      repositorioCadernos.alterarNomeCadernoExistente(idDoCaderno, nomeNovo);
+      repositorioCadernos.alterarNomeCaderno(idDoCaderno, nomeNovo);
+      repositorioCadernos.salvarArquivo();
     }
   }
 
@@ -116,7 +116,8 @@ public class ControladorCaderno {
 
   public void alterarInformacoesCaderno(String idDoCaderno, String informacoesNovas) {
     if (informaçoesCadernoValido(informacoesNovas)) {
-      repositorioCadernos.alterarinformacoesCadernoExistente(idDoCaderno, informacoesNovas);
+      repositorioCadernos.alterarInformacoesCaderno(idDoCaderno, informacoesNovas);
+      repositorioCadernos.salvarArquivo();
     }
   }
 
@@ -128,6 +129,7 @@ public class ControladorCaderno {
 
   public void alterarCadernoPublico(String idDoCaderno, boolean visibilidade) {
     repositorioCadernos.alterarVisibildadeCaderno(idDoCaderno, visibilidade);
+    repositorioCadernos.salvarArquivo();
   }
 
   /**

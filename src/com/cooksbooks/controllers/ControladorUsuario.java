@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ControladorUsuario {
 
-  private IRepositorioUsuario repositorioUsuarios;
+  private final IRepositorioUsuario repositorioUsuarios;
   private static ControladorUsuario instancia;
 
   /**
@@ -18,7 +18,7 @@ public class ControladorUsuario {
    *
    * Define a instância única do repositório de usuários como atributo
    */
-  public ControladorUsuario (){
+  private ControladorUsuario (){
     this.repositorioUsuarios = RepositorioUsuariosList.getInstancia();
   }
 
@@ -45,6 +45,7 @@ public class ControladorUsuario {
   public void cadastrarUsuario(Usuario usuario) {
     if (!this.repositorioUsuarios.existeUsuario(usuario.getLogin())) {
       this.repositorioUsuarios.cadastrarUsuario(usuario);
+      this.repositorioUsuarios.salvarArquivo();
     }
   }
 
@@ -56,6 +57,7 @@ public class ControladorUsuario {
   public void removerUsuario(String nomeUsuario) {
     if (this.repositorioUsuarios.existeUsuario(nomeUsuario)) {
       this.repositorioUsuarios.removerUsuario(nomeUsuario);
+      this.repositorioUsuarios.salvarArquivo();
     }
   }
 
@@ -77,6 +79,7 @@ public class ControladorUsuario {
    */
   public void alterarNomePerfil(String login, String nomePerfil) {
     this.repositorioUsuarios.alterarNomePerfil(login, nomePerfil);
+    this.repositorioUsuarios.salvarArquivo();
   }
 
   // TODO alterarBiografia
@@ -85,6 +88,7 @@ public class ControladorUsuario {
    */
   public void alterarBiografia(String login, String biografia) {
     this.repositorioUsuarios.alterarBiografia(login, biografia);
+    this.repositorioUsuarios.salvarArquivo();
   }
 
   // TODO alterarExperienciaCulinaria
@@ -93,6 +97,7 @@ public class ControladorUsuario {
    */
   public void alterarExperienciaCulinaria(String login, ExperienciaCulinaria experienciaCulinaria) {
     this.repositorioUsuarios.alterarExperienciaCulinaria(login, experienciaCulinaria);
+    this.repositorioUsuarios.salvarArquivo();
   }
 
   // TODO alterar Imagem

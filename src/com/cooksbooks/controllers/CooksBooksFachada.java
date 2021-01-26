@@ -13,9 +13,9 @@ public class CooksBooksFachada implements ICooksBooks {
   private static Usuario usuarioLogado;
   private static CooksBooksFachada instancia;
 
-  private ControladorUsuario controladorUsuario;
-  private ControladorCaderno controladorCaderno;
-  private ControladorReceita controladorReceita;
+  private final ControladorUsuario controladorUsuario;
+  private final ControladorCaderno controladorCaderno;
+  private final ControladorReceita controladorReceita;
 
   // Podemos adicionar um getInstancia, como o construtor é privado
   public CooksBooksFachada() {
@@ -69,17 +69,29 @@ public class CooksBooksFachada implements ICooksBooks {
    * @param senha senha do usuário
    *
    */
-  public void efetuarLogin(String login, String senha) {
+  public boolean efetuarLogin(String login, String senha) {
+    if(CooksBooksFachada.usuarioLogado != null)
+      return true;
+
     Usuario usuarioASerLogado = this.controladorUsuario.buscarUsuario(login);
     if (usuarioASerLogado != null && usuarioASerLogado.getSenha().equals(senha)) {
       usuarioLogado = usuarioASerLogado;
+      return true;
     }
+
+    return false;
+  }
+
+  @Override
+  public Usuario getUsuarioLogado() {
+    return CooksBooksFachada.usuarioLogado;
   }
 
 
   // Receita
   @Override
-  public void cadastrarReceita(Receita receita) {
+  public void cadastrarReceita(Receita receita, String idCadernoDono) {
+    receita.setIdCadernoDono(idCadernoDono);
     this.controladorReceita.cadastrarReceita(receita);
   }
 
@@ -105,13 +117,15 @@ public class CooksBooksFachada implements ICooksBooks {
 
   @Override
   public List<Receita> listarReceitasDoCaderno(String idCaderno) {
-    return this.controladorReceita.listarReceitasDoCaderno(idCaderno);
+    return this.controladorReceita.listarReceitas(idCaderno);
   }
 
 
   // Caderno
   @Override
   public void cadastrarCaderno(CadernoReceitas caderno) {
+    caderno.setIdDono(CooksBooksFachada.usuarioLogado.getLogin());
+    caderno.setIdCaderno(caderno.getNomeCaderno());
     this.controladorCaderno.cadastrarCaderno(caderno);
   }
 
@@ -122,7 +136,7 @@ public class CooksBooksFachada implements ICooksBooks {
 
   @Override
   public void alterarNomeCaderno(String idCaderno, String nomeCaderno) {
-    this.alterarNomeCaderno(idCaderno, nomeCaderno);
+    this.controladorCaderno.alterarNomeCaderno(idCaderno, nomeCaderno);
   }
 
   @Override
@@ -137,7 +151,7 @@ public class CooksBooksFachada implements ICooksBooks {
 
   @Override
   public CadernoReceitas buscarCaderno(String idCaderno) {
-    return this.controladorCaderno.buscarCaderno(idCaderno);
+    return this.controladorCaderno.procurarCaderno(idCaderno);
   }
 
   /**
@@ -151,5 +165,10 @@ public class CooksBooksFachada implements ICooksBooks {
   // O repositório busca por todos os cadernos que possuem o nome do usuário
   public List<CadernoReceitas> buscarTodosCadernosDoUsuario(String nomeUsuario) {
     return this.controladorCaderno.listarCadernosDoUsuario(nomeUsuario);
+  }
+
+  @Override
+  public List<CadernoReceitas> buscarTodosCadernosDoUsuarioAtual() {
+    return buscarTodosCadernosDoUsuario(CooksBooksFachada.usuarioLogado.getLogin());
   }
 }

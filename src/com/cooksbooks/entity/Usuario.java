@@ -29,8 +29,8 @@ public class Usuario implements Serializable {
      * @param senha String da senha da conta
      */
     public Usuario(String login, String senha){
-        setLogin(login);
-        setSenha(senha);
+        this.login = login;
+        this.senha = senha;
         this.dataCriacao = LocalDateTime.now();
     }
 
@@ -71,11 +71,7 @@ public class Usuario implements Serializable {
      * @param login login da conta
      */
     public void setLogin(String login){
-        // A checagem não leva em conta que this.login pode ser nulo
-        // Talvez essa checagem não precise ocorrer aqui, não tenho certeza
-        if(!this.login.equals(login) && !login.trim().equals("")){
-            this.login = login;
-        }
+        this.login = login;
     }
 
     /**
@@ -83,11 +79,7 @@ public class Usuario implements Serializable {
      * @param senha senha da conta
      */
     public void setSenha(String senha){
-        // A checagem não leva em conta que this.senha pode ser nulo
-        // Talvez essa checagem não precise ocorrer aqui, não tenho certeza
-        if(!this.senha.equals(senha) && !senha.trim().equals("")){
-            this.senha = senha;
-        }
+        this.senha = senha;
     }
 
     public void setNomePerfil(String nomePerfil) {

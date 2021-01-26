@@ -14,6 +14,6 @@ public enum Dificuldade {
 
     @Override
     public String toString() {
-        return String.format("O nível de Dificuldade é %s", this.extenso);
+        return String.format("%s", this.extenso);
     }
 }

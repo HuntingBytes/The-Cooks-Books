@@ -8,8 +8,10 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RepositorioReceitasList implements IRepositorioReceita {
+public class RepositorioReceitasList implements IRepositorioReceita, Serializable{
 
+    @Serial
+    private static final long serialVersionUID = 3083784819719029704L;
     private static RepositorioReceitasList instancia;
     private ArrayList<Receita> receitasList;
 
@@ -27,7 +29,7 @@ public class RepositorioReceitasList implements IRepositorioReceita {
     private static RepositorioReceitasList lerArquivo() {
         RepositorioReceitasList instanciaLocal;
 
-        File in = new File("usuarios.dat");
+        File in = new File("receitas.dat");
         FileInputStream fis;
         ObjectInputStream ois = null;
         try {
@@ -53,7 +55,7 @@ public class RepositorioReceitasList implements IRepositorioReceita {
         if (RepositorioReceitasList.instancia == null) {
             return;
         }
-        File out = new File("usuarios.dat");
+        File out = new File("receitas.dat");
         FileOutputStream fos;
         ObjectOutputStream oos = null;
 
@@ -77,7 +79,7 @@ public class RepositorioReceitasList implements IRepositorioReceita {
     @Override
     public boolean existeReceita(String idReceita){
         for(Receita r : receitasList){
-            if(r.getTitulo().equals(idReceita)){
+            if(r.getIdReceita().equals(idReceita)){
                 return true;
             }
         }
@@ -95,9 +97,9 @@ public class RepositorioReceitasList implements IRepositorioReceita {
     }
 
     @Override
-    public Receita buscarReceita(Receita receitaAlvo){
+    public Receita buscarReceita(String idReceita){
         for(Receita r : receitasList){
-            if(r.getTitulo().equals(receitaAlvo.getTitulo())){
+            if(r.getTitulo().equals(idReceita)){
                 return r;
             }
         }

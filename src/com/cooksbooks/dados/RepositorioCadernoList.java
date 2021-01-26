@@ -35,7 +35,7 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
    * @return instancia do Repositorio dos Cadernos
    */
   public static RepositorioCadernoList getInstancia() {
-    if (RepositorioCadernoList.getInstancia() == null) {
+    if (RepositorioCadernoList.instancia == null) {
       RepositorioCadernoList.instancia = RepositorioCadernoList.lerArquivo();
     }
     return RepositorioCadernoList.instancia;
@@ -198,7 +198,7 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
    */
 
   @Override
-  public void alterarNomeCadernoExistente(String idCadernoSubstituido, String nomeCadernoNovo) {
+  public void alterarNomeCaderno(String idCadernoSubstituido, String nomeCadernoNovo) {
     for (CadernoReceitas cadernoIdentificar : cadernosSist) {
       if (cadernoIdentificar.getIdCaderno().equals(idCadernoSubstituido)) {
         cadernoIdentificar.setNomeCaderno(nomeCadernoNovo);
@@ -215,8 +215,7 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
    */
 
   @Override
-  public void alterarinformacoesCadernoExistente(String idCadernoSubstituido,
-      String informacoesCadernoNovo) {
+  public void alterarInformacoesCaderno(String idCadernoSubstituido, String informacoesCadernoNovo) {
     for (CadernoReceitas cadernoIdentificar : cadernosSist) {
       if (cadernoIdentificar.getIdCaderno().equals(idCadernoSubstituido)) {
         cadernoIdentificar.setInformacoesCaderno(informacoesCadernoNovo);

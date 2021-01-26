@@ -38,6 +38,7 @@ public class ControladorReceita {
    * @param receita
    */
   public void cadastrarReceita(Receita receita) {
+    receita.setIdReceita(receita.getTitulo());
     if (!this.repositorioReceitas.existeReceita(receita.getIdReceita())) {
       this.repositorioReceitas.cadastrarReceita(receita);
       this.repositorioReceitas.salvarArquivo();
@@ -78,7 +79,7 @@ public class ControladorReceita {
    */
   public void alterarTituloReceita (String idReceitaExistente, String novoTituloReceita) {
     if (this.repositorioReceitas.existeReceita(idReceitaExistente)) {
-      this.repositorioReceitas.alterarTitulo(idReceitaExistente, novoTituloReceita);
+      this.repositorioReceitas.alterarTituloReceita(idReceitaExistente, novoTituloReceita);
       this.repositorioReceitas.salvarArquivo();
     }
   }
@@ -91,13 +92,13 @@ public class ControladorReceita {
    */
   public void alterarModoPreparoReceita (String idReceitaExistente, String novoModoPreparo) {
     if (this.repositorioReceitas.existeReceita(idReceitaExistente)) {
-      this.repositorioReceitas.alterarModoPreparo(idReceitaExistente, novoModoPreparo);
+      this.repositorioReceitas.alterarModoPreparoReceita(idReceitaExistente, novoModoPreparo);
       this.repositorioReceitas.salvarArquivo();
     }
   }
 
-  public List<Receita> listarReceitas (String idCaderno) {
-    return repositorioReceitas.buscarTodasReceitas(idCaderno);
+  public List<Receita> listarReceitas(String idCaderno) {
+    return repositorioReceitas.listarReceitasCaderno(idCaderno);
   }
 
 }

@@ -27,7 +27,7 @@ public enum Custo {
 
     @Override
     public String toString() {
-        return String.format("Custo: %s | Intervalo:  %s", this.extenso, this.imprimeIntervaloDePreco());
+        return String.format("%s (%s)", this.extenso, this.imprimeIntervaloDePreco());
     }
 
 }

@@ -3,14 +3,16 @@ package com.cooksbooks.dados;
 import com.cooksbooks.dados.interfaces.IRepositorioUsuario;
 import com.cooksbooks.entity.Usuario;
 
+import com.cooksbooks.utils.ExperienciaCulinaria;
 import java.io.*;
 import java.util.ArrayList;
 
-public class RepositorioUsuariosList implements IRepositorioUsuario {
+public class RepositorioUsuariosList implements IRepositorioUsuario, Serializable {
 
+    @Serial
+    private static final long serialVersionUID = 1765430802666531944L;
     private static RepositorioUsuariosList instancia;
     private final ArrayList<Usuario> usuariosList;
-    //TODO: estudar SERIALIZABLE kkkkkkkkkkk a bronca
 
     /**
      * Construtor do repositório que inicializa o ArrayList de usuários
@@ -120,7 +122,8 @@ public class RepositorioUsuariosList implements IRepositorioUsuario {
         return null;
     }
 
-    private int totalUsuarios(){
+    @Override
+    public int totalUsuarios(){
         return usuariosList.size();
     }
 
@@ -142,6 +145,27 @@ public class RepositorioUsuariosList implements IRepositorioUsuario {
                 break;
             }
         }
+    }
+
+    @Override
+    public void alterarNomePerfil(String login, String nomePerfil) {
+
+    }
+
+    @Override
+    public void alterarBiografia(String login, String biografia) {
+
+    }
+
+    @Override
+    public void alterarCaminhoImagemPerfil(String login, String caminhoImagemPerfil) {
+
+    }
+
+    @Override
+    public void alterarExperienciaCulinaria(String login,
+        ExperienciaCulinaria experienciaCulinaria) {
+
     }
 
 }

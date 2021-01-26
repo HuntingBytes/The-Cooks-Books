@@ -16,7 +16,7 @@ public interface IRepositorioUsuario {
 
     Usuario buscarUsuario(String usuarioBuscar);
 
-    void totalUsuario();
+    int totalUsuarios();
 
     void atualizarNomeUsuarioExistente(String idUsuarioExistente, String nomePerfilNovo);
 
@@ -25,7 +25,6 @@ public interface IRepositorioUsuario {
     void alterarNomePerfil(String login, String nomePerfil);
 
     void alterarBiografia(String login, String biografia);
-
 
     void alterarCaminhoImagemPerfil(String login, String caminhoImagemPerfil);
 

@@ -17,7 +17,9 @@ public interface IRepositorioReceita {
 
     long totalReceitas();
 
-    void alterarModoPreparo(String login, String modoPreparo);
+    void alterarModoPreparoReceita(String login, String modoPreparo);
 
-    void alterarTitulo(String login, String titulo);
+    void alterarTituloReceita(String login, String titulo);
+
+    List<Receita> listarReceitasCaderno(String idCaderno);
 }
