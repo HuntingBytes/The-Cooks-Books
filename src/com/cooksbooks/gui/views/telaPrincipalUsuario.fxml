@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+  <tabs>
+    <Tab text="Gabriel">
+         <content>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ListView layoutX="14.0" layoutY="156.0" prefHeight="200.0" prefWidth="130.0" />
+                  <ListView layoutX="168.0" layoutY="156.0" prefHeight="200.0" prefWidth="130.0" />
+                  <Label layoutX="38.0" layoutY="137.0" text="Meus Cadernos" />
+                  <Label layoutX="191.0" layoutY="137.0" text="Minhas Receitas" />
+                  <Label layoutX="38.0" layoutY="112.0" text="Mostrar Perfil">
+                     <font>
+                        <Font name="Calibri" size="12.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="450.0" layoutY="231.0" mnemonicParsing="false" text="Criar Caderno" />
+                  <Button layoutX="450.0" layoutY="288.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="88.0" text="Criar Receita" />
+                  <ChoiceBox layoutX="435.0" layoutY="41.0" prefWidth="150.0" />
+                  <Label layoutX="481.0" layoutY="26.0" text="Buscar Por:" />
+                  <ImageView fitHeight="105.0" fitWidth="101.0" layoutX="21.0" layoutY="11.0" opacity="0.6" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Pictures/Saved%20Pictures/me2.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </content>
+    </Tab>
+  </tabs>
+</TabPane>
