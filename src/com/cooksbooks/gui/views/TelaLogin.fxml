@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControllerTelaLogin">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControladorTelaLogin">
   <children>
     <Label alignment="CENTER" contentDisplay="CENTER" layoutX="171.0" layoutY="30.0" text="The Cook's Books" textAlignment="CENTER">
       <font>
@@ -34,17 +34,17 @@
         <Font name="Calibri" size="18.0" />
       </font>
     </PasswordField>
-    <Button id="btEntrar" contentDisplay="CENTER" layoutX="246.0" layoutY="279.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="109.0" text="Entrar" textAlignment="CENTER">
+    <Button id="btEntrar" contentDisplay="CENTER" layoutX="246.0" layoutY="279.0" mnemonicParsing="false" onAction="#handleEntrar" prefHeight="34.0" prefWidth="109.0" text="Entrar" textAlignment="CENTER">
       <font>
         <Font name="Calibri" size="16.0" />
       </font>
     </Button>
-    <Button id="btCadastrar" contentDisplay="CENTER" layoutX="246.0" layoutY="337.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="109.0" text="Cadastrar" textAlignment="CENTER">
+    <Button id="btCadastrar" contentDisplay="CENTER" layoutX="246.0" layoutY="337.0" mnemonicParsing="false" onAction="#handleCadastrar" prefHeight="34.0" prefWidth="109.0" text="Cadastrar" textAlignment="CENTER">
       <font>
         <Font name="Calibri" size="16.0" />
       </font>
     </Button>
-    <Button id="btAjuda" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="354.0" mnemonicParsing="false" style="-fx-background-radius: 30px;" text="?" textAlignment="CENTER">
+    <Button id="btAjuda" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="354.0" mnemonicParsing="false" onAction="#handleAjuda" style="-fx-background-radius: 30px;" text="?" textAlignment="CENTER">
       <font>
         <Font name="Calibri" size="16.0" />
       </font>
