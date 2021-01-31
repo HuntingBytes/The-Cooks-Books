@@ -6,7 +6,7 @@ public enum Telas {
   TELA_CRIACAO_CADERNO("gui/views/TelaCriacaoCaderno.fxml"),
   TELA_CRIACAO_RECEITA("gui/views/TelaCriacaoReceita.fxml"),
   TELA_PRINCIPAL_USUARIO("gui/views/TelaPrincipalUsuario.fxml"),
-  TELA_CADERNO("gui/views/TelaDoCaderno");
+  TELA_CADERNO("gui/views/TelaDoCaderno.fxml");
 
   private final String caminho;
 

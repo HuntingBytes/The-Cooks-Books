@@ -1,7 +1,10 @@
 package com.cooksbooks.gui.controllers;
 
+import com.cooksbooks.App;
 import com.cooksbooks.controllers.CooksBooksFachada;
 import com.cooksbooks.controllers.ICooksBooks;
+import com.cooksbooks.facilities.Telas;
+import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -13,7 +16,7 @@ import javafx.scene.control.TextField;
 public class ControladorTelaLogin {
 
   private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
-  // private App app; Referência para a classe do aplicativo/programa
+  private App app; //Referência para a classe do aplicativo/programa
 
   @FXML
   private Label lbErro;
@@ -62,9 +65,8 @@ public class ControladorTelaLogin {
   }
 
   @FXML
-  private void handleCadastrar() {
-    // Usa o this.app para atualizar a tela, talvez?
-    // Troca para a tela de cadastro
+  private void handleCadastrar() throws IOException {
+    app.alterarTela(Telas.TELA_CADASTRO);
   }
 
   @FXML
@@ -79,11 +81,11 @@ public class ControladorTelaLogin {
     alert.showAndWait();
   }
 
-  /* Seta a instância do aplicativo
+
   public void setApp(App app) {
     this.app = app;
   }
-  */
+
 
   private boolean areCamposValidos() {
     String login = this.tfLogin.getText();
