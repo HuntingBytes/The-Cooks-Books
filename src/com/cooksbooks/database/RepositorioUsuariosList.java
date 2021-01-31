@@ -1,6 +1,6 @@
-package com.cooksbooks.dados;
+package com.cooksbooks.database;
 
-import com.cooksbooks.dados.interfaces.IRepositorioUsuario;
+import com.cooksbooks.database.interfaces.IRepositorioUsuario;
 import com.cooksbooks.entity.Usuario;
 
 import com.cooksbooks.entity.utils.ExperienciaCulinaria;

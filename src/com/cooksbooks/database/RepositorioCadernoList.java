@@ -1,6 +1,6 @@
-package com.cooksbooks.dados;
+package com.cooksbooks.database;
 
-import com.cooksbooks.dados.interfaces.IRepositorioCaderno;
+import com.cooksbooks.database.interfaces.IRepositorioCaderno;
 import com.cooksbooks.entity.CadernoReceitas;
 import java.io.File;
 import java.io.FileInputStream;

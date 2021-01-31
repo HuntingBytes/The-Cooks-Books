@@ -1,4 +1,4 @@
-package com.cooksbooks.dados.interfaces;
+package com.cooksbooks.database.interfaces;
 
 import com.cooksbooks.entity.CadernoReceitas;
 import java.util.List;

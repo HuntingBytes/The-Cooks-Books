@@ -1,7 +1,7 @@
 package com.cooksbooks.controllers;
 
-import com.cooksbooks.dados.RepositorioReceitasList;
-import com.cooksbooks.dados.interfaces.IRepositorioReceita;
+import com.cooksbooks.database.RepositorioReceitasList;
+import com.cooksbooks.database.interfaces.IRepositorioReceita;
 import com.cooksbooks.entity.Receita;
 import java.util.List;
 

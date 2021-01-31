@@ -1,7 +1,6 @@
-package com.cooksbooks.dados;
+package com.cooksbooks.database;
 
-import com.cooksbooks.dados.interfaces.IRepositorioReceita;
-import com.cooksbooks.entity.CadernoReceitas;
+import com.cooksbooks.database.interfaces.IRepositorioReceita;
 import com.cooksbooks.entity.Receita;
 
 import java.io.*;

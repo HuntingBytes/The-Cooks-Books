@@ -1,8 +1,8 @@
 package com.cooksbooks.controllers;
 
 
-import com.cooksbooks.dados.RepositorioUsuariosList;
-import com.cooksbooks.dados.interfaces.IRepositorioUsuario;
+import com.cooksbooks.database.RepositorioUsuariosList;
+import com.cooksbooks.database.interfaces.IRepositorioUsuario;
 import com.cooksbooks.entity.Usuario;
 import com.cooksbooks.entity.utils.ExperienciaCulinaria;
 
