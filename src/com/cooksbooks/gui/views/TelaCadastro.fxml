@@ -53,8 +53,8 @@
          </GridPane.margin>
       </Label>
       <Label text="The Cooks Books" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-      <Button id="btVoltar" mnemonicParsing="false" prefHeight="46.0" prefWidth="52.0" text="Voltar" />
-      <Button id="btCadastrar" mnemonicParsing="false" prefHeight="64.0" prefWidth="83.0" text="Cadastrar" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+      <Button id="btVoltar" mnemonicParsing="false" onAction="#handleVoltar" prefHeight="46.0" prefWidth="52.0" text="Voltar" />
+      <Button id="btCadastrar" mnemonicParsing="false" onAction="#handleCadastrar" prefHeight="64.0" prefWidth="83.0" text="Cadastrar" GridPane.columnIndex="4" GridPane.rowIndex="5" />
    </children>
    <opaqueInsets>
       <Insets />
