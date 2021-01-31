@@ -107,11 +107,15 @@ public class ControladorTelaCadastro {
     StringBuilder textToPrint = new StringBuilder();
     textToPrint.append("Favor rever o(s) seguinte(s) campo(s): ");
 
+    String nomePerfil = this.tfNomePerfil.getText();
     String login = this.tfLogin.getText();
     String senha = this.pfSenha.getText();
     String confirmarSenha = this.pfConfirmarSenha.getText();
     ExperienciaCulinaria experienciaCulinaria = this.cbExperienciaCulinaria.getValue();
 
+    if (nomePerfil == null || nomePerfil.isBlank()) {
+      textToPrint.append("\"Nome de Perfil\"");
+    }
     if (login == null || login.isBlank()) {
       textToPrint.append("\"Login\"; ");
     }
