@@ -1,7 +1,7 @@
 package com.cooksbooks.dados.interfaces;
 
 import com.cooksbooks.entity.Usuario;
-import com.cooksbooks.utils.ExperienciaCulinaria;
+import com.cooksbooks.entity.utils.ExperienciaCulinaria;
 
 
 public interface IRepositorioUsuario {

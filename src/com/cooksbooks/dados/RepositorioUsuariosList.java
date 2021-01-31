@@ -3,7 +3,7 @@ package com.cooksbooks.dados;
 import com.cooksbooks.dados.interfaces.IRepositorioUsuario;
 import com.cooksbooks.entity.Usuario;
 
-import com.cooksbooks.utils.ExperienciaCulinaria;
+import com.cooksbooks.entity.utils.ExperienciaCulinaria;
 import java.io.*;
 import java.util.ArrayList;
 

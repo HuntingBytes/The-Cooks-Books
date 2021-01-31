@@ -1,6 +1,6 @@
 package com.cooksbooks.entity;
 
-import com.cooksbooks.utils.PermissaoEspecial;
+import com.cooksbooks.entity.utils.PermissaoEspecial;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;

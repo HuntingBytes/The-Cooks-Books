@@ -1,16 +1,16 @@
-package com.cooksbooks;
+package com.cooksbooks.tests;
 
 import com.cooksbooks.controllers.CooksBooksFachada;
 import com.cooksbooks.controllers.ICooksBooks;
 import com.cooksbooks.entity.CadernoReceitas;
 import com.cooksbooks.entity.Receita;
 import com.cooksbooks.entity.Usuario;
-import com.cooksbooks.utils.Categoria;
-import com.cooksbooks.utils.Custo;
-import com.cooksbooks.utils.Dificuldade;
-import com.cooksbooks.utils.ExperienciaCulinaria;
-import com.cooksbooks.utils.Ingrediente;
-import com.cooksbooks.utils.TempoPreparo;
+import com.cooksbooks.entity.utils.Categoria;
+import com.cooksbooks.entity.utils.Custo;
+import com.cooksbooks.entity.utils.Dificuldade;
+import com.cooksbooks.entity.utils.ExperienciaCulinaria;
+import com.cooksbooks.entity.utils.Ingrediente;
+import com.cooksbooks.entity.utils.TempoPreparo;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -31,7 +31,7 @@ import java.util.List;
  * </p>
  * @since 25-01-2021
  */
-public final class TesteCRUDS {
+final class TesteCRUDS {
   private TesteCRUDS() {}
 
   public static void main(String[] args) {

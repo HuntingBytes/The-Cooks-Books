@@ -1,4 +1,4 @@
-package com.cooksbooks.utils;
+package com.cooksbooks.entity.utils;
 
 import java.io.Serial;
 import java.io.Serializable;

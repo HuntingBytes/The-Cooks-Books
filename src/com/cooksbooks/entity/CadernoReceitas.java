@@ -1,9 +1,9 @@
 package com.cooksbooks.entity;
 
-import com.cooksbooks.utils.Categoria;
-import com.cooksbooks.utils.Comentario;
-import com.cooksbooks.utils.Dificuldade;
-import com.cooksbooks.utils.Nota;
+import com.cooksbooks.entity.utils.Categoria;
+import com.cooksbooks.entity.utils.Comentario;
+import com.cooksbooks.entity.utils.Dificuldade;
+import com.cooksbooks.entity.utils.Nota;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;

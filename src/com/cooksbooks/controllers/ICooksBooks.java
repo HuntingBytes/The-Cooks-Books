@@ -4,7 +4,7 @@ import com.cooksbooks.entity.CadernoReceitas;
 import com.cooksbooks.entity.Receita;
 import com.cooksbooks.entity.Usuario;
 
-import com.cooksbooks.utils.ExperienciaCulinaria;
+import com.cooksbooks.entity.utils.ExperienciaCulinaria;
 import java.util.List;
 
 public interface ICooksBooks {

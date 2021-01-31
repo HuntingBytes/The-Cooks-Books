@@ -1,6 +1,4 @@
-package com.cooksbooks.utils;
-
-import java.lang.annotation.Documented;
+package com.cooksbooks.entity.utils;
 
 public enum ExperienciaCulinaria {
 

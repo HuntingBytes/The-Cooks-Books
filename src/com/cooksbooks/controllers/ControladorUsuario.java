@@ -3,10 +3,8 @@ package com.cooksbooks.controllers;
 
 import com.cooksbooks.dados.RepositorioUsuariosList;
 import com.cooksbooks.dados.interfaces.IRepositorioUsuario;
-import com.cooksbooks.entity.CadernoReceitas;
 import com.cooksbooks.entity.Usuario;
-import com.cooksbooks.utils.ExperienciaCulinaria;
-import java.util.List;
+import com.cooksbooks.entity.utils.ExperienciaCulinaria;
 
 public class ControladorUsuario {
 

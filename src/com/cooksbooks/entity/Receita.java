@@ -1,12 +1,12 @@
 package com.cooksbooks.entity;
 
-import com.cooksbooks.utils.Categoria;
-import com.cooksbooks.utils.Comentario;
-import com.cooksbooks.utils.Custo;
-import com.cooksbooks.utils.Dificuldade;
-import com.cooksbooks.utils.Ingrediente;
-import com.cooksbooks.utils.Rendimento;
-import com.cooksbooks.utils.TempoPreparo;
+import com.cooksbooks.entity.utils.Categoria;
+import com.cooksbooks.entity.utils.Comentario;
+import com.cooksbooks.entity.utils.Custo;
+import com.cooksbooks.entity.utils.Dificuldade;
+import com.cooksbooks.entity.utils.Ingrediente;
+import com.cooksbooks.entity.utils.Rendimento;
+import com.cooksbooks.entity.utils.TempoPreparo;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;

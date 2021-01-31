@@ -1,6 +1,6 @@
 package com.cooksbooks.entity;
 
-import com.cooksbooks.utils.ExperienciaCulinaria;
+import com.cooksbooks.entity.utils.ExperienciaCulinaria;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;

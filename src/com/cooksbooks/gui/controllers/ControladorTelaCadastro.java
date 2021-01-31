@@ -3,7 +3,7 @@ package com.cooksbooks.gui.controllers;
 import com.cooksbooks.controllers.CooksBooksFachada;
 import com.cooksbooks.controllers.ICooksBooks;
 import com.cooksbooks.entity.Usuario;
-import com.cooksbooks.utils.ExperienciaCulinaria;
+import com.cooksbooks.entity.utils.ExperienciaCulinaria;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;

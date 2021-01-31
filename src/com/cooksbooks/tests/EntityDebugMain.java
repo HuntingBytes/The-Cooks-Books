@@ -1,4 +1,6 @@
-package com.cooksbooks.entity;
+package com.cooksbooks.tests;
+
+import com.cooksbooks.entity.Receita;
 
 /**
  * Classe feita para uso interno, não deve ser instanciada
@@ -9,7 +11,9 @@ package com.cooksbooks.entity;
  * </p>
  * @since 21-01-2021
  */
-abstract class EntityDebugMain {
+final class EntityDebugMain {
+  private EntityDebugMain() {}
+
   public static void main(String[] args) {
     Receita.debug();
     System.out.println();
