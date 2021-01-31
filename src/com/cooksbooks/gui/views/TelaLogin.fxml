@@ -19,7 +19,7 @@
         <Font name="Calibri" size="18.0" />
       </font>
     </Label>
-    <TextField id="tfLogin" alignment="CENTER" layoutX="170.0" layoutY="132.0" prefHeight="28.0" prefWidth="260.0" promptText="Digite o seu usuário....">
+    <TextField id="tfLogin" fx:id="tfLogin" alignment="CENTER" layoutX="170.0" layoutY="132.0" prefHeight="28.0" prefWidth="260.0" promptText="Digite o seu usuário....">
       <font>
         <Font name="Calibri" size="18.0" />
       </font>
@@ -29,22 +29,22 @@
         <Font name="Calibri" size="18.0" />
       </font>
     </Label>
-    <PasswordField id="pfSenha" alignment="CENTER" layoutX="171.0" layoutY="216.0" prefHeight="28.0" prefWidth="260.0" promptText="Digite sua senha....">
+    <PasswordField id="pfSenha" fx:id="pfSenha" alignment="CENTER" layoutX="171.0" layoutY="216.0" prefHeight="28.0" prefWidth="260.0" promptText="Digite sua senha....">
       <font>
         <Font name="Calibri" size="18.0" />
       </font>
     </PasswordField>
-    <Button id="btEntrar" contentDisplay="CENTER" layoutX="246.0" layoutY="279.0" mnemonicParsing="false" onAction="#handleEntrar" prefHeight="34.0" prefWidth="109.0" text="Entrar" textAlignment="CENTER">
+    <Button id="btEntrar" fx:id="btEntrar" contentDisplay="CENTER" layoutX="246.0" layoutY="279.0" mnemonicParsing="false" onAction="#handleEntrar" prefHeight="34.0" prefWidth="109.0" text="Entrar" textAlignment="CENTER">
       <font>
         <Font name="Calibri" size="16.0" />
       </font>
     </Button>
-    <Button id="btCadastrar" contentDisplay="CENTER" layoutX="246.0" layoutY="337.0" mnemonicParsing="false" onAction="#handleCadastrar" prefHeight="34.0" prefWidth="109.0" text="Cadastrar" textAlignment="CENTER">
+    <Button id="btCadastrar" fx:id="btCadastrar" contentDisplay="CENTER" layoutX="246.0" layoutY="337.0" mnemonicParsing="false" onAction="#handleCadastrar" prefHeight="34.0" prefWidth="109.0" text="Cadastrar" textAlignment="CENTER">
       <font>
         <Font name="Calibri" size="16.0" />
       </font>
     </Button>
-    <Button id="btAjuda" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="354.0" mnemonicParsing="false" onAction="#handleAjuda" style="-fx-background-radius: 30px;" text="?" textAlignment="CENTER">
+    <Button id="btAjuda" fx:id="btAjuda" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="354.0" mnemonicParsing="false" onAction="#handleAjuda" style="-fx-background-radius: 30px;" text="?" textAlignment="CENTER">
       <font>
         <Font name="Calibri" size="16.0" />
       </font>
