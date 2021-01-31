@@ -34,12 +34,12 @@
         <Font name="Calibri" size="18.0" />
       </font>
     </PasswordField>
-    <Button id="btEntrar" fx:id="btEntrar" contentDisplay="CENTER" layoutX="246.0" layoutY="279.0" mnemonicParsing="false" onAction="#handleEntrar" prefHeight="34.0" prefWidth="109.0" text="Entrar" textAlignment="CENTER">
+    <Button id="btEntrar" fx:id="btEntrar" contentDisplay="CENTER" layoutX="246.0" layoutY="268.0" mnemonicParsing="false" onAction="#handleEntrar" prefHeight="34.0" prefWidth="109.0" text="Entrar" textAlignment="CENTER">
       <font>
         <Font name="Calibri" size="16.0" />
       </font>
     </Button>
-    <Button id="btCadastrar" fx:id="btCadastrar" contentDisplay="CENTER" layoutX="246.0" layoutY="337.0" mnemonicParsing="false" onAction="#handleCadastrar" prefHeight="34.0" prefWidth="109.0" text="Cadastrar" textAlignment="CENTER">
+    <Button id="btCadastrar" fx:id="btCadastrar" contentDisplay="CENTER" layoutX="246.0" layoutY="314.0" mnemonicParsing="false" onAction="#handleCadastrar" prefHeight="34.0" prefWidth="109.0" text="Cadastrar" textAlignment="CENTER">
       <font>
         <Font name="Calibri" size="16.0" />
       </font>
@@ -49,5 +49,10 @@
         <Font name="Calibri" size="16.0" />
       </font>
     </Button>
+      <Label id="lbErro" fx:id="lbErro" alignment="CENTER" contentDisplay="CENTER" layoutX="234.0" layoutY="369.0" text="Usuário não existente!" textAlignment="CENTER" textFill="RED" visible="false">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font>
+      </Label>
   </children>
 </AnchorPane>
