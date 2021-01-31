@@ -28,10 +28,10 @@
       <RowConstraints maxHeight="28.800024414062477" minHeight="10.0" prefHeight="24.800024414062477" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <TextField GridPane.columnIndex="2" GridPane.rowIndex="4" />
-      <TextField GridPane.columnIndex="2" GridPane.rowIndex="3" />
-      <TextField GridPane.columnIndex="2" GridPane.rowIndex="2" />
-      <ChoiceBox prefHeight="2.0" prefWidth="120.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+      <TextField id="tfConfirmarSenha" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+      <TextField id="tfSenha" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+      <TextField id="tfLogin" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+      <ChoiceBox id="cbExperienciaCulinaria" prefHeight="2.0" prefWidth="120.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
       <Label text="Login:" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets right="5.0" />
@@ -53,8 +53,8 @@
          </GridPane.margin>
       </Label>
       <Label text="The Cooks Books" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-      <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="52.0" text="Voltar" />
-      <Button mnemonicParsing="false" prefHeight="64.0" prefWidth="83.0" text="Cadastrar" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+      <Button id="btVoltar" mnemonicParsing="false" prefHeight="46.0" prefWidth="52.0" text="Voltar" />
+      <Button id="btCadastrar" mnemonicParsing="false" prefHeight="64.0" prefWidth="83.0" text="Cadastrar" GridPane.columnIndex="4" GridPane.rowIndex="5" />
    </children>
    <opaqueInsets>
       <Insets />

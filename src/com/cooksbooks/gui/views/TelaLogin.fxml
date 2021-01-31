@@ -1,14 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-  xmlns:fx="http://javafx.com/fxml"
-  fx:controller="com.cooksbooks.gui.controllers.ControladorTelaLogin"
-  prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControllerTelaLogin">
+  <children>
+    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="171.0" layoutY="30.0" text="The Cook's Books" textAlignment="CENTER">
+      <font>
+        <Font name="Calibri Bold" size="36.0" />
+      </font>
+    </Label>
+    <Label contentDisplay="CENTER" layoutX="170.0" layoutY="107.0" text="Nome de usuário:">
+      <font>
+        <Font name="Calibri" size="18.0" />
+      </font>
+    </Label>
+    <TextField id="tfLogin" alignment="CENTER" layoutX="170.0" layoutY="132.0" prefHeight="28.0" prefWidth="260.0" promptText="Digite o seu usuário....">
+      <font>
+        <Font name="Calibri" size="18.0" />
+      </font>
+    </TextField>
+    <Label contentDisplay="CENTER" layoutX="171.0" layoutY="189.0" text="Senha:">
+      <font>
+        <Font name="Calibri" size="18.0" />
+      </font>
+    </Label>
+    <PasswordField id="pfSenha" alignment="CENTER" layoutX="171.0" layoutY="216.0" prefHeight="28.0" prefWidth="260.0" promptText="Digite sua senha....">
+      <font>
+        <Font name="Calibri" size="18.0" />
+      </font>
+    </PasswordField>
+    <Button id="btEntrar" contentDisplay="CENTER" layoutX="246.0" layoutY="279.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="109.0" text="Entrar" textAlignment="CENTER">
+      <font>
+        <Font name="Calibri" size="16.0" />
+      </font>
+    </Button>
+    <Button id="btCadastrar" contentDisplay="CENTER" layoutX="246.0" layoutY="337.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="109.0" text="Cadastrar" textAlignment="CENTER">
+      <font>
+        <Font name="Calibri" size="16.0" />
+      </font>
+    </Button>
+    <Button id="btAjuda" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="354.0" mnemonicParsing="false" style="-fx-background-radius: 30px;" text="?" textAlignment="CENTER">
+      <font>
+        <Font name="Calibri" size="16.0" />
+      </font>
+    </Button>
+  </children>
 </AnchorPane>
