@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControladorTelaCadastro">
    <children>
       <Label layoutX="167.0" layoutY="11.0" text="The Cook's Books">
@@ -77,7 +76,7 @@
             <Font name="Calibri" size="16.0" />
          </font>
       </Button>
-      <Label id="lbErrok" fx:id="lbErrok" alignment="CENTER" layoutX="219.0" layoutY="369.0" text="Nome de login já utilizado!" textAlignment="CENTER" textFill="RED" visible="false">
+      <Label id="lbErrok" fx:id="lbErro" alignment="CENTER" layoutX="219.0" layoutY="369.0" text="Nome de login já utilizado!" textAlignment="CENTER" textFill="RED" visible="false">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>
