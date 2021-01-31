@@ -103,10 +103,10 @@ public class ControladorTelaLogin {
     String senha = this.pfSenha.getText();
 
     if (login == null || login.isBlank()) {
-      textToPrint.append("\"Login\"");
+      textToPrint.append("\"Login\"; ");
     }
     if (senha == null || senha.isBlank()) {
-      textToPrint.append("\"Senha\"");
+      textToPrint.append("\"Senha\"; ");
     }
 
     Alert alert = new Alert(AlertType.WARNING);

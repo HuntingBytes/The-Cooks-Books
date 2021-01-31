@@ -88,11 +88,11 @@ public class ControladorTelaCadastro {
   }
 
   private boolean areCamposValidos() {
-    String nomePerfil = tfNomePerfil.getText();
-    String login = tfLogin.getText();
-    String senha = pfSenha.getText();
-    String confirmarSenha = pfConfirmarSenha.getText();
-    ExperienciaCulinaria experienciaCulinaria = cbExperienciaCulinaria.getValue();
+    String nomePerfil = this.tfNomePerfil.getText();
+    String login = this.tfLogin.getText();
+    String senha = this.pfSenha.getText();
+    String confirmarSenha = this.pfConfirmarSenha.getText();
+    ExperienciaCulinaria experienciaCulinaria = this.cbExperienciaCulinaria.getValue();
 
     boolean nomePerfilBlank = nomePerfil == null || nomePerfil.isBlank();
     boolean loginBlank = login == null || login.isBlank();
@@ -109,12 +109,20 @@ public class ControladorTelaCadastro {
 
     String login = this.tfLogin.getText();
     String senha = this.pfSenha.getText();
+    String confirmarSenha = this.pfConfirmarSenha.getText();
+    ExperienciaCulinaria experienciaCulinaria = this.cbExperienciaCulinaria.getValue();
 
     if (login == null || login.isBlank()) {
-      textToPrint.append("\"Login\"");
+      textToPrint.append("\"Login\"; ");
     }
     if (senha == null || senha.isBlank()) {
-      textToPrint.append("\"Senha\"");
+      textToPrint.append("\"Senha\"; ");
+    }
+    if (confirmarSenha == null || confirmarSenha.isBlank()) {
+      textToPrint.append("\"Confirmar Senha\"; ");
+    }
+    if (experienciaCulinaria == null) {
+      textToPrint.append("\"Experiencia Culinária\"; ");
     }
 
     Alert alert = new Alert(AlertType.WARNING);
