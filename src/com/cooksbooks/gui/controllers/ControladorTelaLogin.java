@@ -2,8 +2,6 @@ package com.cooksbooks.gui.controllers;
 
 import com.cooksbooks.controllers.CooksBooksFachada;
 import com.cooksbooks.controllers.ICooksBooks;
-import java.util.ArrayList;
-import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -43,29 +41,23 @@ public class ControladorTelaLogin {
 
   @FXML
   private void handleEntrar() {
-    String login = this.tfLogin.getText();
-    String senha = this.pfSenha.getText();
-
-    boolean loginBlank = login == null || login.isBlank();
-    boolean senhaBlank = senha == null || senha.isBlank();
-
-    if(!loginBlank && !senhaBlank) {
+    if (this.areCamposValidos()) {
       // Esse boolean de sistema.efetuarLogin() deverá ser
       // trocado por blocos try-catch e sistema.efetuarLogin()
       // não deve possuir retorno.
-      if(sistema.efetuarLogin(login, senha)) {
+      String login = this.tfLogin.getText();
+      String senha = this.pfSenha.getText();
+
+      if (sistema.efetuarLogin(login, senha)) {
         lbErro.setText("Usuário logado!");
-        lbErro.setVisible(true);
       } else {
         lbErro.setText("Usuário não logado.");
-        lbErro.setVisible(true);
       }
-    } else {
-      ArrayList<String> wrongFields = new ArrayList<>();
-      if (loginBlank) wrongFields.add("Login");
-      if (senhaBlank) wrongFields.add("Senha");
-
-      showCamposFaltando(wrongFields);
+      this.clearCampos();
+      lbErro.setVisible(true);
+    }
+    else {
+      this.alertCamposInvalidos();
     }
   }
 
@@ -80,36 +72,10 @@ public class ControladorTelaLogin {
     Alert alert = new Alert(AlertType.INFORMATION);
     alert.setTitle("Ajuda - Tela de Login");
     alert.setHeaderText("");
-    alert.setContentText("Nessa tela você deve inserir seu login e senha e clicar no botão \"Entrar\"" +
-                        "para conseguir acessar a plataforma!\n" +
-                        "Caso ainda não possua uma conta, clique no botão \"Cadastrar\".");
-    alert.showAndWait();
-  }
-
-  private void showCamposFaltando(List<String> wrongFields) {
-    StringBuilder toPrint = new StringBuilder();
-    int size = wrongFields.size();
-
-    if (size > 1) {
-      toPrint.append("Favor, informar os campos ");
-    } else {
-      toPrint.append("Favor, informar o campo ");
-    }
-
-    for (int i = 0; i < size; i++) {
-      toPrint.append("\"");
-      toPrint.append(wrongFields.get(i));
-      toPrint.append("\"");
-      if (i < size - 1) {
-        toPrint.append(", ");
-      }
-    }
-
-    toPrint.append(".");
-
-    Alert alert = new Alert(Alert.AlertType.WARNING, toPrint.toString());
-    alert.setTitle("Campos não preenchidos!");
-    alert.setHeaderText("");
+    alert.setContentText(
+        "Nessa tela você deve inserir seu login e senha e clicar no botão \"Entrar\"" +
+            "para conseguir acessar a plataforma!\n" +
+            "Caso ainda não possua uma conta, clique no botão \"Cadastrar\".");
     alert.showAndWait();
   }
 
@@ -118,5 +84,41 @@ public class ControladorTelaLogin {
     this.app = app;
   }
   */
+
+  private boolean areCamposValidos() {
+    String login = this.tfLogin.getText();
+    String senha = this.pfSenha.getText();
+
+    boolean loginBlank = login == null || login.isBlank();
+    boolean senhaBlank = senha == null || senha.isBlank();
+
+    return !loginBlank && !senhaBlank;
+  }
+
+  private void alertCamposInvalidos() {
+    StringBuilder textToPrint = new StringBuilder();
+    textToPrint.append("Favor rever o(s) seguinte(s) campo(s): ");
+
+    String login = this.tfLogin.getText();
+    String senha = this.pfSenha.getText();
+
+    if (login == null || login.isBlank()) {
+      textToPrint.append("\"Login\"");
+    }
+    if (senha == null || senha.isBlank()) {
+      textToPrint.append("\"Senha\"");
+    }
+
+    Alert alert = new Alert(AlertType.WARNING);
+    alert.setTitle("Atenção");
+    alert.setHeaderText("Campos Inválidos!");
+    alert.setContentText(textToPrint.toString());
+    alert.showAndWait();
+  }
+
+  private void clearCampos() {
+    this.tfLogin.clear();
+    this.pfSenha.clear();
+  }
 
 }
