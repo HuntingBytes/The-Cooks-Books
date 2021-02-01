@@ -1,5 +1,8 @@
 package com.cooksbooks.gui.controllers;
 
+import com.cooksbooks.App;
+import com.cooksbooks.ControladorGUI;
+import com.cooksbooks.DataSender;
 import com.cooksbooks.controllers.CooksBooksFachada;
 import com.cooksbooks.controllers.ICooksBooks;
 import com.cooksbooks.database.RepositorioUsuariosList;
@@ -12,13 +15,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ControladorTelaPrincipal {
+public class ControladorTelaPrincipal implements DataSender, ControladorGUI {
 
     private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
-    // private App app; Referência para a classe do aplicativo/programa
+    private App app;
 
     private final String[] dropDownContent = {"Caderno", "Receita", "Usuario"};
 
@@ -76,18 +80,18 @@ public class ControladorTelaPrincipal {
     }
 
     @FXML
-    private void handleCriarCaderno(){
-        //app.alterarTela(TELA_CRIACAO_CADERNO); muda para tela de criacao de caderno
+    private void handleCriarCaderno() throws IOException {
+        this.app.alterarTela(Telas.TELA_CRIACAO_CADERNO, this);
     }
 
     @FXML
     private void handleCriarReceita(){
-        //app.alterarTela(TELA_CRIACAO_RECEITA); muda para tela de criacao de receita
+        //TODO:app.alterarTela(TELA_CRIACAO_RECEITA); muda para tela de criacao de receita
     }
 
     @FXML
     private void handleMostrarPerfil(){
-        //app.alterarTela(TELA_PERFIL); muda para tela do perfil
+        //TODO:app.alterarTela(TELA_PERFIL); muda para tela do perfil
     }
 
     @FXML
@@ -111,5 +115,16 @@ public class ControladorTelaPrincipal {
         alert.setTitle("Atenção");
         alert.setHeaderText("Tipo de Pesquisa Não Informado");
         alert.showAndWait();
+    }
+
+    public void setApp(App app) {
+        this.app = app;
+    }
+
+    public Object[] getInformation(){
+        Object [] information = new Object[2];
+        information[0] = this.choiceBoxPesquisa.getValue();
+        information[1] = this.
+        return information;
     }
 }
