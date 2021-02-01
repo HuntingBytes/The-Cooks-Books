@@ -54,9 +54,14 @@ public class ControladorTelaLogin implements ControladorGUI, DataSender {
       String senha = this.pfSenha.getText();
 
       if (sistema.efetuarLogin(login, senha)) {
-        lbErro.setText("Usuário logado!");
+        try {
+          app.alterarTela(Telas.TELA_PRINCIPAL_USUARIO);
+        } catch (Exception e) {
+          e.printStackTrace();
+          lbErro.setText("Não foi possível realizar o login. Favor tentar novamente.");
+        }
       } else {
-        lbErro.setText("Usuário não logado.");
+        lbErro.setText("Não foi possível realizar o login. Favor tentar novamente.");
       }
       this.clearCampos();
       lbErro.setVisible(true);
