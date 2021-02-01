@@ -4,7 +4,6 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -24,7 +23,6 @@
       <Button fx:id="btVoltarRec" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleVoltar" text="Voltar" />
       <Button fx:id="btCriarRec" layoutX="402.0" layoutY="605.0" mnemonicParsing="false" onAction="#handleCriarReceita" prefHeight="26.0" prefWidth="120.0" text="Criar Receita" />
       <TextField fx:id="tfTituloRec" layoutX="48.0" layoutY="83.0" />
-      <ScrollBar layoutX="579.0" layoutY="3.0" orientation="VERTICAL" prefHeight="670.0" prefWidth="14.0" />
       <Label layoutX="68.0" layoutY="127.0" text="Adicionar Ingredientes" />
       <ChoiceBox fx:id="cbCustoMedio" layoutX="47.0" layoutY="311.0" prefWidth="150.0" />
       <Label layoutX="91.0" layoutY="293.0" text="Custo  Médio" />
@@ -37,7 +35,7 @@
       <ListView fx:id="lvAddCat" layoutX="27.0" layoutY="474.0" prefHeight="83.0" prefWidth="190.0" />
       <Label layoutX="67.0" layoutY="456.0" text="Adicionar Categorias" />
       <Label layoutX="78.0" layoutY="609.0" text="Inserir imagem..." />
-      <Label fx:id="lbErro" layoutX="347.0" layoutY="631.0" prefHeight="30.0" prefWidth="218.0" textFill="#ee7919">
+      <Label fx:id="lbErro" layoutX="347.0" layoutY="631.0" prefHeight="30.0" prefWidth="249.0" textFill="#ee7919">
          <font>
             <Font name="Calibri Bold" size="25.0" />
          </font>
