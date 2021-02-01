@@ -87,6 +87,10 @@ public class CooksBooksFachada implements ICooksBooks {
     return CooksBooksFachada.usuarioLogado;
   }
 
+  @Override
+  public Usuario buscarUsuario(String login){
+    return this.controladorUsuario.buscarUsuario(login);
+  }
 
   // Receita
   @Override

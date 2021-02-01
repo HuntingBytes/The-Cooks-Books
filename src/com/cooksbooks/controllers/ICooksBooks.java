@@ -26,6 +26,8 @@ public interface ICooksBooks {
 
   Usuario getUsuarioLogado();
 
+  Usuario buscarUsuario(String login);
+
   void cadastrarReceita(Receita receita, String idCadernoDono);
 
   void removerReceita(String idReceita);
