@@ -4,7 +4,6 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -17,26 +16,29 @@
          <font>
             <Font name="Stencil" size="12.0" />
          </font></Label>
-      <TextArea fx:id="textAreaModoPreparo" layoutX="347.0" layoutY="83.0" prefHeight="508.0" prefWidth="218.0" />
+      <TextArea fx:id="taModoPreparo" layoutX="347.0" layoutY="83.0" prefHeight="508.0" prefWidth="218.0" />
       <Label layoutX="79.0" layoutY="65.0" text="Título da Receita" />
       <Label layoutX="78.0" layoutY="239.0" text="Tempo de Preparo" />
       <Label layoutX="415.0" layoutY="65.0" text="Modo de Preparo" />
-      <Button fx:id="buttonVoltarRec" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleVoltar" text="Voltar" />
-      <Button fx:id="buttonCriarRec" layoutX="402.0" layoutY="605.0" mnemonicParsing="false" onAction="#handleCriarReceita" prefHeight="26.0" prefWidth="120.0" text="Criar Receita" />
-      <TextField fx:id="textFieldTituloRec" layoutX="48.0" layoutY="83.0" />
-      <ListView fx:id="listViewAddIngred" layoutX="23.0" layoutY="145.0" prefHeight="72.0" prefWidth="200.0" />
-      <ScrollBar layoutX="579.0" layoutY="3.0" orientation="VERTICAL" prefHeight="670.0" prefWidth="14.0" />
+      <Button fx:id="btVoltarRec" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleVoltar" text="Voltar" />
+      <Button fx:id="btCriarRec" layoutX="402.0" layoutY="605.0" mnemonicParsing="false" onAction="#handleCriarReceita" prefHeight="26.0" prefWidth="120.0" text="Criar Receita" />
+      <TextField fx:id="tfTituloRec" layoutX="48.0" layoutY="83.0" />
       <Label layoutX="68.0" layoutY="127.0" text="Adicionar Ingredientes" />
-      <ChoiceBox fx:id="choiceBoxCustoMedio" layoutX="47.0" layoutY="311.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="cbCustoMedio" layoutX="47.0" layoutY="311.0" prefWidth="150.0" />
       <Label layoutX="91.0" layoutY="293.0" text="Custo  Médio" />
-      <ChoiceBox fx:id="choiceBoxTempoPreparo" layoutX="48.0" layoutY="257.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="cbTempoPreparo" layoutX="48.0" layoutY="257.0" prefWidth="150.0" />
       <Label layoutX="90.0" layoutY="347.0" text="Rendimento" />
-      <ChoiceBox fx:id="choiceBoxRendimento" layoutX="47.0" layoutY="365.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="cbRendimento" layoutX="47.0" layoutY="365.0" prefWidth="150.0" />
       <Label layoutX="97.0" layoutY="400.0" text="Dificuldade" />
-      <ChoiceBox fx:id="choiceBoxDificul" layoutX="47.0" layoutY="418.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="cbDificul" layoutX="47.0" layoutY="418.0" prefWidth="150.0" />
       <Separator layoutX="299.0" layoutY="52.0" orientation="VERTICAL" prefHeight="620.0" prefWidth="0.0" />
-      <ListView fx:id="listViewAddCat" layoutX="27.0" layoutY="474.0" prefHeight="83.0" prefWidth="190.0" />
+      <ListView fx:id="lvAddCat" layoutX="27.0" layoutY="474.0" prefHeight="83.0" prefWidth="190.0" />
       <Label layoutX="67.0" layoutY="456.0" text="Adicionar Categorias" />
       <Label layoutX="78.0" layoutY="609.0" text="Inserir imagem..." />
+      <Label fx:id="lbErro" layoutX="347.0" layoutY="631.0" prefHeight="30.0" prefWidth="249.0" textFill="#ee7919">
+         <font>
+            <Font name="Calibri Bold" size="25.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

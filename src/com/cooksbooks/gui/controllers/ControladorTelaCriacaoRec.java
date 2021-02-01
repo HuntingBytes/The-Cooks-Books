@@ -8,6 +8,7 @@ import com.cooksbooks.entity.utils.Custo;
 import com.cooksbooks.entity.utils.Dificuldade;
 import com.cooksbooks.entity.utils.Rendimento;
 import com.cooksbooks.entity.utils.TempoPreparo;
+import java.io.Serializable;
 import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -101,8 +102,9 @@ public class ControladorTelaCriacaoRec {
 
       sistema.cadastrarReceita(receita,receita.getIdCadernoDono());
 
+      this.lbErro.setText("Receita Cadastrada!");
+
       this.clearTodosCampos();
-      this.lbErro.setText("Receita " + nomeReceita + " Cadastrada!");
     }
     else {
       this.alertCamposInvalidos();
@@ -182,7 +184,7 @@ public class ControladorTelaCriacaoRec {
 
   private void clearTodosCampos(){
     this.tfTituloRec.clear();
-    this.taAddIng.clear();
+    //this.taAddIng.clear();
     this.taModoPreparo.clear();
     this.cbCustoMedio.getSelectionModel().clearSelection();
     this.cbRendimento.getSelectionModel().clearSelection();

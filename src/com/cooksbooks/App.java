@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 public final class App extends Application {
 
-  private Stage estagio;
+  private static Stage estagio;
 
 
   @Override
