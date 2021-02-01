@@ -1,9 +1,12 @@
 package com.cooksbooks.gui.controllers;
 
+import com.cooksbooks.App;
 import com.cooksbooks.controllers.CooksBooksFachada;
 import com.cooksbooks.controllers.ICooksBooks;
 import com.cooksbooks.entity.Usuario;
 import com.cooksbooks.entity.utils.ExperienciaCulinaria;
+import com.cooksbooks.facilities.Telas;
+import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -16,7 +19,7 @@ import javafx.scene.control.TextField;
 public class ControladorTelaCadastro {
 
   private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
-  // private App app; Referência para a classe do aplicativo/programa
+  private App app = new App();// Referência para a classe do aplicativo/programa
 
   @FXML
   private Label lbErro;
@@ -82,9 +85,8 @@ public class ControladorTelaCadastro {
   }
 
   @FXML
-  private void handleVoltar() {
-    // Usa o this.app para atualizar a tela, talvez?
-    // Troca para a tela de cadastro
+  private void handleVoltar() throws IOException {
+   this.app.alterarTela(Telas.TELA_LOGIN);
   }
 
   private boolean areCamposValidos() {

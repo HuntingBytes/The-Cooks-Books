@@ -16,7 +16,7 @@ import javafx.scene.control.TextField;
 public class ControladorTelaLogin {
 
   private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
-  private App app; //Referência para a classe do aplicativo/programa
+  private App app = new App(); //Referência para a classe do aplicativo/programa
 
   @FXML
   private Label lbErro;
