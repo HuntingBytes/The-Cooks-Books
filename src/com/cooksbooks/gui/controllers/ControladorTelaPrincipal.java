@@ -95,11 +95,11 @@ public class ControladorTelaPrincipal {
         if(choiceBoxPesquisa == null){
             alertPesquisa();
         }else{
-            switch(choiceBoxPesquisa.getValue()){
-                case "Caderno": sistema.buscarCaderno(textFieldPesquisa.getText()); break;
-                case "Receita": sistema.buscarReceita(textFieldPesquisa.getText()); break;
-                //TODO: alterar assinatura do método para receber nome de perfil como parâmetro
-                case "Usuário": sistema.buscarUsuario(textFieldPesquisa.getText()); break;
+            //TODO: alterar assinatura do método para receber nome de perfil como parâmetro
+            switch (choiceBoxPesquisa.getValue()) {
+                case "Caderno" -> sistema.buscarCaderno(textFieldPesquisa.getText());
+                case "Receita" -> sistema.buscarReceita(textFieldPesquisa.getText());
+                case "Usuário" -> sistema.buscarUsuario(textFieldPesquisa.getText());
             }
         }
         //app.alterarTela(TELA_RESULTADOS); muda para tela de resultados
