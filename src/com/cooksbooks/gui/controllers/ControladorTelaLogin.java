@@ -1,6 +1,8 @@
 package com.cooksbooks.gui.controllers;
 
 import com.cooksbooks.App;
+import com.cooksbooks.ControladorGUI;
+import com.cooksbooks.DataSender;
 import com.cooksbooks.controllers.CooksBooksFachada;
 import com.cooksbooks.controllers.ICooksBooks;
 import com.cooksbooks.facilities.Telas;
@@ -13,7 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class ControladorTelaLogin {
+public class ControladorTelaLogin implements ControladorGUI, DataSender {
 
   private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
   private App app = new App(); //Referência para a classe do aplicativo/programa
@@ -66,7 +68,7 @@ public class ControladorTelaLogin {
 
   @FXML
   private void handleCadastrar() throws IOException {
-    app.alterarTela(Telas.TELA_CADASTRO);
+    app.alterarTela(Telas.TELA_CADASTRO, this);
   }
 
   @FXML
@@ -123,4 +125,11 @@ public class ControladorTelaLogin {
     this.pfSenha.clear();
   }
 
+  @Override
+  public Object[] getInformation() {
+    Object[] information = new Object[2];
+    information[0] = this.tfLogin.getText();
+    information[1] = this.pfSenha.getText();
+    return information;
+  }
 }
