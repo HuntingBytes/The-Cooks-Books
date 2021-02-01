@@ -26,47 +26,47 @@ public class ControladorTelaCriacaoRec {
   private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
 
   @FXML
-  private TextArea textAreaModoPreparo;
+  private TextArea taModoPreparo;
 
   @FXML
-  private Button buttonVoltarRec;
+  private Button btVoltarRec;
 
   @FXML
-  private Button buttonCriarRec;
+  private Button btCriarRec;
 
   @FXML
-  private TextField textFieldTituloRec;
+  private TextField tfTituloRec;
 
   @FXML
-  private TextArea textAreaAddIng;
+  private TextArea taAddIng;
 
   @FXML
-  private ChoiceBox<Custo> choiceBoxCustoMedio;
+  private ChoiceBox<Custo> cbCustoMedio;
 
   @FXML
-  private ChoiceBox<TempoPreparo> choiceBoxTempoPreparo;
+  private ChoiceBox<TempoPreparo> cbTempoPreparo;
 
   @FXML
-  private ChoiceBox<Rendimento> choiceBoxRendimento;
+  private ChoiceBox<Rendimento> cbRendimento;
 
   @FXML
-  private ChoiceBox<Dificuldade> choiceBoxDificul;
+  private ChoiceBox<Dificuldade> cbDificul;
 
   @FXML
-  private ListView<Categoria> listViewAddCat;
+  private ListView<Categoria> lvAddCat;
 
   @FXML
-  private Label labelErro;
+  private Label lbErro;
 
   @FXML
   private void initialize() {
 
-    this.choiceBoxCustoMedio.getItems().addAll(Custo.values());
-    this.choiceBoxDificul.getItems().addAll(Dificuldade.values());
-    this.choiceBoxRendimento.getItems().addAll(Rendimento.values());
-    this.choiceBoxTempoPreparo.getItems().addAll(TempoPreparo.values());
+    this.cbCustoMedio.getItems().addAll(Custo.values());
+    this.cbDificul.getItems().addAll(Dificuldade.values());
+    this.cbRendimento.getItems().addAll(Rendimento.values());
+    this.cbTempoPreparo.getItems().addAll(TempoPreparo.values());
 
-    this.listViewAddCat.getItems().addAll(Categoria.values());
+    this.lvAddCat.getItems().addAll(Categoria.values());
 
   }
 
@@ -78,16 +78,16 @@ public class ControladorTelaCriacaoRec {
   @FXML
   private void handleCriarReceita() {
     if (this.areCamposValidos()) {
-      String nomeReceita = this.textFieldTituloRec.getText();
-      String modoPreparo = this.textAreaModoPreparo.getText();
+      String nomeReceita = this.tfTituloRec.getText();
+      String modoPreparo = this.taModoPreparo.getText();
       //Como seria essa criaçao ingredientes ????
       //String ingredientes = this.textAreaAddIng.getText();
 
-      Custo custoMedio = this.choiceBoxCustoMedio.getValue();
-      Dificuldade dificuldade = this.choiceBoxDificul.getValue();
-      Rendimento rendimento = this.choiceBoxRendimento.getValue();
-      TempoPreparo tempoPreparo = this.choiceBoxTempoPreparo.getValue();
-      List<Categoria> categorias = this.listViewAddCat.getItems();
+      Custo custoMedio = this.cbCustoMedio.getValue();
+      Dificuldade dificuldade = this.cbDificul.getValue();
+      Rendimento rendimento = this.cbRendimento.getValue();
+      TempoPreparo tempoPreparo = this.cbTempoPreparo.getValue();
+      List<Categoria> categorias = this.lvAddCat.getItems();
 
       Receita receita = new Receita();
       //receita.setIdCadernoDono();
@@ -102,7 +102,7 @@ public class ControladorTelaCriacaoRec {
       sistema.cadastrarReceita(receita,receita.getIdCadernoDono());
 
       this.clearTodosCampos();
-      this.labelErro.setText("Receita " + nomeReceita + " Cadastrada!");
+      this.lbErro.setText("Receita " + nomeReceita + " Cadastrada!");
     }
     else {
       this.alertCamposInvalidos();
@@ -110,16 +110,16 @@ public class ControladorTelaCriacaoRec {
   }
 
   private boolean areCamposValidos(){
-    String tituloReceita = this.textFieldTituloRec.getText();
-    String modoPreparo = this.textAreaModoPreparo.getText();
+    String tituloReceita = this.tfTituloRec.getText();
+    String modoPreparo = this.taModoPreparo.getText();
     //Como seria essa criaçao ingredientes ????
     //String ingredientes = this.textAreaAddIng.getText();
 
-    Custo custoSelec = this.choiceBoxCustoMedio.getValue();
-    Dificuldade dificuldadeSelec = this.choiceBoxDificul.getValue();
-    Rendimento rendimentoSelc = this.choiceBoxRendimento.getValue();
-    TempoPreparo tempoPreparoSelc = this.choiceBoxTempoPreparo.getValue();
-    List<Categoria> categoriasSelec = this.listViewAddCat.getItems();
+    Custo custoSelec = this.cbCustoMedio.getValue();
+    Dificuldade dificuldadeSelec = this.cbDificul.getValue();
+    Rendimento rendimentoSelc = this.cbRendimento.getValue();
+    TempoPreparo tempoPreparoSelc = this.cbTempoPreparo.getValue();
+    List<Categoria> categoriasSelec = this.lvAddCat.getItems();
 
     boolean tituloReceitaBlank = tituloReceita == null || tituloReceita.isBlank();
     boolean modoPreparoBlank =  modoPreparo == null || modoPreparo.isBlank();
@@ -134,16 +134,16 @@ public class ControladorTelaCriacaoRec {
     StringBuilder textToPrint = new StringBuilder();
     textToPrint.append("Favor Rever o(s) Campo(s): ");
 
-    String tituloReceita = this.textFieldTituloRec.getText();
-    String modoPreparo = this.textAreaModoPreparo.getText();
+    String tituloReceita = this.tfTituloRec.getText();
+    String modoPreparo = this.taModoPreparo.getText();
     //Como seria essa criaçao ingredientes ????
     //String ingredientes = this.textAreaAddIng.getText();
 
-    Custo custoSelec = this.choiceBoxCustoMedio.getValue();
-    Dificuldade dificuldadeSelec = this.choiceBoxDificul.getValue();
-    Rendimento rendimentoSelc = this.choiceBoxRendimento.getValue();
-    TempoPreparo tempoPreparoSelc = this.choiceBoxTempoPreparo.getValue();
-    List<Categoria> categoriasSelec = this.listViewAddCat.getItems();
+    Custo custoSelec = this.cbCustoMedio.getValue();
+    Dificuldade dificuldadeSelec = this.cbDificul.getValue();
+    Rendimento rendimentoSelc = this.cbRendimento.getValue();
+    TempoPreparo tempoPreparoSelc = this.cbTempoPreparo.getValue();
+    List<Categoria> categoriasSelec = this.lvAddCat.getItems();
 
     if (tituloReceita == null || modoPreparo.isBlank()) {
       textToPrint.append("\"Titulo Receita\"");
@@ -181,13 +181,13 @@ public class ControladorTelaCriacaoRec {
   }
 
   private void clearTodosCampos(){
-    this.textFieldTituloRec.clear();
-    this.textAreaAddIng.clear();
-    this.textAreaModoPreparo.clear();
-    this.choiceBoxCustoMedio.getSelectionModel().clearSelection();
-    this.choiceBoxRendimento.getSelectionModel().clearSelection();
-    this.choiceBoxDificul.getSelectionModel().clearSelection();
-    this.choiceBoxTempoPreparo.getSelectionModel().clearSelection();
-    this.listViewAddCat.getSelectionModel().clearSelection();
+    this.tfTituloRec.clear();
+    this.taAddIng.clear();
+    this.taModoPreparo.clear();
+    this.cbCustoMedio.getSelectionModel().clearSelection();
+    this.cbRendimento.getSelectionModel().clearSelection();
+    this.cbDificul.getSelectionModel().clearSelection();
+    this.cbTempoPreparo.getSelectionModel().clearSelection();
+    this.lvAddCat.getSelectionModel().clearSelection();
   }
 }
