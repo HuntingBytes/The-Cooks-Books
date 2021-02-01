@@ -1,6 +1,9 @@
 package com.cooksbooks.gui.controllers;
 
 import com.cooksbooks.App;
+import com.cooksbooks.ControladorGUI;
+import com.cooksbooks.DataReceiver;
+import com.cooksbooks.DataSender;
 import com.cooksbooks.controllers.CooksBooksFachada;
 import com.cooksbooks.controllers.ICooksBooks;
 import com.cooksbooks.entity.CadernoReceitas;
@@ -15,7 +18,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class ControladorTelaCaderno {
+public class ControladorTelaCaderno implements ControladorGUI, DataReceiver, DataSender {
 
   private App app;
 
@@ -49,8 +52,6 @@ public class ControladorTelaCaderno {
 
   @FXML
   private void initialize() {
-
-
   }
 
   @FXML
@@ -59,7 +60,6 @@ public class ControladorTelaCaderno {
 
   @FXML
   void handleEditarCaderno() {
-
   }
 
   @FXML
@@ -67,4 +67,20 @@ public class ControladorTelaCaderno {
     app.alterarTela(Telas.TELA_PRINCIPAL_USUARIO);
   }
 
+  @Override
+  public void setApp(App app) {
+    this.app = app;
+  }
+
+  @Override
+  public void setInformation(Object[] information) {
+    this.caderno = (CadernoReceitas) information[0];
+  }
+
+  @Override
+  public Object[] getInformation() {
+    Object[] information = new Object[1];
+    information[0] = this.lvResultadoBuscaReceita.getSelectionModel().getSelectedItem(); // Receita
+    return information;
+  }
 }

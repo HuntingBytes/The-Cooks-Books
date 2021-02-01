@@ -1,6 +1,8 @@
 package com.cooksbooks.gui.controllers;
 
 import com.cooksbooks.App;
+import com.cooksbooks.ControladorGUI;
+import com.cooksbooks.DataReceiver;
 import com.cooksbooks.controllers.CooksBooksFachada;
 import com.cooksbooks.controllers.ICooksBooks;
 import com.cooksbooks.entity.Usuario;
@@ -16,10 +18,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class ControladorTelaCadastro {
+public class ControladorTelaCadastro implements ControladorGUI, DataReceiver {
 
   private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
-  private App app = new App();// Referência para a classe do aplicativo/programa
+  private App app; // Referência para a classe do aplicativo/programa
 
   @FXML
   private Label lbErro;
@@ -146,4 +148,18 @@ public class ControladorTelaCadastro {
     this.cbExperienciaCulinaria.getSelectionModel().clearSelection();
   }
 
+  public void setApp(App app) {
+    this.app = app;
+  }
+
+  public void setLoginSenha(String login, String senha) {
+    this.tfLogin.setText(login);
+    this.pfSenha.setText(senha);
+  }
+
+  @Override
+  public void setInformation(Object[] information) {
+    this.tfLogin.setText((String) information[0]);
+    this.pfSenha.setText((String) information[1]);
+  }
 }
