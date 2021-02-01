@@ -18,7 +18,7 @@ public final class App extends Application {
   @Override
   public void start(Stage stage) throws Exception {
     estagio = stage;
-    FXMLLoader telaLoginLoader = new FXMLLoader(getClass().getResource(Telas.TELA_LOGIN.caminho()));
+    FXMLLoader telaLoginLoader = new FXMLLoader(getClass().getResource(Telas.TELA_PRINCIPAL_USUARIO.caminho()));
     Scene cenaTelaLogin = new Scene(telaLoginLoader.load());
 
     estagio.setScene(cenaTelaLogin);

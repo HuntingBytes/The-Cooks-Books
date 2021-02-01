@@ -9,41 +9,40 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<SplitPane dividerPositions="0.38127090301003347" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControladorTelaCaderno">
+<SplitPane dividerPositions="0.5501672240802675" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControladorTelaCaderno">
    <items>
       <AnchorPane prefHeight="398.0" prefWidth="264.0">
          <children>
-            <Label fx:id="lbNomeCaderno" layoutX="92.0" layoutY="26.0" prefHeight="36.0" prefWidth="184.0" text="NomeCaderno" textFill="#cc3131">
+            <Label fx:id="lbNomeCaderno" layoutX="66.0" layoutY="27.0" prefHeight="36.0" prefWidth="184.0" text="NomeCaderno" textFill="#cc3131">
                <font>
                   <Font name="Calibri Bold" size="30.0" />
                </font>
             </Label>
-            <TextArea fx:id="taDesc" layoutX="36.0" layoutY="99.0" prefHeight="200.0" prefWidth="297.0" />
-            <Label layoutX="149.0" layoutY="81.0" text="Descricao:" textFill="#e10808">
+            <TextArea fx:id="taDesc" layoutX="18.0" layoutY="99.0" prefHeight="200.0" prefWidth="297.0" />
+            <Label layoutX="132.0" layoutY="81.0" text="Descricao:" textFill="#e10808">
                <font>
                   <Font name="Calibri Bold" size="16.0" />
                </font>
             </Label>
-            <Button fx:id="btVoltar" layoutX="318.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleVoltar" text="Voltar" />
+            <Button fx:id="btVoltar" layoutX="3.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleVoltar" text="Voltar" />
             <Button fx:id="btEditarCaderno" layoutX="27.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleEditarCaderno" prefHeight="25.0" prefWidth="102.0" text="EditarCaderno" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <Button fx:id="btBuscarReceita" layoutX="67.0" layoutY="34.0" mnemonicParsing="false" onAction="#handleBuscarReceita" text="Buscar Receita" />
-            <TextField fx:id="tfReceitaBuscar" layoutX="21.0" prefHeight="25.0" prefWidth="184.0" promptText="Digite o nome da receita">
+            <Button fx:id="btBuscarReceita" layoutX="83.0" layoutY="34.0" mnemonicParsing="false" onAction="#handleBuscarReceita" text="Buscar Receita" />
+            <TextField fx:id="tfReceitaBuscar" layoutX="38.0" prefHeight="25.0" prefWidth="184.0" promptText="Digite o nome da receita">
                <font>
                   <Font name="Calibri Bold" size="15.0" />
                </font>
             </TextField>
-            <ListView fx:id="lvResultadoBusca" layoutY="59.0" prefHeight="171.0" prefWidth="226.0" />
-            <Label layoutX="45.0" layoutY="230.0" text="Categorias Caderno" textFill="#b91212">
+            <ListView fx:id="lvResultadoBuscaReceita" layoutX="17.0" layoutY="59.0" prefHeight="171.0" prefWidth="226.0" />
+            <Label layoutX="62.0" layoutY="230.0" text="Categorias Caderno" textFill="#b91212">
                <font>
                   <Font name="Calibri Bold" size="17.0" />
                </font>
             </Label>
-            <ListView fx:id="lvCategoriasCaderno" layoutX="38.0" layoutY="254.0" prefHeight="129.0" prefWidth="151.0" />
+            <ListView fx:id="lvCategoriasCaderno" layoutX="55.0" layoutY="251.0" prefHeight="129.0" prefWidth="151.0" />
          </children>
       </AnchorPane>
    </items>

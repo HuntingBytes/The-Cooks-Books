@@ -175,4 +175,9 @@ public class CooksBooksFachada implements ICooksBooks {
   public List<CadernoReceitas> buscarTodosCadernosDoUsuarioAtual() {
     return buscarTodosCadernosDoUsuario(CooksBooksFachada.usuarioLogado.getLogin());
   }
+
+  @Override
+  public List<CadernoReceitas> buscarTodosCadernosDoUsuarioAtual() {
+    return this.controladorCaderno.listarCadernosDoUsuario(usuarioLogado.getLogin());
+  }
 }

@@ -1,5 +1,6 @@
 package com.cooksbooks.gui.controllers;
 
+import com.cooksbooks.App;
 import com.cooksbooks.controllers.CooksBooksFachada;
 import com.cooksbooks.controllers.ICooksBooks;
 import com.cooksbooks.entity.Receita;
@@ -22,7 +23,7 @@ import javafx.scene.control.TextField;
 
 public class ControladorTelaCriacaoRec {
 
-  //private App app;
+  private App app;
 
   private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
 
