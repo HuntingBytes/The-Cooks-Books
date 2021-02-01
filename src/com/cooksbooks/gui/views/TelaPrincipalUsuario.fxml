@@ -18,31 +18,31 @@
          <content>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <ListView layoutX="15.0" layoutY="168.0" prefHeight="126.0" prefWidth="210.0" />
-                  <ListView layoutX="289.0" layoutY="168.0" prefHeight="126.0" prefWidth="210.0" />
+                  <ListView fx:id="listViewCadernos" layoutX="15.0" layoutY="168.0" prefHeight="126.0" prefWidth="210.0" />
+                  <ListView fx:id="listViewReceitas" layoutX="289.0" layoutY="168.0" prefHeight="126.0" prefWidth="210.0" />
                   <Label layoutX="80.0" layoutY="146.0" text="Meus Cadernos" />
                   <Label layoutX="351.0" layoutY="146.0" text="Minhas Receitas" />
-                  <Label layoutX="38.0" layoutY="112.0" text="Mostrar Perfil">
+                  <Label fx:id="mostrarPerfil" layoutX="38.0" layoutY="112.0" text="Mostrar Perfil">
                      <font>
                         <Font name="Calibri" size="12.0" />
                      </font>
                   </Label>
-                  <Button layoutX="76.0" layoutY="308.0" mnemonicParsing="false" text="Criar Caderno" />
-                  <Button layoutX="350.0" layoutY="307.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="88.0" text="Criar Receita" />
-                  <ChoiceBox layoutX="435.0" layoutY="94.0" prefWidth="150.0" />
-                  <Label layoutX="501.0" layoutY="76.0" text="em" />
-                  <ImageView fitHeight="105.0" fitWidth="101.0" layoutX="21.0" layoutY="11.0" opacity="0.6" pickOnBounds="true" preserveRatio="true">
+                  <Button fx:id="botaoCriarCaderno" layoutX="76.0" layoutY="308.0" mnemonicParsing="false" text="Criar Caderno" />
+                  <Button fx:id="botaoCriarReceita" layoutX="350.0" layoutY="307.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="88.0" text="Criar Receita" />
+                  <ChoiceBox fx:id="choiceBoxPesquisa" layoutX="488.0" layoutY="29.0" prefHeight="26.0" prefWidth="89.0" />
+                  <ImageView fx:id="imagemPerfil" fitHeight="105.0" fitWidth="101.0" layoutX="21.0" layoutY="11.0" opacity="0.6" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Pictures/Saved%20Pictures/me2.jpg" />
                      </image>
                   </ImageView>
-                  <Label layoutX="154.0" layoutY="30.0" prefHeight="26.0" prefWidth="217.0" text="Nome do Usuário">
+                  <Label fx:id="nomeUsuario" layoutX="154.0" layoutY="30.0" prefHeight="26.0" prefWidth="148.0" text="Nome do Usuário">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </Label>
-                  <Label layoutX="154.0" layoutY="67.0" prefHeight="18.0" prefWidth="81.0" text="Experiência" />
-                  <TextField layoutX="435.0" layoutY="43.0" promptText="Pesquisar" />
+                  <Label fx:id="experienciaCulinaria" layoutX="154.0" layoutY="67.0" prefHeight="18.0" prefWidth="81.0" text="Experiência" />
+                  <TextField fx:id="textFieldPesquisa" layoutX="339.0" layoutY="30.0" promptText="Pesquisar em" />
+                  <Button fx:id="botaoPesquisar" layoutX="510.0" layoutY="72.0" mnemonicParsing="false" text="Pesquisar" />
                </children>
             </AnchorPane>
          </content>
