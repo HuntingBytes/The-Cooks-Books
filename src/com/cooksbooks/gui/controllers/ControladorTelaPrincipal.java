@@ -27,6 +27,9 @@ public class ControladorTelaPrincipal implements DataSender, ControladorGUI {
     private final String[] dropDownContent = {"Caderno", "Receita", "Usuario"};
 
     @FXML
+    private Tab nomeUsuarioTab;
+
+    @FXML
     private ListView<CadernoReceitas> listViewCadernos;
 
     @FXML
@@ -58,6 +61,7 @@ public class ControladorTelaPrincipal implements DataSender, ControladorGUI {
 
     @FXML
     public void initialize(){
+        this.nomeUsuarioTab.setText(sistema.getUsuarioLogado().getNomePerfil());
         this.nomeUsuario.setText(sistema.getUsuarioLogado().getNomePerfil());
         this.experienciaCulinaria.setText
                 (sistema.getUsuarioLogado().getExperienciaCulinaria().toString());
