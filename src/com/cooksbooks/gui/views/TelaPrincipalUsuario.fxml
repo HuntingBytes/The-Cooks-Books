@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src/com/cooksbooks/gui/controllers/ControladorTelaPrincipal.java">
   <tabs>
     <Tab text="Gabriel">
          <content>
@@ -27,8 +27,8 @@
                         <Font name="Calibri" size="12.0" />
                      </font>
                   </Label>
-                  <Button fx:id="botaoCriarCaderno" layoutX="27.0" layoutY="306.0" mnemonicParsing="false" text="Criar Caderno" />
-                  <Button fx:id="botaoCriarReceita" layoutX="350.0" layoutY="306.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="88.0" text="Criar Receita" />
+                  <Button fx:id="botaoCriarCaderno" layoutX="14.0" layoutY="307.0" mnemonicParsing="false" text="Criar Caderno" />
+                  <Button fx:id="botaoCriarReceita" layoutX="350.0" layoutY="307.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="88.0" text="Criar Receita" />
                   <ChoiceBox fx:id="choiceBoxPesquisa" layoutX="488.0" layoutY="29.0" prefHeight="26.0" prefWidth="89.0" />
                   <ImageView fx:id="imagemPerfil" fitHeight="105.0" fitWidth="101.0" layoutX="21.0" layoutY="11.0" opacity="0.6" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -43,7 +43,7 @@
                   <Label fx:id="experienciaCulinaria" layoutX="154.0" layoutY="67.0" prefHeight="18.0" prefWidth="81.0" text="Experiência" />
                   <TextField fx:id="textFieldPesquisa" layoutX="339.0" layoutY="30.0" promptText="Pesquisar em" />
                   <Button fx:id="botaoPesquisar" layoutX="510.0" layoutY="72.0" mnemonicParsing="false" text="Pesquisar" />
-                  <Button fx:id="botaoAcessarCaderno" layoutX="154.0" layoutY="306.0" mnemonicParsing="false" text="Acessar" />
+                  <Button fx:id="botaoAcessar" layoutX="166.0" layoutY="307.0" mnemonicParsing="false" text="Acessar" />
                </children>
             </AnchorPane>
          </content>

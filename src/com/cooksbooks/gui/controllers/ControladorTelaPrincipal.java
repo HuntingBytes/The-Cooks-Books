@@ -124,7 +124,7 @@ public class ControladorTelaPrincipal implements DataSender, ControladorGUI {
     public Object[] getInformation(){
         Object [] information = new Object[2];
         information[0] = this.choiceBoxPesquisa.getValue();
-        information[1] = this.
+        information[1] = this.listViewReceitas.getSelectionModel().getSelectedItem();
         return information;
     }
 }
