@@ -40,7 +40,7 @@
                         <Font size="17.0" />
                      </font>
                   </Label>
-                  <Label fx:id="experienciaCulinaria" layoutX="154.0" layoutY="67.0" prefHeight="18.0" prefWidth="81.0" text="Experiência" />
+                  <Label fx:id="experienciaCulinaria" layoutX="154.0" layoutY="67.0" prefHeight="18.0" prefWidth="184.0" text="Experiência" />
                   <TextField fx:id="textFieldPesquisa" layoutX="339.0" layoutY="30.0" promptText="Pesquisar em" />
                   <Button fx:id="botaoPesquisar" layoutX="510.0" layoutY="72.0" mnemonicParsing="false" text="Pesquisar" />
                   <Button fx:id="botaoAcessar" layoutX="166.0" layoutY="307.0" mnemonicParsing="false" text="Acessar" />
