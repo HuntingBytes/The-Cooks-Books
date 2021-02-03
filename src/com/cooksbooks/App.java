@@ -36,6 +36,12 @@ public final class App extends Application {
     launch();
   }
 
+  /**
+   * Encaminha o usuario para uma nova tela sem precisar transferir informacoes
+   *
+   * @param tela tela ao qual o usuario sera migrado
+   * @throws IOException caso broncas ocorram
+   */
   public void alterarTela(Telas tela) throws IOException {
     FXMLLoader novaTelaLoader = new FXMLLoader(getClass().getResource(tela.caminho()));
     Scene novaCena = new Scene(novaTelaLoader.load());
@@ -46,6 +52,16 @@ public final class App extends Application {
     estagio.setScene(novaCena);
   }
 
+  /**
+   * Encaminha o usuario para uma nova tela transferindo as informacoes pertinentes
+   * do controlador da tela anterior
+   *
+   * @param tela tela ao qual o usuario sera migrado
+   * @param sender informacoes pertinentes do controlador da tela anterior a serem
+   *               enviadas para o controlador da nova tela
+   *
+   * @throws IOException
+   */
   public void alterarTela(Telas tela, DataSender sender) throws IOException {
     FXMLLoader novaTelaLoader = new FXMLLoader(getClass().getResource(tela.caminho()));
     Scene novaCena = new Scene(novaTelaLoader.load());
@@ -53,6 +69,7 @@ public final class App extends Application {
     Object controllerObj = novaTelaLoader.getController();
 
     ((ControladorGUI) controllerObj).setApp(this);
+
     DataReceiver receiver = (DataReceiver) controllerObj;
     receiver.setInformation(sender.getInformation());
 

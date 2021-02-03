@@ -1,5 +1,6 @@
 package com.cooksbooks.gui.controllers;
 
+import com.cooksbooks.App;
 import com.cooksbooks.controllers.CooksBooksFachada;
 import com.cooksbooks.controllers.ICooksBooks;
 import com.cooksbooks.entity.Receita;
@@ -8,6 +9,8 @@ import com.cooksbooks.entity.utils.Custo;
 import com.cooksbooks.entity.utils.Dificuldade;
 import com.cooksbooks.entity.utils.Rendimento;
 import com.cooksbooks.entity.utils.TempoPreparo;
+import com.cooksbooks.facilities.Telas;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 import javafx.fxml.FXML;
@@ -22,7 +25,7 @@ import javafx.scene.control.TextField;
 
 public class ControladorTelaCriacaoRec {
 
-  //private App app;
+  private App app;
 
   private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
 
@@ -68,12 +71,11 @@ public class ControladorTelaCriacaoRec {
     this.cbTempoPreparo.getItems().addAll(TempoPreparo.values());
 
     this.lvAddCat.getItems().addAll(Categoria.values());
-
   }
 
   @FXML
-  private void handleVoltar() {
-    //chamar App para mudar de tela
+  private void handleVoltar() throws IOException {
+    app.alterarTela(Telas.TELA_PRINCIPAL_USUARIO);
   }
 
   @FXML

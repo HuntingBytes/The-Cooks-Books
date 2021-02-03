@@ -52,6 +52,12 @@ public class ControladorTelaCaderno implements ControladorGUI, DataReceiver, Dat
 
   @FXML
   private void initialize() {
+    this.taDesc.setText(caderno.getInformacoesCaderno());
+    this.taDesc.disableProperty();
+
+    this.lvCategoriasCaderno.getItems().addAll(caderno.listarCategorias());
+    this.lvResultadoBuscaReceita.getItems().addAll
+        (sistema.listarReceitasDoCaderno(caderno.getIdCaderno()));
   }
 
   @FXML
@@ -60,6 +66,7 @@ public class ControladorTelaCaderno implements ControladorGUI, DataReceiver, Dat
 
   @FXML
   void handleEditarCaderno() {
+    //app.alterarTela(Telas.TELA_ALTERAR_CADERNO, this); //Talvez a telaCriacaoCaderno possa atuar aqui
   }
 
   @FXML
@@ -74,7 +81,7 @@ public class ControladorTelaCaderno implements ControladorGUI, DataReceiver, Dat
 
   @Override
   public void setInformation(Object[] information) {
-    this.caderno = (CadernoReceitas) information[0];
+    this.caderno = (CadernoReceitas) information[0]; // Caderno selecionado da TelaPrincipal
   }
 
   @Override
