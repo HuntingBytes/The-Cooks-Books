@@ -11,6 +11,7 @@ import com.cooksbooks.entity.Receita;
 import com.cooksbooks.entity.utils.Categoria;
 import com.cooksbooks.facilities.Telas;
 import java.io.IOException;
+import java.util.HashMap;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -20,9 +21,8 @@ import javafx.scene.control.TextField;
 
 public class ControladorTelaCaderno implements ControladorGUI, DataReceiver, DataSender {
 
-  private App app;
-
   private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
+  private App app = App.getInstancia();
 
   private CadernoReceitas caderno;
 
@@ -85,7 +85,8 @@ public class ControladorTelaCaderno implements ControladorGUI, DataReceiver, Dat
   }
 
   @Override
-  public Object[] getInformation() {
+  public HashMap<String, Object> getInformation() {
+
     Object[] information = new Object[1];
     information[0] = this.lvResultadoBuscaReceita.getSelectionModel().getSelectedItem(); // Receita
     return information;

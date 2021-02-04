@@ -22,7 +22,7 @@ import java.util.List;
 public class ControladorTelaPrincipal implements DataSender, ControladorGUI {
 
     private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
-    private App app;
+    private App app = App.getInstancia();
 
     private final String[] dropDownContent = {"Caderno", "Receita", "Usuario"};
 

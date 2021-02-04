@@ -1,5 +1,7 @@
 package com.cooksbooks;
 
+import java.util.HashMap;
+
 public interface DataSender {
-  Object[] getInformation();
+  HashMap<String, Object> getInformation();
 }

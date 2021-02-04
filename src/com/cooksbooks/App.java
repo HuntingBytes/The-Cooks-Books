@@ -18,6 +18,14 @@ import javafx.stage.Stage;
 public final class App extends Application {
 
   private static Stage estagio;
+  private static App instancia;
+
+  public static App getInstancia() {
+    if (instancia == null) {
+      instancia = new App();
+    }
+    return instancia;
+  }
 
 
   @Override
@@ -46,8 +54,6 @@ public final class App extends Application {
     FXMLLoader novaTelaLoader = new FXMLLoader(getClass().getResource(tela.caminho()));
     Scene novaCena = new Scene(novaTelaLoader.load());
 
-    ControladorGUI controller = novaTelaLoader.getController();
-    controller.setApp(this);
 
     estagio.setScene(novaCena);
   }
@@ -66,12 +72,7 @@ public final class App extends Application {
     FXMLLoader novaTelaLoader = new FXMLLoader(getClass().getResource(tela.caminho()));
     Scene novaCena = new Scene(novaTelaLoader.load());
 
-    Object controllerObj = novaTelaLoader.getController();
 
-    ((ControladorGUI) controllerObj).setApp(this);
-
-    DataReceiver receiver = (DataReceiver) controllerObj;
-    receiver.setInformation(sender.getInformation());
 
     estagio.setScene(novaCena);
   }

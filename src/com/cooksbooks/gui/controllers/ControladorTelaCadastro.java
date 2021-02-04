@@ -21,7 +21,7 @@ import javafx.scene.control.TextField;
 public class ControladorTelaCadastro implements ControladorGUI, DataReceiver {
 
   private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
-  private App app; // Referência para a classe do aplicativo/programa
+  private App app = App.getInstancia(); // Referência para a classe do aplicativo/programa
 
   @FXML
   private Label lbErro;
