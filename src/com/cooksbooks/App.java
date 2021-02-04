@@ -72,9 +72,13 @@ public final class App extends Application {
     FXMLLoader novaTelaLoader = new FXMLLoader(getClass().getResource(tela.caminho()));
     Scene novaCena = new Scene(novaTelaLoader.load());
 
+    Object controllerObj = novaTelaLoader.getController();
+    DataReceiver receiver = (DataReceiver) controllerObj;
 
+    if(sender.getInformation().keySet().containsAll(receiver.requiredKeys())) {
+      receiver.setInformation(sender.getInformation());
+    }
 
     estagio.setScene(novaCena);
   }
-
 }

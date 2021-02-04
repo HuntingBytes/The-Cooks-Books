@@ -9,6 +9,10 @@ import com.cooksbooks.entity.Usuario;
 import com.cooksbooks.entity.utils.ExperienciaCulinaria;
 import com.cooksbooks.facilities.Telas;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -18,7 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class ControladorTelaCadastro implements ControladorGUI, DataReceiver {
+public class ControladorTelaCadastro implements DataReceiver {
 
   private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
   private App app = App.getInstancia(); // Referência para a classe do aplicativo/programa
@@ -140,6 +144,7 @@ public class ControladorTelaCadastro implements ControladorGUI, DataReceiver {
     alert.showAndWait();
   }
 
+
   private void clearCampos() {
     this.tfNomePerfil.clear();
     this.tfLogin.clear();
@@ -148,18 +153,26 @@ public class ControladorTelaCadastro implements ControladorGUI, DataReceiver {
     this.cbExperienciaCulinaria.getSelectionModel().clearSelection();
   }
 
-  public void setApp(App app) {
-    this.app = app;
-  }
 
   public void setLoginSenha(String login, String senha) {
     this.tfLogin.setText(login);
     this.pfSenha.setText(senha);
   }
 
+
   @Override
-  public void setInformation(Object[] information) {
-    this.tfLogin.setText((String) information[0]);
-    this.pfSenha.setText((String) information[1]);
+  public void setInformation(HashMap<String, Object> information) {
+    this.tfLogin.setText((String) information.get("LOGIN"));
+    this.pfSenha.setText((String) information.get("SENHA"));
+  }
+
+
+  @Override
+  public Collection<String> requiredKeys() {
+    List<String> keys = new ArrayList<>();
+    keys.add("LOGIN");
+    keys.add("SENHA");
+
+    return keys;
   }
 }

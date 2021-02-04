@@ -7,6 +7,7 @@ import com.cooksbooks.controllers.CooksBooksFachada;
 import com.cooksbooks.controllers.ICooksBooks;
 import com.cooksbooks.facilities.Telas;
 import java.io.IOException;
+import java.util.HashMap;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -15,7 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class ControladorTelaLogin implements ControladorGUI, DataSender {
+public class ControladorTelaLogin implements DataSender {
 
   private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
   private App app = App.getInstancia(); //Referência para a classe do aplicativo/programa
@@ -89,11 +90,6 @@ public class ControladorTelaLogin implements ControladorGUI, DataSender {
   }
 
 
-  public void setApp(App app) {
-    this.app = app;
-  }
-
-
   private boolean areCamposValidos() {
     String login = this.tfLogin.getText();
     String senha = this.pfSenha.getText();
@@ -131,10 +127,11 @@ public class ControladorTelaLogin implements ControladorGUI, DataSender {
   }
 
   @Override
-  public Object[] getInformation() {
-    Object[] information = new Object[2];
-    information[0] = this.tfLogin.getText();
-    information[1] = this.pfSenha.getText();
+  public HashMap<String, Object> getInformation() {
+    HashMap<String, Object> information = new HashMap<>();
+
+    information.put("LOGIN", tfLogin.getText());
+    information.put("SENHA", pfSenha.getText());
     return information;
   }
 }

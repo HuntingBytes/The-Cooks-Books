@@ -10,6 +10,7 @@ import com.cooksbooks.database.interfaces.IRepositorioReceita;
 import com.cooksbooks.entity.CadernoReceitas;
 import com.cooksbooks.entity.Receita;
 import com.cooksbooks.facilities.Telas;
+import java.util.HashMap;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -19,7 +20,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ControladorTelaPrincipal implements DataSender, ControladorGUI {
+public class ControladorTelaPrincipal implements DataSender {
 
     private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
     private App app = App.getInstancia();
@@ -125,10 +126,11 @@ public class ControladorTelaPrincipal implements DataSender, ControladorGUI {
         this.app = app;
     }
 
-    public Object[] getInformation(){
-        Object [] information = new Object[2];
-        information[0] = this.choiceBoxPesquisa.getValue();
-        information[1] = this.listViewReceitas.getSelectionModel().getSelectedItem();
+
+    //TODO: a bronca pra implementar
+    @Override
+    public HashMap<String, Object> getInformation(){
+        HashMap<String, Object> information = new HashMap<>();
         return information;
     }
 }
