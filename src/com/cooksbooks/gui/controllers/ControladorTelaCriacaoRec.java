@@ -25,9 +25,8 @@ import javafx.scene.control.TextField;
 
 public class ControladorTelaCriacaoRec {
 
-  private App app = App.getInstancia();
-
   private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
+  private App app = App.getInstancia();
 
   @FXML
   private TextArea taModoPreparo;
