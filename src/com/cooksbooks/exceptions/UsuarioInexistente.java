@@ -17,10 +17,6 @@ public class UsuarioInexistente extends Exception {
     this.loginUsuario = loginUsuario;
   }
 
-  /**
-   * Método que retorna o login do usuário dessa exceção.
-   * @return String com o login do usuário.
-   */
   public String getLoginUsuario() {
     return this.loginUsuario;
   }

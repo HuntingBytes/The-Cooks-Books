@@ -18,10 +18,6 @@ public class UsuarioJaLogado extends Exception {
     this.loginUsuarioAtual = loginUsuarioAtual;
   }
 
-  /**
-   * Método que retorna o login do usuário logado.
-   * @return String com o login do usuário.
-   */
   public String getLoginUsuarioAtual() {
     return this.loginUsuarioAtual;
   }
