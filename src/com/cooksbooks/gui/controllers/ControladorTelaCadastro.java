@@ -54,7 +54,7 @@ public class ControladorTelaCadastro implements DataReceiver {
   @FXML
   public void initialize() {
     this.cbExperienciaCulinaria.getItems().addAll(ExperienciaCulinaria.values());
-    this.tfLogin.textProperty().addListener((observableValue, s, t1) -> lbErro.setVisible(false));
+    this.tfLogin.textProperty().addListener((observsableValue, s, t1) -> lbErro.setVisible(false));
     this.pfSenha.textProperty().addListener((observableValue, s, t1) -> lbErro.setVisible(false));
     this.pfConfirmarSenha.textProperty()
         .addListener((observableValue, s, t1) -> lbErro.setVisible(false));
