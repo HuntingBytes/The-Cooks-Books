@@ -33,8 +33,7 @@ public class Nota implements Serializable {
         int mediaNotas = 0;
         int i = 0;
 
-        for(Integer value : votos.values())
-        {
+        for (Integer value : votos.values()) {
             somaNotas += value;
             i++;
         }

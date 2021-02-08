@@ -115,7 +115,7 @@ public class ControladorCaderno {
    */
 
   public void alterarInformacoesCaderno(String idDoCaderno, String informacoesNovas) {
-    if (informaçoesCadernoValido(informacoesNovas)) {
+    if (informacoesCadernoValido(informacoesNovas)) {
       repositorioCadernos.alterarInformacoesCaderno(idDoCaderno, informacoesNovas);
       repositorioCadernos.salvarArquivo();
     }
@@ -149,7 +149,7 @@ public class ControladorCaderno {
    *                    informaçao
    */
   // talvez os métodos auxiliares possam ser estáticos
-  private boolean informaçoesCadernoValido(String informacoes) {
+  private boolean informacoesCadernoValido(String informacoes) {
     return true;
   }
 }
