@@ -1,5 +1,6 @@
 package com.cooksbooks.gui.controllers;
 
+import com.cooksbooks.entity.utils.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -7,6 +8,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+
+import java.io.IOException;
 
 public class ControladorTelaEditarReceita {
 
@@ -110,4 +113,18 @@ public class ControladorTelaEditarReceita {
 
     @FXML
     private Button btGeralVoltar;
+
+    @FXML
+    private void initialize() {
+
+        //Precisa criar corpo do método
+
+    }
+
+    @FXML
+    private void handleVoltar() throws IOException {
+        //muda de tela
+    }
+
+
 }
