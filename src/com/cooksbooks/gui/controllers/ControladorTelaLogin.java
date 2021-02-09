@@ -1,11 +1,10 @@
 package com.cooksbooks.gui.controllers;
 
 import com.cooksbooks.App;
-import com.cooksbooks.ControladorGUI;
 import com.cooksbooks.DataSender;
 import com.cooksbooks.controllers.CooksBooksFachada;
 import com.cooksbooks.controllers.ICooksBooks;
-import com.cooksbooks.facilities.Telas;
+import com.cooksbooks.gui.Telas;
 import java.io.IOException;
 import java.util.HashMap;
 import javafx.fxml.FXML;

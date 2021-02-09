@@ -1,17 +1,9 @@
 package com.cooksbooks;
 
-import com.cooksbooks.controllers.CooksBooksFachada;
-import com.cooksbooks.facilities.Telas;
-import com.cooksbooks.gui.controllers.ControladorTelaCadastro;
-import com.cooksbooks.gui.controllers.ControladorTelaCaderno;
-import com.cooksbooks.gui.controllers.ControladorTelaCriacaoRec;
-import com.cooksbooks.gui.controllers.ControladorTelaLogin;
-import com.cooksbooks.gui.controllers.ControladorTelaPrincipal;
+import com.cooksbooks.gui.Telas;
 import java.io.IOException;
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 

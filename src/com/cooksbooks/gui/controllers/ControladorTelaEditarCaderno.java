@@ -1,18 +1,5 @@
 package com.cooksbooks.gui.controllers;
 
-import com.cooksbooks.App;
-import com.cooksbooks.ControladorGUI;
-import com.cooksbooks.DataReceiver;
-import com.cooksbooks.DataSender;
-import com.cooksbooks.controllers.CooksBooksFachada;
-import com.cooksbooks.controllers.ICooksBooks;
-import com.cooksbooks.entity.CadernoReceitas;
-import com.cooksbooks.entity.Receita;
-import com.cooksbooks.entity.utils.Categoria;
-import com.cooksbooks.facilities.Telas;
-import java.io.IOException;
-import java.util.Collection;
-import java.util.HashMap;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
