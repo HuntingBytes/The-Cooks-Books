@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControladorTelaEditarPerfil">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <ImageView fx:id="ivImagemUsuario" fitHeight="120.0" fitWidth="120.0" layoutX="51.0" layoutY="40.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../../../../../../../IP1-2VA/assets/player/periclesParado.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="lbNomeUsuario" layoutX="51.0" layoutY="169.0" prefHeight="25.0" prefWidth="132.0" text="Nome do Usuário">
+               <font>
+                  <Font name="Calibri Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbExperiencia" layoutX="51.0" layoutY="192.0" prefHeight="13.0" prefWidth="132.0" text="Experiência Culinária">
+               <font>
+                  <Font name="Calibri Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbAlterarNome" layoutX="210.0" layoutY="46.0" prefHeight="25.0" prefWidth="224.0" text="Alterar Nome do Usuário">
+               <font>
+                  <Font name="Calibri Bold" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfDigitarNome" layoutX="210.0" layoutY="76.0" prefHeight="25.0" prefWidth="272.0" promptText="Digite novo nome..." />
+            <Button fx:id="btAlterarNome" layoutX="493.0" layoutY="76.0" mnemonicParsing="false" text="Alterar" />
+            <Label fx:id="lbAlterarExperiencia" layoutX="210.0" layoutY="110.0" prefHeight="25.0" prefWidth="249.0" text="Alterar Experiência Culinária">
+               <font>
+                  <Font name="Calibri Bold" size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="btAlterarExperiencia" layoutX="493.0" layoutY="140.0" mnemonicParsing="false" text="Alterar" />
+            <ChoiceBox fx:id="cbEscolherExperiencia" layoutX="210.0" layoutY="140.0" prefHeight="25.0" prefWidth="272.0" />
+            <Button fx:id="btVoltar" layoutX="365.0" layoutY="361.0" mnemonicParsing="false" text="Voltar" />
+            <Label fx:id="lbAlterarSobre" layoutX="210.0" layoutY="180.0" prefHeight="25.0" prefWidth="249.0" text="Alterar Sobre Mim">
+               <font>
+                  <Font name="Calibri Bold" size="20.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="taDigitarSobre" layoutX="210.0" layoutY="208.0" prefHeight="111.0" prefWidth="272.0" promptText="Digite aqui..." />
+            <Button fx:id="btAlterarSobre" layoutX="493.0" layoutY="294.0" mnemonicParsing="false" text="Alterar" />
+            <Button fx:id="btSalvarPerfil" layoutX="495.0" layoutY="361.0" mnemonicParsing="false" text="Salvar" />
+            <Button fx:id="btCancelar" layoutX="423.0" layoutY="361.0" mnemonicParsing="false" text="Cancelar" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
