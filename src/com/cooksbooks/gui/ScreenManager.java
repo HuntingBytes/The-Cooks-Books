@@ -65,5 +65,5 @@ public class ScreenManager {
   public void setStagePrincipal(Stage stage) {
     stagePrincipal = stage;
   }
-  
+
 }
