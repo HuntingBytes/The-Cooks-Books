@@ -1,7 +1,6 @@
 package com.cooksbooks.gui.controllers;
 
 import com.cooksbooks.App;
-import com.cooksbooks.DataSender;
 import com.cooksbooks.controllers.CooksBooksFachada;
 import com.cooksbooks.controllers.ICooksBooks;
 import com.cooksbooks.entity.CadernoReceitas;
@@ -17,10 +16,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ControladorTelaPrincipal implements DataSender {
+public class ControladorTelaPrincipal {
 
     private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
-    private App app = App.getInstancia();
 
     private final String[] dropDownContent = {"Caderno", "Receita", "Usuario"};
 
@@ -83,17 +81,17 @@ public class ControladorTelaPrincipal implements DataSender {
 
     @FXML
     private void handleCriarCaderno() throws IOException {
-        this.app.alterarTela(Telas.TELA_CRIACAO_CADERNO, this);
+        //muda de tela
     }
 
     @FXML
     private void handleCriarReceita(){
-        //TODO:app.alterarTela(TELA_CRIACAO_RECEITA); muda para tela de criacao de receita
+        //muda de tela
     }
 
     @FXML
     private void handleMostrarPerfil(){
-        //TODO:app.alterarTela(TELA_PERFIL); muda para tela do perfil
+        //muda de tela
     }
 
     @FXML
@@ -117,17 +115,5 @@ public class ControladorTelaPrincipal implements DataSender {
         alert.setTitle("Atenção");
         alert.setHeaderText("Tipo de Pesquisa Não Informado");
         alert.showAndWait();
-    }
-
-    public void setApp(App app) {
-        this.app = app;
-    }
-
-
-    //TODO: a bronca pra implementar
-    @Override
-    public HashMap<String, Object> getInformation(){
-        HashMap<String, Object> information = new HashMap<>();
-        return information;
     }
 }

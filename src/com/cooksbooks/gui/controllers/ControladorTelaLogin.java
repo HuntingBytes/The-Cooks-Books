@@ -1,7 +1,6 @@
 package com.cooksbooks.gui.controllers;
 
 import com.cooksbooks.App;
-import com.cooksbooks.DataSender;
 import com.cooksbooks.controllers.CooksBooksFachada;
 import com.cooksbooks.controllers.ICooksBooks;
 import com.cooksbooks.gui.Telas;
@@ -15,10 +14,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class ControladorTelaLogin implements DataSender {
+public class ControladorTelaLogin {
 
   private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
-  private App app = App.getInstancia(); //Referência para a classe do aplicativo/programa
 
   @FXML
   private Label lbErro;
@@ -55,7 +53,7 @@ public class ControladorTelaLogin implements DataSender {
 
       if (sistema.efetuarLogin(login, senha)) {
         try {
-          app.alterarTela(Telas.TELA_PRINCIPAL_USUARIO);
+          //muda de tela
         } catch (Exception e) {
           e.printStackTrace();
           lbErro.setText("Não foi possível realizar o login. Favor tentar novamente.");
@@ -73,7 +71,7 @@ public class ControladorTelaLogin implements DataSender {
 
   @FXML
   private void handleCadastrar() throws IOException {
-    app.alterarTela(Telas.TELA_CADASTRO, this);
+    //muda de tela
   }
 
   @FXML
@@ -123,14 +121,5 @@ public class ControladorTelaLogin implements DataSender {
   private void clearCampos() {
     this.tfLogin.clear();
     this.pfSenha.clear();
-  }
-
-  @Override
-  public HashMap<String, Object> getInformation() {
-    HashMap<String, Object> information = new HashMap<>();
-
-    information.put("LOGIN", tfLogin.getText());
-    information.put("SENHA", pfSenha.getText());
-    return information;
   }
 }

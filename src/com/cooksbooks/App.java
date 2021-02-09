@@ -10,15 +10,6 @@ import javafx.stage.Stage;
 public final class App extends Application {
 
   private static Stage estagio;
-  private static App instancia;
-
-  public static App getInstancia() {
-    if (instancia == null) {
-      instancia = new App();
-    }
-    return instancia;
-  }
-
 
   @Override
   public void start(Stage stage) throws Exception {
@@ -36,41 +27,4 @@ public final class App extends Application {
     launch();
   }
 
-  /**
-   * Encaminha o usuario para uma nova tela sem precisar transferir informacoes
-   *
-   * @param tela tela ao qual o usuario sera migrado
-   * @throws IOException caso broncas ocorram
-   */
-  public void alterarTela(Telas tela) throws IOException {
-    FXMLLoader novaTelaLoader = new FXMLLoader(getClass().getResource(tela.caminho()));
-    Scene novaCena = new Scene(novaTelaLoader.load());
-
-
-    estagio.setScene(novaCena);
-  }
-
-  /**
-   * Encaminha o usuario para uma nova tela transferindo as informacoes pertinentes
-   * do controlador da tela anterior
-   *
-   * @param tela tela ao qual o usuario sera migrado
-   * @param sender informacoes pertinentes do controlador da tela anterior a serem
-   *               enviadas para o controlador da nova tela
-   *
-   * @throws IOException
-   */
-  public void alterarTela(Telas tela, DataSender sender) throws IOException {
-    FXMLLoader novaTelaLoader = new FXMLLoader(getClass().getResource(tela.caminho()));
-    Scene novaCena = new Scene(novaTelaLoader.load());
-
-    Object controllerObj = novaTelaLoader.getController();
-    DataReceiver receiver = (DataReceiver) controllerObj;
-
-    if(sender.getInformation().keySet().containsAll(receiver.requiredKeys())) {
-      receiver.setInformation(sender.getInformation());
-    }
-
-    estagio.setScene(novaCena);
-  }
 }

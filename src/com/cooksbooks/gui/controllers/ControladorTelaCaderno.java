@@ -1,8 +1,6 @@
 package com.cooksbooks.gui.controllers;
 
 import com.cooksbooks.App;
-import com.cooksbooks.DataReceiver;
-import com.cooksbooks.DataSender;
 import com.cooksbooks.controllers.CooksBooksFachada;
 import com.cooksbooks.controllers.ICooksBooks;
 import com.cooksbooks.entity.CadernoReceitas;
@@ -19,10 +17,9 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class ControladorTelaCaderno implements DataReceiver, DataSender {
+public class ControladorTelaCaderno {
 
   private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
-  private App app = App.getInstancia();
 
   private CadernoReceitas caderno;
 
@@ -71,28 +68,6 @@ public class ControladorTelaCaderno implements DataReceiver, DataSender {
 
   @FXML
   void handleVoltar() throws IOException {
-    app.alterarTela(Telas.TELA_PRINCIPAL_USUARIO);
-  }
-
-
-  //TODO setar as informacoes que vieram da tela anterior
-  @Override
-  public void setInformation(HashMap<String, Object> information) {
-    //this.caderno = (CadernoReceitas) information.get("CADERNO"); // Caderno selecionado da TelaPrincipal
-  }
-
-  //TODO essa bronca informacoes a serem passadas para a proxima tela
-  @Override
-  public HashMap<String, Object> getInformation() {
-
-    HashMap<String, Object> information = new HashMap<>();
-    //information[0] = this.lvResultadoBuscaReceita.getSelectionModel().getSelectedItem(); // Receita
-    return information;
-  }
-
-  //TODO essa bronca validar as informacoes que vieram da tela anterior
-  @Override
-  public Collection<String> requiredKeys() {
-    return null;
+    //muda de tela
   }
 }
