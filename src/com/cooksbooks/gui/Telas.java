@@ -1,4 +1,4 @@
-package com.cooksbooks.facilities;
+package com.cooksbooks.gui;
 
 public enum Telas {
   TELA_CADASTRO("gui/views/TelaCadastro.fxml"),

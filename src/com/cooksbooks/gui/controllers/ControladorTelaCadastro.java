@@ -1,13 +1,11 @@
 package com.cooksbooks.gui.controllers;
 
 import com.cooksbooks.App;
-import com.cooksbooks.ControladorGUI;
-import com.cooksbooks.DataReceiver;
 import com.cooksbooks.controllers.CooksBooksFachada;
 import com.cooksbooks.controllers.ICooksBooks;
 import com.cooksbooks.entity.Usuario;
 import com.cooksbooks.entity.utils.ExperienciaCulinaria;
-import com.cooksbooks.facilities.Telas;
+import com.cooksbooks.gui.Telas;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -22,10 +20,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class ControladorTelaCadastro implements DataReceiver {
+public class ControladorTelaCadastro {
 
   private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
-  private App app = App.getInstancia(); // Referência para a classe do aplicativo/programa
 
   @FXML
   private Label lbErro;
@@ -92,7 +89,7 @@ public class ControladorTelaCadastro implements DataReceiver {
 
   @FXML
   private void handleVoltar() throws IOException {
-   this.app.alterarTela(Telas.TELA_LOGIN);
+   //muda de tela
   }
 
   private boolean areCamposValidos() {
@@ -157,22 +154,5 @@ public class ControladorTelaCadastro implements DataReceiver {
   public void setLoginSenha(String login, String senha) {
     this.tfLogin.setText(login);
     this.pfSenha.setText(senha);
-  }
-
-
-  @Override
-  public void setInformation(HashMap<String, Object> information) {
-    this.tfLogin.setText((String) information.get("LOGIN"));
-    this.pfSenha.setText((String) information.get("SENHA"));
-  }
-
-
-  @Override
-  public Collection<String> requiredKeys() {
-    List<String> keys = new ArrayList<>();
-    keys.add("LOGIN");
-    keys.add("SENHA");
-
-    return keys;
   }
 }

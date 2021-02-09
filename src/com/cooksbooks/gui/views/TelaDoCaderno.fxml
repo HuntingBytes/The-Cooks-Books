@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<SplitPane dividerPositions="0.38127090301003347" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControladorTelaCaderno">
+<SplitPane dividerPositions="0.617056856187291" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControladorTelaCaderno">
    <items>
       <AnchorPane prefHeight="398.0" prefWidth="264.0">
          <children>

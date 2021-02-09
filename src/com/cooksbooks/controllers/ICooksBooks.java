@@ -50,6 +50,7 @@ public interface ICooksBooks {
   // throws ReceitaInexistente
   Receita buscarReceita(String idReceita);
 
+  // throws CadernoInexistente
   List<Receita> listarReceitasDoCaderno(String idCaderno);
 
 
@@ -71,7 +72,9 @@ public interface ICooksBooks {
   // throws CadernoInexistente, CampoInvalido
   CadernoReceitas buscarCaderno(String idCaderno);
 
+  // throws UsuarioInexistente
   List<CadernoReceitas> buscarTodosCadernosDoUsuario(String idUsuario);
 
+  // Talvez remover!
   List<CadernoReceitas> buscarTodosCadernosDoUsuarioAtual();
 }
