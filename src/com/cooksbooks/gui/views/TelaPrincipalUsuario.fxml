@@ -28,20 +28,19 @@
                      </font>
                   </Label>
                   <Button fx:id="botaoCriarCaderno" layoutX="14.0" layoutY="307.0" mnemonicParsing="false" onAction="#handleCriarCaderno" text="Criar Caderno" />
-                  <Button fx:id="botaoCriarReceita" layoutX="283.0" layoutY="307.0" mnemonicParsing="false" onAction="#handleCriarReceita" prefHeight="26.0" prefWidth="88.0" text="Criar Receita" />
                   <ChoiceBox fx:id="choiceBoxPesquisa" layoutX="488.0" layoutY="29.0" prefHeight="26.0" prefWidth="89.0" />
                   <ImageView fx:id="imagemPerfil" fitHeight="105.0" fitWidth="101.0" layoutX="21.0" layoutY="11.0" opacity="0.6" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Pictures/Saved%20Pictures/me2.jpg" />
                      </image>
                   </ImageView>
+                  <Label fx:id="experienciaCulinaria" layoutX="154.0" layoutY="67.0" prefHeight="18.0" prefWidth="184.0" text="Experiência" />
+                  <TextField fx:id="textFieldPesquisa" layoutX="339.0" layoutY="30.0" promptText="Pesquisar em" />
                   <Label fx:id="nomeUsuario" layoutX="154.0" layoutY="30.0" prefHeight="26.0" prefWidth="148.0" text="Nome do Usuário">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </Label>
-                  <Label fx:id="experienciaCulinaria" layoutX="154.0" layoutY="67.0" prefHeight="18.0" prefWidth="184.0" text="Experiência" />
-                  <TextField fx:id="textFieldPesquisa" layoutX="339.0" layoutY="30.0" promptText="Pesquisar em" />
                   <Button fx:id="botaoPesquisar" layoutX="510.0" layoutY="72.0" mnemonicParsing="false" onAction="#handlePesquisar" text="Pesquisar" />
                   <Button fx:id="botaoAcessarCaderno" layoutX="166.0" layoutY="307.0" mnemonicParsing="false" onAction="#handleAcessarCaderno" text="Acessar" />
                   <Button fx:id="botaoAcessarReceita" layoutX="442.0" layoutY="308.0" mnemonicParsing="false" onAction="#handleAcessarReceita" text="Acessar" />
