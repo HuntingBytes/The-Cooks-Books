@@ -9,6 +9,7 @@ import com.cooksbooks.gui.ScreenManager;
 import com.cooksbooks.gui.Telas;
 import java.util.HashMap;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
@@ -66,6 +67,14 @@ public class ControladorTelaPrincipal {
     @FXML
     private TextField textFieldPesquisa;
 
+    @FXML
+    private Button botaoPesquisar;
+
+    @FXML
+    private Button botaoAcessarCaderno;
+
+    @FXML
+    private Button botaoAcessarReceita;
 
     public void inicializar(){
 
@@ -93,13 +102,18 @@ public class ControladorTelaPrincipal {
     }
 
     @FXML
-    private void handleCriarCaderno() throws IOException {
-        screenManager.abrirTelaCriacaoCaderno();
+    void handleAcessarCaderno(ActionEvent event) {
+        screenManager.abrirTelaCaderno(listViewCadernos.getSelectionModel().getSelectedItem());
     }
 
     @FXML
-    private void handleCriarReceita(){
-        screenManager.abrirTelaCriacaoReceita();
+    void handleAcessarReceita(ActionEvent event) {
+        screenManager.abri
+    }
+
+    @FXML
+    private void handleCriarCaderno() throws IOException {
+        screenManager.abrirTelaCriacaoCaderno();
     }
 
     @FXML

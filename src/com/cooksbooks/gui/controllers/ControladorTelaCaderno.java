@@ -72,4 +72,8 @@ public class ControladorTelaCaderno {
   void handleVoltar() throws IOException {
     //muda de tela
   }
+
+  public void setCaderno(CadernoReceitas caderno) {
+    this.caderno = caderno;
+  }
 }

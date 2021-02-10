@@ -1,6 +1,7 @@
 package com.cooksbooks.gui;
 
-import com.cooksbooks.controllers.ControladorReceita;
+import com.cooksbooks.entity.CadernoReceitas;
+import com.cooksbooks.entity.Receita;
 import com.cooksbooks.gui.controllers.ControladorAdm;
 import com.cooksbooks.gui.controllers.ControladorCadernoRelatorio;
 import com.cooksbooks.gui.controllers.ControladorReceitaRelatorio;
@@ -17,7 +18,6 @@ import com.cooksbooks.gui.controllers.ControladorTelaPrincipal;
 import com.cooksbooks.gui.controllers.ControladorTelaReceita;
 import com.cooksbooks.gui.controllers.ControladorTelaRelatorio;
 import com.cooksbooks.gui.controllers.ControladorTelaUsuarioBuscado;
-import com.cooksbooks.gui.controllers.ControladorTelaUsuarioBuscado;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -31,7 +31,7 @@ public class ScreenManager {
   private Scene telaCadastro, telaCriacaoCaderno, telaCriacaoReceita, telaCaderno,
       telaEditarCaderno, telaEditarPerfil, telaLogin, telaEditarReceita,
       telaPerfil, telaPrincipalUsuario, telaResultadosPesquisa, telaInicialAdm, telaUsuarioBuscado, telaCadernoRelatorio,
-      telaReceitaRelatorio, telaGerarRelatorio, telaExibirReceita;
+      telaReceitaRelatorio, telaGerarRelatorio, telaReceita;
 
   private ControladorAdm controladorAdm;
   private ControladorTelaCadastro controladorTelaCadastro;
@@ -121,7 +121,7 @@ public class ScreenManager {
     controladorTelaRelatorio = loaderGerarRelatorio.getController();
 
     FXMLLoader loaderExibirReceita = new FXMLLoader(getClass().getResource(Telas.TELA_RECEITA.caminho()));
-    telaExibirReceita = new Scene(loaderExibirReceita.getController());
+    telaReceita = new Scene(loaderExibirReceita.getController());
     controladorTelaReceita = loaderExibirReceita.getController();
   }
 
@@ -151,6 +151,23 @@ public class ScreenManager {
     controladorTelaPrincipal.inicializar();
 
     stagePrincipal.setScene(telaPrincipalUsuario);
+    stagePrincipal.show();
+  }
+
+  // TelaCaderno
+  public void abrirTelaCaderno(CadernoReceitas caderno) {
+
+    controladorTelaCaderno.setCaderno(caderno);
+
+    stagePrincipal.setScene(telaCaderno);
+    stagePrincipal.show();
+  }
+
+  // TelaCaderno
+  public void abrirTelaReceita(Receita receita) {
+    controladorTelaReceita.setReceita(receita);
+
+    stagePrincipal.setScene(telaReceita);
     stagePrincipal.show();
   }
 
