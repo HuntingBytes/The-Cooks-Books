@@ -113,15 +113,15 @@ public class ScreenManager {
     controladorCadernoRelatorio = loaderCadernoRelatorio.getController();
 
     FXMLLoader loaderReceitaRelatorio = new FXMLLoader(getClass().getResource(Telas.TELA_RECEITA_RELATORIO.caminho()));
-    telaReceitaRelatorio = new Scene(loaderReceitaRelatorio.getController());
+    telaReceitaRelatorio = new  Scene(loaderReceitaRelatorio.load());
     controladorReceitaRelatorio = loaderReceitaRelatorio.getController();
 
     FXMLLoader loaderGerarRelatorio = new FXMLLoader(getClass().getResource(Telas.TELA_GERAR_RELATORIO.caminho()));
-    telaGerarRelatorio = new Scene(loaderGerarRelatorio.getController());
+    telaGerarRelatorio = new Scene(loaderGerarRelatorio.load());
     controladorTelaRelatorio = loaderGerarRelatorio.getController();
 
     FXMLLoader loaderExibirReceita = new FXMLLoader(getClass().getResource(Telas.TELA_RECEITA.caminho()));
-    telaReceita = new Scene(loaderExibirReceita.getController());
+    telaReceita = new Scene(loaderExibirReceita.load());
     controladorTelaReceita = loaderExibirReceita.getController();
   }
 
