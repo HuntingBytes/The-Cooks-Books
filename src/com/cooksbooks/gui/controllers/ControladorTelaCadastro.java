@@ -5,6 +5,7 @@ import com.cooksbooks.controllers.CooksBooksFachada;
 import com.cooksbooks.controllers.ICooksBooks;
 import com.cooksbooks.entity.Usuario;
 import com.cooksbooks.entity.utils.ExperienciaCulinaria;
+import com.cooksbooks.gui.ScreenManager;
 import com.cooksbooks.gui.Telas;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,6 +22,16 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class ControladorTelaCadastro {
+
+  private static ScreenManager screenManager;
+
+  static {
+    try {
+      screenManager = ScreenManager.getInstancia();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
 
   private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
 
@@ -48,8 +59,8 @@ public class ControladorTelaCadastro {
   @FXML
   private Button btVoltar;
 
-  @FXML
-  public void initialize() {
+
+  public void inicializar() {
     this.cbExperienciaCulinaria.getItems().addAll(ExperienciaCulinaria.values());
     this.tfLogin.textProperty().addListener((observsableValue, s, t1) -> lbErro.setVisible(false));
     this.pfSenha.textProperty().addListener((observableValue, s, t1) -> lbErro.setVisible(false));
@@ -89,7 +100,7 @@ public class ControladorTelaCadastro {
 
   @FXML
   private void handleVoltar() throws IOException {
-   //muda de tela
+   screenManager.abrirLogin();
   }
 
   private boolean areCamposValidos() {

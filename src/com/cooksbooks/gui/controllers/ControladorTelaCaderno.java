@@ -47,14 +47,16 @@ public class ControladorTelaCaderno {
   @FXML
   private ListView<Categoria> lvCategoriasCaderno;
 
-  @FXML
+
   private void initialize() {
+
     this.taDesc.setText(caderno.getInformacoesCaderno());
     this.taDesc.disableProperty();
 
     this.lvCategoriasCaderno.getItems().addAll(caderno.listarCategorias());
     this.lvResultadoBuscaReceita.getItems().addAll
         (sistema.listarReceitasDoCaderno(caderno.getIdCaderno()));
+
   }
 
   @FXML
