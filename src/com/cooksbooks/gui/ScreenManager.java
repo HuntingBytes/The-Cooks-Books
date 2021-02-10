@@ -185,6 +185,13 @@ public class ScreenManager {
     stagePrincipal.show();
   }
 
+  // TelaPerfil
+  public void abrirTelaPerfil() {
+
+    stagePrincipal.setScene(telaPerfil);
+    stagePrincipal.show();
+  }
+
 
   public void abrirTelaResultadosPesquisa () {
     //TODO somente abre a tela quando selecionado a opcao de busca + nome pesquisado

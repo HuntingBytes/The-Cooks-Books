@@ -108,7 +108,7 @@ public class ControladorTelaPrincipal {
 
     @FXML
     void handleAcessarReceita(ActionEvent event) {
-        screenManager.abri
+
     }
 
     @FXML
