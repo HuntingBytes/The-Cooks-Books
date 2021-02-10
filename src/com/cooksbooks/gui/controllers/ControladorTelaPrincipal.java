@@ -55,8 +55,10 @@ public class ControladorTelaPrincipal {
     @FXML
     private TextField textFieldPesquisa;
 
+    // Criar initialize sem @fxml
     @FXML
     public void initialize(){
+        /*
         this.nomeUsuarioTab.setText(sistema.getUsuarioLogado().getNomePerfil());
         this.nomeUsuario.setText(sistema.getUsuarioLogado().getNomePerfil());
         this.experienciaCulinaria.setText
@@ -68,7 +70,9 @@ public class ControladorTelaPrincipal {
         this.listViewReceitas.setItems((FXCollections.observableArrayList(buscarTodasReceitas())));
 
         this.choiceBoxPesquisa.setItems(FXCollections.observableArrayList(dropDownContent));
+        */
     }
+
 
     //TODO: fazer isso direito
     private List<Receita> buscarTodasReceitas(){
