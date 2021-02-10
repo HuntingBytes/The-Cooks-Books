@@ -5,6 +5,7 @@ import com.cooksbooks.controllers.CooksBooksFachada;
 import com.cooksbooks.controllers.ICooksBooks;
 import com.cooksbooks.entity.CadernoReceitas;
 import com.cooksbooks.entity.Receita;
+import com.cooksbooks.gui.ScreenManager;
 import com.cooksbooks.gui.Telas;
 import java.util.HashMap;
 import javafx.collections.FXCollections;
@@ -17,6 +18,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ControladorTelaPrincipal {
+
+    private  static ScreenManager screenManager;
+
+    static {
+        try {
+            screenManager = ScreenManager.getInstancia();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
 
@@ -56,7 +67,7 @@ public class ControladorTelaPrincipal {
     private TextField textFieldPesquisa;
 
 
-    private void initialize(){
+    public void inicializar(){
 
         this.nomeUsuarioTab.setText(sistema.getUsuarioLogado().getNomePerfil());
         this.nomeUsuario.setText(sistema.getUsuarioLogado().getNomePerfil());
@@ -83,17 +94,16 @@ public class ControladorTelaPrincipal {
 
     @FXML
     private void handleCriarCaderno() throws IOException {
-        //muda de tela
+        screenManager.abrirTelaCriacaoCaderno();
     }
 
     @FXML
     private void handleCriarReceita(){
-        //muda de tela
+        screenManager.abrirTelaCriacaoReceita();
     }
 
     @FXML
     private void handleMostrarPerfil(){
-        //muda de tela
     }
 
     @FXML

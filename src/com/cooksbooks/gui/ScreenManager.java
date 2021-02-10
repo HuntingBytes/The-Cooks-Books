@@ -111,4 +111,28 @@ public class ScreenManager {
     stagePrincipal.setScene(telaCadastro);
     stagePrincipal.show();
   }
+
+  // TelaPrincipal
+  public void abrirTelaPrincipal() {
+
+    controladorTelaPrincipal.inicializar();
+
+    stagePrincipal.setScene(telaPrincipalUsuario);
+    stagePrincipal.show();
+  }
+
+   // TelaCriacaoCaderno
+  public void abrirTelaCriacaoCaderno() {
+
+    stagePrincipal.setScene(telaCriacaoCaderno);
+    stagePrincipal.show();
+  }
+
+  // TelaCriacaoReceita
+  public void abrirTelaCriacaoReceita() {
+
+    stagePrincipal.setScene(telaCriacaoReceita);
+    stagePrincipal.show();
+  }
+
 }

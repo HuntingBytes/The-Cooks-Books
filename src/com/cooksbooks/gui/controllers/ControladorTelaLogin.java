@@ -47,7 +47,7 @@ public class ControladorTelaLogin {
   @FXML
   private Button btAjuda;
 
-  
+
   public void inicializar() {
     this.tfLogin.textProperty().addListener((observableValue, s, t1) -> lbErro.setVisible(false));
     this.pfSenha.textProperty().addListener((observableValue, s, t1) -> lbErro.setVisible(false));
@@ -64,7 +64,7 @@ public class ControladorTelaLogin {
 
       if (sistema.efetuarLogin(login, senha)) {
         try {
-          //muda de tela
+          screenManager.abrirTelaPrincipal();
         } catch (Exception e) {
           e.printStackTrace();
           lbErro.setText("Não foi possível realizar o login. Favor tentar novamente.");
