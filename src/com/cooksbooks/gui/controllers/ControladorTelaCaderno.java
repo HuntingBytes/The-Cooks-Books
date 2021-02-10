@@ -47,10 +47,9 @@ public class ControladorTelaCaderno {
   @FXML
   private ListView<Categoria> lvCategoriasCaderno;
 
-  // Criar initialize sem @fxml
-  @FXML
+
   private void initialize() {
-    /*
+
     this.taDesc.setText(caderno.getInformacoesCaderno());
     this.taDesc.disableProperty();
 
@@ -58,7 +57,6 @@ public class ControladorTelaCaderno {
     this.lvResultadoBuscaReceita.getItems().addAll
         (sistema.listarReceitasDoCaderno(caderno.getIdCaderno()));
 
-     */
   }
 
   @FXML

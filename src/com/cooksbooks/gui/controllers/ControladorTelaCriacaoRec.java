@@ -58,7 +58,7 @@ public class ControladorTelaCriacaoRec {
   @FXML
   private Label lbErro;
 
-  @FXML
+
   private void initialize() {
 
     this.cbCustoMedio.getItems().addAll(Custo.values());

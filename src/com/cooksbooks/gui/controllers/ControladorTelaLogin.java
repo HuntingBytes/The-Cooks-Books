@@ -3,6 +3,7 @@ package com.cooksbooks.gui.controllers;
 import com.cooksbooks.App;
 import com.cooksbooks.controllers.CooksBooksFachada;
 import com.cooksbooks.controllers.ICooksBooks;
+import com.cooksbooks.gui.ScreenManager;
 import com.cooksbooks.gui.Telas;
 import java.io.IOException;
 import java.util.HashMap;
@@ -15,6 +16,16 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class ControladorTelaLogin {
+
+  private static ScreenManager screenManager;
+
+  static {
+    try {
+      screenManager = ScreenManager.getInstancia();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
 
   private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
 
@@ -36,8 +47,8 @@ public class ControladorTelaLogin {
   @FXML
   private Button btAjuda;
 
-  @FXML
-  public void initialize() {
+  
+  public void inicializar() {
     this.tfLogin.textProperty().addListener((observableValue, s, t1) -> lbErro.setVisible(false));
     this.pfSenha.textProperty().addListener((observableValue, s, t1) -> lbErro.setVisible(false));
   }
@@ -71,7 +82,8 @@ public class ControladorTelaLogin {
 
   @FXML
   private void handleCadastrar() throws IOException {
-    //muda de tela
+    screenManager.abrirCadastro(tfLogin.getText(), pfSenha.getText());
+    clearCampos();
   }
 
   @FXML

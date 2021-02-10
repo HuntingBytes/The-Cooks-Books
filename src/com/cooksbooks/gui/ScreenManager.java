@@ -102,8 +102,13 @@ public class ScreenManager {
     stagePrincipal.show();
   }
 
-  //
+  // Cadastro
+  public void abrirCadastro(String login, String senha) {
 
+    controladorTelaCadastro.setLoginSenha(login, senha);
+    controladorTelaCadastro.inicializar();
 
-
+    stagePrincipal.setScene(telaCadastro);
+    stagePrincipal.show();
+  }
 }

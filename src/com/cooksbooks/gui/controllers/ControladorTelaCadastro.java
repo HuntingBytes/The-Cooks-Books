@@ -48,8 +48,8 @@ public class ControladorTelaCadastro {
   @FXML
   private Button btVoltar;
 
-  @FXML
-  public void initialize() {
+
+  public void inicializar() {
     this.cbExperienciaCulinaria.getItems().addAll(ExperienciaCulinaria.values());
     this.tfLogin.textProperty().addListener((observsableValue, s, t1) -> lbErro.setVisible(false));
     this.pfSenha.textProperty().addListener((observableValue, s, t1) -> lbErro.setVisible(false));

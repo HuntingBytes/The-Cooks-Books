@@ -114,7 +114,7 @@ public class ControladorTelaEditarReceita {
     @FXML
     private Button btGeralVoltar;
 
-    @FXML
+
     private void initialize() {
 
         //Precisa criar corpo do método
