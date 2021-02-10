@@ -5,7 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 
-public class ControladorTelaUsuarioPesquisado {
+public class ControladorTelaUsuarioBuscado {
 
   @FXML
   private ListView<?> lvReceitasUsuarioBuscado;

@@ -10,7 +10,13 @@ public enum Telas {
   TELA_EDITAR_PERFIL("views/TelaEditarPerfil.fxml"),
   TELA_CADERNO("views/TelaDoCaderno.fxml"),
   TELA_RESULTADOS_PESQUISA("views/TelaResultadosPesquisa.fxml"),
-  TELA_EDITAR_RECEITA("views/TelaEditarReceita.fxml");
+  TELA_EDITAR_RECEITA("views/TelaEditarReceita.fxml"),
+  TELA_INICIAL_ADM("views/TelaInicialAdm.fxml"),
+  TELA_GERAR_RELATORIO("views/TelaGerarRelatorio.fxml"),
+  TELA_USUARIO_BUSCADO("views/TelaUsuarioBuscado.fxml"),
+  TELA_RECEITA_RELATORIO("views/TelaReceitaRelatorio.fxml"),
+  TELA_CADERNO_RELATORIO("views/TelaCadernoRelatorio.fxml"),
+  TELA_RECEITA("views/TelaReceita.fxml");
 
   private final String caminho;
 

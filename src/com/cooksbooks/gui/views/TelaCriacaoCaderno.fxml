@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="250.0" layoutY="87.0" text="Nome do Caderno" />
       <Label layoutX="242.0" layoutY="223.0" text="Descrição do Caderno" />
@@ -16,9 +16,9 @@
          <font>
             <Font name="Stencil" size="12.0" />
          </font></Label>
-      <CheckBox layoutX="204.0" layoutY="163.0" mnemonicParsing="false" text="Você quer seu caderno privado?" />
-      <Button layoutX="254.0" layoutY="360.0" mnemonicParsing="false" text="Criar Caderno" />
-      <TextArea layoutX="150.0" layoutY="241.0" prefHeight="98.0" prefWidth="300.0" />
-      <TextField layoutX="226.0" layoutY="105.0" />
+      <CheckBox fx:id="cbCadernoPrivado" layoutX="204.0" layoutY="163.0" mnemonicParsing="false" text="Você quer seu caderno privado?" />
+      <Button fx:id="btCriarCaderno" layoutX="254.0" layoutY="360.0" mnemonicParsing="false" text="Criar Caderno" />
+      <TextArea fx:id="taDescricaoCaderno" layoutX="150.0" layoutY="241.0" prefHeight="98.0" prefWidth="300.0" />
+      <TextField fx:id="tfNomeCaderno" layoutX="226.0" layoutY="105.0" />
    </children>
 </AnchorPane>
