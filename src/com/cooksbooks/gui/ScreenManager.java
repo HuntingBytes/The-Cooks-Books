@@ -142,4 +142,12 @@ public class ScreenManager {
     stagePrincipal.show();
   }
 
+
+  public void abrirTelaResultadosPesquisa () {
+    //TODO somente abre a tela quando selecionado a opcao de busca + nome pesquisado
+
+    stagePrincipal.setScene(telaResultadosPesquisa);
+    stagePrincipal.show();
+  }
+
 }
