@@ -8,17 +8,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControladorTelaCriacaoCaderno">
    <children>
       <Label layoutX="250.0" layoutY="87.0" text="Nome do Caderno" />
       <Label layoutX="242.0" layoutY="223.0" text="Descrição do Caderno" />
-      <Label layoutX="238.0" layoutY="34.0" text="Criação de Caderno">
+      <Label layoutX="248.0" layoutY="33.0" text="Criação de Caderno">
          <font>
             <Font name="Stencil" size="12.0" />
          </font></Label>
       <CheckBox fx:id="cbCadernoPrivado" layoutX="204.0" layoutY="163.0" mnemonicParsing="false" text="Você quer seu caderno privado?" />
-      <Button fx:id="btCriarCaderno" layoutX="254.0" layoutY="360.0" mnemonicParsing="false" text="Criar Caderno" />
+      <Button fx:id="btCriarCaderno" layoutX="254.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleCriarCaderno" text="Criar Caderno" />
       <TextArea fx:id="taDescricaoCaderno" layoutX="150.0" layoutY="241.0" prefHeight="98.0" prefWidth="300.0" />
       <TextField fx:id="tfNomeCaderno" layoutX="226.0" layoutY="105.0" />
+      <Button fx:id="btVoltar" layoutY="2.0" mnemonicParsing="false" onAction="#handleVoltarTelaPrin" text="Voltar" />
+      <Label fx:id="lbErro" layoutX="368.0" layoutY="364.0" prefHeight="17.0" prefWidth="156.0" textFill="#ae0606" />
    </children>
 </AnchorPane>
