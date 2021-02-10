@@ -1,6 +1,9 @@
 package com.cooksbooks.gui;
 
+import com.cooksbooks.controllers.ControladorReceita;
 import com.cooksbooks.gui.controllers.ControladorAdm;
+import com.cooksbooks.gui.controllers.ControladorCadernoRelatorio;
+import com.cooksbooks.gui.controllers.ControladorReceitaRelatorio;
 import com.cooksbooks.gui.controllers.ControladorTelaCadastro;
 import com.cooksbooks.gui.controllers.ControladorTelaCaderno;
 import com.cooksbooks.gui.controllers.ControladorTelaCriacaoCaderno;
@@ -12,6 +15,7 @@ import com.cooksbooks.gui.controllers.ControladorTelaLogin;
 import com.cooksbooks.gui.controllers.ControladorTelaPerfil;
 import com.cooksbooks.gui.controllers.ControladorTelaPrincipal;
 import com.cooksbooks.gui.controllers.ControladorTelaReceita;
+import com.cooksbooks.gui.controllers.ControladorTelaRelatorio;
 import com.cooksbooks.gui.controllers.ControladorTelaUsuarioPesquisado;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
@@ -40,6 +44,9 @@ public class ScreenManager {
   private ControladorTelaPrincipal controladorTelaPrincipal;
   private ControladorTelaReceita controladorTelaReceita;
   private ControladorTelaUsuarioPesquisado controladorTelaUsuarioPesquisado;
+  private ControladorCadernoRelatorio controladorCadernoRelatorio;
+  private ControladorReceitaRelatorio controladorReceitaRelatorio;
+  private ControladorTelaRelatorio controladorTelaRelatorio;
 
 
   public static ScreenManager getInstancia() throws IOException {
