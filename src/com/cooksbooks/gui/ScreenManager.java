@@ -71,7 +71,7 @@ public class ScreenManager {
     FXMLLoader loaderTelaCriacaoReceita = new FXMLLoader(getClass().getResource(Telas.TELA_CRIACAO_RECEITA.caminho()));
     telaCriacaoReceita = new Scene(loaderTelaCriacaoReceita.load());
     controladorTelaCriacaoRec = loaderTelaCriacaoReceita.getController();
-    
+
     FXMLLoader loaderTelaLogin = new FXMLLoader(getClass().getResource(Telas.TELA_LOGIN.caminho()));
     telaLogin = new Scene(loaderTelaLogin.load());
     controladorTelaLogin = loaderTelaLogin.getController();
@@ -180,7 +180,7 @@ public class ScreenManager {
     stagePrincipal.show();
   }
 
-   // TelaCriacaoCaderno
+  // TelaCriacaoCaderno
   public void abrirTelaCriacaoCaderno() {
 
     stagePrincipal.setScene(telaCriacaoCaderno);
@@ -198,6 +198,13 @@ public class ScreenManager {
   public void abrirTelaPerfil() {
 
     stagePrincipal.setScene(telaPerfil);
+    stagePrincipal.show();
+  }
+
+  // TelaPerfil
+  public void abrirTelaEditarPerfil() {
+
+    stagePrincipal.setScene(telaEditarPerfil);
     stagePrincipal.show();
   }
 
