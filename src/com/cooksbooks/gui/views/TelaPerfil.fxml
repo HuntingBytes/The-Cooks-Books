@@ -9,14 +9,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControladorTelaPerfil">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControladorTelaPerfil">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="600.0">
          <children>
             <ImageView fx:id="ivImagemPerfil" fitHeight="147.0" fitWidth="144.0" layoutX="66.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../../../../../Imagens/83661814_2144602928976568_7570641266707267584_n.jpg" />
-               </image>
             </ImageView>
             <Label fx:id="lbNomeUsuario" layoutX="266.0" layoutY="28.0" prefHeight="37.0" prefWidth="253.0" text="Nome Do Usuário">
                <font>
@@ -33,12 +30,12 @@
                   <Font name="Calibri" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="btEditarPerfil" layoutX="320.0" layoutY="71.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="125.0" text="Editar Perfil">
+            <Button fx:id="btEditarPerfil" layoutX="320.0" layoutY="71.0" mnemonicParsing="false" onAction="#handlEditarPerfil" prefHeight="22.0" prefWidth="125.0" text="Editar Perfil">
                <font>
                   <Font name="Calibri" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="btVoltar" layoutX="320.0" layoutY="167.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="125.0" text="Voltar">
+            <Button fx:id="btVoltar" layoutX="320.0" layoutY="167.0" mnemonicParsing="false" onAction="#handleVoltar" prefHeight="22.0" prefWidth="125.0" text="Voltar">
                <font>
                   <Font name="Calibri" size="12.0" />
                </font>
