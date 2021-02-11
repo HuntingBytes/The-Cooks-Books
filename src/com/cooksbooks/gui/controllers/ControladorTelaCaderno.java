@@ -6,6 +6,7 @@ import com.cooksbooks.controllers.ICooksBooks;
 import com.cooksbooks.entity.CadernoReceitas;
 import com.cooksbooks.entity.Receita;
 import com.cooksbooks.entity.utils.Categoria;
+import com.cooksbooks.gui.ScreenManager;
 import com.cooksbooks.gui.Telas;
 import java.io.IOException;
 import java.util.Collection;
@@ -22,6 +23,8 @@ public class ControladorTelaCaderno {
   private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
 
   private CadernoReceitas caderno;
+
+  private static ScreenManager screenManager;
 
   @FXML
   private Label lbNomeCaderno;
@@ -61,16 +64,17 @@ public class ControladorTelaCaderno {
 
   @FXML
   void handleBuscarReceita() {
+
   }
 
   @FXML
   void handleEditarCaderno() {
-    //app.alterarTela(Telas.TELA_ALTERAR_CADERNO, this); //Talvez a telaCriacaoCaderno possa atuar aqui
+    screenManager.abrirTelaEditarCaderno(caderno);
   }
 
   @FXML
   void handleVoltar() throws IOException {
-    //muda de tela
+     screenManager.abrirTelaPrincipal();
   }
 
   public void setCaderno(CadernoReceitas caderno) {

@@ -1,5 +1,6 @@
 package com.cooksbooks.gui.controllers;
 
+import com.cooksbooks.entity.CadernoReceitas;
 import com.cooksbooks.entity.Receita;
 import com.cooksbooks.entity.utils.Categoria;
 import javafx.fxml.FXML;
@@ -12,6 +13,8 @@ import javafx.scene.control.TextField;
 public class ControladorTelaEditarCaderno {
 
     //Está implementado apenas o esqueleto simples
+
+    private CadernoReceitas caderno;
 
     @FXML
     private TextField tfNovoNome;
@@ -57,4 +60,8 @@ public class ControladorTelaEditarCaderno {
 
     @FXML
     private Button btAddCategoria;
+
+    public void setCaderno(CadernoReceitas caderno) {
+        this.caderno = caderno;
+    }
 }
