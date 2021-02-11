@@ -26,6 +26,14 @@ public class ControladorTelaCaderno {
 
   private static ScreenManager screenManager;
 
+  static {
+    try {
+      screenManager = ScreenManager.getInstancia();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
   @FXML
   private Label lbNomeCaderno;
 
@@ -74,7 +82,7 @@ public class ControladorTelaCaderno {
 
   @FXML
   void handleVoltar() throws IOException {
-     screenManager.abrirTelaPrincipal();
+    screenManager.abrirTelaPrincipal();
   }
 
   public void setCaderno(CadernoReceitas caderno) {
