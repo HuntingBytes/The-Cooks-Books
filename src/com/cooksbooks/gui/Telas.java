@@ -16,6 +16,7 @@ public enum Telas {
   TELA_USUARIO_BUSCADO("views/TelaUsuarioBuscado.fxml"),
   TELA_RECEITA_RELATORIO("views/TelaReceitaRelatorio.fxml"),
   TELA_CADERNO_RELATORIO("views/TelaCadernoRelatorio.fxml"),
+  TELA_EDITAR_CADERNO("views/TelaEditarCaderno.fxml"),
   TELA_RECEITA("views/TelaReceita.fxml");
 
   private final String caminho;

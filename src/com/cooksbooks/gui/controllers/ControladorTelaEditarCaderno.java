@@ -1,5 +1,7 @@
 package com.cooksbooks.gui.controllers;
 
+import com.cooksbooks.entity.Receita;
+import com.cooksbooks.entity.utils.Categoria;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -27,7 +29,7 @@ public class ControladorTelaEditarCaderno {
     private Button btVoltar;
 
     @FXML
-    private ListView<?> lvReceitasBuscadas;
+    private ListView<Receita> lvReceitasBuscadas;
 
     @FXML
     private TextField tfDigiteReceita;
@@ -42,7 +44,7 @@ public class ControladorTelaEditarCaderno {
     private Button btRemoveReceita;
 
     @FXML
-    private ListView<?> lvCategoriasBuscadas;
+    private ListView<Categoria> lvCategoriasBuscadas;
 
     @FXML
     private TextField tfDigiteCategoria;
