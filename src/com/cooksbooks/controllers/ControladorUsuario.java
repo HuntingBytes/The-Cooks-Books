@@ -5,6 +5,9 @@ import com.cooksbooks.database.RepositorioUsuariosList;
 import com.cooksbooks.database.interfaces.IRepositorioUsuario;
 import com.cooksbooks.entity.Usuario;
 import com.cooksbooks.entity.utils.ExperienciaCulinaria;
+import com.cooksbooks.exceptions.CampoInvalido;
+import com.cooksbooks.exceptions.UsuarioInexistente;
+import com.cooksbooks.exceptions.UsuarioJaCadastrado;
 
 public class ControladorUsuario {
 
@@ -40,10 +43,14 @@ public class ControladorUsuario {
    *
    * @param usuario usuario a ser cadastrado
    */
-  public void cadastrarUsuario(Usuario usuario) {
-    if (!this.repositorioUsuarios.existeUsuario(usuario.getLogin())) {
-      this.repositorioUsuarios.cadastrarUsuario(usuario);
-      this.repositorioUsuarios.salvarArquivo();
+  public void cadastrarUsuario(Usuario usuario) throws UsuarioJaCadastrado, CampoInvalido  {
+    if (this.isUsuarioValido(usuario)) {
+      if (!this.repositorioUsuarios.existeUsuario(usuario.getLogin())) {
+        this.repositorioUsuarios.cadastrarUsuario(usuario);
+        this.repositorioUsuarios.salvarArquivo();
+      } else {
+        throw new UsuarioJaCadastrado(usuario.getLogin());
+      }
     }
   }
 
@@ -52,10 +59,12 @@ public class ControladorUsuario {
    *
    * @param nomeUsuario usuario a ser removido
    */
-  public void removerUsuario(String nomeUsuario) {
+  public void removerUsuario(String nomeUsuario) throws UsuarioInexistente {
     if (this.repositorioUsuarios.existeUsuario(nomeUsuario)) {
       this.repositorioUsuarios.removerUsuario(nomeUsuario);
       this.repositorioUsuarios.salvarArquivo();
+    } else {
+      throw new UsuarioInexistente(nomeUsuario);
     }
   }
 
@@ -67,7 +76,7 @@ public class ControladorUsuario {
    * @param login login do usuario a ser buscado
    * @return um usuario
    */
-  public Usuario buscarUsuario(String login) {
+  public Usuario buscarUsuario(String login) throws UsuarioInexistente {
     return this.repositorioUsuarios.buscarUsuario(login);
   }
 
@@ -75,35 +84,84 @@ public class ControladorUsuario {
   /**
    *
    */
-  public void alterarNomePerfil(String login, String nomePerfil) {
-    this.repositorioUsuarios.alterarNomePerfil(login, nomePerfil);
-    this.repositorioUsuarios.salvarArquivo();
+  public void alterarNomePerfil(String login, String nomePerfil) throws UsuarioInexistente, CampoInvalido {
+    if (this.isNomePerfilValido(nomePerfil)) {
+      if (this.repositorioUsuarios.existeUsuario(login)) {
+        this.repositorioUsuarios.alterarNomePerfil(login, nomePerfil);
+        this.repositorioUsuarios.salvarArquivo();
+      } else {
+        throw new UsuarioInexistente(login);
+      }
+    } else {
+      throw new CampoInvalido("Nome de Perfil");
+    }
   }
 
   // TODO alterarBiografia
   /**
    *
    */
-  public void alterarBiografia(String login, String biografia) {
-    this.repositorioUsuarios.alterarBiografia(login, biografia);
-    this.repositorioUsuarios.salvarArquivo();
+  public void alterarBiografia(String login, String biografia) throws UsuarioInexistente, CampoInvalido {
+    if (this.isBiografiaValida(biografia)) {
+      if (this.repositorioUsuarios.existeUsuario(login)) {
+        this.repositorioUsuarios.alterarBiografia(login, biografia);
+        this.repositorioUsuarios.salvarArquivo();
+      } else {
+        throw new UsuarioInexistente(login);
+      }
+    } else {
+      throw new CampoInvalido("Biografia");
+    }
   }
 
   // TODO alterarExperienciaCulinaria
   /**
    *
    */
-  public void alterarExperienciaCulinaria(String login, ExperienciaCulinaria experienciaCulinaria) {
-    this.repositorioUsuarios.alterarExperienciaCulinaria(login, experienciaCulinaria);
-    this.repositorioUsuarios.salvarArquivo();
+  public void alterarExperienciaCulinaria(String login, ExperienciaCulinaria experienciaCulinaria) throws UsuarioInexistente, CampoInvalido {
+    if (experienciaCulinaria != null) {
+      if (this.repositorioUsuarios.existeUsuario(login)) {
+        this.repositorioUsuarios.alterarExperienciaCulinaria(login, experienciaCulinaria);
+        this.repositorioUsuarios.salvarArquivo();
+      } else {
+        throw new UsuarioInexistente(login);
+      }
+    } else {
+      throw new CampoInvalido("Experiência Culinária");
+    }
   }
 
   // TODO alterar Imagem
   /**
    *
    */
-  public void alterarCaminhoImagemPerfil(String login, String caminhoImagemPerfil) {
+  public void alterarCaminhoImagemPerfil(String login, String caminhoImagemPerfil) throws UsuarioInexistente, CampoInvalido {
+    if (this.isCaminhoImagemPerfilValido(caminhoImagemPerfil)) {
+      if (this.repositorioUsuarios.existeUsuario(login)) {
+        this.repositorioUsuarios.alterarCaminhoImagemPerfil(login, caminhoImagemPerfil);
+        this.repositorioUsuarios.salvarArquivo();
+      } else {
+        throw new UsuarioInexistente(login);
+      }
+    } else {
+      throw new CampoInvalido("Caminho Imagem Perfil");
+    }
+  }
 
+  private boolean isUsuarioValido(Usuario usuario) throws CampoInvalido {
+    return true;
+  }
+
+  private boolean isNomePerfilValido(String nomePerfil) {
+    return true;
+  }
+
+  private boolean isBiografiaValida(String biografia) {
+    return true;
+  }
+
+  private boolean isCaminhoImagemPerfilValido(String caminhoImagemPerfil) {
+    return true;
   }
 
 }

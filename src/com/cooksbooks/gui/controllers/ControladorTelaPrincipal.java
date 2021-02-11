@@ -5,6 +5,7 @@ import com.cooksbooks.controllers.CooksBooksFachada;
 import com.cooksbooks.controllers.ICooksBooks;
 import com.cooksbooks.entity.CadernoReceitas;
 import com.cooksbooks.entity.Receita;
+import com.cooksbooks.exceptions.UsuarioInexistente;
 import com.cooksbooks.gui.ScreenManager;
 import com.cooksbooks.gui.Telas;
 import java.util.HashMap;
@@ -129,7 +130,13 @@ public class ControladorTelaPrincipal {
             switch (choiceBoxPesquisa.getValue()) {
                 case "Caderno" -> sistema.buscarCaderno(textFieldPesquisa.getText());
                 case "Receita" -> sistema.buscarReceita(textFieldPesquisa.getText());
-                case "Usuário" -> sistema.buscarUsuario(textFieldPesquisa.getText());
+                case "Usuário" -> {
+                    try {
+                        sistema.buscarUsuario(textFieldPesquisa.getText());
+                    } catch (UsuarioInexistente e) {
+                        System.out.println(e.getMessage());
+                    }
+                }
             }
         }
         //app.alterarTela(TELA_RESULTADOS); muda para tela de resultados

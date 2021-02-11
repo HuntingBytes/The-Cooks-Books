@@ -5,6 +5,8 @@ import com.cooksbooks.controllers.CooksBooksFachada;
 import com.cooksbooks.controllers.ICooksBooks;
 import com.cooksbooks.entity.Usuario;
 import com.cooksbooks.entity.utils.ExperienciaCulinaria;
+import com.cooksbooks.exceptions.CampoInvalido;
+import com.cooksbooks.exceptions.UsuarioJaCadastrado;
 import com.cooksbooks.gui.ScreenManager;
 import com.cooksbooks.gui.Telas;
 import java.io.IOException;
@@ -59,7 +61,6 @@ public class ControladorTelaCadastro {
   @FXML
   private Button btVoltar;
 
-
   public void inicializar() {
     this.cbExperienciaCulinaria.getItems().addAll(ExperienciaCulinaria.values());
     this.tfLogin.textProperty().addListener((observsableValue, s, t1) -> lbErro.setVisible(false));
@@ -83,15 +84,23 @@ public class ControladorTelaCadastro {
         usuario.setExperienciaCulinaria(experienciaCulinaria);
         usuario.setBiografia("");
 
-        sistema.cadastrarUsuario(usuario);
-
-        this.clearCampos();
-        this.lbErro.setText("Usuário cadastrado!");
+        try {
+          sistema.cadastrarUsuario(usuario);
+          this.clearCampos();
+          this.lbErro.setText("Usuário cadastrado com sucesso!");
+          this.lbErro.setVisible(true);
+        } catch (CampoInvalido campoInvalido) {
+          alertCamposInvalidos(campoInvalido.getImmutableCamposInvalidos());
+        } catch (UsuarioJaCadastrado usuarioJaCadastrado) {
+          this.lbErro.setText("Já existe um usuário cadastrado com o login " +
+              usuarioJaCadastrado.getLoginUsuario());
+          this.lbErro.setVisible(true);
+        }
       }
       else {
         this.lbErro.setText("Senhas não coincidem!");
+        this.lbErro.setVisible(true);
       }
-      this.lbErro.setVisible(true);
     }
     else {
       this.alertCamposInvalidos();
@@ -119,9 +128,23 @@ public class ControladorTelaCadastro {
         && experienciaCulinaria != null;
   }
 
-  private void alertCamposInvalidos() {
+  private void alertCamposInvalidos(List<String> camposInvalidos) {
     StringBuilder textToPrint = new StringBuilder();
     textToPrint.append("Favor rever o(s) seguinte(s) campo(s): ");
+
+    for (String str : camposInvalidos) {
+      textToPrint.append(String.format("\"%s\"; ", str));
+    }
+
+    Alert alert = new Alert(AlertType.WARNING);
+    alert.setTitle("Atenção");
+    alert.setHeaderText("Campos Inválidos!");
+    alert.setContentText(textToPrint.toString());
+    alert.showAndWait();
+  }
+
+  private void alertCamposInvalidos() {
+    List<String> camposInvalidos = new ArrayList<>();
 
     String nomePerfil = this.tfNomePerfil.getText();
     String login = this.tfLogin.getText();
@@ -130,26 +153,22 @@ public class ControladorTelaCadastro {
     ExperienciaCulinaria experienciaCulinaria = this.cbExperienciaCulinaria.getValue();
 
     if (nomePerfil == null || nomePerfil.isBlank()) {
-      textToPrint.append("\"Nome de Perfil\"");
+      camposInvalidos.add("Nome de Perfil");
     }
     if (login == null || login.isBlank()) {
-      textToPrint.append("\"Login\"; ");
+      camposInvalidos.add("Login");
     }
     if (senha == null || senha.isBlank()) {
-      textToPrint.append("\"Senha\"; ");
+      camposInvalidos.add("Senha");
     }
     if (confirmarSenha == null || confirmarSenha.isBlank()) {
-      textToPrint.append("\"Confirmar Senha\"; ");
+      camposInvalidos.add("Confirmar Senha");
     }
     if (experienciaCulinaria == null) {
-      textToPrint.append("\"Experiencia Culinária\"; ");
+      camposInvalidos.add("Experiencia Culinária");
     }
 
-    Alert alert = new Alert(AlertType.WARNING);
-    alert.setTitle("Atenção");
-    alert.setHeaderText("Campos Inválidos!");
-    alert.setContentText(textToPrint.toString());
-    alert.showAndWait();
+    alertCamposInvalidos(camposInvalidos);
   }
 
 

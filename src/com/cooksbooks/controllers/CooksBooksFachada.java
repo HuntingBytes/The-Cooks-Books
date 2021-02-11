@@ -4,6 +4,11 @@ import com.cooksbooks.entity.CadernoReceitas;
 import com.cooksbooks.entity.Receita;
 import com.cooksbooks.entity.Usuario;
 import com.cooksbooks.entity.utils.ExperienciaCulinaria;
+import com.cooksbooks.exceptions.CampoInvalido;
+import com.cooksbooks.exceptions.UsuarioInexistente;
+import com.cooksbooks.exceptions.UsuarioJaCadastrado;
+import com.cooksbooks.exceptions.UsuarioJaLogado;
+import com.cooksbooks.exceptions.UsuarioSenhaIncorreta;
 import java.util.List;
 
 public class CooksBooksFachada implements ICooksBooks {
@@ -33,32 +38,32 @@ public class CooksBooksFachada implements ICooksBooks {
 
   // Usuário
   @Override
-  public void cadastrarUsuario(Usuario usuario) {
+  public void cadastrarUsuario(Usuario usuario) throws UsuarioJaCadastrado, CampoInvalido {
     this.controladorUsuario.cadastrarUsuario(usuario);
   }
 
   @Override
-  public void removerUsuario(String login) {
+  public void removerUsuario(String login) throws UsuarioInexistente {
     this.controladorUsuario.removerUsuario(login);
   }
 
   @Override
-  public void alterarBiografia(String login, String biografia) {
+  public void alterarBiografia(String login, String biografia) throws UsuarioInexistente, CampoInvalido {
     this.controladorUsuario.alterarBiografia(login, biografia);
   }
 
   @Override
-  public void alterarNomePerfil(String login, String nomePerfil) {
+  public void alterarNomePerfil(String login, String nomePerfil) throws UsuarioInexistente, CampoInvalido {
     this.controladorUsuario.alterarNomePerfil(login, nomePerfil);
   }
 
   @Override
-  public void alterarCaminhoImagemPerfil(String login, String caminhoImagemPerfil) {
+  public void alterarCaminhoImagemPerfil(String login, String caminhoImagemPerfil) throws UsuarioInexistente, CampoInvalido {
     this.controladorUsuario.alterarCaminhoImagemPerfil(login, caminhoImagemPerfil);
   }
 
   @Override
-  public void alterarExperiencia(String login, ExperienciaCulinaria experienciaCulinaria) {
+  public void alterarExperiencia(String login, ExperienciaCulinaria experienciaCulinaria) throws UsuarioInexistente, CampoInvalido {
     this.controladorUsuario.alterarExperienciaCulinaria(login, experienciaCulinaria);
   }
 
@@ -69,17 +74,18 @@ public class CooksBooksFachada implements ICooksBooks {
    * @param senha senha do usuário
    *
    */
-  public boolean efetuarLogin(String login, String senha) {
-    if(CooksBooksFachada.usuarioLogado != null)
-      return true;
-
-    Usuario usuarioASerLogado = this.controladorUsuario.buscarUsuario(login);
-    if (usuarioASerLogado != null && usuarioASerLogado.getSenha().equals(senha)) {
-      usuarioLogado = usuarioASerLogado;
-      return true;
+  public void efetuarLogin(String login, String senha) throws UsuarioInexistente, UsuarioJaLogado, UsuarioSenhaIncorreta  {
+    if(CooksBooksFachada.usuarioLogado != null) {
+      throw new UsuarioJaLogado(this.getUsuarioLogado().getLogin());
     }
 
-    return false;
+    Usuario usuarioASerLogado = this.controladorUsuario.buscarUsuario(login);
+
+    if (usuarioASerLogado.getSenha().equals(senha)) {
+      CooksBooksFachada.usuarioLogado = usuarioASerLogado;
+    } else {
+      throw new UsuarioSenhaIncorreta(usuarioASerLogado.getLogin());
+    }
   }
 
   @Override
@@ -88,7 +94,7 @@ public class CooksBooksFachada implements ICooksBooks {
   }
 
   @Override
-  public Usuario buscarUsuario(String login){
+  public Usuario buscarUsuario(String login) throws UsuarioInexistente {
     return this.controladorUsuario.buscarUsuario(login);
   }
 

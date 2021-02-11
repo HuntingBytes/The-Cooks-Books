@@ -3,6 +3,9 @@ package com.cooksbooks.gui.controllers;
 import com.cooksbooks.App;
 import com.cooksbooks.controllers.CooksBooksFachada;
 import com.cooksbooks.controllers.ICooksBooks;
+import com.cooksbooks.exceptions.UsuarioInexistente;
+import com.cooksbooks.exceptions.UsuarioJaLogado;
+import com.cooksbooks.exceptions.UsuarioSenhaIncorreta;
 import com.cooksbooks.gui.ScreenManager;
 import com.cooksbooks.gui.Telas;
 import java.io.IOException;
@@ -56,24 +59,26 @@ public class ControladorTelaLogin {
   @FXML
   private void handleEntrar() {
     if (this.areCamposValidos()) {
-      // Esse boolean de sistema.efetuarLogin() deverá ser
-      // trocado por blocos try-catch e sistema.efetuarLogin()
-      // não deve possuir retorno.
       String login = this.tfLogin.getText();
       String senha = this.pfSenha.getText();
 
-      if (sistema.efetuarLogin(login, senha)) {
-        try {
-          screenManager.abrirTelaPrincipal();
-        } catch (Exception e) {
-          e.printStackTrace();
-          lbErro.setText("Não foi possível realizar o login. Favor tentar novamente.");
-        }
-      } else {
-        lbErro.setText("Não foi possível realizar o login. Favor tentar novamente.");
+      try {
+        sistema.efetuarLogin(login, senha);
+        screenManager.abrirTelaPrincipal();
+        clearCampos();
+      } catch (UsuarioInexistente uInexistente) {
+        lbErro.setText("Nenhum usuário com esse login foi encontrado.");
+        lbErro.setVisible(true);
+      } catch (UsuarioSenhaIncorreta uSenhaIncorreta) {
+        lbErro.setText("Senha incorreta! Favor verificar os dados e tentar novamente.");
+        lbErro.setVisible(true);
+      } catch (UsuarioJaLogado uJaLogado) {
+        lbErro.setText("Já existe um usuário logado... Favor reiniciar o aplicativo.");
+        lbErro.setVisible(true);
+      } catch (Exception e) {
+        e.printStackTrace();
+        // Talvez finalizar o aplicativo?
       }
-      this.clearCampos();
-      lbErro.setVisible(true);
     }
     else {
       this.alertCamposInvalidos();

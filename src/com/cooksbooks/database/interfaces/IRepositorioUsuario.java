@@ -2,6 +2,7 @@ package com.cooksbooks.database.interfaces;
 
 import com.cooksbooks.entity.Usuario;
 import com.cooksbooks.entity.utils.ExperienciaCulinaria;
+import com.cooksbooks.exceptions.UsuarioInexistente;
 
 
 public interface IRepositorioUsuario {
@@ -12,29 +13,17 @@ public interface IRepositorioUsuario {
 
     void cadastrarUsuario(Usuario usuarioAdd);
 
-    // throws UsuarioInexistente
-    void removerUsuario(String usuarioRemove);
+    void removerUsuario(String usuarioRemove) throws UsuarioInexistente;
 
-    // throws UsuarioInexistente
-    Usuario buscarUsuario(String usuarioBuscar);
+    Usuario buscarUsuario(String usuarioBuscar) throws UsuarioInexistente;
 
     int totalUsuarios();
 
-    // throws UsuarioInexistente
-    void atualizarNomeUsuarioExistente(String idUsuarioExistente, String nomePerfilNovo);
+    void alterarNomePerfil(String login, String nomePerfil) throws UsuarioInexistente;
 
-    // throws UsuarioInexistente
-    void atualizarBiografiaUsuarioExistente(String idUsuarioExistente, String biografiaPerfilNovo);
+    void alterarBiografia(String login, String biografia) throws UsuarioInexistente;
 
-    // throws UsuarioInexistente
-    void alterarNomePerfil(String login, String nomePerfil);
+    void alterarCaminhoImagemPerfil(String login, String caminhoImagemPerfil) throws UsuarioInexistente;
 
-    // throws UsuarioInexistente
-    void alterarBiografia(String login, String biografia);
-
-    // throws UsuarioInexistente
-    void alterarCaminhoImagemPerfil(String login, String caminhoImagemPerfil);
-
-    // throws UsuarioInexistente
-    void alterarExperienciaCulinaria(String login, ExperienciaCulinaria experienciaCulinaria);
+    void alterarExperienciaCulinaria(String login, ExperienciaCulinaria experienciaCulinaria) throws UsuarioInexistente;
 }

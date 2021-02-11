@@ -35,7 +35,7 @@ final class TesteCRUDS {
   private TesteCRUDS() {}
 
   public static void main(String[] args) {
-
+  /*
     // Obtendo uma instância do sistema (fachada)
     ICooksBooks sistema = CooksBooksFachada.getInstancia();
     boolean jaLogado = false;
@@ -122,5 +122,7 @@ final class TesteCRUDS {
         System.out.println("-".repeat(50));
       }
     }
+
+   */
   }
 }

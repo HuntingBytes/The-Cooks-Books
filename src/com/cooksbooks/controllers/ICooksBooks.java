@@ -5,35 +5,32 @@ import com.cooksbooks.entity.Receita;
 import com.cooksbooks.entity.Usuario;
 
 import com.cooksbooks.entity.utils.ExperienciaCulinaria;
+import com.cooksbooks.exceptions.CampoInvalido;
+import com.cooksbooks.exceptions.UsuarioInexistente;
+import com.cooksbooks.exceptions.UsuarioJaCadastrado;
+import com.cooksbooks.exceptions.UsuarioJaLogado;
+import com.cooksbooks.exceptions.UsuarioSenhaIncorreta;
 import java.util.List;
 
 public interface ICooksBooks {
 
-  // throws UsuarioJaCadastrado, CampoInvalido
-  void cadastrarUsuario(Usuario usuario);
+  void cadastrarUsuario(Usuario usuario) throws UsuarioJaCadastrado, CampoInvalido;
 
-  // throws UsuarioInexistente
-  void removerUsuario(String login);
+  void removerUsuario(String login) throws UsuarioInexistente;
 
-  // throws UsuarioInexistente, CampoInvalido
-  void alterarNomePerfil(String login, String nomePerfil);
+  void alterarNomePerfil(String login, String nomePerfil) throws UsuarioInexistente, CampoInvalido;
 
-  // throws UsuarioInexistente, CampoInvalido
-  void alterarBiografia(String login, String biografia);
+  void alterarBiografia(String login, String biografia) throws UsuarioInexistente, CampoInvalido;
 
-  // throws UsuarioInexistente, CampoInvalido
-  void alterarExperiencia(String login, ExperienciaCulinaria experienciaCulinaria);
+  void alterarExperiencia(String login, ExperienciaCulinaria experienciaCulinaria) throws UsuarioInexistente, CampoInvalido;
 
-  // throws UsuarioInexistente, CampoInvalido
-  void alterarCaminhoImagemPerfil(String login, String caminhoImagemPerfil);
+  void alterarCaminhoImagemPerfil(String login, String caminhoImagemPerfil) throws UsuarioInexistente, CampoInvalido;
 
-  // vira void + throws UsuarioInexistente, UsuarioJaLogado, UsuarioSenhaIncorreta
-  boolean efetuarLogin(String login, String senha);
+  void efetuarLogin(String login, String senha) throws UsuarioInexistente, UsuarioJaLogado, UsuarioSenhaIncorreta;
 
   Usuario getUsuarioLogado();
 
-  // throws UsuarioInexistente
-  Usuario buscarUsuario(String login);
+  Usuario buscarUsuario(String login) throws UsuarioInexistente;
 
   // throws ReceitaComMesmoTituloJaExiste, CampoInvalido
   void cadastrarReceita(Receita receita, String idCadernoDono);
