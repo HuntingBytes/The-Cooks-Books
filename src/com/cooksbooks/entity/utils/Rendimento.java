@@ -1,13 +1,12 @@
 package com.cooksbooks.entity.utils;
 
+/**
+ * A Classe Rendimento é responsável por definir ações que os possiveis rendimentos que um Receita
+ * pode ter
+ *
+ * @version 1.0
+ */
 public enum Rendimento {
-
-  /**
-   * A Classe Rendimento é responsável por definir ações que os possiveis rendimentos que um Receita
-   * pode ter
-   *
-   * @version 1.0
-   */
   UM("1 pessoa"),
   DOIS("2 pessoas"),
   QUATRO("4 pessoas"),

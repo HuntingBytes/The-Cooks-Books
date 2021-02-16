@@ -5,39 +5,40 @@ import java.io.Serializable;
 
 public class Ingrediente implements Serializable {
 
-    @Serial
-    private static final long serialVersionUID = -8963710666822889681L;
-    private String nome;
-    private int quantidade;
-    private double valorUnitario;
+  @Serial
+  private static final long serialVersionUID = -8963710666822889681L;
 
-    public Ingrediente(String nome, int quantidade, double valorUnitario) {
-        this.nome = nome;
-        this.quantidade = quantidade;
-        this.valorUnitario = valorUnitario;
-    }
+  private String nome;
+  private int quantidade;
+  private double valorUnitario;
 
-    public String getNome() {
-        return nome;
-    }
+  public Ingrediente(String nome, int quantidade, double valorUnitario) {
+    this.nome = nome;
+    this.quantidade = quantidade;
+    this.valorUnitario = valorUnitario;
+  }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+  public String getNome() {
+    return nome;
+  }
 
-    public int getQuantidade() {
-        return quantidade;
-    }
+  public void setNome(String nome) {
+    this.nome = nome;
+  }
 
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-    }
+  public int getQuantidade() {
+    return quantidade;
+  }
 
-    public double getValorUnitario() {
-        return valorUnitario;
-    }
+  public void setQuantidade(int quantidade) {
+    this.quantidade = quantidade;
+  }
 
-    public void setValorUnitario(double valorUnitario) {
-        this.valorUnitario = valorUnitario;
-    }
+  public double getValorUnitario() {
+    return valorUnitario;
+  }
+
+  public void setValorUnitario(double valorUnitario) {
+    this.valorUnitario = valorUnitario;
+  }
 }

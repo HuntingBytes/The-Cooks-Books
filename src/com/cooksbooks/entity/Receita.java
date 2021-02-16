@@ -24,6 +24,7 @@ public class Receita implements Serializable {
 
   @Serial
   private static final long serialVersionUID = 2272177332565838189L;
+
   private String titulo;
   private String modoPreparo;
   private String idReceita;
@@ -109,7 +110,7 @@ public class Receita implements Serializable {
   /**
    * Retorna o id da receita.
    *
-   * @return  id da receita.
+   * @return id da receita.
    */
   public String getIdReceita() {
     return this.idReceita;
@@ -218,6 +219,7 @@ public class Receita implements Serializable {
 
   /**
    * Define o tempo de preparo da receita.
+   *
    * @param tempoPreparo Tempo de preparo da receita.
    */
   public void setTempoPreparo(TempoPreparo tempoPreparo) {
@@ -394,7 +396,7 @@ public class Receita implements Serializable {
    */
   @Override
   public String toString() {
-    return String.format("%s\n"+
+    return String.format("%s\n" +
             "Dificuldade: %s\n" +
             "Tempo Preparo: %s\n" +
             "Custo: %s\n" +
