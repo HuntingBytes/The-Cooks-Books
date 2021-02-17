@@ -13,7 +13,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 
 public class ControladorTelaCaderno {
 
@@ -44,13 +43,7 @@ public class ControladorTelaCaderno {
   private Button btEditarCaderno;
 
   @FXML
-  private Button btBuscarReceita;
-
-  @FXML
-  private TextField tfReceitaBuscar;
-
-  @FXML
-  private ListView<Receita> lvResultadoBuscaReceita;
+  private ListView<Receita> lvReceitas;
 
   @FXML
   private ListView<Categoria> lvCategoriasCaderno;
@@ -62,13 +55,8 @@ public class ControladorTelaCaderno {
     this.taDesc.disableProperty();
 
     this.lvCategoriasCaderno.getItems().addAll(caderno.listarCategorias());
-    this.lvResultadoBuscaReceita.getItems().addAll
+    this.lvReceitas.getItems().addAll
         (sistema.listarReceitasDoCaderno(caderno.getIdCaderno()));
-
-  }
-
-  @FXML
-  void handleBuscarReceita() {
 
   }
 

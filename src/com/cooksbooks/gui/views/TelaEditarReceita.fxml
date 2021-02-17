@@ -3,19 +3,19 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControladorTelaEditarReceita">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControladorTelaEditarReceita">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="600.0">
          <children>
             <TextField fx:id="tfAlterarNome" layoutX="17.0" layoutY="32.0" prefHeight="25.0" prefWidth="227.0" promptText="Digite aqui novo título..." />
-            <Button fx:id="btConfirmarNome" layoutX="108.0" layoutY="58.0" mnemonicParsing="false" text="Confirmar" />
-            <Button fx:id="btCancelarNome" layoutX="182.0" layoutY="58.0" mnemonicParsing="false" text="Cancelar" />
+            <Button fx:id="btConfirmarNome" layoutX="173.0" layoutY="57.0" mnemonicParsing="false" onAction="#handleConfirmarNome" text="Confirmar" />
             <Label fx:id="lbAlterarNome" layoutX="18.0" layoutY="14.0" text="Alterar nome">
                <font>
                   <Font name="Calibri Bold" size="15.0" />
@@ -27,32 +27,28 @@
                   <Font name="Calibri Bold" size="15.0" />
                </font>
             </Label>
-            <Button fx:id="btConfirmarTempo" layoutX="107.0" layoutY="134.0" mnemonicParsing="false" text="Confirmar" />
-            <Button fx:id="btCancelarTempo" layoutX="182.0" layoutY="134.0" mnemonicParsing="false" text="Cancelar" />
+            <Button fx:id="btConfirmarTempo" layoutX="173.0" layoutY="133.0" mnemonicParsing="false" onAction="#handleConfirmarTempoPreparo" text="Confirmar" />
             <Label fx:id="lbCustoMedio" layoutX="20.0" layoutY="169.0" text="Custo Medio">
                <font>
                   <Font name="Calibri Bold" size="15.0" />
                </font>
             </Label>
             <ChoiceBox fx:id="cbCustoMedio" layoutX="17.0" layoutY="188.0" prefHeight="25.0" prefWidth="227.0" />
-            <Button fx:id="btConfirmarCusto" layoutX="107.0" layoutY="215.0" mnemonicParsing="false" text="Confirmar" />
-            <Button fx:id="btCancelarCusto" layoutX="182.0" layoutY="215.0" mnemonicParsing="false" text="Cancelar" />
+            <Button fx:id="btConfirmarCusto" layoutX="173.0" layoutY="216.0" mnemonicParsing="false" onAction="#handleConfirmarCustoMedio" text="Confirmar" />
             <Label fx:id="lbRendimento" layoutX="19.0" layoutY="249.0" text="Rendimento">
                <font>
                   <Font name="Calibri Bold" size="15.0" />
                </font>
             </Label>
             <ChoiceBox fx:id="cbRendimento" layoutX="17.0" layoutY="267.0" prefHeight="25.0" prefWidth="227.0" />
-            <Button fx:id="btConfirmarRendimento" layoutX="107.0" layoutY="293.0" mnemonicParsing="false" text="Confirmar" />
-            <Button fx:id="btCancelarRendimento" layoutX="182.0" layoutY="293.0" mnemonicParsing="false" text="Cancelar" />
+            <Button fx:id="btConfirmarRendimento" layoutX="173.0" layoutY="298.0" mnemonicParsing="false" onAction="#handleConfirmarRendimento" text="Confirmar" />
             <Label fx:id="lbDificuldade" layoutX="19.0" layoutY="325.0" text="Dificuldade">
                <font>
                   <Font name="Calibri Bold" size="15.0" />
                </font>
             </Label>
             <ChoiceBox fx:id="cbDificuldade" layoutX="15.0" layoutY="341.0" prefHeight="25.0" prefWidth="227.0" />
-            <Button fx:id="btConfirmarDificuldade" layoutX="107.0" layoutY="367.0" mnemonicParsing="false" text="Confirmar" />
-            <Button fx:id="brCancelarDificuldade" layoutX="182.0" layoutY="367.0" mnemonicParsing="false" text="Cancelar" />
+            <Button fx:id="btConfirmarDificuldade" layoutX="173.0" layoutY="366.0" mnemonicParsing="false" onAction="#handleConfirmarDificuldade" text="Confirmar" />
             <Separator fx:id="spSeparadorVertical" layoutX="258.0" layoutY="21.0" orientation="VERTICAL" prefHeight="369.0" prefWidth="0.0" />
             <Label fx:id="lbAlterarModoPreparo" layoutX="278.0" layoutY="14.0" text="Alterar Modo de Preparo">
                <font>
@@ -60,20 +56,18 @@
                </font>
             </Label>
             <TextArea fx:id="taAlterarModo" layoutX="278.0" layoutY="33.0" prefHeight="160.0" prefWidth="308.0" promptText="Açúcar, tempero, e tudo que há de bom..." />
-            <Button fx:id="btConfirmarModo" layoutX="449.0" layoutY="195.0" mnemonicParsing="false" text="Confirmar" />
-            <Button fx:id="btCancelarModo" layoutX="524.0" layoutY="195.0" mnemonicParsing="false" text="Cancelar" />
-            <Label fx:id="lbAlterarCategoria" layoutX="276.0" layoutY="219.0" text="Alterar Categorias">
+            <Button fx:id="btConfirmarModo" layoutX="515.0" layoutY="193.0" mnemonicParsing="false" onAction="#handleConfirmarModoPreparo" text="Confirmar" />
+            <Label fx:id="lbAlterarCategoria" layoutX="278.0" layoutY="220.0" text="Alterar Categorias">
                <font>
                   <Font name="Calibri Bold" size="15.0" />
                </font>
             </Label>
-            <TextArea fx:id="tfAlterarCategoria" layoutX="276.0" layoutY="237.0" prefHeight="71.0" prefWidth="308.0" promptText="Sopa de mamaco..." />
-            <Button fx:id="btConfirmarCategoria" layoutX="449.0" layoutY="310.0" mnemonicParsing="false" text="Confirmar" />
-            <Button fx:id="btCancelarCategoria" layoutX="524.0" layoutY="310.0" mnemonicParsing="false" text="Cancelar" />
             <Separator fx:id="spSeparadorHorizontal" layoutX="278.0" layoutY="342.0" prefHeight="18.0" prefWidth="308.0" />
-            <Button fx:id="btGeralConfirmar" layoutX="451.0" layoutY="366.0" mnemonicParsing="false" text="Confirmar" />
-            <Button fx:id="btGeralReverter" layoutX="524.0" layoutY="366.0" mnemonicParsing="false" text="Reverter" />
-            <Button fx:id="btGeralVoltar" layoutX="398.0" layoutY="366.0" mnemonicParsing="false" text="Voltar" />
+            <Button fx:id="btGeralConfirmar" layoutX="515.0" layoutY="366.0" mnemonicParsing="false" onAction="#handleConfirmarReceitaGeral" text="Confirmar" />
+            <Button fx:id="btGeralVoltar" layoutX="461.0" layoutY="366.0" mnemonicParsing="false" onAction="#handleVoltar" text="Voltar" />
+            <Button fx:id="btAddCat" layoutX="285.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleAddCat" prefHeight="25.0" prefWidth="30.0" text="+" textFill="#17f23f" />
+            <Button fx:id="btRemoverCat" layoutX="285.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleRemoverCat" prefHeight="25.0" prefWidth="30.0" text="-" textFill="#dd1111" />
+            <ListView fx:id="lvCategorias" layoutX="329.0" layoutY="246.0" prefHeight="68.0" prefWidth="265.0" />
          </children>
       </AnchorPane>
    </children>

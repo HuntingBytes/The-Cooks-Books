@@ -5,11 +5,10 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.617056856187291" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControladorTelaCaderno">
+<SplitPane dividerPositions="0.617056856187291" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControladorTelaCaderno">
    <items>
       <AnchorPane prefHeight="398.0" prefWidth="264.0">
          <children>
@@ -30,19 +29,18 @@
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <Button fx:id="btBuscarReceita" layoutX="67.0" layoutY="34.0" mnemonicParsing="false" onAction="#handleBuscarReceita" text="Buscar Receita" />
-            <TextField fx:id="tfReceitaBuscar" layoutX="21.0" prefHeight="25.0" prefWidth="184.0" promptText="Digite o nome da receita">
-               <font>
-                  <Font name="Calibri Bold" size="15.0" />
-               </font>
-            </TextField>
-            <ListView fx:id="lvResultadoBusca" layoutY="59.0" prefHeight="171.0" prefWidth="226.0" />
-            <Label layoutX="45.0" layoutY="230.0" text="Categorias Caderno" textFill="#b91212">
+            <ListView fx:id="lvReceitas" layoutX="-2.0" layoutY="48.0" prefHeight="263.0" prefWidth="233.0" />
+            <Label layoutX="44.0" layoutY="323.0" text="Categorias Caderno" textFill="#b91212">
                <font>
                   <Font name="Calibri Bold" size="17.0" />
                </font>
             </Label>
-            <ListView fx:id="lvCategoriasCaderno" layoutX="38.0" layoutY="254.0" prefHeight="129.0" prefWidth="151.0" />
+            <ListView fx:id="lvCategoriasCaderno" layoutX="-3.0" layoutY="356.0" prefHeight="42.0" prefWidth="233.0" />
+            <Label layoutX="62.0" layoutY="14.0" text="Receitas" textFill="#e80909">
+               <font>
+                  <Font name="Calibri" size="30.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </items>

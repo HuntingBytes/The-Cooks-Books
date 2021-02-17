@@ -3,25 +3,58 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControladorTelaReceita">
-   <children>
-      <Label layoutX="205.0" layoutY="14.0" text="&quot;Título da Receita&quot;">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <ListView fx:id="lvIngredientesTelaReceita" layoutX="14.0" layoutY="86.0" prefHeight="174.0" prefWidth="288.0" />
-      <Label layoutX="14.0" layoutY="61.0" text="Ingredientes" />
-      <Label layoutX="14.0" layoutY="289.0" text="Modo de Preparo" />
-      <ListView fx:id="lvModoPreparoTelaReceita" layoutX="14.0" layoutY="311.0" prefHeight="174.0" prefWidth="288.0" />
-      <Label layoutX="331.0" layoutY="86.0" text="Categorias da Receita:" />
-      <Label layoutX="331.0" layoutY="122.0" text="Tempo de Preparo:" />
-      <Label layoutX="331.0" layoutY="156.0" text="Rendimento da Receita:" />
-      <Label layoutX="331.0" layoutY="191.0" text="Dificuldade da Receita:" />
-      <Label layoutX="331.0" layoutY="228.0" text="Custo da Receita:" />
-      <Button fx:id="btFecharTelaReceita" layoutX="277.0" layoutY="536.0" mnemonicParsing="false" text="Fechar" />
-   </children>
-</AnchorPane>
+<SplitPane dividerPositions="0.617056856187291" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControladorTelaReceita">
+   <items>
+      <AnchorPane prefHeight="398.0" prefWidth="264.0">
+         <children>
+            <Label fx:id="lbNomeReceita" layoutX="73.0" layoutY="27.0" prefHeight="36.0" prefWidth="225.0" text="NomeReceita" textFill="#cc3131">
+               <font>
+                  <Font name="Calibri Bold" size="30.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="taModoPreparo" layoutX="36.0" layoutY="99.0" prefHeight="114.0" prefWidth="297.0" />
+            <Label layoutX="122.0" layoutY="81.0" text="Modo de Preparo:" textFill="#e10808">
+               <font>
+                  <Font name="Calibri Bold" size="16.0" />
+               </font>
+            </Label>
+            <Button fx:id="btVoltar" layoutX="317.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleVoltar" text="Voltar" />
+            <Button fx:id="btEditarReceita" layoutX="27.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleEditarReceita" prefHeight="25.0" prefWidth="102.0" text="Editar Receita" />
+            <Label layoutX="140.0" layoutY="236.0" text="Ingredientes :" textFill="#d01919">
+               <font>
+                  <Font name="Calibri" size="16.0" />
+               </font>
+            </Label>
+            <ListView fx:id="lvIngredientes" layoutX="36.0" layoutY="267.0" prefHeight="71.0" prefWidth="297.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Label layoutX="71.0" layoutY="249.0" text="Categorias " textFill="#b91212">
+               <font>
+                  <Font name="Calibri Bold" size="17.0" />
+               </font>
+            </Label>
+            <ListView fx:id="lvCategoriasReceita" layoutX="-6.0" layoutY="292.0" prefHeight="80.0" prefWidth="233.0" />
+            <Label layoutX="33.0" layoutY="14.0" text="Informaçoes:" textFill="#e80909">
+               <font>
+                  <Font name="Calibri" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="11.0" layoutY="69.0" text="Tempo De Preparo:" />
+            <Label fx:id="lbexetensoTempoPrep" layoutX="115.0" layoutY="69.0" prefHeight="17.0" prefWidth="92.0" text="extensoTempoPreparo" />
+            <Label layoutX="11.0" layoutY="112.0" text="Custo:" />
+            <Label fx:id="lbextensoCusto" layoutX="49.0" layoutY="112.0" text="extensoCusto" />
+            <Label layoutX="14.0" layoutY="156.0" text="Rendimento:" />
+            <Label fx:id="lbextensoRendimento" layoutX="85.0" layoutY="156.0" text="extensoRendimento" />
+            <Label layoutX="14.0" layoutY="211.0" text="Dificuldade:" />
+            <Label fx:id="lbextensoDificuldade" layoutX="82.0" layoutY="211.0" text="extensoDificuldade" />
+         </children>
+      </AnchorPane>
+   </items>
+</SplitPane>
