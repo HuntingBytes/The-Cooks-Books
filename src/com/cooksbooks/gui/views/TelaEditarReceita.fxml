@@ -57,7 +57,7 @@
             </Label>
             <TextArea fx:id="taAlterarModo" layoutX="278.0" layoutY="33.0" prefHeight="160.0" prefWidth="308.0" promptText="Açúcar, tempero, e tudo que há de bom..." />
             <Button fx:id="btConfirmarModo" layoutX="515.0" layoutY="193.0" mnemonicParsing="false" onAction="#handleConfirmarModoPreparo" text="Confirmar" />
-            <Label fx:id="lbAlterarCategoria" layoutX="319.0" layoutY="220.0" text="Alterar Categorias">
+            <Label fx:id="lbAlterarCategoria" layoutX="278.0" layoutY="220.0" text="Alterar Categorias">
                <font>
                   <Font name="Calibri Bold" size="15.0" />
                </font>
@@ -66,8 +66,8 @@
             <Separator fx:id="spSeparadorHorizontal" layoutX="278.0" layoutY="342.0" prefHeight="18.0" prefWidth="308.0" />
             <Button fx:id="btGeralConfirmar" layoutX="515.0" layoutY="366.0" mnemonicParsing="false" onAction="#handleConfirmarReceitaGeral" text="Confirmar" />
             <Button fx:id="btGeralVoltar" layoutX="461.0" layoutY="366.0" mnemonicParsing="false" onAction="#handleVoltar" text="Voltar" />
-            <Button layoutX="278.0" layoutY="246.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" text="+" textFill="#17f23f" />
-            <Button layoutX="278.0" layoutY="280.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" text="-" textFill="#dd1111" />
+            <Button fx:id="btAddCat" layoutX="285.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleAddCat" prefHeight="25.0" prefWidth="30.0" text="+" textFill="#17f23f" />
+            <Button fx:id="btRemoverCat" layoutX="285.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleRemoverCat" prefHeight="25.0" prefWidth="30.0" text="-" textFill="#dd1111" />
             <ListView fx:id="lvCategorias" layoutX="329.0" layoutY="246.0" prefHeight="68.0" prefWidth="265.0" />
          </children>
       </AnchorPane>

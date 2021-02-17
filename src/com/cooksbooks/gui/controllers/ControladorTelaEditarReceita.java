@@ -61,13 +61,16 @@ public class ControladorTelaEditarReceita {
     private TextArea tfAlterarCategoria;
 
     @FXML
-    private Button btConfirmarCategoria;
-
-    @FXML
     private Button btGeralConfirmar;
 
     @FXML
     private Button btGeralVoltar;
+
+    @FXML
+    private Button btAddCat;
+
+    @FXML
+    private Button btRemoverCat;
 
     @FXML
     private ListView<Categoria> lvCategorias;
@@ -78,32 +81,7 @@ public class ControladorTelaEditarReceita {
         this.cbCustoMedio.getItems().addAll(Custo.values());
         this.cbRendimento.getItems().addAll(Rendimento.values());
         this.cbDificuldade.getItems().addAll(Dificuldade.values());
-        this.lvCategorias.getItems().addAll(receita.listarCategorias());
-
-    }
-
-    @FXML
-    void handleConfirmarCategorias(ActionEvent event) {
-
-    }
-
-    @FXML
-    void handleConfirmarCustoMedio(ActionEvent event) {
-
-    }
-
-    @FXML
-    void handleConfirmarDificuldade(ActionEvent event) {
-
-    }
-
-    @FXML
-    void handleConfirmarModoPreparo(ActionEvent event) {
-
-    }
-
-    @FXML
-    void handleConfirmarNome(ActionEvent event) {
+        this.lvCategorias.getItems().addAll(Categoria.values());
 
     }
 
@@ -113,12 +91,42 @@ public class ControladorTelaEditarReceita {
     }
 
     @FXML
-    void handleConfirmarRendimento(ActionEvent event) {
+    void handleConfirmarCustoMedio(ActionEvent event) {
+        receita.setCusto(cbCustoMedio.getSelectionModel().getSelectedItem());
+    }
 
+    @FXML
+    void handleConfirmarDificuldade(ActionEvent event) {
+        receita.setDificuldade(cbDificuldade.getSelectionModel().getSelectedItem());
+    }
+
+    @FXML
+    void handleConfirmarModoPreparo(ActionEvent event) {
+        receita.setModoPreparo(taAlterarModo.getText());
+    }
+
+    @FXML
+    void handleConfirmarNome(ActionEvent event) {
+        receita.setTitulo(tfAlterarNome.getText());
+    }
+
+    @FXML
+    void handleConfirmarRendimento(ActionEvent event) {
+        receita.setRendimento(cbRendimento.getSelectionModel().getSelectedItem());
     }
 
     @FXML
     void handleConfirmarTempoPreparo(ActionEvent event) {
+        
+    }
+
+    @FXML
+    void handleRemoverCat(ActionEvent event) {
+
+    }
+
+    @FXML
+    void handleAddCat(ActionEvent event) {
 
     }
 
