@@ -1,18 +1,25 @@
 package com.cooksbooks.gui.controllers;
 
+import com.cooksbooks.controllers.CooksBooksFachada;
+import com.cooksbooks.controllers.ICooksBooks;
+import com.cooksbooks.entity.Receita;
 import com.cooksbooks.entity.utils.*;
+import com.cooksbooks.gui.ScreenManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-import java.io.IOException;
-
 public class ControladorTelaEditarReceita {
 
-    //Apenas Esqueleto Simples
+    private Receita receita;
+
+    private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
+
+    private static ScreenManager screenManager;
 
     @FXML
     private TextField tfAlterarNome;
@@ -62,10 +69,16 @@ public class ControladorTelaEditarReceita {
     @FXML
     private Button btGeralVoltar;
 
+    @FXML
+    private ListView<Categoria> lvCategorias;
 
     private void initialize() {
 
-        //Precisa criar corpo do método
+        this.cbTempoDePreparo.getItems().addAll(TempoPreparo.values());
+        this.cbCustoMedio.getItems().addAll(Custo.values());
+        this.cbRendimento.getItems().addAll(Rendimento.values());
+        this.cbDificuldade.getItems().addAll(Dificuldade.values());
+        this.lvCategorias.getItems().addAll(receita.listarCategorias());
 
     }
 
@@ -114,5 +127,6 @@ public class ControladorTelaEditarReceita {
 
     }
 
+    public void setReceita(Receita receita){this.receita = receita;}
 
 }

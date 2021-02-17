@@ -68,7 +68,7 @@
             <Button fx:id="btGeralVoltar" layoutX="461.0" layoutY="366.0" mnemonicParsing="false" onAction="#handleVoltar" text="Voltar" />
             <Button layoutX="278.0" layoutY="246.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" text="+" textFill="#17f23f" />
             <Button layoutX="278.0" layoutY="280.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" text="-" textFill="#dd1111" />
-            <ListView layoutX="319.0" layoutY="238.0" prefHeight="68.0" prefWidth="265.0" />
+            <ListView fx:id="lvCategorias" layoutX="329.0" layoutY="246.0" prefHeight="68.0" prefWidth="265.0" />
          </children>
       </AnchorPane>
    </children>
