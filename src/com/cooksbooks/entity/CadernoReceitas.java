@@ -76,6 +76,10 @@ public class CadernoReceitas implements Serializable {
     return this.categorias;
   }
 
+  public void adicionarCategoria(Categoria categoria){ categorias.add(categoria);}
+
+  public void removerCategoria(Categoria categoria){ categorias.remove(categoria);}
+
   public String getNomeCaderno() {
     return nomeCaderno;
   }
