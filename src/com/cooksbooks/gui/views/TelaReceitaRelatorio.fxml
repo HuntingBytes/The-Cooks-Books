@@ -6,15 +6,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControladorReceitaRelatorio">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControladorReceitaRelatorio">
    <children>
-      <Label layoutX="154.0" layoutY="14.0" text="Receita(s) de ">
+      <Label fx:id="lbTitulo" layoutX="154.0" layoutY="14.0" text="Receita(s) de ">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <ListView fx:id="lvReceitasUsuarioRelatorio" layoutX="15.0" layoutY="67.0" prefHeight="267.0" prefWidth="573.0" />
-      <Button fx:id="btRemoverReceitaRelatorio" layoutX="204.0" layoutY="346.0" mnemonicParsing="false" text="Remover item" />
-      <Button fx:id="btFecharReceitaRelatorio" layoutX="301.0" layoutY="346.0" mnemonicParsing="false" text="Fechar" />
+      <ListView fx:id="lvReceitasUsuario" layoutX="15.0" layoutY="67.0" prefHeight="267.0" prefWidth="573.0" />
+      <Button fx:id="btRemoverReceita" layoutX="204.0" layoutY="346.0" mnemonicParsing="false" onAction="#handleRemoverItem" text="Remover item" />
+      <Button fx:id="btFechar" layoutX="301.0" layoutY="346.0" mnemonicParsing="false" onAction="#handleFechar" text="Fechar" />
    </children>
 </AnchorPane>
