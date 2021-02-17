@@ -1,11 +1,10 @@
 package com.cooksbooks.gui.controllers;
 
 import com.cooksbooks.entity.utils.*;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.Separator;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
@@ -22,64 +21,28 @@ public class ControladorTelaEditarReceita {
     private Button btConfirmarNome;
 
     @FXML
-    private Button btCancelarNome;
-
-    @FXML
-    private Label lbAlterarNome;
-
-    @FXML
-    private ChoiceBox<?> cbTempoDePreparo;
-
-    @FXML
-    private Label lbTempoDePreparo;
+    private ChoiceBox<TempoPreparo> cbTempoDePreparo;
 
     @FXML
     private Button btConfirmarTempo;
 
     @FXML
-    private Button btCancelarTempo;
-
-    @FXML
-    private Label lbCustoMedio;
-
-    @FXML
-    private ChoiceBox<?> cbCustoMedio;
+    private ChoiceBox<Custo> cbCustoMedio;
 
     @FXML
     private Button btConfirmarCusto;
 
     @FXML
-    private Button btCancelarCusto;
-
-    @FXML
-    private Label lbRendimento;
-
-    @FXML
-    private ChoiceBox<?> cbRendimento;
+    private ChoiceBox<Rendimento> cbRendimento;
 
     @FXML
     private Button btConfirmarRendimento;
 
     @FXML
-    private Button btCancelarRendimento;
-
-    @FXML
-    private Label lbDificuldade;
-
-    @FXML
-    private ChoiceBox<?> cbDificuldade;
+    private ChoiceBox<Dificuldade> cbDificuldade;
 
     @FXML
     private Button btConfirmarDificuldade;
-
-    @FXML
-    private Button brCancelarDificuldade;
-
-    @FXML
-    private Separator spSeparadorVertical;
-
-    @FXML
-    private Label lbAlterarModoPreparo;
 
     @FXML
     private TextArea taAlterarModo;
@@ -88,28 +51,13 @@ public class ControladorTelaEditarReceita {
     private Button btConfirmarModo;
 
     @FXML
-    private Button btCancelarModo;
-
-    @FXML
-    private Label lbAlterarCategoria;
-
-    @FXML
     private TextArea tfAlterarCategoria;
 
     @FXML
     private Button btConfirmarCategoria;
 
     @FXML
-    private Button btCancelarCategoria;
-
-    @FXML
-    private Separator spSeparadorHorizontal;
-
-    @FXML
     private Button btGeralConfirmar;
-
-    @FXML
-    private Button btGeralReverter;
 
     @FXML
     private Button btGeralVoltar;
@@ -122,8 +70,48 @@ public class ControladorTelaEditarReceita {
     }
 
     @FXML
-    private void handleVoltar() throws IOException {
-        //muda de tela
+    void handleConfirmarCategorias(ActionEvent event) {
+
+    }
+
+    @FXML
+    void handleConfirmarCustoMedio(ActionEvent event) {
+
+    }
+
+    @FXML
+    void handleConfirmarDificuldade(ActionEvent event) {
+
+    }
+
+    @FXML
+    void handleConfirmarModoPreparo(ActionEvent event) {
+
+    }
+
+    @FXML
+    void handleConfirmarNome(ActionEvent event) {
+
+    }
+
+    @FXML
+    void handleConfirmarReceitaGeral(ActionEvent event) {
+
+    }
+
+    @FXML
+    void handleConfirmarRendimento(ActionEvent event) {
+
+    }
+
+    @FXML
+    void handleConfirmarTempoPreparo(ActionEvent event) {
+
+    }
+
+    @FXML
+    void handleVoltar(ActionEvent event) {
+
     }
 
 
