@@ -19,27 +19,35 @@
                   <Font name="Calibri Bold" size="30.0" />
                </font>
             </Label>
-            <TextArea fx:id="taAlterarDesc" layoutX="43.0" layoutY="156.0" prefHeight="214.0" prefWidth="239.0" promptText="Digite nova descrição..." />
-            <Label fx:id="lbAlterarDesc" layoutX="105.0" layoutY="130.0" text="Alterar Descrição" textFill="#cc3131">
+            <TextArea fx:id="taAlterarDesc" layoutX="43.0" layoutY="170.0" prefHeight="190.0" prefWidth="239.0" promptText="Digite nova descrição..." />
+            <Label fx:id="lbAlterarDesc" layoutX="105.0" layoutY="152.0" text="Alterar Descrição" textFill="#cc3131">
                <font>
                   <Font name="Calibri Bold" size="16.0" />
                </font>
             </Label>
-            <Button fx:id="btVoltar" layoutX="248.0" layoutY="14.0" mnemonicParsing="false" text="Voltar" />
+            <Button fx:id="btVoltar" layoutX="248.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleVoltar" text="Voltar" />
+            <Button fx:id="btAlterarNome" layoutX="113.0" layoutY="117.0" mnemonicParsing="false" onAction="#handleAlterarNome" prefHeight="25.0" prefWidth="100.0" text="Alterar Nome" />
+            <Button fx:id="btAlterarDescricao" layoutX="110.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleAlterarDescricao" text="Alterar Descricao" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="400.0" prefWidth="284.0">
          <children>
             <ListView fx:id="lvReceitasBuscadas" layoutX="21.0" layoutY="59.0" prefHeight="89.0" prefWidth="239.0" />
-            <TextField fx:id="tfDigiteReceita" layoutX="21.0" layoutY="24.0" prefHeight="25.0" prefWidth="181.0" promptText="Digite Receita" />
-            <Button fx:id="btBuscarReceita" layoutX="208.0" layoutY="24.0" mnemonicParsing="false" text="Buscar" />
-            <Button fx:id="btAddReceita" layoutX="222.0" layoutY="155.0" mnemonicParsing="false" text="Add" />
-            <Button fx:id="btRemoveReceita" layoutX="157.0" layoutY="155.0" mnemonicParsing="false" text="Remove" />
+            <Button fx:id="btAddReceita" layoutX="222.0" layoutY="155.0" mnemonicParsing="false" onAction="#handleAddReceita" text="Add" />
+            <Button fx:id="btRemoveReceita" layoutX="157.0" layoutY="155.0" mnemonicParsing="false" onAction="#handleRemoveReceita" text="Remove" />
             <ListView fx:id="lvCategoriasBuscadas" layoutX="21.0" layoutY="251.0" prefHeight="89.0" prefWidth="239.0" />
-            <TextField fx:id="tfDigiteCategoria" layoutX="21.0" layoutY="216.0" prefHeight="25.0" prefWidth="181.0" promptText="Digite Categoria" />
-            <Button fx:id="btBuscarCategoria" layoutX="208.0" layoutY="216.0" mnemonicParsing="false" text="Buscar" />
-            <Button fx:id="btRemoveCategoria" layoutX="157.0" layoutY="346.0" mnemonicParsing="false" text="Remove" />
-            <Button fx:id="btAddCategoria" layoutX="222.0" layoutY="346.0" mnemonicParsing="false" text="Add" />
+            <Button fx:id="btRemoveCategoria" layoutX="157.0" layoutY="346.0" mnemonicParsing="false" onAction="#handleRemoveCat" text="Remove" />
+            <Button fx:id="btAddCategoria" layoutX="222.0" layoutY="346.0" mnemonicParsing="false" onAction="#handleAddCat" text="Add" />
+            <Label layoutX="60.0" layoutY="29.0" text="Alterar Receitas" textFill="#d30d0d">
+               <font>
+                  <Font name="Calibri" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="49.0" layoutY="221.0" text="Alterar Categorias" textFill="#c30909">
+               <font>
+                  <Font name="Calibri" size="25.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </items>
