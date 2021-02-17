@@ -87,7 +87,14 @@ public class ControladorTelaEditarReceita {
 
     @FXML
     void handleConfirmarReceitaGeral(ActionEvent event) {
-
+        String loginMudado = tfAlterarNome.getText();
+        String modoPreparoMudado = taAlterarModo.getText();
+        if(!loginMudado.isBlank()){ handleConfirmarNome(event);}
+        if(!modoPreparoMudado.isBlank()){handleConfirmarModoPreparo(event);}
+        if(cbTempoDePreparo.getSelectionModel().getSelectedItem()!=null){ handleConfirmarTempoPreparo(event);}
+        if(cbDificuldade.getSelectionModel().getSelectedItem()!=null){ handleConfirmarDificuldade(event);}
+        if(cbCustoMedio.getSelectionModel().getSelectedItem()!=null){ handleConfirmarCustoMedio(event);}
+        if(cbRendimento.getSelectionModel().getSelectedItem()!=null){ handleConfirmarRendimento(event);}
     }
 
     @FXML
@@ -117,22 +124,22 @@ public class ControladorTelaEditarReceita {
 
     @FXML
     void handleConfirmarTempoPreparo(ActionEvent event) {
-        
+        receita.setTempoPreparo(cbTempoDePreparo.getSelectionModel().getSelectedItem());
     }
 
     @FXML
     void handleRemoverCat(ActionEvent event) {
-
+        receita.removerCategoria(lvCategorias.getSelectionModel().getSelectedItem());
     }
 
     @FXML
     void handleAddCat(ActionEvent event) {
-
+        receita.setCategorias(lvCategorias.getSelectionModel().getSelectedItems());
     }
 
     @FXML
     void handleVoltar(ActionEvent event) {
-
+        screenManager.abrirTelaReceita(receita);
     }
 
     public void setReceita(Receita receita){this.receita = receita;}
