@@ -61,11 +61,14 @@ public class ControladorAdm {
 
   @FXML
   private void handleGerarRelatorio() {
+    /*
     try {
       ScreenManager.getInstancia().abrirTelaRelatorio();
     } catch (IOException e) {
       e.printStackTrace();
     }
+
+     */
   }
 
   @FXML
@@ -83,6 +86,7 @@ public class ControladorAdm {
 
   @FXML
   private void handleVisualizarReceitas() {
+    /*
     Usuario usuarioSelecionado = lvResultadoPesquisa.getSelectionModel().getSelectedItem();
     if (usuarioSelecionado != null) {
       try {
@@ -91,10 +95,12 @@ public class ControladorAdm {
         e.printStackTrace();
       }
     }
+     */
   }
 
   @FXML
   private void handleVisualizarCadernos() {
+    /*
     Usuario usuarioSelecionado = lvResultadoPesquisa.getSelectionModel().getSelectedItem();
     if (usuarioSelecionado != null) {
       try {
@@ -103,6 +109,7 @@ public class ControladorAdm {
         e.printStackTrace();
       }
     }
+     */
   }
 
   private boolean isBuscaValida() {
