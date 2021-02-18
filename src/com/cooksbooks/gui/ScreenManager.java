@@ -299,12 +299,13 @@ public class ScreenManager {
   }
 
   private void modalStage(Parent root, Stage owner, String title) {
+    Scene scene = new Scene(root);
     Stage modalStage = new Stage();
     modalStage.setTitle((title != null) ? title : "Janela");
     modalStage.initModality(Modality.APPLICATION_MODAL);
     modalStage.initOwner(owner);
     modalStage.setResizable(false);
-    modalStage.setScene(new Scene(root));
+    modalStage.setScene(scene);
     modalStage.showAndWait();
   }
 }
