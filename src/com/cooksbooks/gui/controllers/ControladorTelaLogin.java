@@ -6,7 +6,6 @@ import com.cooksbooks.exceptions.UsuarioInexistente;
 import com.cooksbooks.exceptions.UsuarioJaLogado;
 import com.cooksbooks.exceptions.UsuarioSenhaIncorreta;
 import com.cooksbooks.gui.ScreenManager;
-import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -42,7 +41,8 @@ public class ControladorTelaLogin {
     this.screenManager = screenManager;
   }
 
-  public void inicializar() {
+  @FXML
+  public void initialize() {
     this.tfLogin.textProperty().addListener((observableValue, s, t1) -> lbErro.setVisible(false));
     this.pfSenha.textProperty().addListener((observableValue, s, t1) -> lbErro.setVisible(false));
   }
@@ -54,8 +54,8 @@ public class ControladorTelaLogin {
       String senha = this.pfSenha.getText();
 
       try {
-        sistema.efetuarLogin(login, senha);
-        ScreenManager.getInstancia().abrirTelaPrincipal();
+        this.sistema.efetuarLogin(login, senha);
+        this.screenManager.abrirTelaPrincipal();
         clearCampos();
       } catch (UsuarioInexistente uInexistente) {
         lbErro.setText("Nenhum usuário com esse login foi encontrado.");
@@ -77,9 +77,9 @@ public class ControladorTelaLogin {
   }
 
   @FXML
-  private void handleCadastrar() throws IOException {
-    ScreenManager.getInstancia().abrirCadastro(tfLogin.getText(), pfSenha.getText());
-    clearCampos();
+  private void handleCadastrar() {
+    this.screenManager.abrirCadastro(tfLogin.getText(), pfSenha.getText());
+    this.clearCampos();
   }
 
   @FXML
