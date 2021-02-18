@@ -44,6 +44,8 @@ public class CadernoReceitas implements Serializable {
    * @param dificuldadeCaderno Dificuldade do caderno.
    * @param comentarioCaderno Único comentário do caderno.
    */
+
+  // Acho que esse construtor cabeludo pode vazar
   public CadernoReceitas(String nomeCaderno, String informacoesCaderno, boolean cadernoPublico,
       List<Categoria> categorias, Nota notaCaderno, Dificuldade dificuldadeCaderno,
       Comentario comentarioCaderno, String idDono) {
@@ -57,6 +59,15 @@ public class CadernoReceitas implements Serializable {
     this.idDono = idDono;
   }
 
+  public CadernoReceitas(String nomeCaderno, boolean cadernoPublico,
+      String informacoesCaderno, String idDono) {
+    this.nomeCaderno = nomeCaderno;
+    this.cadernoPublico = cadernoPublico;
+    this.informacoesCaderno = informacoesCaderno;
+    this.idDono = idDono;
+  }
+
+
   public CadernoReceitas() {
     this.nomeCaderno = "";
     this.informacoesCaderno = "";
@@ -67,6 +78,8 @@ public class CadernoReceitas implements Serializable {
     this.comentarioCaderno = null;
     this.idDono = "";
   }
+
+
 
   public static long getSerialVersionUID() {
     return serialVersionUID;

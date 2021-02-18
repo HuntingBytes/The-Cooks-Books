@@ -78,4 +78,6 @@ public class ControladorTelaUsuarioBuscado {
     }
     return todasReceitas;
   }
+
+
 }

@@ -20,7 +20,7 @@
                         <Font name="System Bold" size="23.0" />
                      </font>
                   </Label>
-                  <Button fx:id="botaoVoltar" layoutX="14.0" layoutY="38.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="64.0" text="Voltar" />
+                  <Button fx:id="botaoVoltar" layoutX="14.0" layoutY="38.0" mnemonicParsing="false" onAction="#handleBotaoVoltar" prefHeight="28.0" prefWidth="64.0" text="Voltar" />
                   <Button fx:id="botaoSelecionarResult" layoutX="253.0" layoutY="287.0" mnemonicParsing="false" onAction="#handleSelecionarResult" prefHeight="27.0" prefWidth="150.0" text="Selecionar" />
                </children></AnchorPane>
       </content>
