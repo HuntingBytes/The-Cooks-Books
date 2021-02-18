@@ -2,7 +2,11 @@ package com.cooksbooks.gui.controllers;
 
 import com.cooksbooks.controllers.CooksBooksFachada;
 import com.cooksbooks.controllers.ICooksBooks;
+import com.cooksbooks.entity.Administrador;
+import com.cooksbooks.entity.utils.ExperienciaCulinaria;
+import com.cooksbooks.exceptions.CampoInvalido;
 import com.cooksbooks.exceptions.UsuarioInexistente;
+import com.cooksbooks.exceptions.UsuarioJaCadastrado;
 import com.cooksbooks.exceptions.UsuarioJaLogado;
 import com.cooksbooks.exceptions.UsuarioSenhaIncorreta;
 import com.cooksbooks.gui.ScreenManager;
@@ -45,6 +49,15 @@ public class ControladorTelaLogin {
   public void initialize() {
     this.tfLogin.textProperty().addListener((observableValue, s, t1) -> lbErro.setVisible(false));
     this.pfSenha.textProperty().addListener((observableValue, s, t1) -> lbErro.setVisible(false));
+    Administrador adm = new Administrador("admin", "password");
+    adm.setNomePerfil("Administrador");
+    adm.setBiografia("Administrador");
+    adm.setExperienciaCulinaria(ExperienciaCulinaria.PROFISSIONAL);
+    try {
+      this.sistema.cadastrarUsuario(adm);
+    } catch (UsuarioJaCadastrado | CampoInvalido e) {
+      // Sem problemas. Apenas um teste
+    }
   }
 
   @FXML
@@ -56,6 +69,9 @@ public class ControladorTelaLogin {
       try {
         this.sistema.efetuarLogin(login, senha);
         this.screenManager.abrirTelaPrincipal();
+        if (this.sistema.getUsuarioLogado() instanceof Administrador) {
+          this.screenManager.adicionarTabAdm();
+        }
         clearCampos();
       } catch (UsuarioInexistente uInexistente) {
         lbErro.setText("Nenhum usuário com esse login foi encontrado.");

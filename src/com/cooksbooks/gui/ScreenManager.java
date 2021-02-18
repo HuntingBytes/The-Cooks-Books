@@ -187,7 +187,7 @@ public class ScreenManager {
   }
 
   public void iniciarTelas() {
-    mainScene = new Scene(telaLogin, 600, 400);
+    mainScene = new Scene(telaLogin, 600, 420);
     stagePrincipal.setScene(mainScene);
     stagePrincipal.setTitle("Cook's Books");
     stagePrincipal.setResizable(false);
@@ -217,6 +217,14 @@ public class ScreenManager {
       tabPane.getTabs().add(new Tab("Principal", telaPrincipalUsuario));
       tabPane.getTabs().get(0).setClosable(false);
       mainScene.setRoot(tabPane);
+    }
+  }
+
+  public void adicionarTabAdm() {
+    TabPane tabPane = (TabPane) mainScene.getRoot();
+    if (tabPane.getTabs().size() < 2) {
+      tabPane.getTabs().add(new Tab("Administrador", telaInicialAdm));
+      tabPane.getTabs().get(1).setClosable(false);
     }
   }
 
