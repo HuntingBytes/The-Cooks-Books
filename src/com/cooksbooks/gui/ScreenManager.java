@@ -2,6 +2,9 @@ package com.cooksbooks.gui;
 
 import com.cooksbooks.entity.CadernoReceitas;
 import com.cooksbooks.entity.Receita;
+import com.cooksbooks.gui.controllers.*;
+
+import java.io.IOException;
 import com.cooksbooks.entity.Usuario;
 import com.cooksbooks.gui.controllers.ControladorAdm;
 import com.cooksbooks.gui.controllers.ControladorCadernoRelatorio;
@@ -64,6 +67,7 @@ public class ScreenManager {
   private ControladorCadernoRelatorio controladorCadernoRelatorio;
   private ControladorReceitaRelatorio controladorReceitaRelatorio;
   private ControladorTelaRelatorio controladorTelaRelatorio;
+  private ControladorTelaResultado controladorTelaResultados;
 
   private ScreenManager() {
     try {
@@ -162,6 +166,12 @@ public class ScreenManager {
       telaReceita = new Scene(loaderExibirReceita.load());
       controladorTelaReceita = loaderExibirReceita.getController();
       controladorTelaReceita.setScreenManager(this);
+
+      FXMLLoader loaderExibirResultados = new FXMLLoader(
+              getClass().getResource(Telas.TELA_RESULTADOS_PESQUISA.caminho()));
+      telaResultadosPesquisa = new Scene(loaderExibirResultados.load());
+      controladorTelaResultados = loaderExibirResultados.getController();
+      //controladorTelaResultados.setScreenManager(this);
     } catch (Exception e) {
       e.printStackTrace();
       System.exit(-1);
@@ -196,6 +206,10 @@ public class ScreenManager {
     stagePrincipal.show();
   }
 
+  // TelaUsuario
+  public void abrirTelaUsuario(Usuario usuario){
+    controladorTelaUsuarioBuscado
+  }
   // TelaPrincipal
   public void abrirTelaPrincipal() {
 

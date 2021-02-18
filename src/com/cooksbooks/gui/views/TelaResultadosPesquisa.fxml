@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControladorTelaResultado">
   <tabs>
     <Tab text="Usuário">
       <content>
@@ -21,7 +21,7 @@
                      </font>
                   </Label>
                   <Button fx:id="botaoVoltar" layoutX="14.0" layoutY="38.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="64.0" text="Voltar" />
-                  <Button fx:id="botaoSelecionarResult" layoutX="253.0" layoutY="287.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="150.0" text="Selecionar" />
+                  <Button fx:id="botaoSelecionarResult" layoutX="253.0" layoutY="287.0" mnemonicParsing="false" onAction="#handleSelecionarResult" prefHeight="27.0" prefWidth="150.0" text="Selecionar" />
                </children></AnchorPane>
       </content>
     </Tab>
