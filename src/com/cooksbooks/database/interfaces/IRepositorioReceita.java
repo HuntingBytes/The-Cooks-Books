@@ -5,25 +5,25 @@ import java.util.List;
 
 public interface IRepositorioReceita {
 
-    void salvarArquivo(); 
+  void cadastrarReceita(Receita receitaAdd);
 
-    boolean existeReceita(String receitaExiste);
+  // throws ReceitaInexistente
+  void removerReceita(String receitaRemove);
 
-    void cadastrarReceita(Receita receitaAdd);
+  boolean existeReceita(String receitaExiste);
 
-    // throws ReceitaInexistente
-    void removerReceita(String receitaRemove);
+  // throws ReceitaInexistente
+  Receita buscarReceita(String receitaBusca);
 
-    // throws ReceitaInexistente
-    Receita buscarReceita(String receitaBusca);
+  // throws ReceitaInexistente
+  void alterarModoPreparoReceita(String login, String modoPreparo);
 
-    long totalReceitas();
+  // throws ReceitaInexistente
+  void alterarTituloReceita(String login, String titulo);
 
-    // throws ReceitaInexistente
-    void alterarModoPreparoReceita(String login, String modoPreparo);
+  List<Receita> listarReceitasCaderno(String idCaderno);
 
-    // throws ReceitaInexistente
-    void alterarTituloReceita(String login, String titulo);
+  long totalReceitas();
 
-    List<Receita> listarReceitasCaderno(String idCaderno);
+  void salvarArquivo();
 }

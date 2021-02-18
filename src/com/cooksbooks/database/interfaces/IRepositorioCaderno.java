@@ -10,6 +10,8 @@ public interface IRepositorioCaderno {
   // throws CadernoInexistente
   void removerCaderno(String idCadernoRemover);
 
+  boolean existeCaderno(String idCadernoExiste);
+
   // throws CadernoInexistente
   void alterarNomeCaderno(String idCaderno, String nomeCaderno);
 
@@ -19,14 +21,12 @@ public interface IRepositorioCaderno {
   // throws CadernoInexistente
   void alterarVisibildadeCaderno(String idCadernoSubstituido, boolean visibilidade);
 
-  boolean existeCaderno(String idCadernoExiste);
-
   // throws CadernoInexistente
   CadernoReceitas buscarCaderno(String idCadernoQueRetorna);
 
   List<CadernoReceitas> buscarTodosCadernosDoUsuario(String nomeUsuario);
 
-  void salvarArquivo();
-
   long quantidadeCadernosCadastrados();
+
+  void salvarArquivo();
 }
