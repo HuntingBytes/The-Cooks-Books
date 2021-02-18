@@ -112,7 +112,7 @@ public class ScreenManager {
           getClass().getResource(Telas.TELA_EDITAR_CADERNO.caminho()));
       telaEditarCaderno = new Scene(loaderEditarCaderno.load());
       controladorTelaEditarCaderno = loaderEditarCaderno.getController();
-      //controladorTelaEditarCaderno.setScreenManager();
+      controladorTelaEditarCaderno.setScreenManager(this);
 
       FXMLLoader loaderEditarPerfil = new FXMLLoader(
           getClass().getResource(Telas.TELA_EDITAR_PERFIL.caminho()));
