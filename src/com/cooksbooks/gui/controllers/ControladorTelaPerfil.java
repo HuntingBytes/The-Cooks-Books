@@ -90,12 +90,10 @@ public class ControladorTelaPerfil {
         screenManager.abrirTelaCaderno(cbCadernosPerfil.getSelectionModel().getSelectedItem());
     }
 
-
-    /* Criar ainda buscaTodosCadernosDoUsuario
     @FXML
     void handleAcessarReceitas(ActionEvent event) {
 
-    }*/
+    }
 
     @FXML
     void handleVoltar(ActionEvent event) {

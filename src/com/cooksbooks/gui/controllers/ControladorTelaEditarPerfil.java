@@ -105,6 +105,9 @@ public class ControladorTelaEditarPerfil {
         screenManager.abrirTelaPerfil(usuarioDoPerfil);
     }
 
+    @FXML
+    private void handleCancelar() {}
+
     public void setUsuarioDoPerfil(Usuario usuarioDoPerfil) {
         this.usuarioDoPerfil = usuarioDoPerfil;
     }
