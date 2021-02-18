@@ -2,6 +2,7 @@ package com.cooksbooks.gui;
 
 import com.cooksbooks.entity.CadernoReceitas;
 import com.cooksbooks.entity.Receita;
+import com.cooksbooks.entity.Usuario;
 import com.cooksbooks.gui.controllers.ControladorAdm;
 import com.cooksbooks.gui.controllers.ControladorCadernoRelatorio;
 import com.cooksbooks.gui.controllers.ControladorReceitaRelatorio;
@@ -181,6 +182,15 @@ public class ScreenManager {
     stagePrincipal.show();
   }
 
+  // TelaEditarReceita
+  public void abrirTelaEditarReceita(Receita receita) {
+
+    controladorTelaEditarReceita.setReceita(receita);
+
+    stagePrincipal.setScene(telaEditarReceita);
+    stagePrincipal.show();
+  }
+
   // TelaCriacaoCaderno
   public void abrirTelaCriacaoCaderno() {
 
@@ -196,7 +206,9 @@ public class ScreenManager {
   }
 
   // TelaPerfil
-  public void abrirTelaPerfil() {
+  public void abrirTelaPerfil(Usuario usuarioDoPerfil) {
+
+    controladorTelaPerfil.setUsuarioDoPefil(usuarioDoPerfil);
 
     stagePrincipal.setScene(telaPerfil);
     stagePrincipal.show();
