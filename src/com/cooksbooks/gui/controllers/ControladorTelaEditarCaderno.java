@@ -65,6 +65,10 @@ public class ControladorTelaEditarCaderno {
     @FXML
     private Button btAddCategoria;
 
+    public void setScreenManager(ScreenManager screenManager) {
+        this.screenManager = screenManager;
+    }
+
     private void initialize() {
 
         this.lbNomeCaderno.setText(caderno.getNomeCaderno());
