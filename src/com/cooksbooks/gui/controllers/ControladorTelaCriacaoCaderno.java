@@ -33,10 +33,15 @@ public class ControladorTelaCriacaoCaderno {
 
   @FXML
   private Label lbErro;
-
+  
   @FXML
   void handleCriarCaderno(ActionEvent event) {
-    
+    sistema.cadastrarCaderno(new CadernoReceitas(
+        tfNomeCaderno.getText(),
+        cbCadernoPrivado.isSelected(),
+        taDescricaoCaderno.getText(),
+        sistema.getUsuarioLogado().getLogin()
+    ));
   }
 
   @FXML
