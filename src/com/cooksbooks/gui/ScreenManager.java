@@ -181,15 +181,6 @@ public class ScreenManager {
     stagePrincipal.show();
   }
 
-  // TelaEditarReceita
-  public void abrirTelaEditarReceita(Receita receita) {
-
-    controladorTelaEditarReceita.setReceita(receita);
-
-    stagePrincipal.setScene(telaEditarReceita);
-    stagePrincipal.show();
-  }
-
   // TelaCriacaoCaderno
   public void abrirTelaCriacaoCaderno() {
 
