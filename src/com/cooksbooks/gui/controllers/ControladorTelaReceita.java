@@ -4,11 +4,7 @@ import com.cooksbooks.controllers.CooksBooksFachada;
 import com.cooksbooks.controllers.ICooksBooks;
 import com.cooksbooks.entity.Receita;
 import com.cooksbooks.entity.utils.Categoria;
-import com.cooksbooks.entity.utils.Custo;
-import com.cooksbooks.entity.utils.Dificuldade;
 import com.cooksbooks.entity.utils.Ingrediente;
-import com.cooksbooks.entity.utils.Rendimento;
-import com.cooksbooks.entity.utils.TempoPreparo;
 import com.cooksbooks.gui.ScreenManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -57,6 +53,7 @@ public class ControladorTelaReceita {
 
   private void initialize() {
 
+    this.lbNomeReceita.setText(receita.getTitulo());
     this.taModoPreparo.setText(receita.getModoPreparo());
     this.lvIngredientes.getItems().addAll(receita.listarIngredientes());
     this.lbexetensoTempoPrep.setText(receita.getTempoPreparo().toString());
@@ -69,12 +66,12 @@ public class ControladorTelaReceita {
 
   @FXML
   void handleEditarReceita(ActionEvent event) {
-    
+    screenManager.abrirTelaEditarReceita(receita);
   }
 
   @FXML
   void handleVoltar(ActionEvent event) {
-
+    screenManager.abrirTelaCaderno(sistema.buscarCaderno(receita.getIdCadernoDono()));
   }
   public void setReceita(Receita receita) {
     this.receita = receita;
