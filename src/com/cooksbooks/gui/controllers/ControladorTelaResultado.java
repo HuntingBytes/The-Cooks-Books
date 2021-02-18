@@ -30,11 +30,11 @@ public class ControladorTelaResultado {
     private Button botaoSelecionarResult;
 
     @FXML
-    void handleSelecionarResult() {
+    public void handleSelecionarResult() {
         Object o = listViewResultados.getSelectionModel().getSelectedItem();
         if(o != null){
             if(o instanceof Usuario){
-
+                //screenManager.abrirTela
             }else if(o instanceof Receita){
                 screenManager.abrirTelaReceita((Receita) o);
             }else{
@@ -43,6 +43,11 @@ public class ControladorTelaResultado {
         }else{
             alertSelecionarItem();
         }
+    }
+
+    @FXML
+    public void handleBotaoVoltar(){
+        screenManager.abrirTelaPrincipal();
     }
 
     private void alertSelecionarItem() {
@@ -61,4 +66,5 @@ public class ControladorTelaResultado {
         }
         return todasReceitas;
     }
+
 }

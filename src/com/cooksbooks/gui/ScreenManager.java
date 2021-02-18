@@ -220,7 +220,8 @@ public class ScreenManager {
   }
 
   // TelaUsuario
-  public void abrirTelaUsuario(Usuario usuario){
+  public void abrirTelaUsuarioBuscado(Usuario usuario){
+
   }
   // TelaPrincipal
   public void abrirTelaPrincipal() {

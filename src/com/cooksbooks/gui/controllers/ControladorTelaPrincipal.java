@@ -122,9 +122,23 @@ public class ControladorTelaPrincipal {
 
     @FXML
     private void handlePesquisar(){
-        /*if(choiceBoxPesquisa == null){
+        try{
+            switch (choiceBoxPesquisa.getValue()) {
+                case "Caderno" -> sistema.buscarCaderno(textFieldPesquisa.getText());
+                case "Receita" -> sistema.buscarReceita(textFieldPesquisa.getText());
+                case "Usuário" -> {
+                    try {
+                        sistema.buscarUsuario(textFieldPesquisa.getText());
+                    } catch (UsuarioInexistente e) {
+                        System.out.println(e.getMessage());
+                    }
+                }
+            }
+            screenManager.abrirTelaResultadosPesquisa();
+        }catch(NullPointerException e){
             alertPesquisa();
-        }else{
+        }
+        /*if(choiceBoxPesquisa != null){
             //TODO: alterar assinatura do método para receber nome de perfil como parâmetro
             switch (choiceBoxPesquisa.getValue()) {
                 case "Caderno" -> sistema.buscarCaderno(textFieldPesquisa.getText());
@@ -137,10 +151,9 @@ public class ControladorTelaPrincipal {
                     }
                 }
             }
-        }
-
-         */
-        screenManager.abrirTelaResultadosPesquisa();
+        }else{
+            alertPesquisa();
+        }*/
     }
 
     private void alertPesquisa(){
