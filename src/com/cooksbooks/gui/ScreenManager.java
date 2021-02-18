@@ -36,6 +36,9 @@ public class ScreenManager {
 
   private Scene mainScene;
 
+  private Tab tabPrincipal;
+  private Tab tabAdm;
+
   private Parent telaCadastro;
   private Parent telaCriacaoCaderno;
   private Parent telaCriacaoReceita;
@@ -236,8 +239,8 @@ public class ScreenManager {
 
   // TelaEditarCaderno
   public void abrirTelaEditarCaderno(CadernoReceitas caderno) {
-    ((TabPane) mainScene.getRoot()).getTabs().get(0).setContent(telaEditarCaderno);
     controladorTelaEditarCaderno.setCaderno(caderno);
+    ((TabPane) mainScene.getRoot()).getTabs().get(0).setContent(telaEditarCaderno);
   }
 
   // TelaReceita
@@ -299,7 +302,10 @@ public class ScreenManager {
   }
 
   private void modalStage(Parent root, Stage owner, String title) {
-    Scene scene = new Scene(root);
+    Scene scene;
+    if (root.getScene() != null) scene = root.getScene();
+    else scene = new Scene(root);
+
     Stage modalStage = new Stage();
     modalStage.setTitle((title != null) ? title : "Janela");
     modalStage.initModality(Modality.APPLICATION_MODAL);

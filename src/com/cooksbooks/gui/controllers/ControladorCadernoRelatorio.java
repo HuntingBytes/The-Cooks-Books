@@ -45,7 +45,6 @@ public class ControladorCadernoRelatorio {
   @FXML
   private void handleFechar() {
     ((Stage) this.btFechar.getScene().getWindow()).close();
-    this.btFechar.getScene().setRoot(null);
     this.clearCampos();
   }
 
