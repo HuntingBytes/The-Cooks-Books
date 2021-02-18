@@ -24,6 +24,7 @@ import com.cooksbooks.gui.controllers.ControladorTelaRelatorio;
 import com.cooksbooks.gui.controllers.ControladorTelaUsuarioBuscado;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class ScreenManager {
@@ -116,7 +117,7 @@ public class ScreenManager {
           getClass().getResource(Telas.TELA_EDITAR_CADERNO.caminho()));
       telaEditarCaderno = new Scene(loaderEditarCaderno.load());
       controladorTelaEditarCaderno = loaderEditarCaderno.getController();
-      //controladorTelaEditarCaderno.setScreenManager();
+      controladorTelaEditarCaderno.setScreenManager(this);
 
       FXMLLoader loaderEditarPerfil = new FXMLLoader(
           getClass().getResource(Telas.TELA_EDITAR_PERFIL.caminho()));
@@ -291,4 +292,26 @@ public class ScreenManager {
     stagePrincipal.show();
   }
 
+  public void abrirTelaRelatorio() {
+    modalStage(telaGerarRelatorio, stagePrincipal, "Gerar Relatório");
+  }
+
+  public void abrirTelaRelatorioCaderno(String loginUsuario) {
+    controladorCadernoRelatorio.inicializar(loginUsuario);
+    modalStage(telaCadernoRelatorio, stagePrincipal, "Cadernos");
+  }
+
+  public void abrirTelaRelatorioReceita(String loginUsuario) {
+    controladorReceitaRelatorio.inicializar(loginUsuario);
+    modalStage(telaReceitaRelatorio, stagePrincipal, "Receitas");
+  }
+
+  private void modalStage(Scene scene, Stage owner, String title) {
+    Stage modalStage = new Stage();
+    modalStage.setTitle((title != null) ? title : "Janela");
+    modalStage.initModality(Modality.APPLICATION_MODAL);
+    modalStage.initOwner(owner);
+    modalStage.setResizable(false);
+    modalStage.showAndWait();
+  }
 }
