@@ -298,6 +298,7 @@ public class ScreenManager {
     modalStage.initModality(Modality.APPLICATION_MODAL);
     modalStage.initOwner(owner);
     modalStage.setResizable(false);
+    modalStage.setScene(scene);
     modalStage.showAndWait();
   }
 }
