@@ -2,17 +2,14 @@ package com.cooksbooks.gui.controllers;
 
 import com.cooksbooks.controllers.CooksBooksFachada;
 import com.cooksbooks.controllers.ICooksBooks;
-import com.cooksbooks.entity.Receita;
 import com.cooksbooks.entity.Usuario;
 import com.cooksbooks.exceptions.UsuarioInexistente;
 import com.cooksbooks.gui.ScreenManager;
-import java.io.IOException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
@@ -61,14 +58,7 @@ public class ControladorAdm {
 
   @FXML
   private void handleGerarRelatorio() {
-    /*
-    try {
-      ScreenManager.getInstancia().abrirTelaRelatorio();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-
-     */
+    ScreenManager.getInstancia().abrirTelaRelatorio();
   }
 
   @FXML
@@ -86,30 +76,18 @@ public class ControladorAdm {
 
   @FXML
   private void handleVisualizarReceitas() {
-    /*
     Usuario usuarioSelecionado = lvResultadoPesquisa.getSelectionModel().getSelectedItem();
     if (usuarioSelecionado != null) {
-      try {
-        ScreenManager.getInstancia().abrirTelaReceitaRelatorio(usuarioSelecionado.getLogin());
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
+      ScreenManager.getInstancia().abrirTelaRelatorioReceita(usuarioSelecionado.getLogin());
     }
-     */
   }
 
   @FXML
   private void handleVisualizarCadernos() {
-    /*
     Usuario usuarioSelecionado = lvResultadoPesquisa.getSelectionModel().getSelectedItem();
     if (usuarioSelecionado != null) {
-      try {
-        ScreenManager.getInstancia().abrirTelaCadernoRelatorio(usuarioSelecionado.getLogin());
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
+      ScreenManager.getInstancia().abrirTelaRelatorioCaderno(usuarioSelecionado.getLogin());
     }
-     */
   }
 
   private boolean isBuscaValida() {

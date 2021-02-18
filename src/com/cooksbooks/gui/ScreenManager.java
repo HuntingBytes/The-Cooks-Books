@@ -283,4 +283,28 @@ public class ScreenManager {
     ((TabPane) mainScene.getRoot()).getTabs().get(0).setContent(telaResultadosPesquisa);
     //TODO somente abre a tela quando selecionado a opcao de busca + nome pesquisado
   }
+
+  public void abrirTelaRelatorio() {
+    modalStage(telaGerarRelatorio, stagePrincipal, "Gerar Relatório");
+  }
+
+  public void abrirTelaRelatorioCaderno(String loginUsuario) {
+    controladorCadernoRelatorio.inicializar(loginUsuario);
+    modalStage(telaCadernoRelatorio, stagePrincipal, "Cadernos");
+  }
+
+  public void abrirTelaRelatorioReceita(String loginUsuario) {
+    controladorReceitaRelatorio.inicializar(loginUsuario);
+    modalStage(telaReceitaRelatorio, stagePrincipal, "Receitas");
+  }
+
+  private void modalStage(Parent root, Stage owner, String title) {
+    Stage modalStage = new Stage();
+    modalStage.setTitle((title != null) ? title : "Janela");
+    modalStage.initModality(Modality.APPLICATION_MODAL);
+    modalStage.initOwner(owner);
+    modalStage.setResizable(false);
+    modalStage.setScene(new Scene(root));
+    modalStage.showAndWait();
+  }
 }
