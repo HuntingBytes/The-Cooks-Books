@@ -1,7 +1,15 @@
 package com.cooksbooks.gui.controllers;
 
+import com.cooksbooks.controllers.CooksBooksFachada;
+import com.cooksbooks.controllers.ICooksBooks;
 import com.cooksbooks.entity.Receita;
+import com.cooksbooks.entity.utils.Categoria;
+import com.cooksbooks.entity.utils.Custo;
+import com.cooksbooks.entity.utils.Dificuldade;
 import com.cooksbooks.entity.utils.Ingrediente;
+import com.cooksbooks.entity.utils.Rendimento;
+import com.cooksbooks.entity.utils.TempoPreparo;
+import com.cooksbooks.gui.ScreenManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,6 +20,10 @@ import javafx.scene.control.TextArea;
 public class ControladorTelaReceita {
 
   private Receita receita;
+
+  private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
+
+  private static ScreenManager screenManager;
 
   @FXML
   private Label lbNomeReceita;
@@ -29,7 +41,7 @@ public class ControladorTelaReceita {
   private ListView<Ingrediente> lvIngredientes;
 
   @FXML
-  private ListView<Receita> lvCategoriasReceita;
+  private ListView<Categoria> lvCategoriasReceita;
 
   @FXML
   private Label lbexetensoTempoPrep;
@@ -43,9 +55,21 @@ public class ControladorTelaReceita {
   @FXML
   private Label lbextensoDificuldade;
 
+  private void initialize() {
+
+    this.taModoPreparo.setText(receita.getModoPreparo());
+    this.lvIngredientes.getItems().addAll(receita.listarIngredientes());
+    this.lbexetensoTempoPrep.setText(receita.getTempoPreparo().toString());
+    this.lbextensoCusto.setText(receita.getCusto().toString());
+    this.lbextensoRendimento.setText(receita.getRendimento().toString());
+    this.lbextensoDificuldade.setText(receita.getDificuldade().toString());
+    this.lvCategoriasReceita.getItems().addAll(receita.listarCategorias());
+
+  }
+
   @FXML
   void handleEditarReceita(ActionEvent event) {
-
+    
   }
 
   @FXML
