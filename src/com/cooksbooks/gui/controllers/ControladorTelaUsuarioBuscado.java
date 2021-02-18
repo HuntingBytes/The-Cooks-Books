@@ -1,22 +1,81 @@
 package com.cooksbooks.gui.controllers;
 
+import com.cooksbooks.controllers.CooksBooksFachada;
+import com.cooksbooks.controllers.ICooksBooks;
+import com.cooksbooks.entity.CadernoReceitas;
+import com.cooksbooks.entity.Receita;
+import com.cooksbooks.entity.Usuario;
+import com.cooksbooks.gui.ScreenManager;
+import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ControladorTelaUsuarioBuscado {
 
-  @FXML
-  private ListView<?> lvReceitasUsuarioBuscado;
+  private ScreenManager screenManager;
+
+  private Usuario usuario;
+
+  private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
 
   @FXML
-  private ListView<?> lvCadernosUsuarioBuscado;
+  private Label lbNomePerfil;
 
   @FXML
-  private Button btVoltarUsuarioBuscado;
+  private Label lbDataCadastro;
+
+  //@FXML
+  //private Label lbReceitasCadastradas;
+
+  @FXML
+  private ListView<Receita> lvReceitasUsuarioBuscado;
+
+  @FXML
+  private ListView<CadernoReceitas> lvCadernosUsuarioBuscado;
 
   @FXML
   private ImageView ivImagemUsuarioBuscado;
 
+  @FXML
+  private Label lbExperienciaCulinaria;
+
+  public void inicializar(){
+    this.lbNomePerfil.setText(usuario.getNomePerfil());
+    this.lbDataCadastro.setText(usuario.getDataCriacao().toString());
+    //this.lbReceitasCadastradas.setText(String.format(usuario.getQuantidadeReceitasCadastradas());
+    this.lbExperienciaCulinaria.setText(usuario.getExperienciaCulinaria().toString());
+
+    this.lvCadernosUsuarioBuscado.setItems(FXCollections.observableArrayList(
+            sistema.buscarTodosCadernosDoUsuario(usuario.getLogin())));
+    this.lvReceitasUsuarioBuscado.setItems(FXCollections.observableArrayList(buscarTodasReceitas()));
+  }
+  @FXML
+  void handleSelecionarCaderno(ActionEvent event) {
+    if(lvCadernosUsuarioBuscado.getSelectionModel().getSelectedItem() != null){
+      screenManager.abrirTelaCaderno(lvCadernosUsuarioBuscado.getSelectionModel().getSelectedItem());
+    }
+  }
+
+  @FXML
+  void handleSelecionarReceita(ActionEvent event) {
+    if(lvReceitasUsuarioBuscado.getSelectionModel().getSelectedItem() != null){
+      screenManager.abrirTelaReceita(lvReceitasUsuarioBuscado.getSelectionModel().getSelectedItem());
+    }
+  }
+
+  //TODO: fazer isso direito e colocar no lugar certo
+  private List<Receita> buscarTodasReceitas(){
+    List<Receita> todasReceitas = new ArrayList<>();
+    for(CadernoReceitas c : sistema.buscarTodosCadernosDoUsuario(usuario.getLogin())){
+      todasReceitas.addAll(sistema.listarReceitasDoCaderno(c.getIdCaderno()));
+    }
+    return todasReceitas;
+  }
 }

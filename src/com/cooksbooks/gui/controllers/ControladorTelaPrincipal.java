@@ -74,13 +74,11 @@ public class ControladorTelaPrincipal {
     }
 
     public void inicializar(){
-
         this.nomeUsuarioTab.setText(sistema.getUsuarioLogado().getNomePerfil());
         this.nomeUsuario.setText(sistema.getUsuarioLogado().getNomePerfil());
         this.experienciaCulinaria.setText
                 (sistema.getUsuarioLogado().getExperienciaCulinaria().toString());
         //this.imagemPerfil.getImage();
-
         this.listViewCadernos.setItems(FXCollections.observableArrayList(
                 sistema.buscarTodosCadernosDoUsuarioAtual()));
         this.listViewReceitas.setItems((FXCollections.observableArrayList(buscarTodasReceitas())));
