@@ -21,7 +21,7 @@ public class ControladorTelaEditarPerfil {
 
     private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
 
-    private static ScreenManager screenManager;
+    private ScreenManager screenManager;
 
     @FXML
     private ImageView ivImagemUsuario;

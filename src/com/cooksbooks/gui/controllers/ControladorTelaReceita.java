@@ -19,7 +19,7 @@ public class ControladorTelaReceita {
 
   private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
 
-  private static ScreenManager screenManager;
+  private ScreenManager screenManager;
 
   @FXML
   private Label lbNomeReceita;
@@ -50,6 +50,10 @@ public class ControladorTelaReceita {
 
   @FXML
   private Label lbextensoDificuldade;
+
+  public void setScreenManager(ScreenManager screenManager) {
+    this.screenManager = screenManager;
+  }
 
   private void initialize() {
 

@@ -23,7 +23,7 @@ public class ControladorTelaPerfil {
 
     private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
 
-    private static final ScreenManager screenManager = ScreenManager.getInstancia();
+    private ScreenManager screenManager;
 
     @FXML
     private Label lbNomeUsuario;
@@ -53,8 +53,11 @@ public class ControladorTelaPerfil {
     @FXML
     private ChoiceBox<Receita> cbReceitasPerfil;
 
-    private void initialize() {
+    public void setScreenManager(ScreenManager screenManager) {
+        this.screenManager = screenManager;
+    }
 
+    private void initialize() {
         if(!usuarioDoPefil.equals(sistema.getUsuarioLogado())){ this.btEditarPerfil.setVisible(false); }
         this.cbCadernosPerfil.getItems().addAll(sistema.buscarTodosCadernosDoUsuario(usuarioDoPefil.getLogin()));
         //tem que criar um buscarTodasReceitasUsuario para inicializar

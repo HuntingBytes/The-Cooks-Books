@@ -24,7 +24,7 @@ public class ControladorTelaEditarCaderno {
 
     private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
 
-    private static ScreenManager screenManager;
+    private ScreenManager screenManager;
 
     @FXML
     private TextField tfNovoNome;

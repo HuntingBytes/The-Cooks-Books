@@ -28,6 +28,7 @@ public class ScreenManager {
   private static ScreenManager instancia;
 
   private Stage stagePrincipal;
+
   private Scene telaCadastro;
   private Scene telaCriacaoCaderno;
   private Scene telaCriacaoReceita;
@@ -63,88 +64,103 @@ public class ScreenManager {
   private ControladorReceitaRelatorio controladorReceitaRelatorio;
   private ControladorTelaRelatorio controladorTelaRelatorio;
 
-
   private ScreenManager() {
     try {
       FXMLLoader loaderTelaCadastro = new FXMLLoader(
           getClass().getResource(Telas.TELA_CADASTRO.caminho()));
       telaCadastro = new Scene(loaderTelaCadastro.load());
       controladorTelaCadastro = loaderTelaCadastro.getController();
+      controladorTelaCadastro.setScreenManager(this);
 
       FXMLLoader loaderTelaCriacaoCaderno = new FXMLLoader(
           getClass().getResource(Telas.TELA_CRIACAO_CADERNO.caminho()));
       telaCriacaoCaderno = new Scene(loaderTelaCriacaoCaderno.load());
       controladorTelaCriacaoCaderno = loaderTelaCriacaoCaderno.getController();
+      //controladorTelaCriacaoCaderno.setScreenManager();
 
       FXMLLoader loaderTelaCriacaoReceita = new FXMLLoader(
           getClass().getResource(Telas.TELA_CRIACAO_RECEITA.caminho()));
       telaCriacaoReceita = new Scene(loaderTelaCriacaoReceita.load());
       controladorTelaCriacaoRec = loaderTelaCriacaoReceita.getController();
+      //controladorTelaCriacaoRec.setScreenManager();
 
       FXMLLoader loaderTelaLogin = new FXMLLoader(
           getClass().getResource(Telas.TELA_LOGIN.caminho()));
       telaLogin = new Scene(loaderTelaLogin.load());
       controladorTelaLogin = loaderTelaLogin.getController();
+      controladorTelaLogin.setScreenManager(this);
 
       FXMLLoader loaderTelaPerfil = new FXMLLoader(
           getClass().getResource(Telas.TELA_PERFIL.caminho()));
       telaPerfil = new Scene(loaderTelaPerfil.load());
       controladorTelaPerfil = loaderTelaPerfil.getController();
+      controladorTelaPerfil.setScreenManager(this);
 
       FXMLLoader loaderTelaPrincipal = new FXMLLoader(
           getClass().getResource(Telas.TELA_PRINCIPAL_USUARIO.caminho()));
       telaPrincipalUsuario = new Scene(loaderTelaPrincipal.load());
       controladorTelaPrincipal = loaderTelaPrincipal.getController();
+      controladorTelaPrincipal.setScreenManager(this);
 
       FXMLLoader loaderTelaCaderno = new FXMLLoader(
           getClass().getResource(Telas.TELA_CADERNO.caminho()));
       telaCaderno = new Scene(loaderTelaCaderno.load());
       controladorTelaCaderno = loaderTelaCaderno.getController();
+      controladorTelaCaderno.setScreenManager(this);
 
       FXMLLoader loaderEditarCaderno = new FXMLLoader(
           getClass().getResource(Telas.TELA_EDITAR_CADERNO.caminho()));
       telaEditarCaderno = new Scene(loaderEditarCaderno.load());
       controladorTelaEditarCaderno = loaderEditarCaderno.getController();
+      //controladorTelaEditarCaderno.setScreenManager();
 
       FXMLLoader loaderEditarPerfil = new FXMLLoader(
           getClass().getResource(Telas.TELA_EDITAR_PERFIL.caminho()));
       telaEditarPerfil = new Scene(loaderEditarPerfil.load());
       controladorTelaEditarPerfil = loaderEditarPerfil.getController();
+      //controladorTelaEditarPerfil.setScreenManager(this);
 
       FXMLLoader loaderEditarReceita = new FXMLLoader(
           getClass().getResource(Telas.TELA_EDITAR_RECEITA.caminho()));
       telaEditarReceita = new Scene(loaderEditarReceita.load());
       controladorTelaEditarReceita = loaderEditarReceita.getController();
+      //controladorTelaEditarCaderno.setScreenManager(this);
 
       FXMLLoader loaderInicialAdm = new FXMLLoader(
           getClass().getResource(Telas.TELA_INICIAL_ADM.caminho()));
       telaInicialAdm = new Scene(loaderInicialAdm.load());
       controladorAdm = loaderInicialAdm.getController();
+      //controladorAdm.setScreenManager(this);
 
       FXMLLoader loaderUsuarioBuscado = new FXMLLoader(
           getClass().getResource(Telas.TELA_USUARIO_BUSCADO.caminho()));
       telaUsuarioBuscado = new Scene(loaderUsuarioBuscado.load());
       controladorTelaUsuarioBuscado = loaderUsuarioBuscado.getController();
+      //controladorTelaUsuarioBuscado.setScreenManager(this);
 
       FXMLLoader loaderCadernoRelatorio = new FXMLLoader(
           getClass().getResource(Telas.TELA_CADERNO_RELATORIO.caminho()));
       telaCadernoRelatorio = new Scene(loaderCadernoRelatorio.load());
       controladorCadernoRelatorio = loaderCadernoRelatorio.getController();
+      //controladorCadernoRelatorio.setScreenManager(this);
 
       FXMLLoader loaderReceitaRelatorio = new FXMLLoader(
           getClass().getResource(Telas.TELA_RECEITA_RELATORIO.caminho()));
       telaReceitaRelatorio = new Scene(loaderReceitaRelatorio.load());
       controladorReceitaRelatorio = loaderReceitaRelatorio.getController();
+      //controladorReceitaRelatorio.setScreenManager(this);
 
       FXMLLoader loaderGerarRelatorio = new FXMLLoader(
           getClass().getResource(Telas.TELA_GERAR_RELATORIO.caminho()));
       telaGerarRelatorio = new Scene(loaderGerarRelatorio.load());
       controladorTelaRelatorio = loaderGerarRelatorio.getController();
+      //controladorTelaRelatorio.setScreenManager(this);
 
       FXMLLoader loaderExibirReceita = new FXMLLoader(
           getClass().getResource(Telas.TELA_RECEITA.caminho()));
       telaReceita = new Scene(loaderExibirReceita.load());
       controladorTelaReceita = loaderExibirReceita.getController();
+      controladorTelaReceita.setScreenManager(this);
     } catch (Exception e) {
       e.printStackTrace();
       System.exit(-1);
@@ -152,11 +168,11 @@ public class ScreenManager {
   }
 
   public static ScreenManager getInstancia() {
-    if (instancia == null) {
-      instancia = new ScreenManager();
+    if (ScreenManager.instancia == null) {
+      ScreenManager.instancia = new ScreenManager();
     }
 
-    return instancia;
+    return ScreenManager.instancia;
   }
 
   public void setStagePrincipal(Stage stage) {

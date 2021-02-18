@@ -17,10 +17,8 @@ import javafx.scene.control.TextArea;
 public class ControladorTelaCaderno {
 
   private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
-
+  private ScreenManager screenManager;
   private CadernoReceitas caderno;
-
-  private static final ScreenManager screenManager = ScreenManager.getInstancia();
 
   @FXML
   private Label lbNomeCaderno;
@@ -40,9 +38,11 @@ public class ControladorTelaCaderno {
   @FXML
   private ListView<Categoria> lvCategoriasCaderno;
 
+  public void setScreenManager(ScreenManager screenManager) {
+    this.screenManager = screenManager;
+  }
 
   private void initialize() {
-
     this.taDesc.setText(caderno.getInformacoesCaderno());
     this.taDesc.disableProperty();
 

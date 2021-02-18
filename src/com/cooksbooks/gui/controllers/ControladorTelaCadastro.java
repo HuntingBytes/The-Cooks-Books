@@ -21,8 +21,7 @@ import javafx.scene.control.TextField;
 
 public class ControladorTelaCadastro {
 
-  private static final ScreenManager screenManager = ScreenManager.getInstancia();
-
+  private ScreenManager screenManager;
   private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
 
   @FXML
@@ -55,6 +54,10 @@ public class ControladorTelaCadastro {
     this.pfSenha.textProperty().addListener((observableValue, s, t1) -> lbErro.setVisible(false));
     this.pfConfirmarSenha.textProperty()
         .addListener((observableValue, s, t1) -> lbErro.setVisible(false));
+  }
+
+  public void setScreenManager(ScreenManager screenManager) {
+    this.screenManager = screenManager;
   }
 
   @FXML
