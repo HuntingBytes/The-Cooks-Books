@@ -34,9 +34,6 @@ public class ControladorTelaPerfil {
     }
 
     @FXML
-    private ImageView ivImagemPerfil;
-
-    @FXML
     private Label lbNomeUsuario;
 
     @FXML
@@ -54,11 +51,6 @@ public class ControladorTelaPerfil {
     @FXML
     private TextArea taSobreMim;
 
-    @FXML
-    private Label lbSobreMim;
-
-    @FXML
-    private Label lbExperiencia;
 
     @FXML
     private TextField tfExperiencia;
