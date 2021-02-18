@@ -186,7 +186,6 @@ public class ScreenManager {
   // Login
   public void abrirLogin() {
     stagePrincipal.setScene(telaLogin);
-    controladorTelaLogin.inicializar();
     stagePrincipal.show();
   }
 
