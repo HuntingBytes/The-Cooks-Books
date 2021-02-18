@@ -8,17 +8,8 @@ import java.util.List;
 public class ControladorCaderno {
 
   private static ControladorCaderno instancia;
+
   private final IRepositorioCaderno repositorioCadernos;
-
-  /**
-   * Construtor do controlador do caderno
-   * <p>
-   * Define a instância única do repositório de cadernos como atributo
-   */
-
-  public ControladorCaderno() {
-    this.repositorioCadernos = RepositorioCadernoList.getInstancia();
-  }
 
   /**
    * Método responsável por retornar a instância única do controlador do Caderno (Singleton)
@@ -27,7 +18,6 @@ public class ControladorCaderno {
    *
    * @return instancia do controlador do Caderno
    */
-
   public static ControladorCaderno getInstancia() {
     if (instancia == null) {
       instancia = new ControladorCaderno();
@@ -36,11 +26,19 @@ public class ControladorCaderno {
   }
 
   /**
+   * Construtor do controlador do caderno
+   * <p>
+   * Define a instância única do repositório de cadernos como atributo
+   */
+  public ControladorCaderno() {
+    this.repositorioCadernos = RepositorioCadernoList.getInstancia();
+  }
+
+  /**
    * Cadastra um caderno ao sistema, caso ele ainda não exista
    *
    * @param caderno caderno a ser cadastrado
    */
-
   void cadastrarCaderno(CadernoReceitas caderno) {
     if (cadernoValido(caderno) && !repositorioCadernos.existeCaderno(caderno.getIdCaderno())) {
       repositorioCadernos.cadastrarCaderno(caderno);
@@ -53,12 +51,10 @@ public class ControladorCaderno {
    *
    * @param idCaderno id do caderno a ser removido
    */
-
   void removerCaderno(String idCaderno) {
     repositorioCadernos.removerCaderno(idCaderno);
     repositorioCadernos.salvarArquivo();
   }
-
 
   /**
    * Busca por um caderno no sistema
@@ -66,7 +62,6 @@ public class ControladorCaderno {
    * @param idCaderno id do caderno a ser buscado
    * @return um caderno, caso ele exista
    */
-
   public CadernoReceitas procurarCaderno(String idCaderno) {
     return repositorioCadernos.buscarCaderno(idCaderno);
   }
@@ -77,7 +72,6 @@ public class ControladorCaderno {
    * @param nomeUsuario nome do usuario que vai ser listado todos os cadernos
    * @return uma lista de cadernos
    */
-
   public List<CadernoReceitas> listarCadernosDoUsuario(String nomeUsuario) {
     return repositorioCadernos.buscarTodosCadernosDoUsuario(nomeUsuario);
   }
@@ -88,7 +82,6 @@ public class ControladorCaderno {
    * @param caderno caderno a ser julgado valido
    * @return boolean que diz se é valido ou nao TODO: implementar as regras da validez de um caderno
    */
-
   private boolean cadernoValido(CadernoReceitas caderno) {
     return true;
   }
@@ -99,7 +92,6 @@ public class ControladorCaderno {
    * @param idDoCaderno id do caderno que vai ser alterado o nome
    * @param nomeNovo    nome novo do caderno que o usuario digitou
    */
-
   public void alterarNomeCaderno(String idDoCaderno, String nomeNovo) {
     if (nomeCadernoValido(nomeNovo)) {
       repositorioCadernos.alterarNomeCaderno(idDoCaderno, nomeNovo);
@@ -113,7 +105,6 @@ public class ControladorCaderno {
    * @param idDoCaderno      id do caderno que vai ser alterado as informaçoes
    * @param informacoesNovas informaçoes novas do caderno que o usuario digitou
    */
-
   public void alterarInformacoesCaderno(String idDoCaderno, String informacoesNovas) {
     if (informacoesCadernoValido(informacoesNovas)) {
       repositorioCadernos.alterarInformacoesCaderno(idDoCaderno, informacoesNovas);
@@ -126,7 +117,6 @@ public class ControladorCaderno {
    *
    * @param idDoCaderno id do caderno que vai ser alterado a visibilidade
    */
-
   public void alterarCadernoPublico(String idDoCaderno, boolean visibilidade) {
     repositorioCadernos.alterarVisibildadeCaderno(idDoCaderno, visibilidade);
     repositorioCadernos.salvarArquivo();
@@ -137,7 +127,6 @@ public class ControladorCaderno {
    *
    * @param nome nome a ser avaliado TODO: implementar as regras da validez de um nome
    */
-  // talvez os métodos auxiliares possam ser estáticos
   private boolean nomeCadernoValido(String nome) {
     return true;
   }
@@ -148,7 +137,6 @@ public class ControladorCaderno {
    * @param informacoes informaçoes a ser avaliadas TODO: implementar as regras da validez de uma
    *                    informaçao
    */
-  // talvez os métodos auxiliares possam ser estáticos
   private boolean informacoesCadernoValido(String informacoes) {
     return true;
   }

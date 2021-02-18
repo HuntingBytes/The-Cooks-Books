@@ -11,22 +11,22 @@ import com.cooksbooks.exceptions.UsuarioJaCadastrado;
 
 public class ControladorUsuario {
 
-  private final IRepositorioUsuario repositorioUsuarios;
   private static ControladorUsuario instancia;
+
+  private final IRepositorioUsuario repositorioUsuarios;
 
   /**
    * Construtor do controlador do Usuario
-   *
+   * <p>
    * Define a instância única do repositório de usuários como atributo
    */
-  private ControladorUsuario (){
+  private ControladorUsuario() {
     this.repositorioUsuarios = RepositorioUsuariosList.getInstancia();
   }
 
   /**
-   * Método responsável por retornar a instância única do controlador
-   * do usuário (Singleton)
-   *
+   * Método responsável por retornar a instância única do controlador do usuário (Singleton)
+   * <p>
    * Caso ela ainda não exista, uma nova instância será criada e retornada
    *
    * @return instancia do controlador do usuario
@@ -43,7 +43,7 @@ public class ControladorUsuario {
    *
    * @param usuario usuario a ser cadastrado
    */
-  public void cadastrarUsuario(Usuario usuario) throws UsuarioJaCadastrado, CampoInvalido  {
+  public void cadastrarUsuario(Usuario usuario) throws UsuarioJaCadastrado, CampoInvalido {
     if (this.isUsuarioValido(usuario)) {
       if (!this.repositorioUsuarios.existeUsuario(usuario.getLogin())) {
         this.repositorioUsuarios.cadastrarUsuario(usuario);
@@ -68,8 +68,6 @@ public class ControladorUsuario {
     }
   }
 
-
-
   /**
    * Busca por um usuario
    *
@@ -81,10 +79,8 @@ public class ControladorUsuario {
   }
 
   // TODO alterarNomePerfil
-  /**
-   *
-   */
-  public void alterarNomePerfil(String login, String nomePerfil) throws UsuarioInexistente, CampoInvalido {
+  public void alterarNomePerfil(String login, String nomePerfil)
+      throws UsuarioInexistente, CampoInvalido {
     if (this.isNomePerfilValido(nomePerfil)) {
       if (this.repositorioUsuarios.existeUsuario(login)) {
         this.repositorioUsuarios.alterarNomePerfil(login, nomePerfil);
@@ -98,10 +94,8 @@ public class ControladorUsuario {
   }
 
   // TODO alterarBiografia
-  /**
-   *
-   */
-  public void alterarBiografia(String login, String biografia) throws UsuarioInexistente, CampoInvalido {
+  public void alterarBiografia(String login, String biografia)
+      throws UsuarioInexistente, CampoInvalido {
     if (this.isBiografiaValida(biografia)) {
       if (this.repositorioUsuarios.existeUsuario(login)) {
         this.repositorioUsuarios.alterarBiografia(login, biografia);
@@ -115,10 +109,8 @@ public class ControladorUsuario {
   }
 
   // TODO alterarExperienciaCulinaria
-  /**
-   *
-   */
-  public void alterarExperienciaCulinaria(String login, ExperienciaCulinaria experienciaCulinaria) throws UsuarioInexistente, CampoInvalido {
+  public void alterarExperienciaCulinaria(String login, ExperienciaCulinaria experienciaCulinaria)
+      throws UsuarioInexistente, CampoInvalido {
     if (experienciaCulinaria != null) {
       if (this.repositorioUsuarios.existeUsuario(login)) {
         this.repositorioUsuarios.alterarExperienciaCulinaria(login, experienciaCulinaria);
@@ -132,10 +124,8 @@ public class ControladorUsuario {
   }
 
   // TODO alterar Imagem
-  /**
-   *
-   */
-  public void alterarCaminhoImagemPerfil(String login, String caminhoImagemPerfil) throws UsuarioInexistente, CampoInvalido {
+  public void alterarCaminhoImagemPerfil(String login, String caminhoImagemPerfil)
+      throws UsuarioInexistente, CampoInvalido {
     if (this.isCaminhoImagemPerfilValido(caminhoImagemPerfil)) {
       if (this.repositorioUsuarios.existeUsuario(login)) {
         this.repositorioUsuarios.alterarCaminhoImagemPerfil(login, caminhoImagemPerfil);
@@ -163,5 +153,4 @@ public class ControladorUsuario {
   private boolean isCaminhoImagemPerfilValido(String caminhoImagemPerfil) {
     return true;
   }
-
 }
