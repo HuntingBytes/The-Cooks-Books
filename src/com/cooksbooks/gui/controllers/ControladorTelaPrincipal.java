@@ -28,9 +28,6 @@ public class ControladorTelaPrincipal {
     private final String[] dropDownContent = {"Caderno", "Receita", "Usuario"};
 
     @FXML
-    private Tab nomeUsuarioTab;
-
-    @FXML
     private ListView<CadernoReceitas> listViewCadernos;
 
     @FXML
@@ -74,8 +71,6 @@ public class ControladorTelaPrincipal {
     }
 
     public void inicializar(){
-
-        this.nomeUsuarioTab.setText(sistema.getUsuarioLogado().getNomePerfil());
         this.nomeUsuario.setText(sistema.getUsuarioLogado().getNomePerfil());
         this.experienciaCulinaria.setText
                 (sistema.getUsuarioLogado().getExperienciaCulinaria().toString());
