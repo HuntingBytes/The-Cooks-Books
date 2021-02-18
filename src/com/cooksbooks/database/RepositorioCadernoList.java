@@ -18,6 +18,7 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
   @Serial
   private static final long serialVersionUID = 6039699407286777005L;
   private static RepositorioCadernoList instancia = null;
+
   private final List<CadernoReceitas> cadernosSist;
 
   /**
@@ -79,7 +80,6 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
    *
    * @param caderno caderno a ser adicionado ao repositorio
    */
-
   @Override
   public void cadastrarCaderno(CadernoReceitas caderno) {
     this.cadernosSist.add(caderno);
@@ -90,7 +90,6 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
    *
    * @param idCaderno caderno a ser removido do repositorio
    */
-
   @Override
   public void removerCaderno(String idCaderno) {
     this.cadernosSist.removeIf(caderno -> caderno.getIdCaderno().equals(idCaderno));
@@ -119,7 +118,6 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
    * @param idCaderno id do caderno a ser procurado no repositorio
    * @return caderno que estava procurando, se nao existir ele retorna null
    */
-
   @Override
   public CadernoReceitas buscarCaderno(String idCaderno) {
     for (CadernoReceitas caderno : this.cadernosSist) {
@@ -136,7 +134,6 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
    * @param nomeUsuario nome do usuario que deseja listar todos os cadernos
    * @return lista de cadernos do usuario desejado no repositorio
    */
-
   @Override
   public List<CadernoReceitas> buscarTodosCadernosDoUsuario(String nomeUsuario) {
     List<CadernoReceitas> cadernosDoUsuario = new ArrayList<>();
@@ -153,7 +150,6 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
    *
    * @return o tamanho do repositorio
    */
-
   @Override
   public long quantidadeCadernosCadastrados() {
     return this.cadernosSist.size();
@@ -162,7 +158,6 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
   /**
    * Método responsável por salvar o repositorio em um arquivo
    */
-
   @Override
   public void salvarArquivo() {
     if (RepositorioCadernoList.instancia == null) {
@@ -196,7 +191,6 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
    * @param nomeCadernoNovo      nome do caderno que o usuario deseja atualizar, verificaçao feita
    *                             se o nome é valido no controlador
    */
-
   @Override
   public void alterarNomeCaderno(String idCadernoSubstituido, String nomeCadernoNovo) {
     for (CadernoReceitas cadernoIdentificar : cadernosSist) {
@@ -213,9 +207,9 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
    * @param informacoesCadernoNovo informaçoes do caderno que o usuario deseja atualizar,
    *                               verificaçao feita se as informaçaoes é valido no controlador
    */
-
   @Override
-  public void alterarInformacoesCaderno(String idCadernoSubstituido, String informacoesCadernoNovo) {
+  public void alterarInformacoesCaderno(String idCadernoSubstituido,
+      String informacoesCadernoNovo) {
     for (CadernoReceitas cadernoIdentificar : cadernosSist) {
       if (cadernoIdentificar.getIdCaderno().equals(idCadernoSubstituido)) {
         cadernoIdentificar.setInformacoesCaderno(informacoesCadernoNovo);
@@ -230,7 +224,6 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
    *
    * @param idCadernoSubstituido id do caderno que vamos alterar a visibilidade
    */
-
   @Override
   public void alterarVisibildadeCaderno(String idCadernoSubstituido, boolean visibilidade) {
     for (CadernoReceitas cadernoIdentificar : cadernosSist) {

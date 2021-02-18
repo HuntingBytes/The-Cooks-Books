@@ -3,7 +3,6 @@ package com.cooksbooks.controllers;
 import com.cooksbooks.entity.CadernoReceitas;
 import com.cooksbooks.entity.Receita;
 import com.cooksbooks.entity.Usuario;
-
 import com.cooksbooks.entity.utils.ExperienciaCulinaria;
 import com.cooksbooks.exceptions.CampoInvalido;
 import com.cooksbooks.exceptions.UsuarioInexistente;
@@ -22,11 +21,14 @@ public interface ICooksBooks {
 
   void alterarBiografia(String login, String biografia) throws UsuarioInexistente, CampoInvalido;
 
-  void alterarExperiencia(String login, ExperienciaCulinaria experienciaCulinaria) throws UsuarioInexistente, CampoInvalido;
+  void alterarExperiencia(String login, ExperienciaCulinaria experienciaCulinaria)
+      throws UsuarioInexistente, CampoInvalido;
 
-  void alterarCaminhoImagemPerfil(String login, String caminhoImagemPerfil) throws UsuarioInexistente, CampoInvalido;
+  void alterarCaminhoImagemPerfil(String login, String caminhoImagemPerfil)
+      throws UsuarioInexistente, CampoInvalido;
 
-  void efetuarLogin(String login, String senha) throws UsuarioInexistente, UsuarioJaLogado, UsuarioSenhaIncorreta;
+  void efetuarLogin(String login, String senha)
+      throws UsuarioInexistente, UsuarioJaLogado, UsuarioSenhaIncorreta;
 
   Usuario getUsuarioLogado();
 

@@ -20,6 +20,7 @@ public class RepositorioUsuariosList implements IRepositorioUsuario, Serializabl
   @Serial
   private static final long serialVersionUID = 1765430802666531944L;
   private static RepositorioUsuariosList instancia;
+
   private final List<Usuario> usuariosList;
 
   /**
@@ -29,9 +30,6 @@ public class RepositorioUsuariosList implements IRepositorioUsuario, Serializabl
     this.usuariosList = new ArrayList<>();
   }
 
-  /**
-   * @return instancia do RepositorioUsuario
-   */
   public static RepositorioUsuariosList getInstancia() {
     if (RepositorioUsuariosList.instancia == null) {
       RepositorioUsuariosList.instancia = RepositorioUsuariosList.lerArquivo();
@@ -40,11 +38,6 @@ public class RepositorioUsuariosList implements IRepositorioUsuario, Serializabl
     return RepositorioUsuariosList.instancia;
   }
 
-  /**
-   * Copiei na cara dura mesmo. kkkkkkkk TODO: estudar como esse método funciona
-   *
-   * @return
-   */
   private static RepositorioUsuariosList lerArquivo() {
     RepositorioUsuariosList instanciaLocal;
 
@@ -70,10 +63,6 @@ public class RepositorioUsuariosList implements IRepositorioUsuario, Serializabl
     return instanciaLocal;
   }
 
-  /**
-   * Outra cópia na cara dura. TODO: estudar isso também (apesar de ser a mesma coisa que o método
-   * anterior)
-   */
   public void salvarArquivo() {
     if (RepositorioUsuariosList.instancia == null) {
       return;
@@ -161,5 +150,4 @@ public class RepositorioUsuariosList implements IRepositorioUsuario, Serializabl
     Usuario u = this.buscarUsuario(login);
     u.setExperienciaCulinaria(experienciaCulinaria);
   }
-
 }

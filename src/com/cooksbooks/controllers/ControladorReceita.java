@@ -7,22 +7,12 @@ import java.util.List;
 
 public class ControladorReceita {
 
-  private IRepositorioReceita repositorioReceitas;
   private static ControladorReceita instancia;
 
-  /**
-   * Construtor de ControladorReceita
-   *
-   * Receberá a instância para o repositório
-   * de Receitas.
-   */
-  public ControladorReceita (){
-    this.repositorioReceitas = RepositorioReceitasList.getInstancia();
-  }
+  private final IRepositorioReceita repositorioReceitas;
 
   /**
-   * Copiei esse método de Gabriel e sinto
-   * que essa foi a minha maior vigarice.
+   * Copiei esse método de Gabriel e sinto que essa foi a minha maior vigarice.
    *
    * @return a instancia criada
    */
@@ -34,8 +24,18 @@ public class ControladorReceita {
   }
 
   /**
+   * Construtor de ControladorReceita
+   * <p>
+   * Receberá a instância para o repositório de Receitas.
+   */
+  public ControladorReceita() {
+    this.repositorioReceitas = RepositorioReceitasList.getInstancia();
+  }
+
+  /**
    * Crud - Create
-   * @param receita
+   *
+   * @param receita Receita.
    */
   public void cadastrarReceita(Receita receita) {
     receita.setIdReceita(receita.getTitulo());
@@ -47,9 +47,9 @@ public class ControladorReceita {
 
   /**
    * Crud - Delete
-   * @param idReceita
+   *
+   * @param idReceita id da Receita.
    */
-
   public void removerReceita(String idReceita) {
     if (this.repositorioReceitas.existeReceita(idReceita)) {
       this.repositorioReceitas.removerReceita(idReceita);
@@ -59,6 +59,7 @@ public class ControladorReceita {
 
   /**
    * Crud - Read
+   *
    * @param idReceita
    * @return Receita buscada pelo usuário
    */
@@ -77,7 +78,7 @@ public class ControladorReceita {
    * @param idReceitaExistente
    * @param novoTituloReceita
    */
-  public void alterarTituloReceita (String idReceitaExistente, String novoTituloReceita) {
+  public void alterarTituloReceita(String idReceitaExistente, String novoTituloReceita) {
     if (this.repositorioReceitas.existeReceita(idReceitaExistente)) {
       this.repositorioReceitas.alterarTituloReceita(idReceitaExistente, novoTituloReceita);
       this.repositorioReceitas.salvarArquivo();
@@ -90,7 +91,7 @@ public class ControladorReceita {
    * @param idReceitaExistente
    * @param novoModoPreparo
    */
-  public void alterarModoPreparoReceita (String idReceitaExistente, String novoModoPreparo) {
+  public void alterarModoPreparoReceita(String idReceitaExistente, String novoModoPreparo) {
     if (this.repositorioReceitas.existeReceita(idReceitaExistente)) {
       this.repositorioReceitas.alterarModoPreparoReceita(idReceitaExistente, novoModoPreparo);
       this.repositorioReceitas.salvarArquivo();
@@ -100,5 +101,4 @@ public class ControladorReceita {
   public List<Receita> listarReceitas(String idCaderno) {
     return repositorioReceitas.listarReceitasCaderno(idCaderno);
   }
-
 }

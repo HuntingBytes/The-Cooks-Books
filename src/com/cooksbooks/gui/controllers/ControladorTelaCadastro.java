@@ -1,6 +1,5 @@
 package com.cooksbooks.gui.controllers;
 
-import com.cooksbooks.App;
 import com.cooksbooks.controllers.CooksBooksFachada;
 import com.cooksbooks.controllers.ICooksBooks;
 import com.cooksbooks.entity.Usuario;
@@ -8,11 +7,8 @@ import com.cooksbooks.entity.utils.ExperienciaCulinaria;
 import com.cooksbooks.exceptions.CampoInvalido;
 import com.cooksbooks.exceptions.UsuarioJaCadastrado;
 import com.cooksbooks.gui.ScreenManager;
-import com.cooksbooks.gui.Telas;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -25,16 +21,7 @@ import javafx.scene.control.TextField;
 
 public class ControladorTelaCadastro {
 
-  private static ScreenManager screenManager;
-
-  static {
-    try {
-      screenManager = ScreenManager.getInstancia();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-  }
-
+  private ScreenManager screenManager;
   private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
 
   @FXML
@@ -67,6 +54,10 @@ public class ControladorTelaCadastro {
     this.pfSenha.textProperty().addListener((observableValue, s, t1) -> lbErro.setVisible(false));
     this.pfConfirmarSenha.textProperty()
         .addListener((observableValue, s, t1) -> lbErro.setVisible(false));
+  }
+
+  public void setScreenManager(ScreenManager screenManager) {
+    this.screenManager = screenManager;
   }
 
   @FXML

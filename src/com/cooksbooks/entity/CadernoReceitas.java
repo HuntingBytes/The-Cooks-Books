@@ -22,37 +22,35 @@ public class CadernoReceitas implements Serializable {
 
   @Serial
   private static final long serialVersionUID = 7978808538548640443L;
+
   private String nomeCaderno;
   private String informacoesCaderno;
+  private String idDono;
+  private String idCaderno;
   private boolean cadernoPublico;
   private List<Categoria> categorias;
   private Nota notaCaderno;
   private Dificuldade dificuldadeCaderno;
   private Comentario comentarioCaderno;
-  private String idDono;
-  private String idCaderno;
 
   /**
    * Construtor completo da classe. Inicializa também as listas.
    *
-   * @param nomeCaderno
-   * @param informacoesCaderno
-   * @param cadernoPublico
-   * @param categorias
-   * @param receitas
-   * @param notaCaderno
-   * @param dificuldadeCaderno
-   * @param comentarioCaderno
+   * @param nomeCaderno Nome do caderno.
+   * @param informacoesCaderno Informações do caderno.
+   * @param cadernoPublico Booleano se o caderno é público ou não.
+   * @param categorias Lista com as categorias do caderno.
+   * @param notaCaderno Nota do caderno.
+   * @param dificuldadeCaderno Dificuldade do caderno.
+   * @param comentarioCaderno Único comentário do caderno.
    */
-  // Talvez possamos adicionar outras possibilidades de construtores, para não precisar criar um objeto com
-  // todos os atributos inicializados. Aí podemos utilizar os métodos set/get.
   public CadernoReceitas(String nomeCaderno, String informacoesCaderno, boolean cadernoPublico,
-      List<Categoria> categorias, List<Receita> receitas, Nota notaCaderno,
-      Dificuldade dificuldadeCaderno, Comentario comentarioCaderno, String idDono) {
+      List<Categoria> categorias, Nota notaCaderno, Dificuldade dificuldadeCaderno,
+      Comentario comentarioCaderno, String idDono) {
     this.nomeCaderno = nomeCaderno;
     this.informacoesCaderno = informacoesCaderno;
     this.cadernoPublico = cadernoPublico;
-    this.categorias = new ArrayList<>();
+    this.categorias = categorias;
     this.notaCaderno = notaCaderno;
     this.dificuldadeCaderno = dificuldadeCaderno;
     this.comentarioCaderno = comentarioCaderno;
@@ -78,11 +76,10 @@ public class CadernoReceitas implements Serializable {
     return this.categorias;
   }
 
-  /**
-   * Métodos Get e Set da classe
-   *
-   * @return muitas coisas
-   */
+  public void adicionarCategoria(Categoria categoria){ categorias.add(categoria);}
+
+  public void removerCategoria(Categoria categoria){ categorias.remove(categoria);}
+
   public String getNomeCaderno() {
     return nomeCaderno;
   }
@@ -150,5 +147,4 @@ public class CadernoReceitas implements Serializable {
   public void setIdCaderno(String idCaderno) {
     this.idCaderno = idCaderno;
   }
-
 }

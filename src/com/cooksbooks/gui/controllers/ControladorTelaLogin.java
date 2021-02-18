@@ -1,15 +1,12 @@
 package com.cooksbooks.gui.controllers;
 
-import com.cooksbooks.App;
 import com.cooksbooks.controllers.CooksBooksFachada;
 import com.cooksbooks.controllers.ICooksBooks;
 import com.cooksbooks.exceptions.UsuarioInexistente;
 import com.cooksbooks.exceptions.UsuarioJaLogado;
 import com.cooksbooks.exceptions.UsuarioSenhaIncorreta;
 import com.cooksbooks.gui.ScreenManager;
-import com.cooksbooks.gui.Telas;
 import java.io.IOException;
-import java.util.HashMap;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -20,17 +17,8 @@ import javafx.scene.control.TextField;
 
 public class ControladorTelaLogin {
 
-  private static ScreenManager screenManager;
-
-  static {
-    try {
-      screenManager = ScreenManager.getInstancia();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-  }
-
   private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
+  private ScreenManager screenManager;
 
   @FXML
   private Label lbErro;
@@ -50,6 +38,9 @@ public class ControladorTelaLogin {
   @FXML
   private Button btAjuda;
 
+  public void setScreenManager(ScreenManager screenManager) {
+    this.screenManager = screenManager;
+  }
 
   public void inicializar() {
     this.tfLogin.textProperty().addListener((observableValue, s, t1) -> lbErro.setVisible(false));
@@ -64,7 +55,7 @@ public class ControladorTelaLogin {
 
       try {
         sistema.efetuarLogin(login, senha);
-        screenManager.abrirTelaPrincipal();
+        ScreenManager.getInstancia().abrirTelaPrincipal();
         clearCampos();
       } catch (UsuarioInexistente uInexistente) {
         lbErro.setText("Nenhum usuário com esse login foi encontrado.");
@@ -87,7 +78,7 @@ public class ControladorTelaLogin {
 
   @FXML
   private void handleCadastrar() throws IOException {
-    screenManager.abrirCadastro(tfLogin.getText(), pfSenha.getText());
+    ScreenManager.getInstancia().abrirCadastro(tfLogin.getText(), pfSenha.getText());
     clearCampos();
   }
 
@@ -102,7 +93,6 @@ public class ControladorTelaLogin {
             "Caso ainda não possua uma conta, clique no botão \"Cadastrar\".");
     alert.showAndWait();
   }
-
 
   private boolean areCamposValidos() {
     String login = this.tfLogin.getText();

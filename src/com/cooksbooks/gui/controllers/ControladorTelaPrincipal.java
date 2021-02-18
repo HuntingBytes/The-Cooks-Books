@@ -21,15 +21,7 @@ import java.util.List;
 
 public class ControladorTelaPrincipal {
 
-    private  static ScreenManager screenManager;
-
-    static {
-        try {
-            screenManager = ScreenManager.getInstancia();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+    private ScreenManager screenManager;
 
     private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
 
@@ -76,6 +68,10 @@ public class ControladorTelaPrincipal {
 
     @FXML
     private Button botaoAcessarReceita;
+
+    public void setScreenManager(ScreenManager screenManager) {
+        this.screenManager = screenManager;
+    }
 
     public void inicializar(){
 

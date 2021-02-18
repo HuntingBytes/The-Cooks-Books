@@ -13,27 +13,24 @@ import java.util.List;
 
 public class CooksBooksFachada implements ICooksBooks {
 
-  // Talvez o Usuario não precise ser estático
-  // Seguindo a mesma ideia dos controladores
-  private static Usuario usuarioLogado;
   private static CooksBooksFachada instancia;
 
   private final ControladorUsuario controladorUsuario;
   private final ControladorCaderno controladorCaderno;
   private final ControladorReceita controladorReceita;
-
-  // Podemos adicionar um getInstancia, como o construtor é privado
-  public CooksBooksFachada() {
-    this.controladorUsuario = ControladorUsuario.getInstancia();
-    this.controladorCaderno = ControladorCaderno.getInstancia();
-    this.controladorReceita = ControladorReceita.getInstancia();
-  }
+  private Usuario usuarioLogado;
 
   public static CooksBooksFachada getInstancia() {
     if (instancia == null) {
       instancia = new CooksBooksFachada();
     }
     return instancia;
+  }
+
+  private CooksBooksFachada() {
+    this.controladorUsuario = ControladorUsuario.getInstancia();
+    this.controladorCaderno = ControladorCaderno.getInstancia();
+    this.controladorReceita = ControladorReceita.getInstancia();
   }
 
   // Usuário
@@ -48,22 +45,26 @@ public class CooksBooksFachada implements ICooksBooks {
   }
 
   @Override
-  public void alterarBiografia(String login, String biografia) throws UsuarioInexistente, CampoInvalido {
+  public void alterarBiografia(String login, String biografia)
+      throws UsuarioInexistente, CampoInvalido {
     this.controladorUsuario.alterarBiografia(login, biografia);
   }
 
   @Override
-  public void alterarNomePerfil(String login, String nomePerfil) throws UsuarioInexistente, CampoInvalido {
+  public void alterarNomePerfil(String login, String nomePerfil)
+      throws UsuarioInexistente, CampoInvalido {
     this.controladorUsuario.alterarNomePerfil(login, nomePerfil);
   }
 
   @Override
-  public void alterarCaminhoImagemPerfil(String login, String caminhoImagemPerfil) throws UsuarioInexistente, CampoInvalido {
+  public void alterarCaminhoImagemPerfil(String login, String caminhoImagemPerfil)
+      throws UsuarioInexistente, CampoInvalido {
     this.controladorUsuario.alterarCaminhoImagemPerfil(login, caminhoImagemPerfil);
   }
 
   @Override
-  public void alterarExperiencia(String login, ExperienciaCulinaria experienciaCulinaria) throws UsuarioInexistente, CampoInvalido {
+  public void alterarExperiencia(String login, ExperienciaCulinaria experienciaCulinaria)
+      throws UsuarioInexistente, CampoInvalido {
     this.controladorUsuario.alterarExperienciaCulinaria(login, experienciaCulinaria);
   }
 
@@ -72,17 +73,17 @@ public class CooksBooksFachada implements ICooksBooks {
    *
    * @param login login do usuário
    * @param senha senha do usuário
-   *
    */
-  public void efetuarLogin(String login, String senha) throws UsuarioInexistente, UsuarioJaLogado, UsuarioSenhaIncorreta  {
-    if(CooksBooksFachada.usuarioLogado != null) {
+  public void efetuarLogin(String login, String senha)
+      throws UsuarioInexistente, UsuarioJaLogado, UsuarioSenhaIncorreta {
+    if (this.usuarioLogado != null) {
       throw new UsuarioJaLogado(this.getUsuarioLogado().getLogin());
     }
 
     Usuario usuarioASerLogado = this.controladorUsuario.buscarUsuario(login);
 
     if (usuarioASerLogado.getSenha().equals(senha)) {
-      CooksBooksFachada.usuarioLogado = usuarioASerLogado;
+      this.usuarioLogado = usuarioASerLogado;
     } else {
       throw new UsuarioSenhaIncorreta(usuarioASerLogado.getLogin());
     }
@@ -90,7 +91,7 @@ public class CooksBooksFachada implements ICooksBooks {
 
   @Override
   public Usuario getUsuarioLogado() {
-    return CooksBooksFachada.usuarioLogado;
+    return this.usuarioLogado;
   }
 
   @Override
@@ -130,11 +131,10 @@ public class CooksBooksFachada implements ICooksBooks {
     return this.controladorReceita.listarReceitas(idCaderno);
   }
 
-
   // Caderno
   @Override
   public void cadastrarCaderno(CadernoReceitas caderno) {
-    caderno.setIdDono(CooksBooksFachada.usuarioLogado.getLogin());
+    caderno.setIdDono(this.usuarioLogado.getLogin());
     caderno.setIdCaderno(caderno.getNomeCaderno());
     this.controladorCaderno.cadastrarCaderno(caderno);
   }
@@ -165,20 +165,18 @@ public class CooksBooksFachada implements ICooksBooks {
   }
 
   /**
+   * Retorna uma lista de cadernos de receita
    *
-   *Retorna uma lista de cadernos de receita
    * @param nomeUsuario
    * @return
    */
   @Override
-  // Pode ser uma função da camada de dados
-  // O repositório busca por todos os cadernos que possuem o nome do usuário
   public List<CadernoReceitas> buscarTodosCadernosDoUsuario(String nomeUsuario) {
     return this.controladorCaderno.listarCadernosDoUsuario(nomeUsuario);
   }
 
   @Override
   public List<CadernoReceitas> buscarTodosCadernosDoUsuarioAtual() {
-    return buscarTodosCadernosDoUsuario(CooksBooksFachada.usuarioLogado.getLogin());
+    return buscarTodosCadernosDoUsuario(this.usuarioLogado.getLogin());
   }
 }

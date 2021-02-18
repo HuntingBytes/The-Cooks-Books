@@ -13,23 +13,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 
 public class ControladorTelaCaderno {
 
   private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
-
+  private ScreenManager screenManager;
   private CadernoReceitas caderno;
-
-  private static ScreenManager screenManager;
-
-  static {
-    try {
-      screenManager = ScreenManager.getInstancia();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-  }
 
   @FXML
   private Label lbNomeCaderno;
@@ -44,31 +33,22 @@ public class ControladorTelaCaderno {
   private Button btEditarCaderno;
 
   @FXML
-  private Button btBuscarReceita;
-
-  @FXML
-  private TextField tfReceitaBuscar;
-
-  @FXML
-  private ListView<Receita> lvResultadoBuscaReceita;
+  private ListView<Receita> lvReceitas;
 
   @FXML
   private ListView<Categoria> lvCategoriasCaderno;
 
+  public void setScreenManager(ScreenManager screenManager) {
+    this.screenManager = screenManager;
+  }
 
   private void initialize() {
-
     this.taDesc.setText(caderno.getInformacoesCaderno());
     this.taDesc.disableProperty();
 
     this.lvCategoriasCaderno.getItems().addAll(caderno.listarCategorias());
-    this.lvResultadoBuscaReceita.getItems().addAll
+    this.lvReceitas.getItems().addAll
         (sistema.listarReceitasDoCaderno(caderno.getIdCaderno()));
-
-  }
-
-  @FXML
-  void handleBuscarReceita() {
 
   }
 
