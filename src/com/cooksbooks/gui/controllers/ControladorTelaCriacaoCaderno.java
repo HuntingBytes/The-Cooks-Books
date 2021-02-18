@@ -1,5 +1,6 @@
 package com.cooksbooks.gui.controllers;
 
+import com.cooksbooks.gui.ScreenManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,6 +10,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class ControladorTelaCriacaoCaderno {
+
+
 
   @FXML
   private CheckBox cbCadernoPrivado;
@@ -35,7 +38,7 @@ public class ControladorTelaCriacaoCaderno {
 
   @FXML
   void handleVoltarTelaPrin(ActionEvent event) {
-
+    ScreenManager.getInstancia().abrirTelaPrincipal();
   }
 
 }
