@@ -20,15 +20,7 @@ public class ControladorTelaCaderno {
 
   private CadernoReceitas caderno;
 
-  private static ScreenManager screenManager;
-
-  static {
-    try {
-      screenManager = ScreenManager.getInstancia();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-  }
+  private static final ScreenManager screenManager = ScreenManager.getInstancia();
 
   @FXML
   private Label lbNomeCaderno;

@@ -23,15 +23,7 @@ public class ControladorTelaPerfil {
 
     private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
 
-    private static ScreenManager screenManager;
-
-    static {
-        try {
-            screenManager = ScreenManager.getInstancia();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+    private static final ScreenManager screenManager = ScreenManager.getInstancia();
 
     @FXML
     private Label lbNomeUsuario;
