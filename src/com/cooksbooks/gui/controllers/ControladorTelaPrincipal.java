@@ -75,7 +75,6 @@ public class ControladorTelaPrincipal {
         this.experienciaCulinaria.setText
                 (sistema.getUsuarioLogado().getExperienciaCulinaria().toString());
         //this.imagemPerfil.getImage();
-
         this.listViewCadernos.setItems(FXCollections.observableArrayList(
                 sistema.buscarTodosCadernosDoUsuarioAtual()));
         this.listViewReceitas.setItems((FXCollections.observableArrayList(buscarTodasReceitas())));
@@ -84,7 +83,7 @@ public class ControladorTelaPrincipal {
     }
 
 
-    //TODO: fazer isso direito
+    //TODO: fazer isso direito e colocar no lugar certo
     private List<Receita> buscarTodasReceitas(){
         List<Receita> todasReceitas = new ArrayList<>();
         for(CadernoReceitas c : sistema.buscarTodosCadernosDoUsuarioAtual()){
@@ -95,12 +94,21 @@ public class ControladorTelaPrincipal {
 
     @FXML
     void handleAcessarCaderno(ActionEvent event) {
-        screenManager.abrirTelaCaderno(listViewCadernos.getSelectionModel().getSelectedItem());
+        if(listViewCadernos.getSelectionModel().getSelectedItem() != null){
+            screenManager.abrirTelaCaderno(listViewCadernos.getSelectionModel().getSelectedItem());
+        }else{
+            //TODO? repensar passagem de parâmetros?
+            alertSelecionarItem("um caderno");
+        }
     }
 
     @FXML
     void handleAcessarReceita(ActionEvent event) {
-
+        if(listViewReceitas.getSelectionModel().getSelectedItem() != null){
+            screenManager.abrirTelaReceita(listViewReceitas.getSelectionModel().getSelectedItem());
+        }else{
+            alertSelecionarItem("uma receita");
+        }
     }
 
     @FXML
@@ -114,7 +122,7 @@ public class ControladorTelaPrincipal {
 
     @FXML
     private void handlePesquisar(){
-        if(choiceBoxPesquisa == null){
+        /*if(choiceBoxPesquisa == null){
             alertPesquisa();
         }else{
             //TODO: alterar assinatura do método para receber nome de perfil como parâmetro
@@ -130,14 +138,23 @@ public class ControladorTelaPrincipal {
                 }
             }
         }
-        //app.alterarTela(TELA_RESULTADOS); muda para tela de resultados
-        //TODO: pensar em uma maneira de passar a pesquisa para a tela de resultados
+
+         */
+        screenManager.abrirTelaResultadosPesquisa();
     }
 
     private void alertPesquisa(){
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Atenção");
         alert.setHeaderText("Tipo de Pesquisa Não Informado");
+        alert.showAndWait();
+    }
+
+    private void alertSelecionarItem(String item) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Atenção");
+        alert.setHeaderText("Nada foi Selecionado!");
+        alert.setContentText(String.format("Favor selecionar %s para acessar", item));
         alert.showAndWait();
     }
 }

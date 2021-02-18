@@ -5,23 +5,19 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="541.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControladorTelaUsuarioBuscado">
    <children>
-      <Label layoutX="187.0" layoutY="14.0" text="&quot;Usuário Pesquisado&quot;">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="28.0" layoutY="244.0" text="Nome de Perfil:" />
-      <Label layoutX="28.0" layoutY="273.0" text="Data de Cadastro:" />
-      <Label layoutX="28.0" layoutY="300.0" text="Quantidade de Receitas Cadastradas:" />
-      <Label layoutX="389.0" layoutY="56.0" text="Receitas de Usuario" />
-      <ListView fx:id="lvReceitasUsuarioBuscado" layoutX="341.0" layoutY="84.0" prefHeight="200.0" prefWidth="200.0" />
-      <Label layoutX="386.0" layoutY="300.0" text="Cadernos de Usuario" />
-      <ListView fx:id="lvCadernosUsuarioBuscado" layoutX="341.0" layoutY="327.0" prefHeight="200.0" prefWidth="200.0" />
-      <Button fx:id="btVoltarUsuarioBuscado" layoutX="106.0" layoutY="427.0" mnemonicParsing="false" text="Voltar" />
-      <ImageView fx:id="ivImagemUsuarioBuscado" fitHeight="165.0" fitWidth="137.0" layoutX="28.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="lbNomePerfil" layoutX="238.0" layoutY="59.0" text="Nome de Perfil:" />
+      <Label fx:id="lbDataCadastro" layoutX="238.0" layoutY="77.0" text="Data de Cadastro:" />
+      <Label fx:id="lbReceitasCadastradas" layoutX="238.0" layoutY="95.0" prefHeight="18.0" prefWidth="211.0" text="Quantidade de Receitas Cadastradas:" />
+      <Label layoutX="113.0" layoutY="240.0" text="Receitas de Usuario" />
+      <ListView fx:id="lvReceitasUsuarioBuscado" layoutX="65.0" layoutY="271.0" prefHeight="200.0" prefWidth="200.0" />
+      <Label layoutX="386.0" layoutY="240.0" text="Cadernos de Usuario" />
+      <ListView fx:id="lvCadernosUsuarioBuscado" layoutX="341.0" layoutY="271.0" prefHeight="200.0" prefWidth="200.0" />
+      <ImageView fx:id="ivImagemUsuarioBuscado" fitHeight="138.0" fitWidth="155.0" layoutX="71.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="lbExperiencia" layoutX="239.0" layoutY="113.0" prefHeight="18.0" prefWidth="166.0" text="Experiência" />
+      <Button layoutX="130.0" layoutY="484.0" mnemonicParsing="false" onAction="#handleSelecionarReceita" text="Selecionar" />
+      <Button layoutX="415.0" layoutY="484.0" mnemonicParsing="false" onAction="#handleSelecionarCaderno" text="Selecionar" />
    </children>
 </AnchorPane>
