@@ -1,38 +1,25 @@
 package com.cooksbooks.tests;
 
-import com.cooksbooks.controllers.CooksBooksFachada;
-import com.cooksbooks.controllers.ICooksBooks;
-import com.cooksbooks.entity.CadernoReceitas;
-import com.cooksbooks.entity.Receita;
-import com.cooksbooks.entity.Usuario;
-import com.cooksbooks.entity.utils.Categoria;
-import com.cooksbooks.entity.utils.Custo;
-import com.cooksbooks.entity.utils.Dificuldade;
-import com.cooksbooks.entity.utils.ExperienciaCulinaria;
-import com.cooksbooks.entity.utils.Ingrediente;
-import com.cooksbooks.entity.utils.TempoPreparo;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
-
 /**
- * Classe feita para uso interno, não deve ser instanciada
- * e nem utilizada em outras partes do código.
+ * Classe feita para uso interno, não deve ser instanciada e nem utilizada em outras partes do
+ * código.
  * <p>
  * Aqui serão realizados testes envolvendo os CRUD's.
  * </p>
  * <p>
- * Inicialmente, iremos demonstrar o cadastro de
- * um novo usuário, o cadastro de um novo caderno,
- * um cadastro de uma nova receita.
+ * Inicialmente, iremos demonstrar o cadastro de um novo usuário, o cadastro de um novo caderno, um
+ * cadastro de uma nova receita.
  * </p>
  * <p>
- * Também iremos demonstrar algumas atualizações
- * simples nas classes que possuem repositório.
+ * Também iremos demonstrar algumas atualizações simples nas classes que possuem repositório.
  * </p>
+ *
  * @since 25-01-2021
  */
 final class TesteCRUDS {
-  private TesteCRUDS() {}
+
+  private TesteCRUDS() {
+  }
 
   public static void main(String[] args) {
   /*
