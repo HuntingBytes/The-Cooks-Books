@@ -302,8 +302,8 @@ public class ScreenManager {
 
   // TelaPerfil
   public void abrirTelaPerfil(Usuario usuarioDoPerfil) {
-    ((TabPane) mainScene.getRoot()).getTabs().get(0).setContent(telaPerfil);
     controladorTelaPerfil.setUsuarioDoPefil(usuarioDoPerfil);
+    ((TabPane) mainScene.getRoot()).getTabs().get(0).setContent(telaPerfil);
   }
 
   // TelaPerfil

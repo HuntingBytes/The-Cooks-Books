@@ -55,8 +55,8 @@
                </font>
             </Label>
             <TextField fx:id="tfExperiencia" layoutX="222.0" layoutY="328.0" prefHeight="25.0" prefWidth="344.0" />
-            <ChoiceBox fx:id="cbCadernosPerfil" layoutX="444.0" layoutY="111.0" onMouseClicked="#handleIrCaderno" prefWidth="150.0" />
-            <ChoiceBox fx:id="cbReceitasPerfil" layoutX="444.0" layoutY="148.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="cbCadernosPerfil" disable="true" layoutX="444.0" layoutY="111.0" onMouseClicked="#handleIrCaderno" prefWidth="150.0" visible="false" />
+            <ChoiceBox fx:id="cbReceitasPerfil" disable="true" layoutX="444.0" layoutY="148.0" prefWidth="150.0" visible="false" />
          </children>
       </AnchorPane>
    </children>

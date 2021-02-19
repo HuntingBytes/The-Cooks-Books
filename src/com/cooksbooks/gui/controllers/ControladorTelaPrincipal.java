@@ -117,7 +117,8 @@ public class ControladorTelaPrincipal {
     }
 
     @FXML
-    private void handleMostrarPerfil(){
+    private void handleMostrarPerfil() {
+        this.screenManager.abrirTelaPerfil(this.sistema.getUsuarioLogado());
     }
 
     @FXML
