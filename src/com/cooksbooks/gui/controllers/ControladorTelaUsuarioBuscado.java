@@ -9,6 +9,7 @@ import com.cooksbooks.gui.ScreenManager;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -56,10 +57,13 @@ public class ControladorTelaUsuarioBuscado {
             sistema.buscarTodosCadernosDoUsuario(usuario.getLogin())));
     this.lvReceitasUsuarioBuscado.setItems(FXCollections.observableArrayList(buscarTodasReceitas()));
   }
+
   @FXML
   void handleSelecionarCaderno(ActionEvent event) {
     if(lvCadernosUsuarioBuscado.getSelectionModel().getSelectedItem() != null){
       screenManager.abrirTelaCaderno(lvCadernosUsuarioBuscado.getSelectionModel().getSelectedItem());
+    }else{
+      alertSelecionarItem("um caderno");
     }
   }
 
@@ -67,6 +71,8 @@ public class ControladorTelaUsuarioBuscado {
   void handleSelecionarReceita(ActionEvent event) {
     if(lvReceitasUsuarioBuscado.getSelectionModel().getSelectedItem() != null){
       screenManager.abrirTelaReceita(lvReceitasUsuarioBuscado.getSelectionModel().getSelectedItem());
+    }else{
+      alertSelecionarItem("uma receita");
     }
   }
 
@@ -79,5 +85,15 @@ public class ControladorTelaUsuarioBuscado {
     return todasReceitas;
   }
 
+  private void alertSelecionarItem(String item) {
+    Alert alert = new Alert(Alert.AlertType.WARNING);
+    alert.setTitle("Atenção");
+    alert.setHeaderText("Nada foi Selecionado!");
+    alert.setContentText(String.format("Favor selecionar %s para acessar", item));
+    alert.showAndWait();
+  }
 
+  public void setUsuario(Usuario u){
+    this.usuario = u;
+  }
 }

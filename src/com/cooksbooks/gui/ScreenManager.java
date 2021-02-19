@@ -231,7 +231,10 @@ public class ScreenManager {
 
   // TelaUsuario
   public void abrirTelaUsuarioBuscado(Usuario usuario){
+    controladorTelaUsuarioBuscado.setUsuario(usuario);
+    controladorTelaUsuarioBuscado.inicializar();
 
+    modalStage(telaUsuarioBuscado, stagePrincipal, "Pesquisa Usuário");
   }
   // TelaPrincipal
   public void abrirTelaPrincipal() {
