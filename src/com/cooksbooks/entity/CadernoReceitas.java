@@ -160,4 +160,9 @@ public class CadernoReceitas implements Serializable {
   public void setIdCaderno(String idCaderno) {
     this.idCaderno = idCaderno;
   }
+
+  @Override
+  public String toString() {
+    return String.format("%s | %s", this.nomeCaderno, this.idCaderno);
+  }
 }

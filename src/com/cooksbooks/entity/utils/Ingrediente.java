@@ -41,4 +41,9 @@ public class Ingrediente implements Serializable {
   public void setValorUnitario(double valorUnitario) {
     this.valorUnitario = valorUnitario;
   }
+
+  @Override
+  public String toString() {
+    return String.format("%s - %d", this.nome, this.quantidade);
+  }
 }

@@ -46,7 +46,7 @@ public class ControladorTelaCaderno {
     this.taDesc.setText(caderno.getInformacoesCaderno());
     this.taDesc.disableProperty();
 
-    this.lvCategoriasCaderno.getItems().addAll(caderno.listarCategorias());
+    //this.lvCategoriasCaderno.getItems().addAll(caderno.listarCategorias());
     this.lvReceitas.getItems().addAll
         (sistema.listarReceitasDoCaderno(caderno.getIdCaderno()));
   }
