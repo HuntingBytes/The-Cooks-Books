@@ -295,7 +295,8 @@ public class ScreenManager {
   }
 
   // TelaCriacaoReceita
-  public void abrirTelaCriacaoReceita() {
+  public void abrirTelaCriacaoReceita(String idCaderno) {
+    controladorTelaCriacaoRec.setIdCadernoDono(idCaderno);
     modalStage(telaCriacaoReceita, stagePrincipal, "Criação Receita");
   }
 

@@ -71,8 +71,6 @@ public class ControladorTelaCriacaoRec {
 
   public void setIdCadernoDono(String idCadernoDono) {
     this.idCadernoDono = idCadernoDono;
-    this.btAdicionarIngrediente.setDisable(true);
-    this.btAdicionarIngrediente.setVisible(false);
   }
 
   @FXML
@@ -207,12 +205,13 @@ public class ControladorTelaCriacaoRec {
 
   private void clearTodosCampos(){
     this.tfTituloRec.clear();
-    //this.taAddIng.clear();
     this.taModoPreparo.clear();
     this.cbCustoMedio.getSelectionModel().clearSelection();
     this.cbRendimento.getSelectionModel().clearSelection();
     this.cbDificul.getSelectionModel().clearSelection();
     this.cbTempoPreparo.getSelectionModel().clearSelection();
     this.lvAddCat.getSelectionModel().clearSelection();
+    this.lvIngredientes.getItems().clear();
+    this.lvIngredientes.getSelectionModel().clearSelection();
   }
 }

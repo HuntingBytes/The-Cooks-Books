@@ -90,7 +90,8 @@ public class ControladorTelaEditarCaderno {
 
     @FXML
     void handleAddReceita(ActionEvent event) {
-        screenManager.abrirTelaCriacaoReceita();// nao deveria passar a referencia do caderno aqui
+        screenManager.abrirTelaCriacaoReceita(this.caderno.getIdCaderno());
+        incializar();
     }
 
     @FXML
