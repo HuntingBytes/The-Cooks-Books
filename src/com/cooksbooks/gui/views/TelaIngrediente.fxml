@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="325.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControladorTelaCriacaoIngr">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="83.0" layoutY="14.0" text="Adicionar Ingrediente" textAlignment="CENTER">
@@ -39,7 +38,7 @@
             <Font name="Calibri" size="16.0" />
          </font>
       </Button>
-      <Label layoutX="140.0" layoutY="293.0" text="Campos inválidos!" textFill="RED" visible="false">
+      <Label fx:id="lbErro" layoutX="140.0" layoutY="293.0" text="Campos inválidos!" textFill="RED" visible="false">
          <font>
             <Font name="Calibri Bold" size="16.0" />
          </font>

@@ -107,13 +107,13 @@ public class ControladorTelaCriacaoRec {
     if (this.areCamposValidos()) {
       String nomeReceita = this.tfTituloRec.getText();
       String modoPreparo = this.taModoPreparo.getText();
-      List<Ingrediente> ingredientes = new ArrayList<>(lvIngredientes.getItems());
+      List<Ingrediente> ingredientes = new ArrayList<>(this.lvIngredientes.getItems());
 
       Custo custoMedio = this.cbCustoMedio.getValue();
       Dificuldade dificuldade = this.cbDificul.getValue();
       Rendimento rendimento = this.cbRendimento.getValue();
       TempoPreparo tempoPreparo = this.cbTempoPreparo.getValue();
-      List<Categoria> categorias = this.lvAddCat.getItems();
+      List<Categoria> categorias = new ArrayList<>(this.lvAddCat.getItems());
 
       Receita receita = new Receita();
       receita.setIdCadernoDono(idCadernoDono);

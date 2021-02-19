@@ -40,7 +40,7 @@ public class ControladorTelaCriacaoIngr {
   private boolean areCamposValidos() {
     boolean nomeIsBlank = tfNome.getText() == null || tfNome.getText().isBlank();
     boolean quantidadeIsInvalida = tfQuantidade.getText() == null || tfQuantidade.getText().isBlank();
-    return !nomeIsBlank || !quantidadeIsInvalida;
+    return !nomeIsBlank && !quantidadeIsInvalida;
   }
 
   private void clearCampos() {
