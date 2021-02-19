@@ -25,7 +25,7 @@
       <ChoiceBox fx:id="choiceBoxPesquisa" layoutX="488.0" layoutY="29.0" prefHeight="26.0" prefWidth="89.0" />
       <ImageView fx:id="imagemPerfil" fitHeight="105.0" fitWidth="101.0" layoutX="21.0" layoutY="11.0" opacity="0.6" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Pictures/Saved%20Pictures/me2.jpg" />
+            <Image url="@../resources/padraoFoto.png" />
          </image>
       </ImageView>
       <Label fx:id="experienciaCulinaria" layoutX="154.0" layoutY="67.0" prefHeight="18.0" prefWidth="184.0" text="Experiência" />
