@@ -10,6 +10,7 @@ import com.cooksbooks.entity.utils.Dificuldade;
 import com.cooksbooks.entity.utils.Rendimento;
 import com.cooksbooks.entity.utils.TempoPreparo;
 import com.cooksbooks.gui.ScreenManager;
+import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -69,12 +70,17 @@ public class ControladorTelaEditarCaderno {
         this.screenManager = screenManager;
     }
 
-    private void initialize() {
-
+    public void incializar() {
         this.lbNomeCaderno.setText(caderno.getNomeCaderno());
-        this.lvReceitas.getItems().addAll(sistema.listarReceitasDoCaderno(caderno.getIdCaderno()));
-        this.lvCategorias.getItems().addAll(caderno.listarCategorias());
-
+        this.taAlterarDesc.setText(caderno.getInformacoesCaderno());
+        List<Receita> receitas = sistema.listarReceitasDoCaderno(caderno.getIdCaderno());
+        if (receitas != null && receitas.size() > 0) {
+            this.lvReceitas.getItems().addAll(receitas);
+        }
+        List<Categoria> categorias = caderno.listarCategorias();
+        if (categorias != null && categorias.size() > 0) {
+            this.lvCategorias.getItems().addAll();
+        }
     }
 
     @FXML

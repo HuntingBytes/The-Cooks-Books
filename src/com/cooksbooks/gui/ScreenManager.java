@@ -263,6 +263,7 @@ public class ScreenManager {
   // TelaEditarCaderno
   public void abrirTelaEditarCaderno(CadernoReceitas caderno) {
     controladorTelaEditarCaderno.setCaderno(caderno);
+    controladorTelaEditarCaderno.incializar();
     ((TabPane) mainScene.getRoot()).getTabs().get(0).setContent(telaEditarCaderno);
   }
 
