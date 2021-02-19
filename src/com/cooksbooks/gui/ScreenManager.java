@@ -3,6 +3,7 @@ package com.cooksbooks.gui;
 import com.cooksbooks.entity.CadernoReceitas;
 import com.cooksbooks.entity.Receita;
 import com.cooksbooks.exceptions.UsuarioInexistente;
+import com.cooksbooks.entity.utils.Ingrediente;
 import com.cooksbooks.gui.controllers.*;
 
 import java.io.IOException;
@@ -60,6 +61,7 @@ public class ScreenManager {
   private Parent telaReceitaRelatorio;
   private Parent telaGerarRelatorio;
   private Parent telaReceita;
+  private Parent telaCriacaoIngrediente;
 
   private ControladorAdm controladorAdm;
   private ControladorTelaCadastro controladorTelaCadastro;
@@ -78,6 +80,7 @@ public class ScreenManager {
   private ControladorReceitaRelatorio controladorReceitaRelatorio;
   private ControladorTelaRelatorio controladorTelaRelatorio;
   private ControladorTelaResultado controladorTelaResultados;
+  private ControladorTelaCriacaoIngr controladorTelaCriacaoIngr;
 
   private ScreenManager() {
     try {
@@ -182,6 +185,12 @@ public class ScreenManager {
       telaResultadosPesquisa = loaderExibirResultados.load();
       controladorTelaResultados = loaderExibirResultados.getController();
       controladorTelaResultados.setScreenManager(this);
+      //controladorTelaResultados.setScreenManager(this);
+
+      FXMLLoader loaderCriacaoIng = new FXMLLoader(
+          getClass().getResource(Telas.TELA_CRIACAO_INGREDIENTE.caminho()));
+      telaCriacaoIngrediente = loaderCriacaoIng.load();
+      controladorTelaCriacaoIngr = loaderCriacaoIng.getController();
     } catch (Exception e) {
       e.printStackTrace();
       System.exit(-1);
@@ -249,6 +258,7 @@ public class ScreenManager {
   // TelaCaderno
   public void abrirTelaCaderno(CadernoReceitas caderno) {
     controladorTelaCaderno.setCaderno(caderno);
+    controladorTelaCaderno.inicializar();
     ((TabPane) mainScene.getRoot()).getTabs().get(0).setContent(telaCaderno);
   }
 
@@ -282,7 +292,7 @@ public class ScreenManager {
 
   // TelaCriacaoReceita
   public void abrirTelaCriacaoReceita() {
-    ((TabPane) mainScene.getRoot()).getTabs().get(0).setContent(telaCriacaoReceita);
+    modalStage(telaCriacaoReceita, stagePrincipal, "Criação Receita");
   }
 
   // TelaPerfil
@@ -318,6 +328,12 @@ public class ScreenManager {
     controladorReceitaRelatorio.inicializar(loginUsuario);
     modalStage(telaReceitaRelatorio, stagePrincipal, "Receitas");
   }
+
+  public void abrirTelaCriacaoIngrediente(ObservableList<Ingrediente> ingredientes) {
+    controladorTelaCriacaoIngr.setObIngredientes(ingredientes);
+    modalStage(telaCriacaoIngrediente, (Stage) telaCriacaoReceita.getScene().getWindow(), "Criação Ingredientes");
+  }
+
 
   private void modalStage(Parent root, Stage owner, String title) {
     Scene scene;
