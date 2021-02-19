@@ -41,9 +41,6 @@ public class ScreenManager {
 
   private Scene mainScene;
 
-  private Tab tabPrincipal;
-  private Tab tabAdm;
-
   private Parent telaCadastro;
   private Parent telaCriacaoCaderno;
   private Parent telaCriacaoReceita;
@@ -236,6 +233,7 @@ public class ScreenManager {
 
     modalStage(telaUsuarioBuscado, stagePrincipal, "Pesquisa Usuário");
   }
+
   // TelaPrincipal
   public void abrirTelaPrincipal() {
     controladorTelaPrincipal.inicializar();
@@ -311,7 +309,6 @@ public class ScreenManager {
     ((TabPane) mainScene.getRoot()).getTabs().get(0).setContent(telaEditarPerfil);
   }
 
-
   public void abrirTelaResultadosPesquisa(String str) throws UsuarioInexistente {
     //TODO alterar assinatura quando corrigir como método funciona
     controladorTelaResultados.setItensResultados(str);
@@ -338,7 +335,6 @@ public class ScreenManager {
     controladorTelaCriacaoIngr.setObIngredientes(ingredientes);
     modalStage(telaCriacaoIngrediente, (Stage) telaCriacaoReceita.getScene().getWindow(), "Criação Ingredientes");
   }
-
 
   private void modalStage(Parent root, Stage owner, String title) {
     Scene scene;
