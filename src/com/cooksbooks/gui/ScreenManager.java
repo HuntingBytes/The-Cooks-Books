@@ -2,6 +2,7 @@ package com.cooksbooks.gui;
 
 import com.cooksbooks.entity.CadernoReceitas;
 import com.cooksbooks.entity.Receita;
+import com.cooksbooks.exceptions.UsuarioInexistente;
 import com.cooksbooks.entity.utils.Ingrediente;
 import com.cooksbooks.gui.controllers.*;
 
@@ -183,6 +184,7 @@ public class ScreenManager {
               getClass().getResource(Telas.TELA_RESULTADOS_PESQUISA.caminho()));
       telaResultadosPesquisa = loaderExibirResultados.load();
       controladorTelaResultados = loaderExibirResultados.getController();
+      controladorTelaResultados.setScreenManager(this);
       //controladorTelaResultados.setScreenManager(this);
 
       FXMLLoader loaderCriacaoIng = new FXMLLoader(
@@ -306,7 +308,10 @@ public class ScreenManager {
   }
 
 
-  public void abrirTelaResultadosPesquisa() {
+  public void abrirTelaResultadosPesquisa(String str) throws UsuarioInexistente {
+    //TODO alterar assinatura quando corrigir como método funciona
+    controladorTelaResultados.setItensResultados(str);
+    controladorTelaResultados.inicializar();
     ((TabPane) mainScene.getRoot()).getTabs().get(0).setContent(telaResultadosPesquisa);
     //TODO somente abre a tela quando selecionado a opcao de busca + nome pesquisado
   }

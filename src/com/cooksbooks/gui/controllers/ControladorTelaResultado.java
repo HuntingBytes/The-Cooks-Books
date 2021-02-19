@@ -5,7 +5,9 @@ import com.cooksbooks.controllers.ICooksBooks;
 import com.cooksbooks.entity.CadernoReceitas;
 import com.cooksbooks.entity.Receita;
 import com.cooksbooks.entity.Usuario;
+import com.cooksbooks.exceptions.UsuarioInexistente;
 import com.cooksbooks.gui.ScreenManager;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -20,8 +22,10 @@ public class ControladorTelaResultado {
 
     private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
 
+    private ArrayList<String> pesquisa;
+
     @FXML
-    private ListView<?> listViewResultados;
+    private ListView<Usuario> listViewResultados;
 
     @FXML
     private Button botaoVoltar;
@@ -29,17 +33,32 @@ public class ControladorTelaResultado {
     @FXML
     private Button botaoSelecionarResult;
 
+    public void setScreenManager(ScreenManager screenManager) {
+        this.screenManager = screenManager;
+        this.pesquisa = new ArrayList<>(5);
+    }
+
+    public void inicializar() throws UsuarioInexistente {
+        ArrayList<Usuario> usuarios = new ArrayList<>(5);
+        for(String s : pesquisa){
+            usuarios.add(sistema.buscarUsuario(s));
+        }
+        listViewResultados.setItems(FXCollections.observableArrayList(usuarios));
+    }
     @FXML
     public void handleSelecionarResult() {
-        Object o = listViewResultados.getSelectionModel().getSelectedItem();
+        //Object o = listViewResultados.getSelectionModel().getSelectedItem();
+        Usuario o = listViewResultados.getSelectionModel().getSelectedItem();
         if(o != null){
-            if(o instanceof Usuario){
-                //screenManager.abrirTela
+            //TODO AJEITAR ESSA PORRA DE CONTROLADOR
+            /*if(o instanceof Usuario){
+                screenManager.abrirTelaUsuarioBuscado((Usuario) o);
             }else if(o instanceof Receita){
                 screenManager.abrirTelaReceita((Receita) o);
             }else{
                 screenManager.abrirTelaCaderno((CadernoReceitas) o);
-            }
+            }*/
+            screenManager.abrirTelaUsuarioBuscado(o);
         }else{
             alertSelecionarItem();
         }
@@ -67,4 +86,7 @@ public class ControladorTelaResultado {
         return todasReceitas;
     }
 
+    public void setItensResultados(String str){
+        this.pesquisa.add(str);
+    }
 }
