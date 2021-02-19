@@ -208,7 +208,11 @@ public class ScreenManager {
 
   // TelaUsuario
   public void abrirTelaUsuario(Usuario usuario){
-    controladorTelaUsuarioBuscado
+    controladorTelaUsuarioBuscado.setUsuario(usuario);
+    controladorTelaUsuarioBuscado.inicializar();
+
+    stagePrincipal.setScene(telaUsuarioBuscado);
+    stagePrincipal.show();
   }
   // TelaPrincipal
   public void abrirTelaPrincipal() {

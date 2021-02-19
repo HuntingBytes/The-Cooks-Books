@@ -16,7 +16,7 @@
          <children>
             <ImageView fx:id="ivImagemUsuario" fitHeight="120.0" fitWidth="120.0" layoutX="51.0" layoutY="40.0" pickOnBounds="true">
                <image>
-                  <Image url="@../../../../../../../../../IP1-2VA/assets/player/periclesParado.png" />
+                  <Image url="@../resources/padraoFoto.png" />
                </image>
             </ImageView>
             <Label fx:id="lbNomeUsuario" layoutX="51.0" layoutY="169.0" prefHeight="25.0" prefWidth="132.0" text="Nome do Usuário">
