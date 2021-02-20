@@ -15,7 +15,7 @@ public final class App extends Application {
   @Override
   public void start(Stage stage) {
     screenManager.setStagePrincipal(stage);
-    screenManager.abrirLogin();
+    screenManager.iniciarTelas();
   }
 
 }
