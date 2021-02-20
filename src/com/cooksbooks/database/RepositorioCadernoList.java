@@ -43,6 +43,36 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
   }
 
   /**
+   * Método responsável por salvar o repositorio em um arquivo
+   */
+  @Override
+  public void salvarArquivo() {
+    if (RepositorioCadernoList.instancia == null) {
+      return;
+    }
+    File out = new File("cadernos.dat");
+    FileOutputStream fos;
+    ObjectOutputStream oos = null;
+
+    try {
+      fos = new FileOutputStream(out);
+      oos = new ObjectOutputStream(fos);
+      oos.writeObject(RepositorioCadernoList.instancia);
+    } catch (Exception e) {
+      e.printStackTrace();
+    } finally {
+      if (oos != null) {
+        try {
+          oos.close();
+        } catch (IOException e) {
+          /* Silent */
+        }
+      }
+    }
+  }
+  
+  
+  /**
    * Método responsável por ler um  arquivo ja existente
    * <p>
    * tenta ler o um arquivo, caso nao exista ele cria um
@@ -155,34 +185,7 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
     return this.cadernosSist.size();
   }
 
-  /**
-   * Método responsável por salvar o repositorio em um arquivo
-   */
-  @Override
-  public void salvarArquivo() {
-    if (RepositorioCadernoList.instancia == null) {
-      return;
-    }
-    File out = new File("cadernos.dat");
-    FileOutputStream fos;
-    ObjectOutputStream oos = null;
 
-    try {
-      fos = new FileOutputStream(out);
-      oos = new ObjectOutputStream(fos);
-      oos.writeObject(RepositorioCadernoList.instancia);
-    } catch (Exception e) {
-      e.printStackTrace();
-    } finally {
-      if (oos != null) {
-        try {
-          oos.close();
-        } catch (IOException e) {
-          /* Silent */
-        }
-      }
-    }
-  }
 
   /**
    * Método responsável por alterar o nome de um caderno ja existente no repositorio

@@ -32,30 +32,6 @@ public class RepositorioReceitasList implements IRepositorioReceita, Serializabl
     return RepositorioReceitasList.instancia;
   }
 
-  private static RepositorioReceitasList lerArquivo() {
-    RepositorioReceitasList instanciaLocal;
-
-    File in = new File("receitas.dat");
-    FileInputStream fis;
-    ObjectInputStream ois = null;
-    try {
-      fis = new FileInputStream(in);
-      ois = new ObjectInputStream(fis);
-      Object o = ois.readObject();
-      instanciaLocal = (RepositorioReceitasList) o;
-    } catch (Exception e) {
-      instanciaLocal = new RepositorioReceitasList();
-    } finally {
-      if (ois != null) {
-        try {
-          ois.close();
-        } catch (IOException e) {/* Silent exception */
-        }
-      }
-    }
-
-    return instanciaLocal;
-  }
 
   public void salvarArquivo() {
     if (RepositorioReceitasList.instancia == null) {
@@ -80,6 +56,32 @@ public class RepositorioReceitasList implements IRepositorioReceita, Serializabl
         }
       }
     }
+  }
+
+
+  private static RepositorioReceitasList lerArquivo() {
+    RepositorioReceitasList instanciaLocal;
+
+    File in = new File("receitas.dat");
+    FileInputStream fis;
+    ObjectInputStream ois = null;
+    try {
+      fis = new FileInputStream(in);
+      ois = new ObjectInputStream(fis);
+      Object o = ois.readObject();
+      instanciaLocal = (RepositorioReceitasList) o;
+    } catch (Exception e) {
+      instanciaLocal = new RepositorioReceitasList();
+    } finally {
+      if (ois != null) {
+        try {
+          ois.close();
+        } catch (IOException e) {/* Silent exception */
+        }
+      }
+    }
+
+    return instanciaLocal;
   }
 
   //TODO: decidir assinatura do método(provavelmente recebe o ID da receita)
