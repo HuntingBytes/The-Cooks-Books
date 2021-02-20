@@ -5,11 +5,8 @@ import com.cooksbooks.controllers.ICooksBooks;
 import com.cooksbooks.entity.CadernoReceitas;
 import com.cooksbooks.entity.Receita;
 import com.cooksbooks.entity.utils.Categoria;
-import com.cooksbooks.entity.utils.Custo;
-import com.cooksbooks.entity.utils.Dificuldade;
-import com.cooksbooks.entity.utils.Rendimento;
-import com.cooksbooks.entity.utils.TempoPreparo;
 import com.cooksbooks.gui.ScreenManager;
+import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -20,100 +17,104 @@ import javafx.scene.control.TextField;
 
 public class ControladorTelaEditarCaderno {
 
-    private CadernoReceitas caderno;
+  private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
+  private CadernoReceitas caderno;
+  private ScreenManager screenManager;
 
-    private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
+  @FXML
+  private TextField tfNovoNome;
 
-    private ScreenManager screenManager;
+  @FXML
+  private Button btAlterarNome;
 
-    @FXML
-    private TextField tfNovoNome;
+  @FXML
+  private Label lbNomeCaderno;
 
-    @FXML
-    private Button btAlterarNome;
+  @FXML
+  private TextArea taAlterarDesc;
 
-    @FXML
-    private Label lbNomeCaderno;
+  @FXML
+  private Label lbAlterarDesc;
 
-    @FXML
-    private TextArea taAlterarDesc;
+  @FXML
+  private Button btAlterarDescricao;
 
-    @FXML
-    private Label lbAlterarDesc;
+  @FXML
+  private Button btVoltar;
 
-    @FXML
-    private Button btAlterarDescricao;
+  @FXML
+  private ListView<Receita> lvReceitas;
 
-    @FXML
-    private Button btVoltar;
+  @FXML
+  private Button btAddReceita;
 
-    @FXML
-    private ListView<Receita> lvReceitas;
+  @FXML
+  private Button btRemoveReceita;
 
-    @FXML
-    private Button btAddReceita;
+  @FXML
+  private ListView<Categoria> lvCategorias;
 
-    @FXML
-    private Button btRemoveReceita;
+  @FXML
+  private Button btRemoveCategoria;
 
-    @FXML
-    private ListView<Categoria> lvCategorias;
+  @FXML
+  private Button btAddCategoria;
 
-    @FXML
-    private Button btRemoveCategoria;
+  public void setScreenManager(ScreenManager screenManager) {
+    this.screenManager = screenManager;
+  }
 
-    @FXML
-    private Button btAddCategoria;
-
-    public void setScreenManager(ScreenManager screenManager) {
-        this.screenManager = screenManager;
+  public void incializar() {
+    this.lbNomeCaderno.setText(caderno.getNomeCaderno());
+    this.taAlterarDesc.setText(caderno.getInformacoesCaderno());
+    List<Receita> receitas = sistema.listarReceitasDoCaderno(caderno.getIdCaderno());
+    if (receitas != null && receitas.size() > 0) {
+      this.lvReceitas.getItems().addAll(receitas);
     }
-
-    private void initialize() {
-
-        this.lbNomeCaderno.setText(caderno.getNomeCaderno());
-        this.lvReceitas.getItems().addAll(sistema.listarReceitasDoCaderno(caderno.getIdCaderno()));
-        this.lvCategorias.getItems().addAll(caderno.listarCategorias());
-
+    List<Categoria> categorias = caderno.listarCategorias();
+    if (categorias != null && categorias.size() > 0) {
+      this.lvCategorias.getItems().addAll();
     }
+  }
 
-    @FXML
-    void handleAddCat(ActionEvent event) {
-        caderno.adicionarCategoria(lvCategorias.getSelectionModel().getSelectedItem());
-    }
+  @FXML
+  void handleAddCat(ActionEvent event) {
+    caderno.adicionarCategoria(lvCategorias.getSelectionModel().getSelectedItem());
+  }
 
-    @FXML
-    void handleAddReceita(ActionEvent event) {
-        screenManager.abrirTelaCriacaoReceita();// nao deveria passar a referencia do caderno aqui
-    }
+  @FXML
+  void handleAddReceita(ActionEvent event) {
+    screenManager.abrirTelaCriacaoReceita(this.caderno.getIdCaderno());
+    incializar();
+  }
 
-    @FXML
-    void handleAlterarDescricao(ActionEvent event) {
-        caderno.setInformacoesCaderno(taAlterarDesc.getText());
-    }
+  @FXML
+  void handleAlterarDescricao(ActionEvent event) {
+    caderno.setInformacoesCaderno(taAlterarDesc.getText());
+  }
 
-    @FXML
-    void handleAlterarNome(ActionEvent event) {
-        caderno.setNomeCaderno(tfNovoNome.getText());
-    }
+  @FXML
+  void handleAlterarNome(ActionEvent event) {
+    caderno.setNomeCaderno(tfNovoNome.getText());
+  }
 
-    @FXML
-    void handleRemoveCat(ActionEvent event) {
-        caderno.removerCategoria(lvCategorias.getSelectionModel().getSelectedItem());
-    }
+  @FXML
+  void handleRemoveCat(ActionEvent event) {
+    caderno.removerCategoria(lvCategorias.getSelectionModel().getSelectedItem());
+  }
 
-    @FXML
-    void handleRemoveReceita(ActionEvent event) {
-        sistema.removerReceita(lvReceitas.getSelectionModel().getSelectedItem().getIdReceita());
-    }
+  @FXML
+  void handleRemoveReceita(ActionEvent event) {
+    sistema.removerReceita(lvReceitas.getSelectionModel().getSelectedItem().getIdReceita());
+  }
 
-    @FXML
-    void handleVoltar(ActionEvent event) {
-        screenManager.abrirTelaCaderno(caderno);
-    }
+  @FXML
+  void handleVoltar(ActionEvent event) {
+    screenManager.abrirTelaCaderno(caderno);
+  }
 
 
-    public void setCaderno(CadernoReceitas caderno) {
-        this.caderno = caderno;
-    }
+  public void setCaderno(CadernoReceitas caderno) {
+    this.caderno = caderno;
+  }
 }

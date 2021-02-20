@@ -31,7 +31,7 @@ public class ControladorTelaRelatorio {
 
   @FXML
   private void handleGerarRelatorio() {
-    if(areCamposValidos()) {
+    if (areCamposValidos()) {
       Relatorio relatorio = new Relatorio();
       relatorio.setDataIncial(this.dpDataInicial.getValue());
       relatorio.setDataFinal(this.dpDataFinal.getValue());

@@ -3,20 +3,23 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="541.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControladorTelaUsuarioBuscado">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControladorTelaUsuarioBuscado">
    <children>
-      <Label fx:id="lbNomePerfil" layoutX="238.0" layoutY="59.0" text="Nome de Perfil:" />
-      <Label fx:id="lbDataCadastro" layoutX="238.0" layoutY="77.0" text="Data de Cadastro:" />
-      <Label fx:id="lbReceitasCadastradas" layoutX="238.0" layoutY="95.0" prefHeight="18.0" prefWidth="211.0" text="Quantidade de Receitas Cadastradas:" />
+      <Label fx:id="lbNomePerfil" layoutX="237.0" layoutY="54.0" text="Nome de Perfil:" />
+      <Label fx:id="lbDataCadastro" layoutX="237.0" layoutY="72.0" text="Data de Cadastro:" />
       <Label layoutX="113.0" layoutY="240.0" text="Receitas de Usuario" />
       <ListView fx:id="lvReceitasUsuarioBuscado" layoutX="65.0" layoutY="271.0" prefHeight="200.0" prefWidth="200.0" />
       <Label layoutX="386.0" layoutY="240.0" text="Cadernos de Usuario" />
       <ListView fx:id="lvCadernosUsuarioBuscado" layoutX="341.0" layoutY="271.0" prefHeight="200.0" prefWidth="200.0" />
-      <ImageView fx:id="ivImagemUsuarioBuscado" fitHeight="138.0" fitWidth="155.0" layoutX="71.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="lbExperiencia" layoutX="239.0" layoutY="113.0" prefHeight="18.0" prefWidth="166.0" text="Experiência" />
+      <ImageView fx:id="ivImagemUsuarioBuscado" fitHeight="138.0" fitWidth="155.0" layoutX="71.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/padraoFoto.png" />
+         </image></ImageView>
+      <Label fx:id="lbExperienciaCulinaria" layoutX="236.0" layoutY="90.0" prefHeight="18.0" prefWidth="166.0" text="Experiência" />
       <Button layoutX="130.0" layoutY="484.0" mnemonicParsing="false" onAction="#handleSelecionarReceita" text="Selecionar" />
       <Button layoutX="415.0" layoutY="484.0" mnemonicParsing="false" onAction="#handleSelecionarCaderno" text="Selecionar" />
    </children>

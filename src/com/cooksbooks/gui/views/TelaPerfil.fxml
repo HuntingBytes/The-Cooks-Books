@@ -5,16 +5,19 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControladorTelaPerfil">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControladorTelaPerfil">
    <children>
       <AnchorPane layoutY="-14.0" prefHeight="400.0" prefWidth="600.0">
          <children>
             <ImageView fx:id="ivImagemPerfil" fitHeight="147.0" fitWidth="144.0" layoutX="66.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
-            </ImageView>
+               <image>
+                  <Image url="@../resources/padraoFoto.png" />
+               </image></ImageView>
             <Label fx:id="lbNomeUsuario" layoutX="266.0" layoutY="28.0" prefHeight="37.0" prefWidth="253.0" text="Nome Do Usuário">
                <font>
                   <Font name="Calibri Bold" size="32.0" />
@@ -52,8 +55,8 @@
                </font>
             </Label>
             <TextField fx:id="tfExperiencia" layoutX="222.0" layoutY="328.0" prefHeight="25.0" prefWidth="344.0" />
-            <ChoiceBox fx:id="cbCadernosPerfil" layoutX="444.0" layoutY="111.0" onMouseClicked="#handleIrCaderno" prefWidth="150.0" />
-            <ChoiceBox fx:id="cbReceitasPerfil" layoutX="444.0" layoutY="148.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="cbCadernosPerfil" disable="true" layoutX="444.0" layoutY="111.0" onMouseClicked="#handleIrCaderno" prefWidth="150.0" visible="false" />
+            <ChoiceBox fx:id="cbReceitasPerfil" disable="true" layoutX="444.0" layoutY="148.0" prefWidth="150.0" visible="false" />
          </children>
       </AnchorPane>
    </children>

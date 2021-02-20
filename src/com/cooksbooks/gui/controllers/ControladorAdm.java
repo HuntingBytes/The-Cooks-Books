@@ -34,7 +34,8 @@ public class ControladorAdm {
 
   @FXML
   public void initialize() {
-    this.lvResultadoPesquisa.setPlaceholder(new Label("Digite um login de usuário e clique em \"Pesquisar\"."));
+    this.lvResultadoPesquisa
+        .setPlaceholder(new Label("Digite um login de usuário e clique em \"Pesquisar\"."));
     this.tfBarraPesquisa.textProperty().addListener((observableValue, s, t1) -> {
       lvResultadoPesquisa.getItems().clear();
       lvResultadoPesquisa.refresh();
@@ -51,7 +52,8 @@ public class ControladorAdm {
         this.lvResultadoPesquisa.setItems(listUsuarios);
       } catch (UsuarioInexistente uInexistente) {
         System.out.println(uInexistente.getMessage());
-        this.lvResultadoPesquisa.setPlaceholder(new Label("Nenhum usuário com esse login encontrado."));
+        this.lvResultadoPesquisa
+            .setPlaceholder(new Label("Nenhum usuário com esse login encontrado."));
       }
     }
   }

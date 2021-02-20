@@ -27,7 +27,8 @@ public class ControladorTelaCriacaoIngr {
   @FXML
   private void handleAdicionar() {
     if (areCamposValidos()) {
-      Ingrediente ingrediente = new Ingrediente(tfNome.getText(), Integer.parseInt(tfQuantidade.getText()), 0.0);
+      Ingrediente ingrediente = new Ingrediente(tfNome.getText(),
+          Integer.parseInt(tfQuantidade.getText()), 0.0);
       obIngredientes.add(ingrediente);
       clearCampos();
       ((Stage) btAdicionar.getScene().getWindow()).close();
@@ -39,7 +40,8 @@ public class ControladorTelaCriacaoIngr {
 
   private boolean areCamposValidos() {
     boolean nomeIsBlank = tfNome.getText() == null || tfNome.getText().isBlank();
-    boolean quantidadeIsInvalida = tfQuantidade.getText() == null || tfQuantidade.getText().isBlank();
+    boolean quantidadeIsInvalida =
+        tfQuantidade.getText() == null || tfQuantidade.getText().isBlank();
     return !nomeIsBlank && !quantidadeIsInvalida;
   }
 

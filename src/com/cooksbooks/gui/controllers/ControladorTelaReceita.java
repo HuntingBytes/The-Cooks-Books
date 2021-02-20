@@ -15,10 +15,8 @@ import javafx.scene.control.TextArea;
 
 public class ControladorTelaReceita {
 
-  private Receita receita;
-
   private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
-
+  private Receita receita;
   private ScreenManager screenManager;
 
   @FXML
@@ -77,6 +75,7 @@ public class ControladorTelaReceita {
   void handleVoltar(ActionEvent event) {
     screenManager.abrirTelaCaderno(sistema.buscarCaderno(receita.getIdCadernoDono()));
   }
+
   public void setReceita(Receita receita) {
     this.receita = receita;
   }

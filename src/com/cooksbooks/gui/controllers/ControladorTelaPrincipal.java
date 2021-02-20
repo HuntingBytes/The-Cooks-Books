@@ -1,134 +1,144 @@
 package com.cooksbooks.gui.controllers;
 
-import com.cooksbooks.App;
 import com.cooksbooks.controllers.CooksBooksFachada;
 import com.cooksbooks.controllers.ICooksBooks;
 import com.cooksbooks.entity.CadernoReceitas;
 import com.cooksbooks.entity.Receita;
 import com.cooksbooks.exceptions.UsuarioInexistente;
 import com.cooksbooks.gui.ScreenManager;
-import com.cooksbooks.gui.Telas;
-import java.util.HashMap;
-import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 
 public class ControladorTelaPrincipal {
 
-    private ScreenManager screenManager;
+  private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
+  private final String[] dropDownContent = {"Caderno", "Receita", "Usuario"};
+  private ScreenManager screenManager;
+  @FXML
+  private ListView<CadernoReceitas> listViewCadernos;
 
-    private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
+  @FXML
+  private ListView<Receita> listViewReceitas;
 
-    private final String[] dropDownContent = {"Caderno", "Receita", "Usuario"};
+  @FXML
+  private Label mostrarPerfil;
 
-    @FXML
-    private Tab nomeUsuarioTab;
+  @FXML
+  private Button botaoCriarCaderno;
 
-    @FXML
-    private ListView<CadernoReceitas> listViewCadernos;
+  @FXML
+  private Button botaoCriarReceita;
 
-    @FXML
-    private ListView<Receita> listViewReceitas;
+  @FXML
+  private ChoiceBox<String> choiceBoxPesquisa;
 
-    @FXML
-    private Label mostrarPerfil;
+  @FXML
+  private ImageView imagemPerfil;
 
-    @FXML
-    private Button botaoCriarCaderno;
+  @FXML
+  private Label nomeUsuario;
 
-    @FXML
-    private Button botaoCriarReceita;
+  @FXML
+  private Label experienciaCulinaria;
 
-    @FXML
-    private ChoiceBox<String> choiceBoxPesquisa;
+  @FXML
+  private TextField textFieldPesquisa;
 
-    @FXML
-    private ImageView imagemPerfil;
+  @FXML
+  private Button botaoPesquisar;
 
-    @FXML
-    private Label nomeUsuario;
+  @FXML
+  private Button botaoAcessarCaderno;
 
-    @FXML
-    private Label experienciaCulinaria;
+  @FXML
+  private Button botaoAcessarReceita;
 
-    @FXML
-    private TextField textFieldPesquisa;
+  public void setScreenManager(ScreenManager screenManager) {
+    this.screenManager = screenManager;
+  }
 
-    @FXML
-    private Button botaoPesquisar;
+  public void inicializar() {
+    this.nomeUsuario.setText(sistema.getUsuarioLogado().getNomePerfil());
+    this.experienciaCulinaria.setText
+        (sistema.getUsuarioLogado().getExperienciaCulinaria().toString());
+    //this.imagemPerfil.getImage();
+    this.listViewCadernos.setItems(FXCollections.observableArrayList(
+        sistema.buscarTodosCadernosDoUsuarioAtual()));
+    this.listViewReceitas.setItems((FXCollections.observableArrayList(buscarTodasReceitas())));
 
-    @FXML
-    private Button botaoAcessarCaderno;
+    this.choiceBoxPesquisa.setItems(FXCollections.observableArrayList(dropDownContent));
+  }
 
-    @FXML
-    private Button botaoAcessarReceita;
 
-    public void setScreenManager(ScreenManager screenManager) {
-        this.screenManager = screenManager;
+  //TODO: fazer isso direito e colocar no lugar certo
+  private List<Receita> buscarTodasReceitas() {
+    List<Receita> todasReceitas = new ArrayList<>();
+    for (CadernoReceitas c : sistema.buscarTodosCadernosDoUsuarioAtual()) {
+      todasReceitas.addAll(sistema.listarReceitasDoCaderno(c.getIdCaderno()));
     }
+    return todasReceitas;
+  }
 
-    public void inicializar(){
-        this.nomeUsuarioTab.setText(sistema.getUsuarioLogado().getNomePerfil());
-        this.nomeUsuario.setText(sistema.getUsuarioLogado().getNomePerfil());
-        this.experienciaCulinaria.setText
-                (sistema.getUsuarioLogado().getExperienciaCulinaria().toString());
-        //this.imagemPerfil.getImage();
-        this.listViewCadernos.setItems(FXCollections.observableArrayList(
-                sistema.buscarTodosCadernosDoUsuarioAtual()));
-        this.listViewReceitas.setItems((FXCollections.observableArrayList(buscarTodasReceitas())));
-
-        this.choiceBoxPesquisa.setItems(FXCollections.observableArrayList(dropDownContent));
+  @FXML
+  void handleAcessarCaderno(ActionEvent event) {
+    if (listViewCadernos.getSelectionModel().getSelectedItem() != null) {
+      screenManager.abrirTelaCaderno(listViewCadernos.getSelectionModel().getSelectedItem());
+    } else {
+      //TODO? repensar passagem de parâmetros?
+      alertSelecionarItem("um caderno");
     }
+  }
 
-
-    //TODO: fazer isso direito e colocar no lugar certo
-    private List<Receita> buscarTodasReceitas(){
-        List<Receita> todasReceitas = new ArrayList<>();
-        for(CadernoReceitas c : sistema.buscarTodosCadernosDoUsuarioAtual()){
-            todasReceitas.addAll(sistema.listarReceitasDoCaderno(c.getIdCaderno()));
-        }
-        return todasReceitas;
+  @FXML
+  void handleAcessarReceita(ActionEvent event) {
+    if (listViewReceitas.getSelectionModel().getSelectedItem() != null) {
+      screenManager.abrirTelaReceita(listViewReceitas.getSelectionModel().getSelectedItem());
+    } else {
+      alertSelecionarItem("uma receita");
     }
+  }
 
-    @FXML
-    void handleAcessarCaderno(ActionEvent event) {
-        if(listViewCadernos.getSelectionModel().getSelectedItem() != null){
-            screenManager.abrirTelaCaderno(listViewCadernos.getSelectionModel().getSelectedItem());
-        }else{
-            //TODO? repensar passagem de parâmetros?
-            alertSelecionarItem("um caderno");
-        }
-    }
+  @FXML
+  private void handleCriarCaderno() throws IOException {
+    screenManager.abrirTelaCriacaoCaderno();
+  }
 
-    @FXML
-    void handleAcessarReceita(ActionEvent event) {
-        if(listViewReceitas.getSelectionModel().getSelectedItem() != null){
-            screenManager.abrirTelaReceita(listViewReceitas.getSelectionModel().getSelectedItem());
-        }else{
-            alertSelecionarItem("uma receita");
-        }
-    }
+  @FXML
+  private void handleMostrarPerfil() {
+    this.screenManager.abrirTelaPerfil(this.sistema.getUsuarioLogado());
+  }
 
-    @FXML
-    private void handleCriarCaderno() throws IOException {
-        screenManager.abrirTelaCriacaoCaderno();
-    }
-
-    @FXML
-    private void handleMostrarPerfil(){
-    }
-
-    @FXML
-    private void handlePesquisar(){
-        /*if(choiceBoxPesquisa == null){
-            alertPesquisa();
-        }else{
+  @FXML
+  private void handlePesquisar() throws UsuarioInexistente {
+    //Object o = new Object();
+    //try{
+            /*switch (choiceBoxPesquisa.getValue()) {
+                case "Caderno" -> o = sistema.buscarCaderno(textFieldPesquisa.getText());
+                case "Receita" -> o = sistema.buscarReceita(textFieldPesquisa.getText());
+                case "Usuário" -> {
+                    try {
+                        o = sistema.buscarUsuario(textFieldPesquisa.getText());
+                    } catch (UsuarioInexistente e) {
+                        System.out.println(e.getMessage());
+                    }
+                }
+            }*/
+    screenManager.abrirTelaResultadosPesquisa(textFieldPesquisa.getText());
+    //}catch(NullPointerException | UsuarioInexistente e){
+    //alertPesquisa();
+    //}
+        /*if(choiceBoxPesquisa != null){
             //TODO: alterar assinatura do método para receber nome de perfil como parâmetro
             switch (choiceBoxPesquisa.getValue()) {
                 case "Caderno" -> sistema.buscarCaderno(textFieldPesquisa.getText());
@@ -141,24 +151,23 @@ public class ControladorTelaPrincipal {
                     }
                 }
             }
-        }
+        }else{
+            alertPesquisa();
+        }*/
+  }
 
-         */
-        screenManager.abrirTelaResultadosPesquisa();
-    }
+  private void alertPesquisa() {
+    Alert alert = new Alert(Alert.AlertType.WARNING);
+    alert.setTitle("Atenção");
+    alert.setHeaderText("Tipo de Pesquisa Não Informado");
+    alert.showAndWait();
+  }
 
-    private void alertPesquisa(){
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Atenção");
-        alert.setHeaderText("Tipo de Pesquisa Não Informado");
-        alert.showAndWait();
-    }
-
-    private void alertSelecionarItem(String item) {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Atenção");
-        alert.setHeaderText("Nada foi Selecionado!");
-        alert.setContentText(String.format("Favor selecionar %s para acessar", item));
-        alert.showAndWait();
-    }
+  private void alertSelecionarItem(String item) {
+    Alert alert = new Alert(Alert.AlertType.WARNING);
+    alert.setTitle("Atenção");
+    alert.setHeaderText("Nada foi Selecionado!");
+    alert.setContentText(String.format("Favor selecionar %s para acessar", item));
+    alert.showAndWait();
+  }
 }

@@ -2,17 +2,15 @@ package com.cooksbooks.gui;
 
 import com.cooksbooks.entity.CadernoReceitas;
 import com.cooksbooks.entity.Receita;
-import com.cooksbooks.entity.utils.Ingrediente;
-import com.cooksbooks.gui.controllers.*;
-
-import java.io.IOException;
 import com.cooksbooks.entity.Usuario;
+import com.cooksbooks.entity.utils.Ingrediente;
 import com.cooksbooks.gui.controllers.ControladorAdm;
 import com.cooksbooks.gui.controllers.ControladorCadernoRelatorio;
 import com.cooksbooks.gui.controllers.ControladorReceitaRelatorio;
 import com.cooksbooks.gui.controllers.ControladorTelaCadastro;
 import com.cooksbooks.gui.controllers.ControladorTelaCaderno;
 import com.cooksbooks.gui.controllers.ControladorTelaCriacaoCaderno;
+import com.cooksbooks.gui.controllers.ControladorTelaCriacaoIngr;
 import com.cooksbooks.gui.controllers.ControladorTelaCriacaoRec;
 import com.cooksbooks.gui.controllers.ControladorTelaEditarCaderno;
 import com.cooksbooks.gui.controllers.ControladorTelaEditarPerfil;
@@ -22,6 +20,7 @@ import com.cooksbooks.gui.controllers.ControladorTelaPerfil;
 import com.cooksbooks.gui.controllers.ControladorTelaPrincipal;
 import com.cooksbooks.gui.controllers.ControladorTelaReceita;
 import com.cooksbooks.gui.controllers.ControladorTelaRelatorio;
+import com.cooksbooks.gui.controllers.ControladorTelaResultado;
 import com.cooksbooks.gui.controllers.ControladorTelaUsuarioBuscado;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -136,7 +135,7 @@ public class ScreenManager {
           getClass().getResource(Telas.TELA_EDITAR_PERFIL.caminho()));
       telaEditarPerfil = loaderEditarPerfil.load();
       controladorTelaEditarPerfil = loaderEditarPerfil.getController();
-      //controladorTelaEditarPerfil.setScreenManager(this);
+      controladorTelaEditarPerfil.setScreenManager(this);
 
       FXMLLoader loaderEditarReceita = new FXMLLoader(
           getClass().getResource(Telas.TELA_EDITAR_RECEITA.caminho()));
@@ -186,15 +185,14 @@ public class ScreenManager {
       controladorTelaReceita.setScreenManager(this);
 
       FXMLLoader loaderExibirResultados = new FXMLLoader(
-              getClass().getResource(Telas.TELA_RESULTADOS_PESQUISA.caminho()));
+          getClass().getResource(Telas.TELA_RESULTADOS_PESQUISA.caminho()));
       telaResultadosPesquisa = loaderExibirResultados.load();
       controladorTelaResultados = loaderExibirResultados.getController();
-      //controladorTelaResultados.setScreenManager(this);
+      controladorTelaResultados.setScreenManager(this);
 
       tabPrincipal = new Tab();
       tabPrincipal.setClosable(false);
       tabPrincipal.setText("Principal");
-
 
       tabAdmin = new Tab();
       tabAdmin.setClosable(false);
@@ -241,7 +239,7 @@ public class ScreenManager {
   }
 
   // TelaUsuario
-  public void abrirTelaUsuario(Usuario usuario){
+  public void abrirTelaUsuario(Usuario usuario) {
     // TODO: Revisar!
     controladorTelaUsuarioBuscado.setUsuario(usuario);
     controladorTelaUsuarioBuscado.inicializar();
@@ -277,7 +275,7 @@ public class ScreenManager {
   // TelaReceita
   public void abrirTelaReceita(Receita receita) {
     controladorTelaReceita.setReceita(receita);
-    // Modal
+    modalStage(telaReceita, stagePrincipal, "Receita").showAndWait();
   }
 
   // TelaEditarReceita
@@ -288,7 +286,8 @@ public class ScreenManager {
 
   public void abrirTelaCriacaoIngrediente(ObservableList<Ingrediente> ingredientes) {
     controladorTelaCriacaoIngr.setObIngredientes(ingredientes);
-    modalStage(telaCriacaoIngrediente, (Stage)telaCriacaoReceita.getScene().getWindow(), "Criação Ingredientes").showAndWait();
+    modalStage(telaCriacaoIngrediente, (Stage) telaCriacaoReceita.getScene().getWindow(),
+        "Criação Ingredientes").showAndWait();
   }
 
   // TelaCriacaoCaderno
@@ -297,9 +296,9 @@ public class ScreenManager {
   }
 
   // TelaCriacaoReceita
-  public void abrirTelaCriacaoReceita() {
-    // Recebe idCaderno como argumento
-    // Modal
+  public void abrirTelaCriacaoReceita(String idCaderno) {
+    controladorTelaCriacaoRec.setIdCadernoDono(idCaderno);
+    modalStage(telaCriacaoReceita, stagePrincipal, "Criação Receita").showAndWait();
   }
 
   // TelaPerfil
@@ -309,14 +308,24 @@ public class ScreenManager {
   }
 
   // TelaPerfil
-  public void abrirTelaEditarPerfil() {
+  public void abrirTelaEditarPerfil(Usuario usuario) {
+    controladorTelaEditarPerfil.setUsuarioDoPerfil(usuario);
+    controladorTelaEditarPerfil.inicializar();
     tabPrincipal.setContent(telaEditarPerfil);
   }
 
 
-  public void abrirTelaResultadosPesquisa() {
-    //TODO somente abre a tela quando selecionado a opcao de busca + nome pesquisado
+  public void abrirTelaResultadosPesquisa(String pesquisa) {
+    controladorTelaResultados.setItensResultados(pesquisa);
+    controladorTelaResultados.inicializar();
     tabPrincipal.setContent(telaResultadosPesquisa);
+  }
+
+  public void abrirTelaUsuarioBuscado(Usuario usuario) {
+    controladorTelaUsuarioBuscado.setUsuario(usuario);
+    controladorTelaUsuarioBuscado.inicializar();
+
+    modalStage(telaUsuarioBuscado, stagePrincipal, "Pesquisa Usuário").showAndWait();
   }
 
   public void abrirTelaRelatorio() {
@@ -335,7 +344,9 @@ public class ScreenManager {
 
   private Stage modalStage(Parent root, Stage owner, String title) {
     Scene modalScene = root.getScene();
-    if (modalScene == null) modalScene = new Scene(root);
+    if (modalScene == null) {
+      modalScene = new Scene(root);
+    }
 
     Stage modalStage = new Stage();
     modalStage.setTitle((title != null && !title.isBlank()) ? title : "Janela");

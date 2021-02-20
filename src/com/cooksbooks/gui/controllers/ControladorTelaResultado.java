@@ -5,60 +5,90 @@ import com.cooksbooks.controllers.ICooksBooks;
 import com.cooksbooks.entity.CadernoReceitas;
 import com.cooksbooks.entity.Receita;
 import com.cooksbooks.entity.Usuario;
+import com.cooksbooks.exceptions.UsuarioInexistente;
 import com.cooksbooks.gui.ScreenManager;
+import java.util.ArrayList;
+import java.util.List;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ControladorTelaResultado {
 
-    private ScreenManager screenManager;
+  private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
+  private ScreenManager screenManager;
+  private ArrayList<String> pesquisa;
 
-    private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
+  @FXML
+  private ListView<Usuario> listViewResultados;
 
-    @FXML
-    private ListView<?> listViewResultados;
+  @FXML
+  private Button botaoVoltar;
 
-    @FXML
-    private Button botaoVoltar;
+  @FXML
+  private Button botaoSelecionarResult;
 
-    @FXML
-    private Button botaoSelecionarResult;
+  public void setScreenManager(ScreenManager screenManager) {
+    this.screenManager = screenManager;
+    this.pesquisa = new ArrayList<>(5);
+  }
 
-    @FXML
-    void handleSelecionarResult() {
-        Object o = listViewResultados.getSelectionModel().getSelectedItem();
-        if(o != null){
-            if(o instanceof Usuario){
+  public void inicializar() {
+    ArrayList<Usuario> usuarios = new ArrayList<>(5);
+    for (String s : pesquisa) {
+      try {
+        usuarios.add(sistema.buscarUsuario(s));
+      } catch (UsuarioInexistente usuarioInexistente) {
+        // Usuário inexistente.
+      }
+    }
+    listViewResultados.setItems(FXCollections.observableArrayList(usuarios));
+  }
 
+  @FXML
+  public void handleSelecionarResult() {
+    //Object o = listViewResultados.getSelectionModel().getSelectedItem();
+    Usuario o = listViewResultados.getSelectionModel().getSelectedItem();
+    if (o != null) {
+      //TODO AJEITAR ESSA PORRA DE CONTROLADOR
+            /*if(o instanceof Usuario){
+                screenManager.abrirTelaUsuarioBuscado((Usuario) o);
             }else if(o instanceof Receita){
                 screenManager.abrirTelaReceita((Receita) o);
             }else{
                 screenManager.abrirTelaCaderno((CadernoReceitas) o);
-            }
-        }else{
-            alertSelecionarItem();
-        }
+            }*/
+      screenManager.abrirTelaUsuarioBuscado(o);
+    } else {
+      alertSelecionarItem();
     }
+  }
 
-    private void alertSelecionarItem() {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Atenção");
-        alert.setHeaderText("Nada foi Selecionado!");
-        //alert.setContentText(String.format("Favor selecionar %s para acessar", item));
-        alert.showAndWait();
-    }
+  @FXML
+  public void handleBotaoVoltar() {
+    screenManager.abrirTelaPrincipal();
+  }
 
-    //TODO: fazer isso direito e colocar no lugar certo
-    private List<Receita> buscarTodasReceitas(){
-        List<Receita> todasReceitas = new ArrayList<>();
-        for(CadernoReceitas c : sistema.buscarTodosCadernosDoUsuarioAtual()){
-            todasReceitas.addAll(sistema.listarReceitasDoCaderno(c.getIdCaderno()));
-        }
-        return todasReceitas;
+  private void alertSelecionarItem() {
+    Alert alert = new Alert(Alert.AlertType.WARNING);
+    alert.setTitle("Atenção");
+    alert.setHeaderText("Nada foi Selecionado!");
+    //alert.setContentText(String.format("Favor selecionar %s para acessar", item));
+    alert.showAndWait();
+  }
+
+  //TODO: fazer isso direito e colocar no lugar certo
+  private List<Receita> buscarTodasReceitas() {
+    List<Receita> todasReceitas = new ArrayList<>();
+    for (CadernoReceitas c : sistema.buscarTodosCadernosDoUsuarioAtual()) {
+      todasReceitas.addAll(sistema.listarReceitasDoCaderno(c.getIdCaderno()));
     }
+    return todasReceitas;
+  }
+
+  public void setItensResultados(String str) {
+    this.pesquisa.add(str);
+  }
 }

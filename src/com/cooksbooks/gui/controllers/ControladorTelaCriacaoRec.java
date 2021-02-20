@@ -10,7 +10,6 @@ import com.cooksbooks.entity.utils.Ingrediente;
 import com.cooksbooks.entity.utils.Rendimento;
 import com.cooksbooks.entity.utils.TempoPreparo;
 import com.cooksbooks.gui.ScreenManager;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.fxml.FXML;
@@ -126,13 +125,12 @@ public class ControladorTelaCriacaoRec {
 
       sistema.cadastrarReceita(receita, this.idCadernoDono);
       this.clearTodosCampos();
-    }
-    else {
+    } else {
       this.alertCamposInvalidos();
     }
   }
 
-  private boolean areCamposValidos(){
+  private boolean areCamposValidos() {
     String tituloReceita = this.tfTituloRec.getText();
     String modoPreparo = this.taModoPreparo.getText();
     //Como seria essa criaçao ingredientes ????
@@ -145,15 +143,16 @@ public class ControladorTelaCriacaoRec {
     List<Categoria> categoriasSelec = this.lvAddCat.getItems();
 
     boolean tituloReceitaBlank = tituloReceita == null || tituloReceita.isBlank();
-    boolean modoPreparoBlank =  modoPreparo == null || modoPreparo.isBlank();
+    boolean modoPreparoBlank = modoPreparo == null || modoPreparo.isBlank();
     //boolean ingredientesBlank =  ingredientes == null || ingredientes.isBlank();
     boolean categoriasBlank = categoriasSelec == null || categoriasSelec.isEmpty();
 
-    return !tituloReceitaBlank && !modoPreparoBlank && !categoriasBlank && custoSelec!=null && dificuldadeSelec!=null &&
-        rendimentoSelc!=null && tempoPreparoSelc!=null;
+    return !tituloReceitaBlank && !modoPreparoBlank && !categoriasBlank && custoSelec != null
+        && dificuldadeSelec != null &&
+        rendimentoSelc != null && tempoPreparoSelc != null;
   }
 
-  private void alertCamposInvalidos(){
+  private void alertCamposInvalidos() {
     StringBuilder textToPrint = new StringBuilder();
     textToPrint.append("Favor Rever o(s) Campo(s): ");
 
@@ -203,7 +202,7 @@ public class ControladorTelaCriacaoRec {
 
   }
 
-  private void clearTodosCampos(){
+  private void clearTodosCampos() {
     this.tfTituloRec.clear();
     this.taModoPreparo.clear();
     this.cbCustoMedio.getSelectionModel().clearSelection();

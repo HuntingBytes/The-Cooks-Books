@@ -21,9 +21,8 @@ import javafx.scene.control.TextField;
 
 public class ControladorTelaCadastro {
 
-  private ScreenManager screenManager;
   private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
-
+  private ScreenManager screenManager;
   @FXML
   private Label lbErro;
 
@@ -87,20 +86,18 @@ public class ControladorTelaCadastro {
               usuarioJaCadastrado.getLoginUsuario());
           this.lbErro.setVisible(true);
         }
-      }
-      else {
+      } else {
         this.lbErro.setText("Senhas não coincidem!");
         this.lbErro.setVisible(true);
       }
-    }
-    else {
+    } else {
       this.alertCamposInvalidos();
     }
   }
 
   @FXML
   private void handleVoltar() throws IOException {
-   screenManager.abrirLogin();
+    screenManager.abrirLogin();
   }
 
   private boolean areCamposValidos() {

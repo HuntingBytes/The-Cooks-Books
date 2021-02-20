@@ -17,5 +17,4 @@ public final class App extends Application {
     screenManager.setStagePrincipal(stage);
     screenManager.iniciarTelas();
   }
-
 }

@@ -4,49 +4,39 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControladorTelaPrincipal">
-  <tabs>
-    <Tab fx:id="nomeUsuarioTab" text="Usuário">
-         <content>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <ListView fx:id="listViewCadernos" layoutX="15.0" layoutY="168.0" prefHeight="126.0" prefWidth="210.0" />
-                  <ListView fx:id="listViewReceitas" layoutX="289.0" layoutY="168.0" prefHeight="126.0" prefWidth="210.0" />
-                  <Label layoutX="80.0" layoutY="146.0" text="Meus Cadernos" />
-                  <Label layoutX="351.0" layoutY="146.0" text="Minhas Receitas" />
-                  <Label fx:id="mostrarPerfil" layoutX="38.0" layoutY="112.0" onMouseClicked="#handleMostrarPerfil" text="Mostrar Perfil">
-                     <font>
-                        <Font name="Calibri" size="12.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="botaoCriarCaderno" layoutX="14.0" layoutY="307.0" mnemonicParsing="false" onAction="#handleCriarCaderno" text="Criar Caderno" />
-                  <ChoiceBox fx:id="choiceBoxPesquisa" layoutX="488.0" layoutY="29.0" prefHeight="26.0" prefWidth="89.0" />
-                  <ImageView fx:id="imagemPerfil" fitHeight="105.0" fitWidth="101.0" layoutX="21.0" layoutY="11.0" opacity="0.6" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../Pictures/Saved%20Pictures/me2.jpg" />
-                     </image>
-                  </ImageView>
-                  <Label fx:id="experienciaCulinaria" layoutX="154.0" layoutY="67.0" prefHeight="18.0" prefWidth="184.0" text="Experiência" />
-                  <TextField fx:id="textFieldPesquisa" layoutX="339.0" layoutY="30.0" promptText="Pesquisar em" />
-                  <Label fx:id="nomeUsuario" layoutX="154.0" layoutY="30.0" prefHeight="26.0" prefWidth="148.0" text="Nome do Usuário">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="botaoPesquisar" layoutX="510.0" layoutY="72.0" mnemonicParsing="false" onAction="#handlePesquisar" text="Pesquisar" />
-                  <Button fx:id="botaoAcessarCaderno" layoutX="166.0" layoutY="307.0" mnemonicParsing="false" onAction="#handleAcessarCaderno" text="Acessar" />
-                  <Button fx:id="botaoAcessarReceita" layoutX="442.0" layoutY="308.0" mnemonicParsing="false" onAction="#handleAcessarReceita" text="Acessar" />
-               </children>
-            </AnchorPane>
-         </content>
-    </Tab>
-  </tabs>
-</TabPane>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControladorTelaPrincipal">
+   <children>
+      <ListView fx:id="listViewCadernos" layoutX="15.0" layoutY="168.0" prefHeight="126.0" prefWidth="210.0" />
+      <ListView fx:id="listViewReceitas" layoutX="289.0" layoutY="168.0" prefHeight="126.0" prefWidth="210.0" />
+      <Label layoutX="80.0" layoutY="146.0" text="Meus Cadernos" />
+      <Label layoutX="351.0" layoutY="146.0" text="Minhas Receitas" />
+      <Label fx:id="mostrarPerfil" layoutX="38.0" layoutY="112.0" onMouseClicked="#handleMostrarPerfil" text="Mostrar Perfil">
+         <font>
+            <Font name="Calibri" size="12.0" />
+         </font>
+      </Label>
+      <Button fx:id="botaoCriarCaderno" layoutX="14.0" layoutY="307.0" mnemonicParsing="false" onAction="#handleCriarCaderno" text="Criar Caderno" />
+      <ChoiceBox fx:id="choiceBoxPesquisa" layoutX="488.0" layoutY="29.0" prefHeight="26.0" prefWidth="89.0" />
+      <ImageView fx:id="imagemPerfil" fitHeight="105.0" fitWidth="101.0" layoutX="21.0" layoutY="11.0" opacity="0.6" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/padraoFoto.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="experienciaCulinaria" layoutX="154.0" layoutY="67.0" prefHeight="18.0" prefWidth="184.0" text="Experiência" />
+      <TextField fx:id="textFieldPesquisa" layoutX="339.0" layoutY="30.0" promptText="Pesquisar em" />
+      <Label fx:id="nomeUsuario" layoutX="154.0" layoutY="30.0" prefHeight="26.0" prefWidth="148.0" text="Nome do Usuário">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Button fx:id="botaoPesquisar" layoutX="510.0" layoutY="72.0" mnemonicParsing="false" onAction="#handlePesquisar" text="Pesquisar" />
+      <Button fx:id="botaoAcessarCaderno" layoutX="166.0" layoutY="307.0" mnemonicParsing="false" onAction="#handleAcessarCaderno" text="Acessar" />
+      <Button fx:id="botaoAcessarReceita" layoutX="442.0" layoutY="308.0" mnemonicParsing="false" onAction="#handleAcessarReceita" text="Acessar" />
+   </children>
+</AnchorPane>
