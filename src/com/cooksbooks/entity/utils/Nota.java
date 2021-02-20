@@ -10,7 +10,7 @@ public class Nota implements Serializable {
   @Serial
   private static final long serialVersionUID = 6132471158911713844L;
 
-  Map<String, Integer> votos;
+  private Map<String, Integer> votos;
 
   Nota() {
     this.votos = new HashMap<>();
@@ -47,5 +47,4 @@ public class Nota implements Serializable {
   public String toString() {
     return "";
   }
-
 }

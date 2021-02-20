@@ -17,7 +17,7 @@ public enum Rendimento {
   private final String extenso;
 
   /**
-   * Construtor padrão
+   * Construtor padrão.
    *
    * @param extenso é a representação textual do rendimento escolhido
    */

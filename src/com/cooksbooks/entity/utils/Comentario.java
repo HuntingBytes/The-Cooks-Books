@@ -30,7 +30,7 @@ public class Comentario implements Serializable {
   /**
    * Permite ao Usuário e ao Administrador editar comentários já feitos.
    *
-   * @param texto
+   * @param texto Conteúdo do comentário.
    */
   public void editarTexto(String texto) {
     this.texto = texto;

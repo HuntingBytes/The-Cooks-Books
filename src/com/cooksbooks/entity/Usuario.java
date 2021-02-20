@@ -120,4 +120,9 @@ public class Usuario implements Serializable {
     Period periodo = Period.between(idade, LocalDate.now());
     return periodo.getDays() + periodo.getMonths() * 30L + periodo.getYears() * 365L;
   }
+
+  @Override
+  public String toString() {
+    return String.format("%s | %s", this.nomePerfil, this.login);
+  }
 }

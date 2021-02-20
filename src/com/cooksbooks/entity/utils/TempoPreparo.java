@@ -21,5 +21,4 @@ public enum TempoPreparo {
   public String toString() {
     return this.extenso;
   }
-
 }

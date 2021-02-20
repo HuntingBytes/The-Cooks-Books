@@ -57,6 +57,22 @@ public class CadernoReceitas implements Serializable {
     this.idDono = idDono;
   }
 
+  /**
+   * Construtor parcial da classe. Demais campos não são inicializados.
+   *
+   * @param nomeCaderno Nome do caderno.
+   * @param informacoesCaderno Informações do caderno.
+   * @param cadernoPublico Booleano se o caderno é público ou não.
+   * @param idDono Login/identificador do usuário.
+   */
+  public CadernoReceitas(String nomeCaderno, boolean cadernoPublico,
+      String informacoesCaderno, String idDono) {
+    this.nomeCaderno = nomeCaderno;
+    this.cadernoPublico = cadernoPublico;
+    this.informacoesCaderno = informacoesCaderno;
+    this.idDono = idDono;
+  }
+
   public CadernoReceitas() {
     this.nomeCaderno = "";
     this.informacoesCaderno = "";
@@ -66,10 +82,6 @@ public class CadernoReceitas implements Serializable {
     this.dificuldadeCaderno = Dificuldade.FACIL;
     this.comentarioCaderno = null;
     this.idDono = "";
-  }
-
-  public static long getSerialVersionUID() {
-    return serialVersionUID;
   }
 
   public List<Categoria> listarCategorias() {
@@ -146,5 +158,10 @@ public class CadernoReceitas implements Serializable {
 
   public void setIdCaderno(String idCaderno) {
     this.idCaderno = idCaderno;
+  }
+
+  @Override
+  public String toString() {
+    return String.format("%s | %s", this.nomeCaderno, this.idCaderno);
   }
 }

@@ -390,23 +390,12 @@ public class Receita implements Serializable {
 
   /**
    * Retorna os principais campos do objeto receito de forma organizada. Principais campos: titulo,
-   * dificuldade, custo, rendimento, quantidades
+   * idReceita.
    *
    * @return Retorna a representação do objeto receita em String
    */
   @Override
   public String toString() {
-    return String.format("%s\n" +
-            "Dificuldade: %s\n" +
-            "Tempo Preparo: %s\n" +
-            "Custo: %s\n" +
-            "Rendimento: %s\n" +
-            "Quantidade Ingredientes: %d\n" +
-            "Quantidade Imagens: %d\n" +
-            "Quantidade Comentários: %d\n" +
-            "Modo preparo: %s\n",
-        this.titulo, this.dificuldade, this.tempoPreparo, this.custo, this.rendimento,
-        this.ingredientes.size(), this.caminhosImagens.size(), this.comentarios.size(),
-        this.modoPreparo);
+    return String.format("%s | %s", this.titulo, this.idReceita);
   }
 }
