@@ -2,6 +2,7 @@ package com.cooksbooks.gui;
 
 import com.cooksbooks.entity.CadernoReceitas;
 import com.cooksbooks.entity.Receita;
+import com.cooksbooks.entity.utils.Ingrediente;
 import com.cooksbooks.gui.controllers.*;
 
 import java.io.IOException;
@@ -22,6 +23,7 @@ import com.cooksbooks.gui.controllers.ControladorTelaPrincipal;
 import com.cooksbooks.gui.controllers.ControladorTelaReceita;
 import com.cooksbooks.gui.controllers.ControladorTelaRelatorio;
 import com.cooksbooks.gui.controllers.ControladorTelaUsuarioBuscado;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -45,6 +47,7 @@ public class ScreenManager {
   private Parent telaCadastro;
   private Parent telaCriacaoCaderno;
   private Parent telaCriacaoReceita;
+  private Parent telaCriacaoIngrediente;
   private Parent telaCaderno;
   private Parent telaEditarCaderno;
   private Parent telaEditarPerfil;
@@ -65,6 +68,7 @@ public class ScreenManager {
   private ControladorTelaCaderno controladorTelaCaderno;
   private ControladorTelaCriacaoCaderno controladorTelaCriacaoCaderno;
   private ControladorTelaCriacaoRec controladorTelaCriacaoRec;
+  private ControladorTelaCriacaoIngr controladorTelaCriacaoIngr;
   private ControladorTelaEditarCaderno controladorTelaEditarCaderno;
   private ControladorTelaEditarPerfil controladorTelaEditarPerfil;
   private ControladorTelaEditarReceita controladorTelaEditarReceita;
@@ -139,6 +143,11 @@ public class ScreenManager {
       telaEditarReceita = loaderEditarReceita.load();
       controladorTelaEditarReceita = loaderEditarReceita.getController();
       //controladorTelaEditarCaderno.setScreenManager(this);
+
+      FXMLLoader loaderCriacaoIng = new FXMLLoader(
+          getClass().getResource(Telas.TELA_CRIACAO_INGREDIENTE.caminho()));
+      telaCriacaoIngrediente = loaderCriacaoIng.load();
+      controladorTelaCriacaoIngr = loaderCriacaoIng.getController();
 
       FXMLLoader loaderInicialAdm = new FXMLLoader(
           getClass().getResource(Telas.TELA_INICIAL_ADM.caminho()));
@@ -275,6 +284,11 @@ public class ScreenManager {
   public void abrirTelaEditarReceita(Receita receita) {
     controladorTelaEditarReceita.setReceita(receita);
     tabPrincipal.setContent(telaEditarReceita);
+  }
+
+  public void abrirTelaCriacaoIngrediente(ObservableList<Ingrediente> ingredientes) {
+    controladorTelaCriacaoIngr.setObIngredientes(ingredientes);
+    modalStage(telaCriacaoIngrediente, (Stage)telaCriacaoReceita.getScene().getWindow(), "Criação Ingredientes").showAndWait();
   }
 
   // TelaCriacaoCaderno

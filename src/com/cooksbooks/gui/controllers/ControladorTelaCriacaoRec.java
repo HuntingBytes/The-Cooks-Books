@@ -6,9 +6,12 @@ import com.cooksbooks.entity.Receita;
 import com.cooksbooks.entity.utils.Categoria;
 import com.cooksbooks.entity.utils.Custo;
 import com.cooksbooks.entity.utils.Dificuldade;
+import com.cooksbooks.entity.utils.Ingrediente;
 import com.cooksbooks.entity.utils.Rendimento;
 import com.cooksbooks.entity.utils.TempoPreparo;
+import com.cooksbooks.gui.ScreenManager;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -19,25 +22,25 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class ControladorTelaCriacaoRec {
 
   private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
 
+  private String idCadernoDono;
+
   @FXML
   private TextArea taModoPreparo;
 
   @FXML
-  private Button btVoltarRec;
+  private Button btFechar;
 
   @FXML
   private Button btCriarRec;
 
   @FXML
   private TextField tfTituloRec;
-
-  @FXML
-  private TextArea taAddIng;
 
   @FXML
   private ChoiceBox<Custo> cbCustoMedio;
@@ -55,21 +58,46 @@ public class ControladorTelaCriacaoRec {
   private ListView<Categoria> lvAddCat;
 
   @FXML
+  private ListView<Ingrediente> lvIngredientes;
+
+  @FXML
+  private Button btAdicionarIngrediente;
+
+  @FXML
+  private Button brRemoverIngrediente;
+
+  @FXML
   private Label lbErro;
 
-  private void initialize() {
+  public void setIdCadernoDono(String idCadernoDono) {
+    this.idCadernoDono = idCadernoDono;
+  }
 
+  @FXML
+  public void initialize() {
     this.cbCustoMedio.getItems().addAll(Custo.values());
     this.cbDificul.getItems().addAll(Dificuldade.values());
     this.cbRendimento.getItems().addAll(Rendimento.values());
     this.cbTempoPreparo.getItems().addAll(TempoPreparo.values());
-
     this.lvAddCat.getItems().addAll(Categoria.values());
   }
 
   @FXML
-  private void handleVoltar() throws IOException {
-    //muda de tela
+  private void handleVoltar() {
+    clearTodosCampos();
+    ((Stage) this.btFechar.getScene().getWindow()).close();
+  }
+
+  @FXML
+  private void handleAdicionarIngrediente() {
+    ScreenManager.getInstancia().abrirTelaCriacaoIngrediente(this.lvIngredientes.getItems());
+  }
+
+  @FXML
+  private void handleRemoverIngrediente() {
+    if (lvIngredientes.getSelectionModel().getSelectedItem() != null) {
+      lvIngredientes.getItems().remove(lvIngredientes.getSelectionModel().getSelectedIndex());
+    }
   }
 
   @FXML
@@ -77,29 +105,26 @@ public class ControladorTelaCriacaoRec {
     if (this.areCamposValidos()) {
       String nomeReceita = this.tfTituloRec.getText();
       String modoPreparo = this.taModoPreparo.getText();
-      //Como seria essa criaçao ingredientes ????
-      //String ingredientes = this.textAreaAddIng.getText();
+      List<Ingrediente> ingredientes = new ArrayList<>(this.lvIngredientes.getItems());
 
       Custo custoMedio = this.cbCustoMedio.getValue();
       Dificuldade dificuldade = this.cbDificul.getValue();
       Rendimento rendimento = this.cbRendimento.getValue();
       TempoPreparo tempoPreparo = this.cbTempoPreparo.getValue();
-      List<Categoria> categorias = this.lvAddCat.getItems();
+      List<Categoria> categorias = new ArrayList<>(this.lvAddCat.getItems());
 
       Receita receita = new Receita();
-      //receita.setIdCadernoDono();
+      receita.setIdCadernoDono(idCadernoDono);
       receita.setTitulo(nomeReceita);
       receita.setModoPreparo(modoPreparo);
-      //receita.setIngredientes();
+      receita.setIngredientes(ingredientes);
       receita.setCusto(custoMedio);
+      receita.setRendimento(rendimento);
       receita.setDificuldade(dificuldade);
       receita.setTempoPreparo(tempoPreparo);
       receita.setCategorias(categorias);
 
-      sistema.cadastrarReceita(receita,receita.getIdCadernoDono());
-
-      this.lbErro.setText("Receita Cadastrada!");
-
+      sistema.cadastrarReceita(receita, this.idCadernoDono);
       this.clearTodosCampos();
     }
     else {
@@ -180,12 +205,13 @@ public class ControladorTelaCriacaoRec {
 
   private void clearTodosCampos(){
     this.tfTituloRec.clear();
-    //this.taAddIng.clear();
     this.taModoPreparo.clear();
     this.cbCustoMedio.getSelectionModel().clearSelection();
     this.cbRendimento.getSelectionModel().clearSelection();
     this.cbDificul.getSelectionModel().clearSelection();
     this.cbTempoPreparo.getSelectionModel().clearSelection();
     this.lvAddCat.getSelectionModel().clearSelection();
+    this.lvIngredientes.getItems().clear();
+    this.lvIngredientes.getSelectionModel().clearSelection();
   }
 }
