@@ -19,13 +19,13 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
   private static final long serialVersionUID = 6039699407286777005L;
   private static RepositorioCadernoList instancia = null;
 
-  private final List<CadernoReceitas> cadernosSist;
+  private final List<CadernoReceitas> cadernosList;
 
   /**
    * Construtor privado do repositório que inicializa o ArrayList de cadernos
    */
   private RepositorioCadernoList() {
-    this.cadernosSist = new ArrayList<>();
+    this.cadernosList = new ArrayList<>();
   }
 
   /**
@@ -110,7 +110,7 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
    */
   @Override
   public void cadastrarCaderno(CadernoReceitas caderno) {
-    this.cadernosSist.add(caderno);
+    this.cadernosList.add(caderno);
   }
 
   /**
@@ -120,7 +120,7 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
    */
   @Override
   public void removerCaderno(String idCaderno) {
-    this.cadernosSist.removeIf(caderno -> caderno.getIdCaderno().equals(idCaderno));
+    this.cadernosList.removeIf(caderno -> caderno.getIdCaderno().equals(idCaderno));
   }
 
   /**
@@ -131,7 +131,7 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
    */
   @Override
   public boolean existeCaderno(String idCaderno) {
-    for (CadernoReceitas caderno : this.cadernosSist) {
+    for (CadernoReceitas caderno : this.cadernosList) {
       if (caderno.getIdCaderno().equals(idCaderno)) {
         return true;
       }
@@ -147,7 +147,7 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
    */
   @Override
   public CadernoReceitas buscarCaderno(String idCaderno) {
-    for (CadernoReceitas caderno : this.cadernosSist) {
+    for (CadernoReceitas caderno : this.cadernosList) {
       if (caderno.getIdCaderno().equals(idCaderno)) {
         return caderno;
       }
@@ -196,7 +196,7 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
   @Override
   public void alterarCaderno(String idCaderno, CadernoReceitas novoCaderno) {
     int index = getIndex(idCaderno);
-    this.cadernosSist.set(index, novoCaderno);
+    this.cadernosList.set(index, novoCaderno);
   }
 
   /**
@@ -208,7 +208,7 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
   @Override
   public List<CadernoReceitas> buscarTodosCadernosDoUsuario(String nomeUsuario) {
     List<CadernoReceitas> cadernosDoUsuario = new ArrayList<>();
-    for (CadernoReceitas caderno : this.cadernosSist) {
+    for (CadernoReceitas caderno : this.cadernosList) {
       if (caderno.getIdDono().equals(nomeUsuario)) {
         cadernosDoUsuario.add(caderno);
       }
@@ -223,12 +223,12 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
    */
   @Override
   public long totalCadernosCadastrados() {
-    return this.cadernosSist.size();
+    return this.cadernosList.size();
   }
 
   private int getIndex(String idCaderno) {
-    for (int i = 0; i < this.cadernosSist.size(); i++) {
-      if (this.cadernosSist.get(i).getIdCaderno().equals(idCaderno)) {
+    for (int i = 0; i < this.cadernosList.size(); i++) {
+      if (this.cadernosList.get(i).getIdCaderno().equals(idCaderno)) {
         return i;
       }
     }
