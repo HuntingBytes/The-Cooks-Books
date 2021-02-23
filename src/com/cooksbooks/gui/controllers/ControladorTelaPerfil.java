@@ -18,7 +18,7 @@ import javafx.scene.input.MouseEvent;
 public class ControladorTelaPerfil {
 
   private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
-  private Usuario usuarioDoPefil;
+  private Usuario usuarioDoPerfil;
   private ScreenManager screenManager;
 
   @FXML
@@ -53,20 +53,22 @@ public class ControladorTelaPerfil {
     this.screenManager = screenManager;
   }
 
-  private void initialize() {
-    if (!usuarioDoPefil.equals(sistema.getUsuarioLogado())) {
+  public void inicializar() {
+    if (!usuarioDoPerfil.equals(sistema.getUsuarioLogado())) {
       this.btEditarPerfil.setVisible(false);
     }
     this.cbCadernosPerfil.getItems()
-        .addAll(sistema.buscarTodosCadernosDoUsuario(usuarioDoPefil.getLogin()));
+        .addAll(sistema.buscarTodosCadernosDoUsuario(usuarioDoPerfil.getLogin()));
     //tem que criar um buscarTodasReceitasUsuario para inicializar
     //this.cbCadernosPerfil.getItems().addAll(sistema.buscarTodosCadernosDoUsuario(usuarioDoPefil.getLogin()));
     this.cbCadernosPerfil.setVisible(false);
     this.cbReceitasPerfil.setVisible(false);
-    this.lbNomeUsuario.setText(usuarioDoPefil.getNomePerfil());
-    this.taSobreMim.setText(usuarioDoPefil.getBiografia());
-    this.tfExperiencia.setText(usuarioDoPefil.getExperienciaCulinaria().toString());
-
+    this.lbNomeUsuario.setText(usuarioDoPerfil.getNomePerfil());
+    this.lbNomeUsuario.setDisable(true);
+    this.taSobreMim.setText(usuarioDoPerfil.getBiografia());
+    this.taSobreMim.setDisable(true);
+    this.tfExperiencia.setText(usuarioDoPerfil.getExperienciaCulinaria().toString());
+    this.tfExperiencia.setDisable(true);
   }
 
   @FXML
@@ -95,6 +97,6 @@ public class ControladorTelaPerfil {
   }
 
   public void setUsuarioDoPefil(Usuario usuarioDoPefil) {
-    this.usuarioDoPefil = usuarioDoPefil;
+    this.usuarioDoPerfil = usuarioDoPefil;
   }
 }

@@ -18,7 +18,7 @@ public class ControladorTelaCaderno {
 
   private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
   private ScreenManager screenManager;
-  private CadernoReceitas caderno;
+  private CadernoReceitas cadernoSelecionado;
 
   @FXML
   private Label lbNomeCaderno;
@@ -43,17 +43,18 @@ public class ControladorTelaCaderno {
   }
 
   public void inicializar() {
-    this.lbNomeCaderno.setText(caderno.getNomeCaderno());
-    this.taDesc.setText(caderno.getInformacoesCaderno());
+    this.lbNomeCaderno.setText(cadernoSelecionado.getNomeCaderno());
+    this.taDesc.setText(cadernoSelecionado.getInformacoesCaderno());
 
     //this.lvCategoriasCaderno.getItems().addAll(caderno.listarCategorias());
     this.lvReceitas.getItems().addAll
-        (sistema.buscarReceitasDoCaderno(caderno.getIdCaderno()));
+        (sistema.buscarReceitasDoCaderno(cadernoSelecionado.getIdCaderno()));
+
   }
 
   @FXML
   void handleEditarCaderno() {
-    screenManager.abrirTelaEditarCaderno(caderno);
+    screenManager.abrirTelaEditarCaderno(cadernoSelecionado);
   }
 
   @FXML
@@ -61,7 +62,7 @@ public class ControladorTelaCaderno {
     screenManager.abrirTelaPrincipal();
   }
 
-  public void setCaderno(CadernoReceitas caderno) {
-    this.caderno = caderno;
+  public void setCaderno(CadernoReceitas cadernoSelecionado) {
+    this.cadernoSelecionado = cadernoSelecionado;
   }
 }

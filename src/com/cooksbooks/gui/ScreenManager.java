@@ -36,7 +36,6 @@ public class ScreenManager {
   private static ScreenManager instancia;
 
   private Stage stagePrincipal;
-
   private Scene scenePrincipal;
 
   private TabPane tabPane;
@@ -263,6 +262,7 @@ public class ScreenManager {
   // TelaCaderno
   public void abrirTelaCaderno(CadernoReceitas caderno) {
     controladorTelaCaderno.setCaderno(caderno);
+    controladorTelaCaderno.inicializar();
     tabPrincipal.setContent(telaCaderno);
   }
 
@@ -304,6 +304,7 @@ public class ScreenManager {
   // TelaPerfil
   public void abrirTelaPerfil(Usuario usuarioDoPerfil) {
     controladorTelaPerfil.setUsuarioDoPefil(usuarioDoPerfil);
+    controladorTelaPerfil.inicializar();
     tabPrincipal.setContent(telaPerfil);
   }
 
