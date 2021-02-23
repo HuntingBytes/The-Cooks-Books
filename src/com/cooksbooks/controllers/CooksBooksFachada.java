@@ -5,6 +5,7 @@ import com.cooksbooks.entity.Receita;
 import com.cooksbooks.entity.Relatorio;
 import com.cooksbooks.entity.Usuario;
 import com.cooksbooks.entity.utils.Categoria;
+import com.cooksbooks.entity.utils.Comentario;
 import com.cooksbooks.entity.utils.Custo;
 import com.cooksbooks.entity.utils.Dificuldade;
 import com.cooksbooks.entity.utils.ExperienciaCulinaria;
@@ -16,6 +17,7 @@ import com.cooksbooks.exceptions.UsuarioJaCadastrado;
 import com.cooksbooks.exceptions.UsuarioJaLogado;
 import com.cooksbooks.exceptions.UsuarioSenhaIncorreta;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CooksBooksFachada implements ICooksBooks {
@@ -245,11 +247,13 @@ public class CooksBooksFachada implements ICooksBooks {
   @Override
   public Relatorio gerarRelatorio(LocalDate dataInicial, LocalDate dataFinal) {
     Relatorio relatorio = new Relatorio();
-    relatorio.setDataFinal(dataFinal);
+    relatorio.setDataIncial(dataInicial);
     relatorio.setDataFinal(dataFinal);
     relatorio.setQtdUsuariosCadastrados(this.controladorUsuario.getTotalUsuarios());
     relatorio.setQtdNovosUsuarios(this.controladorUsuario.getTotalUsuariosEntre(
         dataInicial.atStartOfDay(), dataFinal.atStartOfDay()));
+    relatorio.setQtdUsuariosAtivos(relatorio.getQtdNovosUsuarios());
+    relatorio.setComentarios(new ArrayList<>()); // Falta adicionar o repositório de sugestões!
     return relatorio;
   }
 }

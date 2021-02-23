@@ -209,6 +209,7 @@ public class Relatorio {
    */
   public double percentualAumentoUsuarios() {
     double qtdInicialUsuariosCadastrados = (this.qtdUsuariosCadastrados - this.qtdNovosUsuarios);
+    if (qtdInicialUsuariosCadastrados < 0.0001) return 100.0;
     return 100.0 * ((double) this.qtdNovosUsuarios / qtdInicialUsuariosCadastrados);
   }
 
