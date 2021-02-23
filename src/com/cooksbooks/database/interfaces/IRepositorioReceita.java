@@ -4,6 +4,7 @@ import com.cooksbooks.entity.Receita;
 import com.cooksbooks.entity.utils.Categoria;
 import com.cooksbooks.entity.utils.Custo;
 import com.cooksbooks.entity.utils.Dificuldade;
+import com.cooksbooks.entity.utils.Ingrediente;
 import com.cooksbooks.entity.utils.Rendimento;
 import java.util.List;
 
@@ -39,6 +40,12 @@ public interface IRepositorioReceita {
 
   // throws ReceitaInexistente
   void removerCategoria(String idReceita, Categoria categoria);
+
+  // throws ReceitaInexistente
+  void adicionarIngrediente(String idReceita, Ingrediente ingrediente);
+
+  // throws ReceitaInexistente
+  void removerIngrediente(String idReceita, Ingrediente ingrediente);
 
   // throws ReceitaInexistente
   void alterarReceita(String idReceita, Receita novaReceita);

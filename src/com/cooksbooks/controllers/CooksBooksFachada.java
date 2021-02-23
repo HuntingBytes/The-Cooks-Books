@@ -8,6 +8,7 @@ import com.cooksbooks.entity.utils.Categoria;
 import com.cooksbooks.entity.utils.Custo;
 import com.cooksbooks.entity.utils.Dificuldade;
 import com.cooksbooks.entity.utils.ExperienciaCulinaria;
+import com.cooksbooks.entity.utils.Ingrediente;
 import com.cooksbooks.entity.utils.Rendimento;
 import com.cooksbooks.exceptions.CampoInvalido;
 import com.cooksbooks.exceptions.UsuarioInexistente;
@@ -140,32 +141,42 @@ public class CooksBooksFachada implements ICooksBooks {
 
   @Override
   public void alterarCusto(String idReceita, Custo custo) {
-
+    this.controladorReceita.alterarCusto(idReceita, custo);
   }
 
   @Override
   public void alterarRendimento(String idReceita, Rendimento rendimento) {
-
+    this.controladorReceita.alterarRendimento(idReceita, rendimento);
   }
 
   @Override
   public void alterarDificuldade(String idReceita, Dificuldade dificuldade) {
-
+    this.controladorReceita.alterarDificuldade(idReceita, dificuldade);
   }
 
   @Override
   public void adicionarCategoria(String idReceita, Categoria categoria) {
-
+    this.controladorReceita.adicionarCategoria(idReceita, categoria);
   }
 
   @Override
   public void removerCategoria(String idReceita, Categoria categoria) {
+    this.controladorReceita.removerCategoria(idReceita, categoria);
+  }
 
+  @Override
+  public void adicionarIngrediente(String idReceita, Ingrediente ingrediente) {
+    this.controladorReceita.adicionarIngrediente(idReceita, ingrediente);
+  }
+
+  @Override
+  public void removerIngrediente(String idReceita, Ingrediente ingrediente) {
+    this.controladorReceita.removerIngrediente(idReceita, ingrediente);
   }
 
   @Override
   public void alterarReceita(String idReceita, Receita novaReceita) {
-
+    this.controladorReceita.alterarReceita(idReceita, novaReceita);
   }
 
   @Override

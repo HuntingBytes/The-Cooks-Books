@@ -3,6 +3,11 @@ package com.cooksbooks.controllers;
 import com.cooksbooks.database.RepositorioReceitasList;
 import com.cooksbooks.database.interfaces.IRepositorioReceita;
 import com.cooksbooks.entity.Receita;
+import com.cooksbooks.entity.utils.Categoria;
+import com.cooksbooks.entity.utils.Custo;
+import com.cooksbooks.entity.utils.Dificuldade;
+import com.cooksbooks.entity.utils.Ingrediente;
+import com.cooksbooks.entity.utils.Rendimento;
 import java.util.List;
 
 public class ControladorReceita {
@@ -38,10 +43,12 @@ public class ControladorReceita {
    * @param receita Receita.
    */
   public void cadastrarReceita(Receita receita) {
-    receita.setIdReceita(receita.getTitulo());
+    receita.setIdReceita(String.format("%s-%d", receita.getIdCadernoDono(), this.repositorioReceitas.totalReceitas()));
     if (!this.repositorioReceitas.existeReceita(receita.getIdReceita())) {
-      this.repositorioReceitas.cadastrarReceita(receita);
-      this.repositorioReceitas.salvarArquivo();
+      if (this.isReceitaValida(receita)) {
+        this.repositorioReceitas.cadastrarReceita(receita);
+        this.repositorioReceitas.salvarArquivo();
+      }
     }
   }
 
@@ -64,12 +71,7 @@ public class ControladorReceita {
    * @return Receita buscada pelo usuário
    */
   public Receita buscarReceita(String idReceita) {
-    if (this.repositorioReceitas.existeReceita(idReceita)) {
-      return this.repositorioReceitas.buscarReceita(idReceita);
-    } else {
-      System.out.println("Infelizmente essa receita não existe na nossa plataforma");
-    }
-    return null;
+    return this.repositorioReceitas.buscarReceita(idReceita);
   }
 
   /**
@@ -80,8 +82,10 @@ public class ControladorReceita {
    */
   public void alterarTituloReceita(String idReceitaExistente, String novoTituloReceita) {
     if (this.repositorioReceitas.existeReceita(idReceitaExistente)) {
-      this.repositorioReceitas.alterarTituloReceita(idReceitaExistente, novoTituloReceita);
-      this.repositorioReceitas.salvarArquivo();
+      if (this.isTituloValido(novoTituloReceita)) {
+        this.repositorioReceitas.alterarTituloReceita(idReceitaExistente, novoTituloReceita);
+        this.repositorioReceitas.salvarArquivo();
+      }
     }
   }
 
@@ -93,12 +97,104 @@ public class ControladorReceita {
    */
   public void alterarModoPreparoReceita(String idReceitaExistente, String novoModoPreparo) {
     if (this.repositorioReceitas.existeReceita(idReceitaExistente)) {
-      this.repositorioReceitas.alterarModoPreparoReceita(idReceitaExistente, novoModoPreparo);
-      this.repositorioReceitas.salvarArquivo();
+      if (this.isModoPreparoValido()) {
+        this.repositorioReceitas.alterarModoPreparoReceita(idReceitaExistente, novoModoPreparo);
+        this.repositorioReceitas.salvarArquivo();
+      }
+    }
+  }
+
+  void alterarCusto(String idReceita, Custo custo) {
+    if (this.repositorioReceitas.existeReceita(idReceita)) {
+      if (custo != null) {
+        this.repositorioReceitas.alterarCusto(idReceita, custo);
+        this.repositorioReceitas.salvarArquivo();
+      }
+    }
+  }
+
+  void alterarRendimento(String idReceita, Rendimento rendimento) {
+    if (this.repositorioReceitas.existeReceita(idReceita)) {
+      if (rendimento != null) {
+        this.repositorioReceitas.alterarRendimento(idReceita, rendimento);
+        this.repositorioReceitas.salvarArquivo();
+      }
+    }
+  }
+
+  void alterarDificuldade(String idReceita, Dificuldade dificuldade) {
+    if (this.repositorioReceitas.existeReceita(idReceita)) {
+      if (dificuldade != null) {
+        this.repositorioReceitas.alterarDificuldade(idReceita, dificuldade);
+        this.repositorioReceitas.salvarArquivo();
+      }
+    }
+  }
+
+  void adicionarCategoria(String idReceita, Categoria categoria) {
+    if (this.repositorioReceitas.existeReceita(idReceita)) {
+      if (categoria != null && !this.buscarReceita(idReceita).listarCategorias().contains(categoria)) {
+        this.repositorioReceitas.adicionarCategoria(idReceita, categoria);
+        this.repositorioReceitas.salvarArquivo();
+      }
+    }
+  }
+
+  void removerCategoria(String idReceita, Categoria categoria) {
+    if (this.repositorioReceitas.existeReceita(idReceita)) {
+      if (categoria != null && this.buscarReceita(idReceita).listarCategorias().contains(categoria)) {
+        this.repositorioReceitas.removerCategoria(idReceita, categoria);
+        this.repositorioReceitas.salvarArquivo();
+      }
+    }
+  }
+
+  public void adicionarIngrediente(String idReceita, Ingrediente ingrediente) {
+    if (this.repositorioReceitas.existeReceita(idReceita)) {
+      if (isIngredienteValido() && !this.buscarReceita(idReceita).listarIngredientes().contains(ingrediente)) {
+        // Rever o método equals() de ingrediente!
+        this.repositorioReceitas.adicionarIngrediente(idReceita, ingrediente);
+        this.repositorioReceitas.salvarArquivo();
+      }
+    }
+  }
+
+  public void removerIngrediente(String idReceita, Ingrediente ingrediente) {
+    if (this.repositorioReceitas.existeReceita(idReceita)) {
+      if (isIngredienteValido() && this.buscarReceita(idReceita).listarIngredientes().contains(ingrediente)) {
+        // Rever o método equals() de ingrediente!
+        this.repositorioReceitas.removerIngrediente(idReceita, ingrediente);
+        this.repositorioReceitas.salvarArquivo();
+      }
+    }
+  }
+
+  void alterarReceita(String idReceita, Receita novaReceita) {
+    if (this.repositorioReceitas.existeReceita(idReceita)) {
+      if (isReceitaValida(novaReceita)) {
+        this.repositorioReceitas.alterarReceita(idReceita, novaReceita);
+        this.repositorioReceitas.salvarArquivo();
+      }
     }
   }
 
   public List<Receita> listarReceitas(String idCaderno) {
     return repositorioReceitas.listarReceitasCaderno(idCaderno);
+  }
+
+  private boolean isReceitaValida(Receita receita) {
+    return true;
+  }
+
+  private boolean isTituloValido(String titulo) {
+    return true;
+  }
+
+  private boolean isModoPreparoValido() {
+    return true;
+  }
+
+  private boolean isIngredienteValido() {
+    return true;
   }
 }

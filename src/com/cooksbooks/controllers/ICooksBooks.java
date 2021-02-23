@@ -8,6 +8,7 @@ import com.cooksbooks.entity.utils.Categoria;
 import com.cooksbooks.entity.utils.Custo;
 import com.cooksbooks.entity.utils.Dificuldade;
 import com.cooksbooks.entity.utils.ExperienciaCulinaria;
+import com.cooksbooks.entity.utils.Ingrediente;
 import com.cooksbooks.entity.utils.Rendimento;
 import com.cooksbooks.exceptions.CampoInvalido;
 import com.cooksbooks.exceptions.UsuarioInexistente;
@@ -52,10 +53,10 @@ public interface ICooksBooks {
   Receita buscarReceita(String idReceita);
 
   // throws ReceitaInexistente, CampoInvalido
-  void alterarModoPreparo(String idReceita, String modoPreparo);
+  void alterarTitulo(String idReceita, String titulo);
 
   // throws ReceitaInexistente, CampoInvalido
-  void alterarTitulo(String idReceita, String titulo);
+  void alterarModoPreparo(String idReceita, String modoPreparo);
 
   // throws ReceitaInexistente, CampoInvalido
   void alterarCusto(String idReceita, Custo custo);
@@ -71,6 +72,12 @@ public interface ICooksBooks {
 
   // throws ReceitaInexistente, CampoInvalido
   void removerCategoria(String idReceita, Categoria categoria);
+
+  // throws ReceitaInexistente, CampoInvalido
+  void adicionarIngrediente(String idReceita, Ingrediente ingrediente);
+
+  // throws ReceitaInexistente, CampoInvalido
+  void removerIngrediente(String idReceita, Ingrediente ingrediente);
 
   // throws ReceitaInexistente, CampoInvalido
   void alterarReceita(String idReceita, Receita novaReceita);

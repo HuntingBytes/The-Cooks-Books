@@ -2,6 +2,12 @@ package com.cooksbooks.database;
 
 import com.cooksbooks.database.interfaces.IRepositorioReceita;
 import com.cooksbooks.entity.Receita;
+import com.cooksbooks.entity.utils.Categoria;
+import com.cooksbooks.entity.utils.Custo;
+import com.cooksbooks.entity.utils.Dificuldade;
+import com.cooksbooks.entity.utils.Ingrediente;
+import com.cooksbooks.entity.utils.Rendimento;
+import com.cooksbooks.exceptions.UsuarioInexistente;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -22,7 +28,7 @@ public class RepositorioReceitasList implements IRepositorioReceita, Serializabl
   private final ArrayList<Receita> receitasList;
 
   private RepositorioReceitasList() {
-    this.receitasList = new ArrayList<>(100);
+    this.receitasList = new ArrayList<>();
   }
 
   public static RepositorioReceitasList getInstancia() {
@@ -31,33 +37,6 @@ public class RepositorioReceitasList implements IRepositorioReceita, Serializabl
     }
     return RepositorioReceitasList.instancia;
   }
-
-
-  public void salvarArquivo() {
-    if (RepositorioReceitasList.instancia == null) {
-      return;
-    }
-    File out = new File("receitas.dat");
-    FileOutputStream fos;
-    ObjectOutputStream oos = null;
-
-    try {
-      fos = new FileOutputStream(out);
-      oos = new ObjectOutputStream(fos);
-      oos.writeObject(RepositorioReceitasList.instancia);
-    } catch (Exception e) {
-      e.printStackTrace();
-    } finally {
-      if (oos != null) {
-        try {
-          oos.close();
-        } catch (IOException e) {
-          /* Silent */
-        }
-      }
-    }
-  }
-
 
   private static RepositorioReceitasList lerArquivo() {
     RepositorioReceitasList instanciaLocal;
@@ -84,7 +63,31 @@ public class RepositorioReceitasList implements IRepositorioReceita, Serializabl
     return instanciaLocal;
   }
 
-  //TODO: decidir assinatura do método(provavelmente recebe o ID da receita)
+  public void salvarArquivo() {
+    if (RepositorioReceitasList.instancia == null) {
+      return;
+    }
+    File out = new File("receitas.dat");
+    FileOutputStream fos;
+    ObjectOutputStream oos = null;
+
+    try {
+      fos = new FileOutputStream(out);
+      oos = new ObjectOutputStream(fos);
+      oos.writeObject(RepositorioReceitasList.instancia);
+    } catch (Exception e) {
+      e.printStackTrace();
+    } finally {
+      if (oos != null) {
+        try {
+          oos.close();
+        } catch (IOException e) {
+          /* Silent */
+        }
+      }
+    }
+  }
+
   @Override
   public boolean existeReceita(String idReceita) {
     for (Receita r : receitasList) {
@@ -108,35 +111,71 @@ public class RepositorioReceitasList implements IRepositorioReceita, Serializabl
   @Override
   public Receita buscarReceita(String idReceita) {
     for (Receita r : receitasList) {
-      if (r.getTitulo().equals(idReceita)) {
+      if (r.getIdReceita().equals(idReceita)) {
         return r;
       }
     }
     return null;
   }
 
-  public long totalReceitas() {
-    return receitasList.size();
-  }
-
   @Override
   public void alterarTituloReceita(String idReceitaExistente, String novoTituloReceita) {
-    for (Receita r : receitasList) {
-      if (r.getTitulo().equals(idReceitaExistente)) {
-        r.setTitulo(novoTituloReceita);
-        break;
-      }
-    }
+    Receita receita = this.buscarReceita(idReceitaExistente);
+    receita.setTitulo(novoTituloReceita);
   }
 
   @Override
   public void alterarModoPreparoReceita(String idReceitaExistente, String novoModoPreparo) {
-    for (Receita r : receitasList) {
-      if (r.getTitulo().equals(idReceitaExistente)) {
-        r.setModoPreparo(novoModoPreparo);
-        break;
-      }
-    }
+    Receita receita = this.buscarReceita(idReceitaExistente);
+    receita.setModoPreparo(novoModoPreparo);
+  }
+
+  @Override
+  public void alterarCusto(String idReceita, Custo custo) {
+    Receita receita = this.buscarReceita(idReceita);
+    receita.setCusto(custo);
+  }
+
+  @Override
+  public void alterarRendimento(String idReceita, Rendimento rendimento) {
+    Receita receita = this.buscarReceita(idReceita);
+    receita.setRendimento(rendimento);
+  }
+
+  @Override
+  public void alterarDificuldade(String idReceita, Dificuldade dificuldade) {
+    Receita receita = this.buscarReceita(idReceita);
+    receita.setDificuldade(dificuldade);
+  }
+
+  @Override
+  public void adicionarCategoria(String idReceita, Categoria categoria) {
+    Receita receita = this.buscarReceita(idReceita);
+    receita.adicionarCategoria(categoria);
+  }
+
+  @Override
+  public void removerCategoria(String idReceita, Categoria categoria) {
+    Receita receita = this.buscarReceita(idReceita);
+    receita.removerCategoria(categoria);
+  }
+
+  @Override
+  public void adicionarIngrediente(String idReceita, Ingrediente ingrediente) {
+    Receita receita = this.buscarReceita(idReceita);
+    receita.adicionarIngrediente(ingrediente);
+  }
+
+  @Override
+  public void removerIngrediente(String idReceita, Ingrediente ingrediente) {
+    Receita receita = this.buscarReceita(idReceita);
+    receita.removerIngrediente(ingrediente);
+  }
+
+  @Override
+  public void alterarReceita(String idReceita, Receita novaReceita) {
+    int index = getIndex(idReceita);
+    this.receitasList.set(index, novaReceita);
   }
 
   @Override
@@ -148,5 +187,18 @@ public class RepositorioReceitasList implements IRepositorioReceita, Serializabl
       }
     }
     return receitasCaderno;
+  }
+
+  public long totalReceitas() {
+    return receitasList.size();
+  }
+
+  private int getIndex(String idReceita) {
+    for (int i = 0; i < this.receitasList.size(); i++) {
+      if (this.receitasList.get(i).getIdReceita().equals(idReceita)) {
+        return i;
+      }
+    }
+    return -1;
   }
 }
