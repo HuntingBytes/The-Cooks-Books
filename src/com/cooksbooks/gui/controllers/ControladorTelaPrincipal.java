@@ -74,7 +74,7 @@ public class ControladorTelaPrincipal {
         (sistema.getUsuarioLogado().getExperienciaCulinaria().toString());
     //this.imagemPerfil.getImage();
     this.listViewCadernos.setItems(FXCollections.observableArrayList(
-        sistema.buscarTodosCadernosDoUsuarioAtual()));
+        sistema.buscarTodosCadernosDoUsuario(sistema.getUsuarioLogado().getLogin())));
     this.listViewReceitas.setItems((FXCollections.observableArrayList(buscarTodasReceitas())));
 
     this.choiceBoxPesquisa.setItems(FXCollections.observableArrayList(dropDownContent));
@@ -84,7 +84,7 @@ public class ControladorTelaPrincipal {
   //TODO: fazer isso direito e colocar no lugar certo
   private List<Receita> buscarTodasReceitas() {
     List<Receita> todasReceitas = new ArrayList<>();
-    for (CadernoReceitas c : sistema.buscarTodosCadernosDoUsuarioAtual()) {
+    for (CadernoReceitas c : sistema.buscarTodosCadernosDoUsuario(sistema.getUsuarioLogado().getLogin())) {
       todasReceitas.addAll(sistema.listarReceitasDoCaderno(c.getIdCaderno()));
     }
     return todasReceitas;

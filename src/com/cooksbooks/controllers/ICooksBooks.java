@@ -52,7 +52,6 @@ public interface ICooksBooks {
   // throws CadernoInexistente
   List<Receita> listarReceitasDoCaderno(String idCaderno);
 
-
   // throws CadernoComMesmoNomeJaExiste, CampoInvalido
   void cadastrarCaderno(CadernoReceitas caderno);
 
@@ -73,7 +72,4 @@ public interface ICooksBooks {
 
   // throws UsuarioInexistente
   List<CadernoReceitas> buscarTodosCadernosDoUsuario(String idUsuario);
-
-  // Talvez remover!
-  List<CadernoReceitas> buscarTodosCadernosDoUsuarioAtual();
 }
