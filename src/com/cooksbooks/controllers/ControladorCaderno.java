@@ -12,6 +12,15 @@ public class ControladorCaderno {
   private final IRepositorioCaderno repositorioCadernos;
 
   /**
+   * Construtor do controlador do caderno
+   * <p>
+   * Define a instância única do repositório de cadernos como atributo
+   */
+  public ControladorCaderno() {
+    this.repositorioCadernos = RepositorioCadernoList.getInstancia();
+  }
+
+  /**
    * Método responsável por retornar a instância única do controlador do Caderno (Singleton)
    * <p>
    * Caso ela ainda não exista, uma nova instância será criada e retornada
@@ -26,20 +35,13 @@ public class ControladorCaderno {
   }
 
   /**
-   * Construtor do controlador do caderno
-   * <p>
-   * Define a instância única do repositório de cadernos como atributo
-   */
-  public ControladorCaderno() {
-    this.repositorioCadernos = RepositorioCadernoList.getInstancia();
-  }
-
-  /**
    * Cadastra um caderno ao sistema, caso ele ainda não exista
    *
    * @param caderno caderno a ser cadastrado
    */
   void cadastrarCaderno(CadernoReceitas caderno) {
+    caderno.setIdCaderno(String
+        .format("%s-%d", caderno.getIdDono(), this.repositorioCadernos.totalCadernosCadastrados()));
     if (cadernoValido(caderno) && !repositorioCadernos.existeCaderno(caderno.getIdCaderno())) {
       repositorioCadernos.cadastrarCaderno(caderno);
       repositorioCadernos.salvarArquivo();
@@ -52,8 +54,10 @@ public class ControladorCaderno {
    * @param idCaderno id do caderno a ser removido
    */
   void removerCaderno(String idCaderno) {
-    repositorioCadernos.removerCaderno(idCaderno);
-    repositorioCadernos.salvarArquivo();
+    if (repositorioCadernos.existeCaderno(idCaderno)) {
+      repositorioCadernos.removerCaderno(idCaderno);
+      repositorioCadernos.salvarArquivo();
+    }
   }
 
   /**
@@ -64,6 +68,10 @@ public class ControladorCaderno {
    */
   public CadernoReceitas procurarCaderno(String idCaderno) {
     return repositorioCadernos.buscarCaderno(idCaderno);
+  }
+
+  public void alterarCaderno(String idCaderno, CadernoReceitas novoCaderno) {
+
   }
 
   /**

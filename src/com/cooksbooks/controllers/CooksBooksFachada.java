@@ -196,9 +196,8 @@ public class CooksBooksFachada implements ICooksBooks {
 
   // Caderno
   @Override
-  public void cadastrarCaderno(CadernoReceitas caderno) {
-    caderno.setIdDono(this.usuarioLogado.getLogin());
-    caderno.setIdCaderno(caderno.getNomeCaderno());
+  public void cadastrarCaderno(CadernoReceitas caderno, String idDono) {
+    caderno.setIdDono(idDono);
     this.controladorCaderno.cadastrarCaderno(caderno);
   }
 
@@ -224,7 +223,7 @@ public class CooksBooksFachada implements ICooksBooks {
 
   @Override
   public void alterarCaderno(String idCaderno, CadernoReceitas novoCaderno) {
-
+    this.controladorCaderno.alterarCaderno(idCaderno, novoCaderno);
   }
 
   @Override

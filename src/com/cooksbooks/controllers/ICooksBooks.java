@@ -89,7 +89,7 @@ public interface ICooksBooks {
   List<Receita> buscarTodasReceitasDoUsuario(String loginUsuario);
 
   // throws CadernoComMesmoNomeJaExiste, CampoInvalido
-  void cadastrarCaderno(CadernoReceitas caderno);
+  void cadastrarCaderno(CadernoReceitas caderno, String idDono);
 
   // throws CadernoInexistente
   void removerCaderno(String idCaderno);

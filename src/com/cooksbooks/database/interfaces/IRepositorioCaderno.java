@@ -29,7 +29,7 @@ public interface IRepositorioCaderno {
 
   List<CadernoReceitas> buscarTodosCadernosDoUsuario(String nomeUsuario);
 
-  long quantidadeCadernosCadastrados();
+  long totalCadernosCadastrados();
 
   void salvarArquivo();
 }

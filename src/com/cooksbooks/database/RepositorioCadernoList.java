@@ -71,7 +71,6 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
     }
   }
   
-  
   /**
    * Método responsável por ler um  arquivo ja existente
    * <p>
@@ -79,7 +78,6 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
    *
    * @return repositorio de cadernos que estava no arquivo que ele leu
    */
-
   private static RepositorioCadernoList lerArquivo() {
     RepositorioCadernoList instanciaLocal;
 
@@ -131,7 +129,6 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
    * @param idCaderno id do caderno a ser procurado no repositorio
    * @return se existe ou nao o caderno procurado
    */
-
   @Override
   public boolean existeCaderno(String idCaderno) {
     for (CadernoReceitas caderno : this.cadernosSist) {
@@ -151,11 +148,55 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
   @Override
   public CadernoReceitas buscarCaderno(String idCaderno) {
     for (CadernoReceitas caderno : this.cadernosSist) {
-      if (existeCaderno(caderno.getIdCaderno())) {
+      if (caderno.getIdCaderno().equals(idCaderno)) {
         return caderno;
       }
     }
     return null;
+  }
+
+  /**
+   * Método responsável por alterar o nome de um caderno ja existente no repositorio
+   *
+   * @param idCadernoSubstituido id do caderno que devemos substituir o nome
+   * @param nomeCadernoNovo      nome do caderno que o usuario deseja atualizar, verificaçao feita
+   *                             se o nome é valido no controlador
+   */
+  @Override
+  public void alterarNomeCaderno(String idCadernoSubstituido, String nomeCadernoNovo) {
+    CadernoReceitas cadernoReceitas = this.buscarCaderno(idCadernoSubstituido);
+    cadernoReceitas.setNomeCaderno(nomeCadernoNovo);
+  }
+
+  /**
+   * Método responsável por alterar as informaçoes de um caderno ja existente no repositorio
+   *
+   * @param idCadernoSubstituido   id do caderno que devemos substituir as informaçoes
+   * @param informacoesCadernoNovo informaçoes do caderno que o usuario deseja atualizar,
+   *                               verificaçao feita se as informaçaoes é valido no controlador
+   */
+  @Override
+  public void alterarInformacoesCaderno(String idCadernoSubstituido,
+      String informacoesCadernoNovo) {
+    CadernoReceitas cadernoReceitas = this.buscarCaderno(idCadernoSubstituido);
+    cadernoReceitas.setInformacoesCaderno(informacoesCadernoNovo);
+  }
+
+  /**
+   * Método responsável por alterar a visibilidade de um caderno ja existente
+   *
+   * @param idCadernoSubstituido id do caderno que vamos alterar a visibilidade
+   */
+  @Override
+  public void alterarVisibildadeCaderno(String idCadernoSubstituido, boolean visibilidade) {
+    CadernoReceitas cadernoReceitas = this.buscarCaderno(idCadernoSubstituido);
+    cadernoReceitas.setCadernoPublico(visibilidade);
+  }
+
+  @Override
+  public void alterarCaderno(String idCaderno, CadernoReceitas novoCaderno) {
+    int index = getIndex(idCaderno);
+    this.cadernosSist.set(index, novoCaderno);
   }
 
   /**
@@ -181,58 +222,16 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
    * @return o tamanho do repositorio
    */
   @Override
-  public long quantidadeCadernosCadastrados() {
+  public long totalCadernosCadastrados() {
     return this.cadernosSist.size();
   }
 
-
-
-  /**
-   * Método responsável por alterar o nome de um caderno ja existente no repositorio
-   *
-   * @param idCadernoSubstituido id do caderno que devemos substituir o nome
-   * @param nomeCadernoNovo      nome do caderno que o usuario deseja atualizar, verificaçao feita
-   *                             se o nome é valido no controlador
-   */
-  @Override
-  public void alterarNomeCaderno(String idCadernoSubstituido, String nomeCadernoNovo) {
-    for (CadernoReceitas cadernoIdentificar : cadernosSist) {
-      if (cadernoIdentificar.getIdCaderno().equals(idCadernoSubstituido)) {
-        cadernoIdentificar.setNomeCaderno(nomeCadernoNovo);
+  private int getIndex(String idCaderno) {
+    for (int i = 0; i < this.cadernosSist.size(); i++) {
+      if (this.cadernosSist.get(i).getIdCaderno().equals(idCaderno)) {
+        return i;
       }
     }
-  }
-
-  /**
-   * Método responsável por alterar as informaçoes de um caderno ja existente no repositorio
-   *
-   * @param idCadernoSubstituido   id do caderno que devemos substituir as informaçoes
-   * @param informacoesCadernoNovo informaçoes do caderno que o usuario deseja atualizar,
-   *                               verificaçao feita se as informaçaoes é valido no controlador
-   */
-  @Override
-  public void alterarInformacoesCaderno(String idCadernoSubstituido,
-      String informacoesCadernoNovo) {
-    for (CadernoReceitas cadernoIdentificar : cadernosSist) {
-      if (cadernoIdentificar.getIdCaderno().equals(idCadernoSubstituido)) {
-        cadernoIdentificar.setInformacoesCaderno(informacoesCadernoNovo);
-      }
-    }
-
-  }
-
-
-  /**
-   * Método responsável por alterar a visibilidade de um caderno ja existente
-   *
-   * @param idCadernoSubstituido id do caderno que vamos alterar a visibilidade
-   */
-  @Override
-  public void alterarVisibildadeCaderno(String idCadernoSubstituido, boolean visibilidade) {
-    for (CadernoReceitas cadernoIdentificar : cadernosSist) {
-      if (cadernoIdentificar.getIdCaderno().equals(idCadernoSubstituido)) {
-        cadernoIdentificar.setCadernoPublico(visibilidade);
-      }
-    }
+    return -1;
   }
 }

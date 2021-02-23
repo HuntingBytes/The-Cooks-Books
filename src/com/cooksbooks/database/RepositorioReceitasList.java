@@ -189,6 +189,7 @@ public class RepositorioReceitasList implements IRepositorioReceita, Serializabl
     return receitasCaderno;
   }
 
+  @Override
   public long totalReceitas() {
     return receitasList.size();
   }

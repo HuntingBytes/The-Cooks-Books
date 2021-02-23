@@ -41,7 +41,7 @@ public class ControladorTelaCriacaoCaderno {
         cbCadernoPrivado.isSelected(),
         taDescricaoCaderno.getText(),
         sistema.getUsuarioLogado().getLogin()
-    ));
+    ), sistema.getUsuarioLogado().getLogin());
   }
 
   @FXML
