@@ -8,6 +8,7 @@ import com.cooksbooks.entity.utils.ExperienciaCulinaria;
 import com.cooksbooks.exceptions.CampoInvalido;
 import com.cooksbooks.exceptions.UsuarioInexistente;
 import com.cooksbooks.exceptions.UsuarioJaCadastrado;
+import java.time.LocalDateTime;
 
 public class ControladorUsuario {
 
@@ -78,7 +79,6 @@ public class ControladorUsuario {
     return this.repositorioUsuarios.buscarUsuario(login);
   }
 
-  // TODO alterarNomePerfil
   public void alterarNomePerfil(String login, String nomePerfil)
       throws UsuarioInexistente, CampoInvalido {
     if (this.isNomePerfilValido(nomePerfil)) {
@@ -93,7 +93,6 @@ public class ControladorUsuario {
     }
   }
 
-  // TODO alterarBiografia
   public void alterarBiografia(String login, String biografia)
       throws UsuarioInexistente, CampoInvalido {
     if (this.isBiografiaValida(biografia)) {
@@ -108,7 +107,6 @@ public class ControladorUsuario {
     }
   }
 
-  // TODO alterarExperienciaCulinaria
   public void alterarExperienciaCulinaria(String login, ExperienciaCulinaria experienciaCulinaria)
       throws UsuarioInexistente, CampoInvalido {
     if (experienciaCulinaria != null) {
@@ -123,7 +121,6 @@ public class ControladorUsuario {
     }
   }
 
-  // TODO alterar Imagem
   public void alterarCaminhoImagemPerfil(String login, String caminhoImagemPerfil)
       throws UsuarioInexistente, CampoInvalido {
     if (this.isCaminhoImagemPerfilValido(caminhoImagemPerfil)) {
@@ -136,6 +133,26 @@ public class ControladorUsuario {
     } else {
       throw new CampoInvalido("Caminho Imagem Perfil");
     }
+  }
+
+  public void alterarUsuario(String login, Usuario novoUsuario)
+      throws UsuarioInexistente, CampoInvalido {
+    if (this.isUsuarioValido(novoUsuario)) {
+      if (this.repositorioUsuarios.existeUsuario(login)) {
+        this.repositorioUsuarios.alterarUsuario(login, novoUsuario);
+        this.repositorioUsuarios.salvarArquivo();
+      } else {
+        throw new UsuarioInexistente(login);
+      }
+    }
+  }
+
+  public int getTotalUsuariosEntre(LocalDateTime inicio, LocalDateTime fim) {
+    return this.repositorioUsuarios.totalUsuariosEntre(inicio, fim);
+  }
+
+  public int getTotalUsuarios() {
+    return this.repositorioUsuarios.totalUsuarios();
   }
 
   private boolean isUsuarioValido(Usuario usuario) throws CampoInvalido {

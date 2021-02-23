@@ -3,6 +3,7 @@ package com.cooksbooks.database.interfaces;
 import com.cooksbooks.entity.Usuario;
 import com.cooksbooks.entity.utils.ExperienciaCulinaria;
 import com.cooksbooks.exceptions.UsuarioInexistente;
+import java.time.LocalDateTime;
 
 public interface IRepositorioUsuario {
 
@@ -25,6 +26,8 @@ public interface IRepositorioUsuario {
       throws UsuarioInexistente;
 
   void alterarUsuario(String login, Usuario novoUsuario) throws UsuarioInexistente;
+
+  int totalUsuariosEntre(LocalDateTime inicio, LocalDateTime fim);
 
   int totalUsuarios();
 

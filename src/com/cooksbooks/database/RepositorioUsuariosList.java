@@ -12,6 +12,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serial;
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -121,11 +123,6 @@ public class RepositorioUsuariosList implements IRepositorioUsuario, Serializabl
   }
 
   @Override
-  public int totalUsuarios() {
-    return usuariosList.size();
-  }
-
-  @Override
   public void alterarNomePerfil(String login, String nomePerfil) throws UsuarioInexistente {
     Usuario u = this.buscarUsuario(login);
     u.setNomePerfil(nomePerfil);
@@ -149,5 +146,37 @@ public class RepositorioUsuariosList implements IRepositorioUsuario, Serializabl
       ExperienciaCulinaria experienciaCulinaria) throws UsuarioInexistente {
     Usuario u = this.buscarUsuario(login);
     u.setExperienciaCulinaria(experienciaCulinaria);
+  }
+
+  @Override
+  public void alterarUsuario(String login, Usuario novoUsuario) throws UsuarioInexistente {
+    int index = getIndex(login);
+    this.usuariosList.set(index, novoUsuario);
+  }
+
+  @Override
+  public int totalUsuariosEntre(LocalDateTime inicio, LocalDateTime fim) {
+    int total = 0;
+    for (Usuario u : this.usuariosList) {
+      LocalDateTime dataCriacao = u.getDataCriacao();
+      if (dataCriacao.isBefore(fim) && dataCriacao.isAfter(inicio)) {
+        total++;
+      }
+    }
+    return total;
+  }
+
+  @Override
+  public int totalUsuarios() {
+    return usuariosList.size();
+  }
+
+  private int getIndex(String login) throws UsuarioInexistente {
+    for (int i = 0; i < this.usuariosList.size(); i++) {
+      if (this.usuariosList.get(i).getLogin().equals(login)) {
+        return i;
+      }
+    }
+    throw new UsuarioInexistente(login);
   }
 }
