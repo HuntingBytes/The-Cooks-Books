@@ -61,7 +61,7 @@ public class ControladorReceitaRelatorio {
     List<CadernoReceitas> listCadernos = sistema.buscarTodosCadernosDoUsuario(loginUsuario);
     List<Receita> listReceitas = new ArrayList<>();
     listCadernos
-        .forEach(c -> listReceitas.addAll(sistema.listarReceitasDoCaderno(c.getIdCaderno())));
+        .forEach(c -> listReceitas.addAll(sistema.buscarReceitasDoCaderno(c.getIdCaderno())));
     this.lvReceitasUsuario.setItems(FXCollections.observableList(listReceitas));
     // Talvez adicionar um método na facha que já retorna todas receitas do Caderno
   }

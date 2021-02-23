@@ -83,7 +83,7 @@ final class TesteCRUDS {
     System.out.printf("Esses são os cadernos e receitas de %s:\n", sistema.getUsuarioLogado().getNomePerfil());
     for(CadernoReceitas caderno : cadernos) {
       System.out.printf("%s: %s\n", caderno.getNomeCaderno(), caderno.getInformacoesCaderno());
-      List<Receita> receitas = sistema.listarReceitasDoCaderno(caderno.getIdCaderno());
+      List<Receita> receitas = sistema.buscarReceitasDoCaderno(caderno.getIdCaderno());
       for(Receita receita : receitas) {
         System.out.println("-".repeat(50));
         System.out.printf("%s", receita);
@@ -102,7 +102,7 @@ final class TesteCRUDS {
     System.out.printf("Esses são os cadernos e receitas de %s após a atualização:\n", sistema.getUsuarioLogado().getNomePerfil());
     for(CadernoReceitas caderno : cadernos) {
       System.out.printf("%s: %s\n", caderno.getNomeCaderno(), caderno.getInformacoesCaderno());
-      List<Receita> receitas = sistema.listarReceitasDoCaderno(caderno.getIdCaderno());
+      List<Receita> receitas = sistema.buscarReceitasDoCaderno(caderno.getIdCaderno());
       for(Receita receita : receitas) {
         System.out.println("-".repeat(50));
         System.out.printf("%s", receita);

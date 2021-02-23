@@ -82,8 +82,8 @@ public class ControladorTelaResultado {
   //TODO: fazer isso direito e colocar no lugar certo
   private List<Receita> buscarTodasReceitas() {
     List<Receita> todasReceitas = new ArrayList<>();
-    for (CadernoReceitas c : sistema.buscarTodosCadernosDoUsuarioAtual()) {
-      todasReceitas.addAll(sistema.listarReceitasDoCaderno(c.getIdCaderno()));
+    for (CadernoReceitas c : sistema.buscarTodosCadernosDoUsuario(sistema.getUsuarioLogado().getLogin())) {
+      todasReceitas.addAll(sistema.buscarReceitasDoCaderno(c.getIdCaderno()));
     }
     return todasReceitas;
   }

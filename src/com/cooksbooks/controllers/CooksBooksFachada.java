@@ -2,6 +2,7 @@ package com.cooksbooks.controllers;
 
 import com.cooksbooks.entity.CadernoReceitas;
 import com.cooksbooks.entity.Receita;
+import com.cooksbooks.entity.Relatorio;
 import com.cooksbooks.entity.Usuario;
 import com.cooksbooks.entity.utils.ExperienciaCulinaria;
 import com.cooksbooks.exceptions.CampoInvalido;
@@ -9,6 +10,7 @@ import com.cooksbooks.exceptions.UsuarioInexistente;
 import com.cooksbooks.exceptions.UsuarioJaCadastrado;
 import com.cooksbooks.exceptions.UsuarioJaLogado;
 import com.cooksbooks.exceptions.UsuarioSenhaIncorreta;
+import java.time.LocalDate;
 import java.util.List;
 
 public class CooksBooksFachada implements ICooksBooks {
@@ -60,6 +62,11 @@ public class CooksBooksFachada implements ICooksBooks {
   public void alterarCaminhoImagemPerfil(String login, String caminhoImagemPerfil)
       throws UsuarioInexistente, CampoInvalido {
     this.controladorUsuario.alterarCaminhoImagemPerfil(login, caminhoImagemPerfil);
+  }
+
+  @Override
+  public void alterarUsuario(String login, Usuario novoUsuario) {
+
   }
 
   @Override
@@ -122,13 +129,23 @@ public class CooksBooksFachada implements ICooksBooks {
   }
 
   @Override
+  public void alterarReceita(String idReceita, Receita novaReceita) {
+
+  }
+
+  @Override
   public Receita buscarReceita(String idReceita) {
     return this.controladorReceita.buscarReceita(idReceita);
   }
 
   @Override
-  public List<Receita> listarReceitasDoCaderno(String idCaderno) {
+  public List<Receita> buscarReceitasDoCaderno(String idCaderno) {
     return this.controladorReceita.listarReceitas(idCaderno);
+  }
+
+  @Override
+  public List<Receita> buscarTodasReceitasDoUsuario(String loginUsuario) {
+    return null;
   }
 
   // Caderno
@@ -160,6 +177,11 @@ public class CooksBooksFachada implements ICooksBooks {
   }
 
   @Override
+  public void alterarCaderno(String idCaderno, CadernoReceitas novoCaderno) {
+
+  }
+
+  @Override
   public CadernoReceitas buscarCaderno(String idCaderno) {
     return this.controladorCaderno.procurarCaderno(idCaderno);
   }
@@ -176,7 +198,7 @@ public class CooksBooksFachada implements ICooksBooks {
   }
 
   @Override
-  public List<CadernoReceitas> buscarTodosCadernosDoUsuarioAtual() {
-    return buscarTodosCadernosDoUsuario(this.usuarioLogado.getLogin());
+  public Relatorio gerarRelatorio(LocalDate dataInicial, LocalDate dataFinal) {
+    return null;
   }
 }

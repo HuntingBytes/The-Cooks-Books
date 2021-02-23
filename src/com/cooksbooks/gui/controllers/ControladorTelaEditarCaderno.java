@@ -67,7 +67,7 @@ public class ControladorTelaEditarCaderno {
   public void incializar() {
     this.lbNomeCaderno.setText(caderno.getNomeCaderno());
     this.taAlterarDesc.setText(caderno.getInformacoesCaderno());
-    List<Receita> receitas = sistema.listarReceitasDoCaderno(caderno.getIdCaderno());
+    List<Receita> receitas = sistema.buscarReceitasDoCaderno(caderno.getIdCaderno());
     if (receitas != null && receitas.size() > 0) {
       this.lvReceitas.getItems().addAll(receitas);
     }

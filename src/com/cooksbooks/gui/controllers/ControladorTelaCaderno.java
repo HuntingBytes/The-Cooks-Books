@@ -48,7 +48,7 @@ public class ControladorTelaCaderno {
 
     //this.lvCategoriasCaderno.getItems().addAll(caderno.listarCategorias());
     this.lvReceitas.getItems().addAll
-        (sistema.listarReceitasDoCaderno(caderno.getIdCaderno()));
+        (sistema.buscarReceitasDoCaderno(caderno.getIdCaderno()));
   }
 
   @FXML
