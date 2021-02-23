@@ -4,7 +4,11 @@ import com.cooksbooks.entity.CadernoReceitas;
 import com.cooksbooks.entity.Receita;
 import com.cooksbooks.entity.Relatorio;
 import com.cooksbooks.entity.Usuario;
+import com.cooksbooks.entity.utils.Categoria;
+import com.cooksbooks.entity.utils.Custo;
+import com.cooksbooks.entity.utils.Dificuldade;
 import com.cooksbooks.entity.utils.ExperienciaCulinaria;
+import com.cooksbooks.entity.utils.Rendimento;
 import com.cooksbooks.exceptions.CampoInvalido;
 import com.cooksbooks.exceptions.UsuarioInexistente;
 import com.cooksbooks.exceptions.UsuarioJaCadastrado;
@@ -36,7 +40,7 @@ public interface ICooksBooks {
   void alterarCaminhoImagemPerfil(String login, String caminhoImagemPerfil)
       throws UsuarioInexistente, CampoInvalido;
 
-  void alterarUsuario(String login, Usuario novoUsuario);
+  void alterarUsuario(String login, Usuario novoUsuario) throws UsuarioInexistente, CampoInvalido;
 
   // throws ReceitaComMesmoTituloJaExiste, CampoInvalido
   void cadastrarReceita(Receita receita, String idCadernoDono);
@@ -52,6 +56,21 @@ public interface ICooksBooks {
 
   // throws ReceitaInexistente, CampoInvalido
   void alterarTitulo(String idReceita, String titulo);
+
+  // throws ReceitaInexistente, CampoInvalido
+  void alterarCusto(String idReceita, Custo custo);
+
+  // throws ReceitaInexistente, CampoInvalido
+  void alterarRendimento(String idReceita, Rendimento rendimento);
+
+  // throws ReceitaInexistente, CampoInvalido
+  void alterarDificuldade(String idReceita, Dificuldade dificuldade);
+
+  // throws ReceitaInexistente, CampoInvalido
+  void adicionarCategoria(String idReceita, Categoria categoria);
+
+  // throws ReceitaInexistente, CampoInvalido
+  void removerCategoria(String idReceita, Categoria categoria);
 
   // throws ReceitaInexistente, CampoInvalido
   void alterarReceita(String idReceita, Receita novaReceita);

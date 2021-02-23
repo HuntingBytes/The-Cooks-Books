@@ -24,6 +24,8 @@ public interface IRepositorioUsuario {
   void alterarExperienciaCulinaria(String login, ExperienciaCulinaria experienciaCulinaria)
       throws UsuarioInexistente;
 
+  void alterarUsuario(String login, Usuario novoUsuario) throws UsuarioInexistente;
+
   int totalUsuarios();
 
   void salvarArquivo();
