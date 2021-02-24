@@ -332,8 +332,8 @@ public class ScreenManager {
   }
 
 
-  public void abrirTelaResultadosPesquisa(String pesquisa) {
-    controladorTelaResultados.setItensResultados(pesquisa);
+  public void abrirTelaResultadosPesquisa(String pesquisa, TiposPesquisas tipoPesquisa) {
+    controladorTelaResultados.setPesquisa(pesquisa, tipoPesquisa);
     controladorTelaResultados.inicializar();
     tabPrincipal.setContent(telaResultadosPesquisa);
   }

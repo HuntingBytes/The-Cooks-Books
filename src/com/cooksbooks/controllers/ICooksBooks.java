@@ -43,6 +43,8 @@ public interface ICooksBooks {
 
   void alterarUsuario(String login, Usuario novoUsuario) throws UsuarioInexistente, CampoInvalido;
 
+  // List<Usuario> buscarUsuariosComNome(String nomePerfil);
+
   // throws ReceitaComMesmoTituloJaExiste, CampoInvalido
   void cadastrarReceita(Receita receita, String idCadernoDono);
 
@@ -88,6 +90,8 @@ public interface ICooksBooks {
   // throws UsuarioInexistente
   List<Receita> buscarTodasReceitasDoUsuario(String loginUsuario);
 
+  // List<Usuario> buscarReceitasComTitulo(String titulo);
+
   // throws CadernoComMesmoNomeJaExiste, CampoInvalido
   void cadastrarCaderno(CadernoReceitas caderno, String idDono);
 
@@ -111,6 +115,8 @@ public interface ICooksBooks {
 
   // throws UsuarioInexistente
   List<CadernoReceitas> buscarTodosCadernosDoUsuario(String idUsuario);
+
+  // List<Usuario> buscarCadernosComNome(String nome);
 
   Relatorio gerarRelatorio(LocalDate dataInicial, LocalDate dataFinal);
 }

@@ -193,7 +193,13 @@ public class CooksBooksFachada implements ICooksBooks {
 
   @Override
   public List<Receita> buscarTodasReceitasDoUsuario(String loginUsuario) {
-    return null;
+    List<Receita> receitas = new ArrayList<>();
+    List<CadernoReceitas> cadernos = this.controladorCaderno.listarCadernosDoUsuario(loginUsuario);
+    for (CadernoReceitas caderno : cadernos) {
+      List<Receita> receitasDoCaderno = this.controladorReceita.listarReceitas(caderno.getIdCaderno());
+      receitas.addAll(receitasDoCaderno);
+    }
+    return receitas;
   }
 
   // Caderno
