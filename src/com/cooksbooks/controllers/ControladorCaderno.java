@@ -42,9 +42,9 @@ public class ControladorCaderno {
   void cadastrarCaderno(CadernoReceitas caderno) {
     caderno.setIdCaderno(String
         .format("%s-%d", caderno.getIdDono(), this.repositorioCadernos.totalCadernosCadastrados()));
-    if (cadernoValido(caderno) && !repositorioCadernos.existeCaderno(caderno.getIdCaderno())) {
-      repositorioCadernos.cadastrarCaderno(caderno);
-      repositorioCadernos.salvarArquivo();
+    if (this.isCadernoValido(caderno) && !this.repositorioCadernos.existeCaderno(caderno.getIdCaderno())) {
+      this.repositorioCadernos.cadastrarCaderno(caderno);
+      this.repositorioCadernos.salvarArquivo();
     }
   }
 
@@ -54,9 +54,9 @@ public class ControladorCaderno {
    * @param idCaderno id do caderno a ser removido
    */
   void removerCaderno(String idCaderno) {
-    if (repositorioCadernos.existeCaderno(idCaderno)) {
-      repositorioCadernos.removerCaderno(idCaderno);
-      repositorioCadernos.salvarArquivo();
+    if (this.repositorioCadernos.existeCaderno(idCaderno)) {
+      this.repositorioCadernos.removerCaderno(idCaderno);
+      this.repositorioCadernos.salvarArquivo();
     }
   }
 
@@ -67,11 +67,7 @@ public class ControladorCaderno {
    * @return um caderno, caso ele exista
    */
   public CadernoReceitas procurarCaderno(String idCaderno) {
-    return repositorioCadernos.buscarCaderno(idCaderno);
-  }
-
-  public void alterarCaderno(String idCaderno, CadernoReceitas novoCaderno) {
-
+    return this.repositorioCadernos.buscarCaderno(idCaderno);
   }
 
   /**
@@ -81,42 +77,37 @@ public class ControladorCaderno {
    * @return uma lista de cadernos
    */
   public List<CadernoReceitas> listarCadernosDoUsuario(String nomeUsuario) {
-    return repositorioCadernos.buscarTodosCadernosDoUsuario(nomeUsuario);
+    return this.repositorioCadernos.buscarTodosCadernosDoUsuario(nomeUsuario);
   }
 
-  /**
-   * Faz a verificacao se o caderno é valido, de acordo com as regras do sistema
-   *
-   * @param caderno caderno a ser julgado valido
-   * @return boolean que diz se é valido ou nao TODO: implementar as regras da validez de um caderno
-   */
-  private boolean cadernoValido(CadernoReceitas caderno) {
-    return true;
-  }
 
   /**
    * Altera nome de um caderno ja existente
    *
    * @param idDoCaderno id do caderno que vai ser alterado o nome
-   * @param nomeNovo    nome novo do caderno que o usuario digitou
+   * @param nomeNovo nome novo do caderno que o usuario digitou
    */
   public void alterarNomeCaderno(String idDoCaderno, String nomeNovo) {
-    if (nomeCadernoValido(nomeNovo)) {
-      repositorioCadernos.alterarNomeCaderno(idDoCaderno, nomeNovo);
-      repositorioCadernos.salvarArquivo();
+    if (this.repositorioCadernos.existeCaderno(idDoCaderno)) {
+      if (this.nomeCadernoValido(nomeNovo)) {
+        this.repositorioCadernos.alterarNomeCaderno(idDoCaderno, nomeNovo);
+        this.repositorioCadernos.salvarArquivo();
+      }
     }
   }
 
   /**
    * Altera informaçoes de um caderno ja existente
    *
-   * @param idDoCaderno      id do caderno que vai ser alterado as informaçoes
+   * @param idDoCaderno id do caderno que vai ser alterado as informaçoes
    * @param informacoesNovas informaçoes novas do caderno que o usuario digitou
    */
   public void alterarInformacoesCaderno(String idDoCaderno, String informacoesNovas) {
-    if (informacoesCadernoValido(informacoesNovas)) {
-      repositorioCadernos.alterarInformacoesCaderno(idDoCaderno, informacoesNovas);
-      repositorioCadernos.salvarArquivo();
+    if (this.repositorioCadernos.existeCaderno(idDoCaderno)) {
+      if (this.informacoesCadernoValido(informacoesNovas)) {
+        this.repositorioCadernos.alterarInformacoesCaderno(idDoCaderno, informacoesNovas);
+        this.repositorioCadernos.salvarArquivo();
+      }
     }
   }
 
@@ -126,8 +117,29 @@ public class ControladorCaderno {
    * @param idDoCaderno id do caderno que vai ser alterado a visibilidade
    */
   public void alterarCadernoPublico(String idDoCaderno, boolean visibilidade) {
-    repositorioCadernos.alterarVisibildadeCaderno(idDoCaderno, visibilidade);
-    repositorioCadernos.salvarArquivo();
+    if (this.repositorioCadernos.existeCaderno(idDoCaderno)) {
+      this.repositorioCadernos.alterarVisibildadeCaderno(idDoCaderno, visibilidade);
+      this.repositorioCadernos.salvarArquivo();
+    }
+  }
+
+  public void alterarCaderno(String idCaderno, CadernoReceitas novoCaderno) {
+    if (this.repositorioCadernos.existeCaderno(idCaderno)) {
+      if (this.isCadernoValido(novoCaderno)) {
+        this.repositorioCadernos.alterarCaderno(idCaderno, novoCaderno);
+        this.repositorioCadernos.salvarArquivo();
+      }
+    }
+  }
+
+  /**
+   * Faz a verificacao se o caderno é valido, de acordo com as regras do sistema
+   *
+   * @param caderno caderno a ser julgado valido
+   * @return boolean que diz se é valido ou nao TODO: implementar as regras da validez de um caderno
+   */
+  private boolean isCadernoValido(CadernoReceitas caderno) {
+    return true;
   }
 
   /**
