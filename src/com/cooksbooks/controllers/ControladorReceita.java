@@ -17,6 +17,15 @@ public class ControladorReceita {
   private final IRepositorioReceita repositorioReceitas;
 
   /**
+   * Construtor de ControladorReceita
+   * <p>
+   * Receberá a instância para o repositório de Receitas.
+   */
+  public ControladorReceita() {
+    this.repositorioReceitas = RepositorioReceitasList.getInstancia();
+  }
+
+  /**
    * Copiei esse método de Gabriel e sinto que essa foi a minha maior vigarice.
    *
    * @return a instancia criada
@@ -29,21 +38,13 @@ public class ControladorReceita {
   }
 
   /**
-   * Construtor de ControladorReceita
-   * <p>
-   * Receberá a instância para o repositório de Receitas.
-   */
-  public ControladorReceita() {
-    this.repositorioReceitas = RepositorioReceitasList.getInstancia();
-  }
-
-  /**
    * Crud - Create
    *
    * @param receita Receita.
    */
   public void cadastrarReceita(Receita receita) {
-    receita.setIdReceita(String.format("%s-%d", receita.getIdCadernoDono(), this.repositorioReceitas.totalReceitas()));
+    receita.setIdReceita(String
+        .format("%s-%d", receita.getIdCadernoDono(), this.repositorioReceitas.totalReceitas()));
     if (!this.repositorioReceitas.existeReceita(receita.getIdReceita())) {
       if (this.isReceitaValida(receita)) {
         this.repositorioReceitas.cadastrarReceita(receita);
@@ -72,6 +73,11 @@ public class ControladorReceita {
    */
   public Receita buscarReceita(String idReceita) {
     return this.repositorioReceitas.buscarReceita(idReceita);
+  }
+
+  public List<Receita> buscarReceitasComTitulo(String titulo) {
+    titulo = titulo.trim();
+    return this.repositorioReceitas.buscarReceitasComTitulo(titulo);
   }
 
   /**
@@ -133,7 +139,8 @@ public class ControladorReceita {
 
   void adicionarCategoria(String idReceita, Categoria categoria) {
     if (this.repositorioReceitas.existeReceita(idReceita)) {
-      if (categoria != null && !this.buscarReceita(idReceita).listarCategorias().contains(categoria)) {
+      if (categoria != null && !this.buscarReceita(idReceita).listarCategorias()
+          .contains(categoria)) {
         this.repositorioReceitas.adicionarCategoria(idReceita, categoria);
         this.repositorioReceitas.salvarArquivo();
       }
@@ -142,7 +149,8 @@ public class ControladorReceita {
 
   void removerCategoria(String idReceita, Categoria categoria) {
     if (this.repositorioReceitas.existeReceita(idReceita)) {
-      if (categoria != null && this.buscarReceita(idReceita).listarCategorias().contains(categoria)) {
+      if (categoria != null && this.buscarReceita(idReceita).listarCategorias()
+          .contains(categoria)) {
         this.repositorioReceitas.removerCategoria(idReceita, categoria);
         this.repositorioReceitas.salvarArquivo();
       }
@@ -151,7 +159,8 @@ public class ControladorReceita {
 
   public void adicionarIngrediente(String idReceita, Ingrediente ingrediente) {
     if (this.repositorioReceitas.existeReceita(idReceita)) {
-      if (isIngredienteValido() && !this.buscarReceita(idReceita).listarIngredientes().contains(ingrediente)) {
+      if (isIngredienteValido() && !this.buscarReceita(idReceita).listarIngredientes()
+          .contains(ingrediente)) {
         // Rever o método equals() de ingrediente!
         this.repositorioReceitas.adicionarIngrediente(idReceita, ingrediente);
         this.repositorioReceitas.salvarArquivo();
@@ -161,7 +170,8 @@ public class ControladorReceita {
 
   public void removerIngrediente(String idReceita, Ingrediente ingrediente) {
     if (this.repositorioReceitas.existeReceita(idReceita)) {
-      if (isIngredienteValido() && this.buscarReceita(idReceita).listarIngredientes().contains(ingrediente)) {
+      if (isIngredienteValido() && this.buscarReceita(idReceita).listarIngredientes()
+          .contains(ingrediente)) {
         // Rever o método equals() de ingrediente!
         this.repositorioReceitas.removerIngrediente(idReceita, ingrediente);
         this.repositorioReceitas.salvarArquivo();

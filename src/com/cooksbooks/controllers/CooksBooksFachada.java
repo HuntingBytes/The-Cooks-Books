@@ -5,7 +5,6 @@ import com.cooksbooks.entity.Receita;
 import com.cooksbooks.entity.Relatorio;
 import com.cooksbooks.entity.Usuario;
 import com.cooksbooks.entity.utils.Categoria;
-import com.cooksbooks.entity.utils.Comentario;
 import com.cooksbooks.entity.utils.Custo;
 import com.cooksbooks.entity.utils.Dificuldade;
 import com.cooksbooks.entity.utils.ExperienciaCulinaria;
@@ -115,6 +114,11 @@ public class CooksBooksFachada implements ICooksBooks {
   }
 
   @Override
+  public List<Usuario> buscarUsuariosComNome(String nomePerfil) {
+    return this.controladorUsuario.buscarUsuariosComNome(nomePerfil);
+  }
+
+  @Override
   public Usuario getUsuarioLogado() {
     return this.usuarioLogado;
   }
@@ -196,10 +200,16 @@ public class CooksBooksFachada implements ICooksBooks {
     List<Receita> receitas = new ArrayList<>();
     List<CadernoReceitas> cadernos = this.controladorCaderno.listarCadernosDoUsuario(loginUsuario);
     for (CadernoReceitas caderno : cadernos) {
-      List<Receita> receitasDoCaderno = this.controladorReceita.listarReceitas(caderno.getIdCaderno());
+      List<Receita> receitasDoCaderno = this.controladorReceita
+          .listarReceitas(caderno.getIdCaderno());
       receitas.addAll(receitasDoCaderno);
     }
     return receitas;
+  }
+
+  @Override
+  public List<Receita> buscarReceitasComTitulo(String titulo) {
+    return this.controladorReceita.buscarReceitasComTitulo(titulo);
   }
 
   // Caderno
@@ -236,7 +246,7 @@ public class CooksBooksFachada implements ICooksBooks {
 
   @Override
   public CadernoReceitas buscarCaderno(String idCaderno) {
-    return this.controladorCaderno.procurarCaderno(idCaderno);
+    return this.controladorCaderno.buscarCaderno(idCaderno);
   }
 
   /**
@@ -248,6 +258,11 @@ public class CooksBooksFachada implements ICooksBooks {
   @Override
   public List<CadernoReceitas> buscarTodosCadernosDoUsuario(String nomeUsuario) {
     return this.controladorCaderno.listarCadernosDoUsuario(nomeUsuario);
+  }
+
+  @Override
+  public List<CadernoReceitas> buscarCadernosComNome(String nomeCaderno) {
+    return this.controladorCaderno.buscarCadernosComNome(nomeCaderno);
   }
 
   @Override

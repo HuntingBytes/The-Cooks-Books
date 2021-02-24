@@ -5,10 +5,8 @@ import com.cooksbooks.controllers.ICooksBooks;
 import com.cooksbooks.entity.CadernoReceitas;
 import com.cooksbooks.entity.Receita;
 import com.cooksbooks.entity.Usuario;
-import com.cooksbooks.exceptions.UsuarioInexistente;
 import com.cooksbooks.gui.ScreenManager;
 import com.cooksbooks.gui.TiposPesquisas;
-import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -125,45 +123,45 @@ public class ControladorTelaResultado {
 
   private void setResultadosUsuarios() {
     this.clearCampos();
-    List<Usuario> usuarios = new ArrayList<>();
-    try {
-      usuarios.add(sistema.buscarUsuario(this.pesquisa));
+    List<Usuario> usuarios = this.sistema.buscarUsuariosComNome(this.pesquisa);
+
+    if (usuarios.size() > 0) {
       this.listViewResultadosUsuarios.setItems(FXCollections.observableList(usuarios));
-    } catch (UsuarioInexistente usuarioInexistente) {
-      this.listViewResultadosUsuarios.setPlaceholder(
-          new Label("Não foi possível encontrar um usuário com esse login."));
-    } finally {
-      this.listViewResultadosUsuarios.setVisible(true);
-      this.listViewResultadosUsuarios.setDisable(false);
+    } else {
+      this.listViewResultadosUsuarios.setPlaceholder(new
+          Label("Não foi possível encontrar nenhum usuário com esse nome."));
     }
+
+    this.listViewResultadosUsuarios.setVisible(true);
+    this.listViewResultadosUsuarios.setDisable(false);
   }
 
   private void setResultadosCadernos() {
     this.clearCampos();
-    List<CadernoReceitas> cadernos = new ArrayList<>();
-    CadernoReceitas caderno = sistema.buscarCaderno(this.pesquisa);
-    if (caderno != null) {
-      cadernos.add(caderno);
+    List<CadernoReceitas> cadernos = sistema.buscarCadernosComNome(this.pesquisa);
+
+    if (cadernos.size() > 0) {
       this.listViewResultadosCadernos.setItems(FXCollections.observableList(cadernos));
     } else {
-      this.listViewResultadosCadernos.setPlaceholder(
-          new Label("Não foi possível encontrar nenhum caderno com esse id."));
+      this.listViewResultadosCadernos.setPlaceholder(new
+          Label("Não foi possível encontrar nenhum caderno com esse nome."));
     }
+
     this.listViewResultadosCadernos.setVisible(true);
     this.listViewResultadosCadernos.setDisable(false);
   }
 
   private void setResultadosReceita() {
     this.clearCampos();
-    List<Receita> receitas = new ArrayList<>();
-    Receita receita = sistema.buscarReceita(this.pesquisa);
-    if (receita != null) {
-      receitas.add(receita);
+    List<Receita> receitas = sistema.buscarReceitasComTitulo(this.pesquisa);
+
+    if (receitas.size() > 0) {
       this.listViewResultadosReceitas.setItems(FXCollections.observableList(receitas));
     } else {
-      this.listViewResultadosReceitas.setPlaceholder(
-          new Label("Não foi possível encontrar nenhuma receita com esse id."));
+      this.listViewResultadosReceitas.setPlaceholder(new
+          Label("Não foi possível encontrar nenhuma receita com esse título."));
     }
+
     this.listViewResultadosReceitas.setVisible(true);
     this.listViewResultadosReceitas.setDisable(false);
   }

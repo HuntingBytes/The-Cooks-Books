@@ -12,10 +12,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serial;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class RepositorioUsuariosList implements IRepositorioUsuario, Serializable {
 
@@ -120,6 +120,18 @@ public class RepositorioUsuariosList implements IRepositorioUsuario, Serializabl
       }
     }
     throw new UsuarioInexistente(idUsuario);
+  }
+
+  @Override
+  public List<Usuario> buscarUsuariosComNome(String nomePerfil) {
+    List<Usuario> usuarios = new ArrayList<>();
+    for (Usuario usuario : this.usuariosList) {
+      if (Pattern.compile(Pattern.quote(nomePerfil), Pattern.CASE_INSENSITIVE)
+          .matcher(usuario.getNomePerfil()).find()) {
+        usuarios.add(usuario);
+      }
+    }
+    return usuarios;
   }
 
   @Override

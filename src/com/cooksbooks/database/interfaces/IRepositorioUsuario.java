@@ -4,6 +4,7 @@ import com.cooksbooks.entity.Usuario;
 import com.cooksbooks.entity.utils.ExperienciaCulinaria;
 import com.cooksbooks.exceptions.UsuarioInexistente;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public interface IRepositorioUsuario {
 
@@ -14,6 +15,8 @@ public interface IRepositorioUsuario {
   boolean existeUsuario(String usuarioExiste);
 
   Usuario buscarUsuario(String usuarioBuscar) throws UsuarioInexistente;
+
+  List<Usuario> buscarUsuariosComNome(String nomePerfil);
 
   void alterarNomePerfil(String login, String nomePerfil) throws UsuarioInexistente;
 

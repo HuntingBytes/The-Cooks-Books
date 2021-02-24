@@ -7,7 +7,6 @@ import com.cooksbooks.entity.utils.Custo;
 import com.cooksbooks.entity.utils.Dificuldade;
 import com.cooksbooks.entity.utils.Ingrediente;
 import com.cooksbooks.entity.utils.Rendimento;
-import com.cooksbooks.exceptions.UsuarioInexistente;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -18,6 +17,7 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class RepositorioReceitasList implements IRepositorioReceita, Serializable {
 
@@ -116,6 +116,18 @@ public class RepositorioReceitasList implements IRepositorioReceita, Serializabl
       }
     }
     return null;
+  }
+
+  @Override
+  public List<Receita> buscarReceitasComTitulo(String titulo) {
+    List<Receita> receitas = new ArrayList<>();
+    for (Receita receita : this.receitasList) {
+      if (Pattern.compile(Pattern.quote(titulo), Pattern.CASE_INSENSITIVE)
+          .matcher(receita.getTitulo()).find()) {
+        receitas.add(receita);
+      }
+    }
+    return receitas;
   }
 
   @Override

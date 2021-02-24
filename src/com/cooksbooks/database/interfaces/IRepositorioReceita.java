@@ -20,6 +20,8 @@ public interface IRepositorioReceita {
   // throws ReceitaInexistente
   Receita buscarReceita(String receitaBusca);
 
+  List<Receita> buscarReceitasComTitulo(String titulo);
+
   // throws ReceitaInexistente
   void alterarTituloReceita(String login, String titulo);
 

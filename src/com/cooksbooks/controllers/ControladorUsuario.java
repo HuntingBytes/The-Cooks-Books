@@ -9,6 +9,7 @@ import com.cooksbooks.exceptions.CampoInvalido;
 import com.cooksbooks.exceptions.UsuarioInexistente;
 import com.cooksbooks.exceptions.UsuarioJaCadastrado;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class ControladorUsuario {
 
@@ -77,6 +78,11 @@ public class ControladorUsuario {
    */
   public Usuario buscarUsuario(String login) throws UsuarioInexistente {
     return this.repositorioUsuarios.buscarUsuario(login);
+  }
+
+  public List<Usuario> buscarUsuariosComNome(String nomePerfil) {
+    nomePerfil = nomePerfil.trim();
+    return this.repositorioUsuarios.buscarUsuariosComNome(nomePerfil);
   }
 
   public void alterarNomePerfil(String login, String nomePerfil)

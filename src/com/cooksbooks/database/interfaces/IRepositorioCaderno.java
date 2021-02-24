@@ -13,6 +13,8 @@ public interface IRepositorioCaderno {
   // throws CadernoInexistente
   CadernoReceitas buscarCaderno(String idCadernoQueRetorna);
 
+  List<CadernoReceitas> buscarCadernosComNome(String nomeCaderno);
+
   boolean existeCaderno(String idCadernoExiste);
 
   // throws CadernoInexistente

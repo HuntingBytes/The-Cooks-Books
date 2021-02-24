@@ -16,7 +16,7 @@ public class ControladorCaderno {
    * <p>
    * Define a instância única do repositório de cadernos como atributo
    */
-  public ControladorCaderno() {
+  private ControladorCaderno() {
     this.repositorioCadernos = RepositorioCadernoList.getInstancia();
   }
 
@@ -42,7 +42,8 @@ public class ControladorCaderno {
   void cadastrarCaderno(CadernoReceitas caderno) {
     caderno.setIdCaderno(String
         .format("%s-%d", caderno.getIdDono(), this.repositorioCadernos.totalCadernosCadastrados()));
-    if (this.isCadernoValido(caderno) && !this.repositorioCadernos.existeCaderno(caderno.getIdCaderno())) {
+    if (this.isCadernoValido(caderno) && !this.repositorioCadernos
+        .existeCaderno(caderno.getIdCaderno())) {
       this.repositorioCadernos.cadastrarCaderno(caderno);
       this.repositorioCadernos.salvarArquivo();
     }
@@ -66,8 +67,13 @@ public class ControladorCaderno {
    * @param idCaderno id do caderno a ser buscado
    * @return um caderno, caso ele exista
    */
-  public CadernoReceitas procurarCaderno(String idCaderno) {
+  public CadernoReceitas buscarCaderno(String idCaderno) {
     return this.repositorioCadernos.buscarCaderno(idCaderno);
+  }
+
+  public List<CadernoReceitas> buscarCadernosComNome(String nomeCaderno) {
+    nomeCaderno = nomeCaderno.trim();
+    return this.repositorioCadernos.buscarCadernosComNome(nomeCaderno);
   }
 
   /**
@@ -85,7 +91,7 @@ public class ControladorCaderno {
    * Altera nome de um caderno ja existente
    *
    * @param idDoCaderno id do caderno que vai ser alterado o nome
-   * @param nomeNovo nome novo do caderno que o usuario digitou
+   * @param nomeNovo    nome novo do caderno que o usuario digitou
    */
   public void alterarNomeCaderno(String idDoCaderno, String nomeNovo) {
     if (this.repositorioCadernos.existeCaderno(idDoCaderno)) {
@@ -99,7 +105,7 @@ public class ControladorCaderno {
   /**
    * Altera informaçoes de um caderno ja existente
    *
-   * @param idDoCaderno id do caderno que vai ser alterado as informaçoes
+   * @param idDoCaderno      id do caderno que vai ser alterado as informaçoes
    * @param informacoesNovas informaçoes novas do caderno que o usuario digitou
    */
   public void alterarInformacoesCaderno(String idDoCaderno, String informacoesNovas) {
