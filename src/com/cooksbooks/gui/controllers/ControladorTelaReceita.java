@@ -16,8 +16,8 @@ import javafx.scene.control.TextArea;
 public class ControladorTelaReceita {
 
   private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
-  private Receita receita;
   private ScreenManager screenManager;
+  private Receita receita;
 
   @FXML
   private Label lbNomeReceita;
@@ -53,8 +53,7 @@ public class ControladorTelaReceita {
     this.screenManager = screenManager;
   }
 
-  private void initialize() {
-
+  public void inicializar() {
     this.lbNomeReceita.setText(receita.getTitulo());
     this.taModoPreparo.setText(receita.getModoPreparo());
     this.lvIngredientes.getItems().addAll(receita.listarIngredientes());
@@ -78,6 +77,13 @@ public class ControladorTelaReceita {
 
   public void setReceita(Receita receita) {
     this.receita = receita;
+  }
+
+  public void setTelaComoModal() {
+    this.btEditarReceita.setDisable(true);
+    this.btEditarReceita.setVisible(false);
+    this.btVoltar.setDisable(true);
+    this.btVoltar.setVisible(false);
   }
 }
 

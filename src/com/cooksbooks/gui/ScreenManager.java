@@ -60,6 +60,7 @@ public class ScreenManager {
   private Parent telaReceitaRelatorio;
   private Parent telaGerarRelatorio;
   private Parent telaReceita;
+  private Parent telaReceitaModal;
 
   private ControladorAdm controladorAdm;
   private ControladorTelaCadastro controladorTelaCadastro;
@@ -74,6 +75,7 @@ public class ScreenManager {
   private ControladorTelaPerfil controladorTelaPerfil;
   private ControladorTelaPrincipal controladorTelaPrincipal;
   private ControladorTelaReceita controladorTelaReceita;
+  private ControladorTelaReceita controladorTelaReceitaModal;
   private ControladorTelaUsuarioBuscado controladorTelaUsuarioBuscado;
   private ControladorCadernoRelatorio controladorCadernoRelatorio;
   private ControladorReceitaRelatorio controladorReceitaRelatorio;
@@ -183,6 +185,13 @@ public class ScreenManager {
       controladorTelaReceita = loaderExibirReceita.getController();
       controladorTelaReceita.setScreenManager(this);
 
+      FXMLLoader loaderExibirReceitaModal = new FXMLLoader(
+          getClass().getResource(Telas.TELA_RECEITA.caminho()));
+      telaReceitaModal = loaderExibirReceitaModal.load();
+      controladorTelaReceitaModal = loaderExibirReceitaModal.getController();
+      controladorTelaReceitaModal.setScreenManager(this);
+      controladorTelaReceitaModal.setTelaComoModal();
+
       FXMLLoader loaderExibirResultados = new FXMLLoader(
           getClass().getResource(Telas.TELA_RESULTADOS_PESQUISA.caminho()));
       telaResultadosPesquisa = loaderExibirResultados.load();
@@ -274,7 +283,15 @@ public class ScreenManager {
   // TelaReceita
   public void abrirTelaReceita(Receita receita) {
     controladorTelaReceita.setReceita(receita);
-    modalStage(telaReceita, stagePrincipal, "Receita").showAndWait();
+    controladorTelaReceita.inicializar();
+    tabPrincipal.setContent(telaReceita);
+  }
+
+  public void abrirTelaReceitaModal(Receita receita) {
+    controladorTelaReceitaModal.setReceita(receita);
+    controladorTelaReceitaModal.inicializar();
+    controladorTelaReceitaModal.setTelaComoModal();
+    modalStage(telaReceitaModal, stagePrincipal, "Receita").showAndWait();
   }
 
   // TelaEditarReceita

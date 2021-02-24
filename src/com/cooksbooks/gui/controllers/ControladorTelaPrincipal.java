@@ -103,7 +103,7 @@ public class ControladorTelaPrincipal {
   @FXML
   void handleAcessarReceita(ActionEvent event) {
     if (listViewReceitas.getSelectionModel().getSelectedItem() != null) {
-      screenManager.abrirTelaReceita(listViewReceitas.getSelectionModel().getSelectedItem());
+      screenManager.abrirTelaReceitaModal(listViewReceitas.getSelectionModel().getSelectedItem());
     } else {
       alertSelecionarItem("uma receita");
     }

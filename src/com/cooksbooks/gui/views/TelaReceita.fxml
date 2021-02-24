@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.617056856187291" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControladorTelaReceita">
+<SplitPane dividerPositions="0.617056856187291" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControladorTelaReceita">
    <items>
       <AnchorPane prefHeight="398.0" prefWidth="264.0">
          <children>
@@ -17,7 +17,7 @@
                   <Font name="Calibri Bold" size="30.0" />
                </font>
             </Label>
-            <TextArea fx:id="taModoPreparo" layoutX="36.0" layoutY="99.0" prefHeight="114.0" prefWidth="297.0" />
+            <TextArea fx:id="taModoPreparo" editable="false" layoutX="36.0" layoutY="99.0" prefHeight="114.0" prefWidth="297.0" />
             <Label layoutX="122.0" layoutY="81.0" text="Modo de Preparo:" textFill="#e10808">
                <font>
                   <Font name="Calibri Bold" size="16.0" />
