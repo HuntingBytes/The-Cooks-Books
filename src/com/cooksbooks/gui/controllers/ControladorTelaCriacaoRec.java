@@ -19,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -79,6 +80,7 @@ public class ControladorTelaCriacaoRec {
     this.cbRendimento.getItems().addAll(Rendimento.values());
     this.cbTempoPreparo.getItems().addAll(TempoPreparo.values());
     this.lvAddCat.getItems().addAll(Categoria.values());
+    this.lvAddCat.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
   }
 
   @FXML
@@ -110,7 +112,7 @@ public class ControladorTelaCriacaoRec {
       Dificuldade dificuldade = this.cbDificul.getValue();
       Rendimento rendimento = this.cbRendimento.getValue();
       TempoPreparo tempoPreparo = this.cbTempoPreparo.getValue();
-      List<Categoria> categorias = new ArrayList<>(this.lvAddCat.getItems());
+      List<Categoria> categorias = new ArrayList<>(this.lvAddCat.getSelectionModel().getSelectedItems());
 
       Receita receita = new Receita();
       receita.setIdCadernoDono(idCadernoDono);
@@ -210,7 +212,7 @@ public class ControladorTelaCriacaoRec {
     this.cbDificul.getSelectionModel().clearSelection();
     this.cbTempoPreparo.getSelectionModel().clearSelection();
     this.lvAddCat.getSelectionModel().clearSelection();
-    this.lvIngredientes.getItems().clear();
     this.lvIngredientes.getSelectionModel().clearSelection();
+    this.lvIngredientes.getItems().clear();
   }
 }
