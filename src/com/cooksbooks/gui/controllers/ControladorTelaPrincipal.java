@@ -17,6 +17,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -76,6 +77,36 @@ public class ControladorTelaPrincipal {
     this.listViewReceitas.focusedProperty().addListener((observableValue, oldVal, newVal) -> {
       if (newVal) {
         listViewCadernos.getSelectionModel().clearSelection();
+      }
+    });
+    this.listViewCadernos.setCellFactory(param -> new ListCell<CadernoReceitas>() {
+      @Override
+      protected void updateItem(CadernoReceitas item, boolean empty) {
+        super.updateItem(item, empty);
+
+        if (empty || item == null || item.getNomeCaderno() == null) {
+          setText(null);
+        } else {
+          setText(String.format("%s | %s", item.getNomeCaderno(), item.getInformacoesCaderno()));
+          setMaxWidth(param.getWidth());
+          setPrefWidth(param.getWidth());
+          setWrapText(false);
+        }
+      }
+    });
+    this.listViewReceitas.setCellFactory(param -> new ListCell<Receita>() {
+      @Override
+      protected void updateItem(Receita item, boolean empty) {
+        super.updateItem(item, empty);
+
+        if (empty || item == null || item.getTitulo() == null) {
+          setText(null);
+        } else {
+          setText(String.format("%s | %s", item.getTitulo(), item.getModoPreparo()));
+          setMaxWidth(param.getWidth());
+          setPrefWidth(param.getWidth());
+          setWrapText(false);
+        }
       }
     });
   }
