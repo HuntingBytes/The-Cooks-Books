@@ -56,7 +56,7 @@ public class ControladorTelaReceita {
   public void inicializar() {
     this.lbNomeReceita.setText(receita.getTitulo());
     this.taModoPreparo.setText(receita.getModoPreparo());
-    this.lvIngredientes.getItems().addAll(receita.listarIngredientes());
+    this.lvIngredientes.getItems().setAll(receita.listarIngredientes());
     this.lbexetensoTempoPrep.setText(receita.getTempoPreparo().toString());
     this.lbextensoCusto.setText(receita.getCusto().toString());
     this.lbextensoRendimento.setText(receita.getRendimento().toString());
