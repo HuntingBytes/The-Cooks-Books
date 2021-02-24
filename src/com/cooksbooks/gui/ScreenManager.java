@@ -233,7 +233,6 @@ public class ScreenManager {
   // Cadastro
   public void abrirCadastro(String login, String senha) {
     controladorTelaCadastro.setLoginSenha(login, senha);
-    controladorTelaCadastro.inicializar();
     scenePrincipal.setRoot(telaCadastro);
   }
 

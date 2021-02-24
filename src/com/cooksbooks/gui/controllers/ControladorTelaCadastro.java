@@ -23,6 +23,7 @@ public class ControladorTelaCadastro {
 
   private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
   private ScreenManager screenManager;
+
   @FXML
   private Label lbErro;
 
@@ -47,7 +48,8 @@ public class ControladorTelaCadastro {
   @FXML
   private Button btVoltar;
 
-  public void inicializar() {
+  @FXML
+  public void initialize() {
     this.cbExperienciaCulinaria.getItems().addAll(ExperienciaCulinaria.values());
     this.tfLogin.textProperty().addListener((observsableValue, s, t1) -> lbErro.setVisible(false));
     this.pfSenha.textProperty().addListener((observableValue, s, t1) -> lbErro.setVisible(false));
@@ -98,6 +100,7 @@ public class ControladorTelaCadastro {
   @FXML
   private void handleVoltar() throws IOException {
     screenManager.abrirLogin();
+    this.clearCampos();
   }
 
   private boolean areCamposValidos() {
@@ -159,7 +162,6 @@ public class ControladorTelaCadastro {
     alertCamposInvalidos(camposInvalidos);
   }
 
-
   private void clearCampos() {
     this.tfNomePerfil.clear();
     this.tfLogin.clear();
@@ -167,7 +169,6 @@ public class ControladorTelaCadastro {
     this.pfConfirmarSenha.clear();
     this.cbExperienciaCulinaria.getSelectionModel().clearSelection();
   }
-
 
   public void setLoginSenha(String login, String senha) {
     this.tfLogin.setText(login);
