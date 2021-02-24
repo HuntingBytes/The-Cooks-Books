@@ -89,7 +89,12 @@ public class ControladorTelaResultado {
   }
 
   private void handleSelecionarCaderno() {
-    // TODO: Adicionar modal para caderno
+    CadernoReceitas caderno = listViewResultadosCadernos.getSelectionModel().getSelectedItem();
+    if (caderno != null) {
+      screenManager.abrirTelaCadernoModal(caderno);
+    } else {
+      alertSelecionarItem();
+    }
   }
 
   private void handleSelecionarReceita() {
