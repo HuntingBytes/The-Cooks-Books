@@ -8,6 +8,8 @@ import com.cooksbooks.entity.Usuario;
 import com.cooksbooks.gui.ScreenManager;
 import com.cooksbooks.gui.TiposPesquisas;
 import java.io.IOException;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -66,6 +68,16 @@ public class ControladorTelaPrincipal {
   @FXML
   public void initialize() {
     this.choiceBoxPesquisa.setItems(FXCollections.observableArrayList(TiposPesquisas.values()));
+    this.listViewCadernos.focusedProperty().addListener((observableValue, oldVal, newVal) -> {
+      if (newVal) {
+        listViewReceitas.getSelectionModel().clearSelection();
+      }
+    });
+    this.listViewReceitas.focusedProperty().addListener((observableValue, oldVal, newVal) -> {
+      if (newVal) {
+        listViewCadernos.getSelectionModel().clearSelection();
+      }
+    });
   }
 
   public void setScreenManager(ScreenManager screenManager) {
@@ -86,6 +98,7 @@ public class ControladorTelaPrincipal {
   void handleAcessarCaderno(ActionEvent event) {
     if (listViewCadernos.getSelectionModel().getSelectedItem() != null) {
       screenManager.abrirTelaCaderno(listViewCadernos.getSelectionModel().getSelectedItem());
+      this.clearSelections();
     } else {
       alertSelecionarItem("um caderno");
     }
@@ -95,25 +108,29 @@ public class ControladorTelaPrincipal {
   void handleAcessarReceita(ActionEvent event) {
     if (listViewReceitas.getSelectionModel().getSelectedItem() != null) {
       screenManager.abrirTelaReceitaModal(listViewReceitas.getSelectionModel().getSelectedItem());
+      this.clearSelections();
     } else {
       alertSelecionarItem("uma receita");
     }
   }
 
   @FXML
-  private void handleCriarCaderno() throws IOException {
+  private void handleCriarCaderno() {
     screenManager.abrirTelaCriacaoCaderno();
+    this.clearCampos();
   }
 
   @FXML
   private void handleMostrarPerfil() {
     this.screenManager.abrirTelaPerfil(this.sistema.getUsuarioLogado());
+    this.clearCampos();
   }
 
   @FXML
   private void handlePesquisar() {
     if (choiceBoxPesquisa.getValue() != null) {
       screenManager.abrirTelaResultadosPesquisa(textFieldPesquisa.getText(), choiceBoxPesquisa.getValue());
+      this.clearCampos();
     } else {
       alertPesquisa();
     }
@@ -132,5 +149,22 @@ public class ControladorTelaPrincipal {
     alert.setHeaderText("Nada foi Selecionado!");
     alert.setContentText(String.format("Favor selecionar %s para acessar", item));
     alert.showAndWait();
+  }
+
+  private void clearSelections() {
+    this.choiceBoxPesquisa.getSelectionModel().clearSelection();
+    this.listViewReceitas.getSelectionModel().clearSelection();
+    this.listViewCadernos.getSelectionModel().clearSelection();
+  }
+
+  private void clearCampos() {
+    this.nomeUsuario.setText("Nome Usuário");
+    this.experienciaCulinaria.setText("Experiência Culinária");
+    this.textFieldPesquisa.setText("");
+    this.choiceBoxPesquisa.getSelectionModel().clearSelection();
+    this.listViewReceitas.getSelectionModel().clearSelection();
+    this.listViewReceitas.getItems().clear();
+    this.listViewCadernos.getSelectionModel().clearSelection();
+    this.listViewCadernos.getItems().clear();
   }
 }
