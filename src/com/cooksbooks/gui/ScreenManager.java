@@ -47,6 +47,7 @@ public class ScreenManager {
   private Parent telaCriacaoReceita;
   private Parent telaCriacaoIngrediente;
   private Parent telaCaderno;
+  private Parent telaCadernoModal;
   private Parent telaEditarCaderno;
   private Parent telaEditarPerfil;
   private Parent telaLogin;
@@ -65,6 +66,7 @@ public class ScreenManager {
   private ControladorAdm controladorAdm;
   private ControladorTelaCadastro controladorTelaCadastro;
   private ControladorTelaCaderno controladorTelaCaderno;
+  private ControladorTelaCaderno controladorTelaCadernoModal;
   private ControladorTelaCriacaoCaderno controladorTelaCriacaoCaderno;
   private ControladorTelaCriacaoRec controladorTelaCriacaoRec;
   private ControladorTelaCriacaoIngr controladorTelaCriacaoIngr;
@@ -126,6 +128,13 @@ public class ScreenManager {
       controladorTelaCaderno = loaderTelaCaderno.getController();
       controladorTelaCaderno.setScreenManager(this);
 
+      FXMLLoader loaderTelaCadernoModal = new FXMLLoader(
+          getClass().getResource(Telas.TELA_CADERNO.caminho()));
+      telaCadernoModal = loaderTelaCadernoModal.load();
+      controladorTelaCadernoModal = loaderTelaCadernoModal.getController();
+      controladorTelaCadernoModal.setScreenManager(this);
+      controladorTelaCadernoModal.setTelaComoModal();
+
       FXMLLoader loaderEditarCaderno = new FXMLLoader(
           getClass().getResource(Telas.TELA_EDITAR_CADERNO.caminho()));
       telaEditarCaderno = loaderEditarCaderno.load();
@@ -159,7 +168,7 @@ public class ScreenManager {
           getClass().getResource(Telas.TELA_USUARIO_BUSCADO.caminho()));
       telaUsuarioBuscado = loaderUsuarioBuscado.load();
       controladorTelaUsuarioBuscado = loaderUsuarioBuscado.getController();
-      //controladorTelaUsuarioBuscado.setScreenManager(this);
+      controladorTelaUsuarioBuscado.setScreenManager(this);
 
       FXMLLoader loaderCadernoRelatorio = new FXMLLoader(
           getClass().getResource(Telas.TELA_CADERNO_RELATORIO.caminho()));
@@ -245,13 +254,6 @@ public class ScreenManager {
     scenePrincipal.setRoot(telaCadastro);
   }
 
-  // TelaUsuario
-  public void abrirTelaUsuario(Usuario usuario) {
-    // TODO: Revisar!
-    controladorTelaUsuarioBuscado.setUsuario(usuario);
-    controladorTelaUsuarioBuscado.inicializar();
-  }
-
   // TelaPrincipal
   public void abrirTelaPrincipal() {
     controladorTelaPrincipal.inicializar();
@@ -274,6 +276,20 @@ public class ScreenManager {
     tabPrincipal.setContent(telaCaderno);
   }
 
+  public void abrirTelaCadernoModal(CadernoReceitas caderno) {
+    controladorTelaCadernoModal.setCaderno(caderno);
+    controladorTelaCadernoModal.inicializar();
+    controladorTelaCadernoModal.setTelaComoModal();
+    modalStage(telaCadernoModal, stagePrincipal, "Caderno").showAndWait();
+  }
+
+  public void abrirTelaCadernoModal(CadernoReceitas caderno, Stage owner) {
+    controladorTelaCadernoModal.setCaderno(caderno);
+    controladorTelaCadernoModal.inicializar();
+    controladorTelaCadernoModal.setTelaComoModal();
+    modalStage(telaCadernoModal, owner, "Caderno").showAndWait();
+  }
+
   // TelaEditarCaderno
   public void abrirTelaEditarCaderno(CadernoReceitas caderno) {
     controladorTelaEditarCaderno.setCaderno(caderno);
@@ -292,6 +308,13 @@ public class ScreenManager {
     controladorTelaReceitaModal.inicializar();
     controladorTelaReceitaModal.setTelaComoModal();
     modalStage(telaReceitaModal, stagePrincipal, "Receita").showAndWait();
+  }
+
+  public void abrirTelaReceitaModal(Receita receita, Stage owner) {
+    controladorTelaReceitaModal.setReceita(receita);
+    controladorTelaReceitaModal.inicializar();
+    controladorTelaReceitaModal.setTelaComoModal();
+    modalStage(telaReceitaModal, owner, "Receita").showAndWait();
   }
 
   // TelaEditarReceita
@@ -330,7 +353,6 @@ public class ScreenManager {
     controladorTelaEditarPerfil.inicializar();
     tabPrincipal.setContent(telaEditarPerfil);
   }
-
 
   public void abrirTelaResultadosPesquisa(String pesquisa, TiposPesquisas tipoPesquisa) {
     controladorTelaResultados.setPesquisa(pesquisa, tipoPesquisa);

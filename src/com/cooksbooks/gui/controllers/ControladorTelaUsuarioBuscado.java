@@ -15,20 +15,19 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 public class ControladorTelaUsuarioBuscado {
 
   private final ICooksBooks sistema = CooksBooksFachada.getInstancia();
   private ScreenManager screenManager;
   private Usuario usuario;
+
   @FXML
   private Label lbNomePerfil;
 
   @FXML
   private Label lbDataCadastro;
-
-  //@FXML
-  //private Label lbReceitasCadastradas;
 
   @FXML
   private ListView<Receita> lvReceitasUsuarioBuscado;
@@ -45,20 +44,19 @@ public class ControladorTelaUsuarioBuscado {
   public void inicializar() {
     this.lbNomePerfil.setText(usuario.getNomePerfil());
     this.lbDataCadastro.setText(usuario.getDataCriacao().toString());
-    //this.lbReceitasCadastradas.setText(String.format(usuario.getQuantidadeReceitasCadastradas());
     this.lbExperienciaCulinaria.setText(usuario.getExperienciaCulinaria().toString());
 
     this.lvCadernosUsuarioBuscado.setItems(FXCollections.observableArrayList(
         sistema.buscarTodosCadernosDoUsuario(usuario.getLogin())));
-    this.lvReceitasUsuarioBuscado
-        .setItems(FXCollections.observableArrayList(buscarTodasReceitas()));
+    this.lvReceitasUsuarioBuscado.setItems(FXCollections.observableArrayList(
+        sistema.buscarTodasReceitasDoUsuario(usuario.getLogin())));
   }
 
   @FXML
   void handleSelecionarCaderno(ActionEvent event) {
     if (lvCadernosUsuarioBuscado.getSelectionModel().getSelectedItem() != null) {
-      screenManager
-          .abrirTelaCaderno(lvCadernosUsuarioBuscado.getSelectionModel().getSelectedItem());
+      screenManager.abrirTelaCadernoModal(lvCadernosUsuarioBuscado.getSelectionModel().getSelectedItem(),
+          (Stage) this.lvCadernosUsuarioBuscado.getScene().getWindow());
     } else {
       alertSelecionarItem("um caderno");
     }
@@ -67,20 +65,19 @@ public class ControladorTelaUsuarioBuscado {
   @FXML
   void handleSelecionarReceita(ActionEvent event) {
     if (lvReceitasUsuarioBuscado.getSelectionModel().getSelectedItem() != null) {
-      screenManager
-          .abrirTelaReceita(lvReceitasUsuarioBuscado.getSelectionModel().getSelectedItem());
+      screenManager.abrirTelaReceitaModal(lvReceitasUsuarioBuscado.getSelectionModel().getSelectedItem(),
+          (Stage) this.lvReceitasUsuarioBuscado.getScene().getWindow());
     } else {
       alertSelecionarItem("uma receita");
     }
   }
 
-  //TODO: fazer isso direito e colocar no lugar certo
-  private List<Receita> buscarTodasReceitas() {
-    List<Receita> todasReceitas = new ArrayList<>();
-    for (CadernoReceitas c : sistema.buscarTodosCadernosDoUsuario(usuario.getLogin())) {
-      todasReceitas.addAll(sistema.buscarReceitasDoCaderno(c.getIdCaderno()));
-    }
-    return todasReceitas;
+  public void setUsuario(Usuario u) {
+    this.usuario = u;
+  }
+
+  public void setScreenManager(ScreenManager screenManager) {
+    this.screenManager = screenManager;
   }
 
   private void alertSelecionarItem(String item) {
@@ -89,9 +86,5 @@ public class ControladorTelaUsuarioBuscado {
     alert.setHeaderText("Nada foi Selecionado!");
     alert.setContentText(String.format("Favor selecionar %s para acessar", item));
     alert.showAndWait();
-  }
-
-  public void setUsuario(Usuario u) {
-    this.usuario = u;
   }
 }

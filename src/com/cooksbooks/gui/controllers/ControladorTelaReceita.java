@@ -61,7 +61,7 @@ public class ControladorTelaReceita {
     this.lbextensoCusto.setText(receita.getCusto().toString());
     this.lbextensoRendimento.setText(receita.getRendimento().toString());
     this.lbextensoDificuldade.setText(receita.getDificuldade().toString());
-    this.lvCategoriasReceita.getItems().addAll(receita.listarCategorias());
+    this.lvCategoriasReceita.getItems().setAll(receita.listarCategorias());
 
   }
 

@@ -65,4 +65,11 @@ public class ControladorTelaCaderno {
   public void setCaderno(CadernoReceitas cadernoSelecionado) {
     this.cadernoSelecionado = cadernoSelecionado;
   }
+
+  public void setTelaComoModal() {
+    this.btEditarCaderno.setVisible(false);
+    this.btEditarCaderno.setDisable(true);
+    this.btVoltar.setVisible(false);
+    this.btVoltar.setDisable(true);
+  }
 }
