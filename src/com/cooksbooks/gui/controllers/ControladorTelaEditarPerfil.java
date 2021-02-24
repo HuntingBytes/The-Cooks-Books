@@ -4,7 +4,10 @@ import com.cooksbooks.controllers.CooksBooksFachada;
 import com.cooksbooks.controllers.ICooksBooks;
 import com.cooksbooks.entity.Usuario;
 import com.cooksbooks.entity.utils.ExperienciaCulinaria;
+import com.cooksbooks.exceptions.CampoInvalido;
+import com.cooksbooks.exceptions.UsuarioInexistente;
 import com.cooksbooks.gui.ScreenManager;
+import javafx.beans.value.ObservableStringValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -62,6 +65,11 @@ public class ControladorTelaEditarPerfil {
   @FXML
   private Button btSalvarPerfil;
 
+  @FXML
+  public void initialize() {
+    this.cbEscolherExperiencia.getItems().addAll(ExperienciaCulinaria.values());
+  }
+
   public void setScreenManager(ScreenManager screenManager) {
     this.screenManager = screenManager;
   }
@@ -69,25 +77,39 @@ public class ControladorTelaEditarPerfil {
   public void inicializar() {
     this.lbNomeUsuario.setText(usuarioDoPerfil.getNomePerfil());
     this.lbExperiencia.setText(usuarioDoPerfil.getExperienciaCulinaria().toString());
-    this.cbEscolherExperiencia.getItems().addAll(ExperienciaCulinaria.values());
-
   }
 
   //Tem que ter algum lbErro para indicar as mudanças sendo feitas para o usuario
   @FXML
   void handleAlterarExperiencia(ActionEvent event) {
-    usuarioDoPerfil
-        .setExperienciaCulinaria(cbEscolherExperiencia.getSelectionModel().getSelectedItem());
+    ExperienciaCulinaria expCulinaria = cbEscolherExperiencia.getSelectionModel().getSelectedItem();
+    if (expCulinaria != null) {
+      try {
+        sistema.alterarExperiencia(usuarioDoPerfil.getLogin(), expCulinaria);
+      } catch (UsuarioInexistente | CampoInvalido e) {
+        e.printStackTrace();
+      }
+    }
+    this.inicializar();
   }
 
   @FXML
   void handleAlterarNome(ActionEvent event) {
-    usuarioDoPerfil.setNomePerfil(tfDigitarNome.getText());
+    try {
+      sistema.alterarNomePerfil(usuarioDoPerfil.getLogin(), tfDigitarNome.getText());
+    } catch (UsuarioInexistente | CampoInvalido e) {
+      e.printStackTrace();
+    }
   }
 
   @FXML
   void handleAlterarSobreMim(ActionEvent event) {
-    usuarioDoPerfil.setBiografia(taDigitarSobre.getText());
+    try {
+      sistema.alterarBiografia(usuarioDoPerfil.getLogin(), taDigitarSobre.getText());
+    } catch (UsuarioInexistente | CampoInvalido e) {
+      e.printStackTrace();
+    }
+    this.inicializar();
   }
 
   @FXML
@@ -105,19 +127,30 @@ public class ControladorTelaEditarPerfil {
     if (cbEscolherExperiencia.getSelectionModel().getSelectedItem() != null) {
       handleAlterarExperiencia(event);
     }
-
+    this.inicializar();
   }
 
   @FXML
   void handleVoltar(ActionEvent event) {
     screenManager.abrirTelaPerfil(usuarioDoPerfil);
+    this.usuarioDoPerfil = null;
+    this.clearCampos();
   }
 
   @FXML
   private void handleCancelar() {
+    // O quê esse método deveria fazer?
   }
 
   public void setUsuarioDoPerfil(Usuario usuarioDoPerfil) {
     this.usuarioDoPerfil = usuarioDoPerfil;
+  }
+
+  private void clearCampos() {
+    this.tfDigitarNome.setText("");
+    this.taDigitarSobre.setText("");
+    this.cbEscolherExperiencia.getSelectionModel().clearSelection();
+    this.lbExperiencia.setText("Experiência Culinária");
+    this.lbNomeUsuario.setText("Nome do Usuário");
   }
 }
