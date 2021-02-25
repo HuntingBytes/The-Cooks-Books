@@ -106,7 +106,7 @@ public class RepositorioReceitasList implements IRepositorioReceita, Serializabl
 
   @Override
   public void removerReceita(String idReceita) {
-    receitasList.removeIf(r -> r.getTitulo().equals(idReceita));
+    receitasList.removeIf(r -> r.getIdReceita().equals(idReceita));
   }
 
   @Override

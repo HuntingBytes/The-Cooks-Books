@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.5250836120401338" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControladorTelaEditarCaderno">
+<SplitPane dividerPositions="0.5250836120401338" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControladorTelaEditarCaderno">
    <items>
       <AnchorPane prefHeight="398.0" prefWidth="267.0">
          <children>
@@ -35,9 +35,7 @@
             <ListView fx:id="lvReceitas" layoutX="21.0" layoutY="59.0" prefHeight="89.0" prefWidth="239.0" />
             <Button fx:id="btAddReceita" layoutX="222.0" layoutY="155.0" mnemonicParsing="false" onAction="#handleAddReceita" text="Add" />
             <Button fx:id="btRemoveReceita" layoutX="157.0" layoutY="155.0" mnemonicParsing="false" onAction="#handleRemoveReceita" text="Remove" />
-            <ListView fx:id="lvCategorias" layoutX="21.0" layoutY="251.0" prefHeight="89.0" prefWidth="239.0" />
-            <Button fx:id="btRemoveCategoria" layoutX="157.0" layoutY="346.0" mnemonicParsing="false" onAction="#handleRemoveCat" text="Remove" />
-            <Button fx:id="btAddCategoria" layoutX="222.0" layoutY="346.0" mnemonicParsing="false" onAction="#handleAddCat" text="Add" />
+            <ListView fx:id="lvCategorias" layoutX="21.0" layoutY="251.0" prefHeight="115.0" prefWidth="239.0" />
             <Label layoutX="60.0" layoutY="29.0" text="Alterar Receitas" textFill="#d30d0d">
                <font>
                   <Font name="Calibri" size="25.0" />

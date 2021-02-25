@@ -54,12 +54,6 @@ public class ControladorTelaEditarCaderno {
   @FXML
   private ListView<Categoria> lvCategorias;
 
-  @FXML
-  private Button btRemoveCategoria;
-
-  @FXML
-  private Button btAddCategoria;
-
   public void setScreenManager(ScreenManager screenManager) {
     this.screenManager = screenManager;
   }
@@ -74,7 +68,7 @@ public class ControladorTelaEditarCaderno {
     }
     List<Categoria> categorias = sistema.listarCategoriasDoCaderno(caderno.getIdCaderno());
     if (categorias != null && categorias.size() > 0) {
-      this.lvCategorias.getItems().setAll();
+      this.lvCategorias.getItems().setAll(categorias);
     }
   }
 
@@ -100,13 +94,10 @@ public class ControladorTelaEditarCaderno {
   }
 
   @FXML
-  void handleRemoveCat(ActionEvent event) {
-    caderno.removerCategoria(lvCategorias.getSelectionModel().getSelectedItem());
-  }
-
-  @FXML
   void handleRemoveReceita(ActionEvent event) {
     sistema.removerReceita(lvReceitas.getSelectionModel().getSelectedItem().getIdReceita());
+    int index = lvReceitas.getSelectionModel().getSelectedIndex();
+    lvReceitas.getItems().remove(index);
   }
 
   @FXML
