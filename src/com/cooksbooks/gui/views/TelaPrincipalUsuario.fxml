@@ -38,5 +38,6 @@
       <Button fx:id="botaoPesquisar" layoutX="510.0" layoutY="72.0" mnemonicParsing="false" onAction="#handlePesquisar" text="Pesquisar" />
       <Button fx:id="botaoAcessarCaderno" layoutX="166.0" layoutY="307.0" mnemonicParsing="false" onAction="#handleAcessarCaderno" text="Acessar" />
       <Button fx:id="botaoAcessarReceita" layoutX="442.0" layoutY="308.0" mnemonicParsing="false" onAction="#handleAcessarReceita" text="Acessar" />
+      <Button layoutX="363.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleEnviarRelatorio" text="Enviar Feedback" />
    </children>
 </AnchorPane>

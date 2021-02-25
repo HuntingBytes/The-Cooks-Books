@@ -126,7 +126,13 @@ public class ControladorTelaPrincipal {
   }
 
   @FXML
-  void handleAcessarCaderno(ActionEvent event) {
+  private void handleEnviarRelatorio() {
+    this.screenManager.abrirTelaEnviarRelatorio();
+    this.clearSelections();
+  }
+
+  @FXML
+  private void handleAcessarCaderno(ActionEvent event) {
     if (listViewCadernos.getSelectionModel().getSelectedItem() != null) {
       screenManager.abrirTelaCaderno(listViewCadernos.getSelectionModel().getSelectedItem());
       this.clearSelections();
@@ -136,7 +142,7 @@ public class ControladorTelaPrincipal {
   }
 
   @FXML
-  void handleAcessarReceita(ActionEvent event) {
+  private void handleAcessarReceita(ActionEvent event) {
     if (listViewReceitas.getSelectionModel().getSelectedItem() != null) {
       screenManager.abrirTelaReceitaModal(listViewReceitas.getSelectionModel().getSelectedItem());
       this.clearSelections();

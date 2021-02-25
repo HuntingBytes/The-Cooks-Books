@@ -31,6 +31,7 @@ public class ControladorFeedback {
     if (this.isFeedbackValido(feedback)) {
       if (!this.repositorioFeedbacks.existeFeedback(feedback.getIdFeedback())) {
         this.repositorioFeedbacks.cadastrarFeedback(feedback);
+        this.repositorioFeedbacks.salvarArquivo();
       }
     }
   }

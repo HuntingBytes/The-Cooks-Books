@@ -13,6 +13,12 @@ public class Feedback extends Comentario implements Serializable {
   private String idFeedback;
 
   public Feedback(String texto, LocalDateTime data, String nomeUsuario,
+      String nomePerfil) {
+    super(texto, data, nomeUsuario, nomePerfil);
+    this.idFeedback = "";
+  }
+
+  public Feedback(String texto, LocalDateTime data, String nomeUsuario,
       String nomePerfil, String idFeedback) {
     super(texto, data, nomeUsuario, nomePerfil);
     this.idFeedback = idFeedback;

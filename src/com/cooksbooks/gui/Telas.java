@@ -7,6 +7,7 @@ public enum Telas {
   TELA_CRIACAO_RECEITA("views/TelaCriacaoReceita.fxml"),
   TELA_CRIACAO_INGREDIENTE("views/TelaIngrediente.fxml"),
   TELA_PRINCIPAL_USUARIO("views/TelaPrincipalUsuario.fxml"),
+  TELA_ENVIAR_FEEDBACK("views/TelaEnviarFeedback.fxml"),
   TELA_PERFIL("views/TelaPerfil.fxml"),
   TELA_EDITAR_PERFIL("views/TelaEditarPerfil.fxml"),
   TELA_CADERNO("views/TelaDoCaderno.fxml"),

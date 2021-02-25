@@ -36,7 +36,7 @@ public class ControladorTelaRelatorio {
   private void handleGerarRelatorio() {
     if (areCamposValidos()) {
       Relatorio relatorio = sistema.gerarRelatorio(
-          this.dpDataInicial.getValue(), this.dpDataFinal.getValue());
+          this.dpDataInicial.getValue(), this.dpDataFinal.getValue().plusDays(1));
       this.taResultado.setText(this.formatRelatorio(relatorio));
     }
   }
@@ -78,9 +78,8 @@ public class ControladorTelaRelatorio {
         relatorio.percentualAumentoUsuarios()));
     result.append(String.format("%s\n", "Feedbacks recebidos:"));
     for (Feedback feedback : relatorio.listarFeedbacks()) {
-      result.append(String.format("Usuário: %s Data: %s\n\t%s\n", feedback.getNomeUsuario(),
-          dateFormatter.format(feedback.getData()),
-          feedback.getTexto()));
+      result.append(String.format("\t[*] %s (%s) | Data de envio: %s\n\t\t%s\n", feedback.getNomePerfil(),
+          feedback.getNomeUsuario(), dateFormatter.format(feedback.getData()), feedback.getTexto().replaceAll("\n", " ")));
     }
     return result.toString();
   }

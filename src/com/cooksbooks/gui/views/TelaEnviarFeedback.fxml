@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControladorTelaEnviarFeedback">
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="249.0" layoutY="14.0" text="Feedback">
+         <font>
+            <Font name="Calibri Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="57.0" layoutY="52.0" text="Olá! Preencha os campos abaixo para enviar seu feedback sobre o sistema.">
+         <font>
+            <Font name="Calibri" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="256.0" layoutY="95.0" text="Mensagem:">
+         <font>
+            <Font name="Calibri" size="18.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="taTexto" layoutX="61.0" layoutY="123.0" prefHeight="183.0" prefWidth="478.0" promptText="Digita seu comentário/sugestão aqui!" />
+      <Button layoutX="272.0" layoutY="333.0" mnemonicParsing="false" onAction="#handleEnviar" text="Enviar">
+         <font>
+            <Font name="Calibri" size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

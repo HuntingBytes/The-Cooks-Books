@@ -37,7 +37,7 @@ public class RepositorioFeedbacksList implements IRepositorioFeedback, Serializa
   private static RepositorioFeedbacksList lerArquivo() {
     RepositorioFeedbacksList instanciaLocal;
 
-    File in = new File("cadernos.dat");
+    File in = new File("feedbacks.dat");
     FileInputStream fis;
     ObjectInputStream ois = null;
     try {

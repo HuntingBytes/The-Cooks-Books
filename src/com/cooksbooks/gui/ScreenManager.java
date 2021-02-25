@@ -15,6 +15,7 @@ import com.cooksbooks.gui.controllers.ControladorTelaCriacaoRec;
 import com.cooksbooks.gui.controllers.ControladorTelaEditarCaderno;
 import com.cooksbooks.gui.controllers.ControladorTelaEditarPerfil;
 import com.cooksbooks.gui.controllers.ControladorTelaEditarReceita;
+import com.cooksbooks.gui.controllers.ControladorTelaEnviarFeedback;
 import com.cooksbooks.gui.controllers.ControladorTelaLogin;
 import com.cooksbooks.gui.controllers.ControladorTelaPerfil;
 import com.cooksbooks.gui.controllers.ControladorTelaPrincipal;
@@ -54,6 +55,7 @@ public class ScreenManager {
   private Parent telaEditarReceita;
   private Parent telaPerfil;
   private Parent telaPrincipalUsuario;
+  private Parent telaEnviarFeedback;
   private Parent telaResultadosPesquisa;
   private Parent telaInicialAdm;
   private Parent telaUsuarioBuscado;
@@ -76,6 +78,7 @@ public class ScreenManager {
   private ControladorTelaLogin controladorTelaLogin;
   private ControladorTelaPerfil controladorTelaPerfil;
   private ControladorTelaPrincipal controladorTelaPrincipal;
+  private ControladorTelaEnviarFeedback controladorTelaEnviarFeedback;
   private ControladorTelaReceita controladorTelaReceita;
   private ControladorTelaReceita controladorTelaReceitaModal;
   private ControladorTelaUsuarioBuscado controladorTelaUsuarioBuscado;
@@ -121,6 +124,11 @@ public class ScreenManager {
       telaPrincipalUsuario = loaderTelaPrincipal.load();
       controladorTelaPrincipal = loaderTelaPrincipal.getController();
       controladorTelaPrincipal.setScreenManager(this);
+
+      FXMLLoader loaderTelaEnviarFeedback = new FXMLLoader(
+          getClass().getResource(Telas.TELA_ENVIAR_FEEDBACK.caminho()));
+      telaEnviarFeedback = loaderTelaEnviarFeedback.load();
+      controladorTelaEnviarFeedback = loaderTelaEnviarFeedback.getController();
 
       FXMLLoader loaderTelaCaderno = new FXMLLoader(
           getClass().getResource(Telas.TELA_CADERNO.caminho()));
@@ -267,6 +275,10 @@ public class ScreenManager {
       tabPane.getTabs().add(tabAdmin);
     }
     scenePrincipal.setRoot(tabPane);
+  }
+
+  public void abrirTelaEnviarRelatorio() {
+    modalStage(telaEnviarFeedback, stagePrincipal, "Enviar Feedback").showAndWait();
   }
 
   // TelaCaderno
