@@ -197,7 +197,7 @@ public class ControladorTelaPrincipal {
   private void clearCampos() {
     this.nomeUsuario.setText("Nome Usuário");
     this.experienciaCulinaria.setText("Experiência Culinária");
-    this.textFieldPesquisa.setText("");
+    this.textFieldPesquisa.clear();
     this.choiceBoxPesquisa.getSelectionModel().clearSelection();
     this.listViewReceitas.getSelectionModel().clearSelection();
     this.listViewReceitas.getItems().clear();
