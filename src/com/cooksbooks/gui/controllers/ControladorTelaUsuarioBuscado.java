@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -40,6 +41,40 @@ public class ControladorTelaUsuarioBuscado {
 
   @FXML
   private Label lbExperienciaCulinaria;
+
+  @FXML
+  private void initialize() {
+    this.lvReceitasUsuarioBuscado.setCellFactory(param -> new ListCell<>() {
+      @Override
+      protected void updateItem(Receita item, boolean empty) {
+        super.updateItem(item, empty);
+
+        if (empty || item == null) {
+          setText(null);
+        } else {
+          setText(String.format("%s | %s", item.getTitulo(), item.getModoPreparo()));
+          setMaxWidth(param.getWidth());
+          setPrefWidth(param.getWidth());
+          setWrapText(false);
+        }
+      }
+    });
+    this.lvCadernosUsuarioBuscado.setCellFactory(param -> new ListCell<>() {
+      @Override
+      protected void updateItem(CadernoReceitas item, boolean empty) {
+        super.updateItem(item, empty);
+
+        if (empty || item == null) {
+          setText(null);
+        } else {
+          setText(String.format("%s | %s", item.getNomeCaderno(), item.getInformacoesCaderno()));
+          setMaxWidth(param.getWidth());
+          setPrefWidth(param.getWidth());
+          setWrapText(false);
+        }
+      }
+    });
+  }
 
   public void inicializar() {
     this.lbNomePerfil.setText(usuario.getNomePerfil());

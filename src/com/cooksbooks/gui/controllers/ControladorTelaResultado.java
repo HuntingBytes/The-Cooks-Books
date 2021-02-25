@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 
 public class ControladorTelaResultado {
@@ -39,6 +40,55 @@ public class ControladorTelaResultado {
 
   public void setScreenManager(ScreenManager screenManager) {
     this.screenManager = screenManager;
+  }
+
+  @FXML
+  public void initialize() {
+    this.listViewResultadosUsuarios.setCellFactory(param -> new ListCell<>() {
+      @Override
+      protected void updateItem(Usuario item, boolean empty) {
+        super.updateItem(item, empty);
+
+        if (empty || item == null) {
+          setText(null);
+        } else {
+          setText(String.format("%s | %s", item.getNomePerfil(), item.getLogin()));
+          setMaxWidth(param.getWidth());
+          setPrefWidth(param.getWidth());
+          setWrapText(false);
+        }
+      }
+    });
+    this.listViewResultadosReceitas.setCellFactory(param -> new ListCell<>() {
+      @Override
+      protected void updateItem(Receita item, boolean empty) {
+        super.updateItem(item, empty);
+
+        if (empty || item == null) {
+          setText(null);
+        } else {
+          setText(String.format("%s | %s", item.getTitulo(), item.getModoPreparo()));
+          setMaxWidth(param.getWidth());
+          setPrefWidth(param.getWidth());
+          setWrapText(false);
+        }
+      }
+    });
+    this.listViewResultadosCadernos.setCellFactory(param -> new ListCell<>() {
+      @Override
+      protected void updateItem(CadernoReceitas item, boolean empty) {
+        super.updateItem(item, empty);
+
+        if (empty || item == null) {
+          setText(null);
+        } else {
+          setText(String.format("%s | %s", item.getNomeCaderno(), item.getInformacoesCaderno()));
+          setMaxWidth(param.getWidth());
+          setPrefWidth(param.getWidth());
+          setWrapText(false);
+        }
+      }
+    });
   }
 
   public void inicializar() {
