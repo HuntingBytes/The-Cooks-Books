@@ -42,14 +42,13 @@ public class ControladorTelaCaderno {
     this.screenManager = screenManager;
   }
 
+
   public void inicializar() {
     this.lbNomeCaderno.setText(cadernoSelecionado.getNomeCaderno());
     this.taDesc.setText(cadernoSelecionado.getInformacoesCaderno());
+    this.lvReceitas.getItems().setAll(sistema.buscarReceitasDoCaderno(cadernoSelecionado.getIdCaderno()));
 
     //this.lvCategoriasCaderno.getItems().addAll(caderno.listarCategorias());
-    this.lvReceitas.getItems().addAll
-        (sistema.buscarReceitasDoCaderno(cadernoSelecionado.getIdCaderno()));
-
   }
 
   @FXML
