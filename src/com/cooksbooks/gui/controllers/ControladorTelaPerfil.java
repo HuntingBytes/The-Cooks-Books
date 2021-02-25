@@ -13,7 +13,6 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 
 public class ControladorTelaPerfil {
 
@@ -23,12 +22,6 @@ public class ControladorTelaPerfil {
 
   @FXML
   private Label lbNomeUsuario;
-
-  @FXML
-  private Button btReceitas;
-
-  @FXML
-  private Button btCadernos;
 
   @FXML
   private Button btEditarPerfil;
@@ -43,12 +36,6 @@ public class ControladorTelaPerfil {
   @FXML
   private TextField tfExperiencia;
 
-  @FXML
-  private ChoiceBox<CadernoReceitas> cbCadernosPerfil;
-
-  @FXML
-  private ChoiceBox<Receita> cbReceitasPerfil;
-
   public void setScreenManager(ScreenManager screenManager) {
     this.screenManager = screenManager;
   }
@@ -57,12 +44,6 @@ public class ControladorTelaPerfil {
     if (!usuarioDoPerfil.equals(sistema.getUsuarioLogado())) {
       this.btEditarPerfil.setVisible(false);
     }
-    this.cbCadernosPerfil.getItems()
-        .addAll(sistema.buscarTodosCadernosDoUsuario(usuarioDoPerfil.getLogin()));
-    //tem que criar um buscarTodasReceitasUsuario para inicializar
-    //this.cbCadernosPerfil.getItems().addAll(sistema.buscarTodosCadernosDoUsuario(usuarioDoPefil.getLogin()));
-    this.cbCadernosPerfil.setVisible(false);
-    this.cbReceitasPerfil.setVisible(false);
     this.lbNomeUsuario.setText(usuarioDoPerfil.getNomePerfil());
     this.lbNomeUsuario.setDisable(true);
     this.taSobreMim.setText(usuarioDoPerfil.getBiografia());
@@ -74,21 +55,6 @@ public class ControladorTelaPerfil {
   @FXML
   void handlEditarPerfil(ActionEvent event) {
     screenManager.abrirTelaEditarPerfil(sistema.getUsuarioLogado());
-  }
-
-  @FXML
-  void handleAcessarCadernos(ActionEvent event) {
-    cbCadernosPerfil.setVisible(true);
-  }
-
-  @FXML
-  void handleIrCaderno(MouseEvent event) {
-    screenManager.abrirTelaCaderno(cbCadernosPerfil.getSelectionModel().getSelectedItem());
-  }
-
-  @FXML
-  void handleAcessarReceitas(ActionEvent event) {
-
   }
 
   @FXML
