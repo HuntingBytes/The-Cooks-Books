@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -10,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControladorTelaPerfil">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cooksbooks.gui.controllers.ControladorTelaPerfil">
    <children>
       <AnchorPane layoutY="-14.0" prefHeight="400.0" prefWidth="600.0">
          <children>
@@ -23,22 +22,12 @@
                   <Font name="Calibri Bold" size="32.0" />
                </font>
             </Label>
-            <Button fx:id="btReceitas" layoutX="320.0" layoutY="151.0" mnemonicParsing="false" onAction="#handleAcessarReceitas" prefHeight="22.0" prefWidth="125.0" text="Receitas">
+            <Button fx:id="btEditarPerfil" layoutX="320.0" layoutY="101.0" mnemonicParsing="false" onAction="#handlEditarPerfil" prefHeight="22.0" prefWidth="125.0" text="Editar Perfil">
                <font>
                   <Font name="Calibri" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="btCadernos" layoutX="320.0" layoutY="114.0" mnemonicParsing="false" onAction="#handleAcessarCadernos" prefHeight="22.0" prefWidth="125.0" text="Cadernos">
-               <font>
-                  <Font name="Calibri" size="12.0" />
-               </font>
-            </Button>
-            <Button fx:id="btEditarPerfil" layoutX="320.0" layoutY="71.0" mnemonicParsing="false" onAction="#handlEditarPerfil" prefHeight="22.0" prefWidth="125.0" text="Editar Perfil">
-               <font>
-                  <Font name="Calibri" size="12.0" />
-               </font>
-            </Button>
-            <Button fx:id="btVoltar" layoutX="320.0" layoutY="189.0" mnemonicParsing="false" onAction="#handleVoltar" prefHeight="22.0" prefWidth="125.0" text="Voltar">
+            <Button fx:id="btVoltar" layoutX="320.0" layoutY="136.0" mnemonicParsing="false" onAction="#handleVoltar" prefHeight="22.0" prefWidth="125.0" text="Voltar">
                <font>
                   <Font name="Calibri" size="12.0" />
                </font>
@@ -55,8 +44,6 @@
                </font>
             </Label>
             <TextField fx:id="tfExperiencia" layoutX="222.0" layoutY="328.0" prefHeight="25.0" prefWidth="344.0" />
-            <ChoiceBox fx:id="cbCadernosPerfil" disable="true" layoutX="444.0" layoutY="111.0" onMouseClicked="#handleIrCaderno" prefWidth="150.0" visible="false" />
-            <ChoiceBox fx:id="cbReceitasPerfil" disable="true" layoutX="444.0" layoutY="148.0" prefWidth="150.0" visible="false" />
          </children>
       </AnchorPane>
    </children>
