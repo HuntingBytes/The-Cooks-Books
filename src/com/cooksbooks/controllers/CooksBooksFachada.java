@@ -1,6 +1,7 @@
 package com.cooksbooks.controllers;
 
 import com.cooksbooks.entity.CadernoReceitas;
+import com.cooksbooks.entity.Feedback;
 import com.cooksbooks.entity.Receita;
 import com.cooksbooks.entity.Relatorio;
 import com.cooksbooks.entity.Usuario;
@@ -26,12 +27,14 @@ public class CooksBooksFachada implements ICooksBooks {
   private final ControladorUsuario controladorUsuario;
   private final ControladorCaderno controladorCaderno;
   private final ControladorReceita controladorReceita;
+  private final ControladorFeedback controladorFeedback;
   private Usuario usuarioLogado;
 
   private CooksBooksFachada() {
     this.controladorUsuario = ControladorUsuario.getInstancia();
     this.controladorCaderno = ControladorCaderno.getInstancia();
     this.controladorReceita = ControladorReceita.getInstancia();
+    this.controladorFeedback = ControladorFeedback.getInstancia();
   }
 
   public static CooksBooksFachada getInstancia() {
@@ -266,6 +269,11 @@ public class CooksBooksFachada implements ICooksBooks {
   }
 
   @Override
+  public void cadastrarFeedback(Feedback feedback) {
+    this.controladorFeedback.cadastrarFeedback(feedback);
+  }
+
+  @Override
   public Relatorio gerarRelatorio(LocalDate dataInicial, LocalDate dataFinal) {
     Relatorio relatorio = new Relatorio();
     relatorio.setDataIncial(dataInicial);
@@ -274,7 +282,7 @@ public class CooksBooksFachada implements ICooksBooks {
     relatorio.setQtdNovosUsuarios(this.controladorUsuario.getTotalUsuariosEntre(
         dataInicial.atStartOfDay(), dataFinal.atStartOfDay()));
     relatorio.setQtdUsuariosAtivos(relatorio.getQtdNovosUsuarios());
-    relatorio.setComentarios(new ArrayList<>()); // Falta adicionar o repositório de sugestões!
+    relatorio.setFeedbacks(this.controladorFeedback.buscarTodosFeedbacks(dataInicial, dataFinal));
     return relatorio;
   }
 }

@@ -2,6 +2,7 @@ package com.cooksbooks.gui.controllers;
 
 import com.cooksbooks.controllers.CooksBooksFachada;
 import com.cooksbooks.controllers.ICooksBooks;
+import com.cooksbooks.entity.Feedback;
 import com.cooksbooks.entity.Relatorio;
 import com.cooksbooks.entity.utils.Comentario;
 import java.time.LocalDate;
@@ -76,10 +77,10 @@ public class ControladorTelaRelatorio {
     result.append(String.format("Percentual novos usuários: %.2f%%\n",
         relatorio.percentualAumentoUsuarios()));
     result.append(String.format("%s\n", "Feedbacks recebidos:"));
-    for (Comentario comentario : relatorio.listarComentarios()) {
-      result.append(String.format("Usuário: %s Data: %s\n\t%s\n", comentario.getNomeUsuario(),
-          dateFormatter.format(comentario.getData()),
-          comentario.getTexto()));
+    for (Feedback feedback : relatorio.listarFeedbacks()) {
+      result.append(String.format("Usuário: %s Data: %s\n\t%s\n", feedback.getNomeUsuario(),
+          dateFormatter.format(feedback.getData()),
+          feedback.getTexto()));
     }
     return result.toString();
   }

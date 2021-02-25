@@ -23,7 +23,7 @@ public class Relatorio {
   private long qtdUsuariosAtivos;
   private LocalDate dataIncial;
   private LocalDate dataFinal;
-  private List<Comentario> comentarios;
+  private List<Feedback> feedbacks;
 
   /**
    * Construtor nulo. Inicializa os campos com valores padrões. Valores padrão: 0 para tipos
@@ -35,7 +35,7 @@ public class Relatorio {
     this.qtdUsuariosAtivos = 0L;
     this.dataIncial = null;
     this.dataFinal = null;
-    this.comentarios = null;
+    this.feedbacks = null;
   }
 
   /**
@@ -47,17 +47,17 @@ public class Relatorio {
    * @param qtdUsuariosAtivos      quantidade de usuários ativos na plataforma até a data final.
    * @param dataIncial             data inicial do relatório.
    * @param dataFinal              data final do relatório.
-   * @param comentarios            lista com os comentários/feedbacks enviados entre as datas
+   * @param feedbacks            lista com os feedbacks enviados entre as datas
    *                               inicial e final.
    */
   public Relatorio(long qtdUsuariosCadastrados, long qtdNovosUsuarios, long qtdUsuariosAtivos,
-      LocalDate dataIncial, LocalDate dataFinal, List<Comentario> comentarios) {
+      LocalDate dataIncial, LocalDate dataFinal, List<Feedback> feedbacks) {
     this.qtdNovosUsuarios = qtdNovosUsuarios;
     this.qtdUsuariosCadastrados = qtdUsuariosCadastrados;
     this.qtdUsuariosAtivos = qtdUsuariosAtivos;
     this.dataIncial = dataIncial;
     this.dataFinal = dataFinal;
-    this.comentarios = comentarios;
+    this.feedbacks = feedbacks;
   }
 
   /**
@@ -74,13 +74,13 @@ public class Relatorio {
     relatorio.setQtdNovosUsuarios(10L);
     relatorio.setQtdUsuariosAtivos(90L);
 
-    List<Comentario> comentarios = new ArrayList<>();
-    comentarios.add(new Comentario("Simplesmente incrível, recomendei para toda minha família!",
-        LocalDate.now().atStartOfDay(), "moesiof", "Moésio Filho"));
-    comentarios.add(new Comentario("Muito bom! Nota 10!", LocalDate.now().atStartOfDay(),
-        "joao22", "João Pedro"));
+    List<Feedback> feedbacks = new ArrayList<>();
+    feedbacks.add(new Feedback("Simplesmente incrível, recomendei para toda minha família!",
+        LocalDate.now().atStartOfDay(), "moesiof", "Moésio Filho", "0"));
+    feedbacks.add(new Feedback("Muito bom! Nota 10!", LocalDate.now().atStartOfDay(),
+        "joao22", "João Pedro", "1"));
 
-    relatorio.setComentarios(comentarios);
+    relatorio.setFeedbacks(feedbacks);
 
     relatorio.printRelatorio();
   }
@@ -176,21 +176,21 @@ public class Relatorio {
   }
 
   /**
-   * Retorna uma lista com os comentários contidos no relatório.
+   * Retorna uma lista com os feedbacks contidos no relatório.
    *
-   * @return Lista com os comentários contidos no relatório.
+   * @return Lista com os feedback contidos no relatório.
    */
-  public List<Comentario> listarComentarios() {
-    return this.comentarios;
+  public List<Feedback> listarFeedbacks() {
+    return this.feedbacks;
   }
 
   /**
    * Define a lista dos comentários do sistema.
    *
-   * @param comentarios lista com os comentários/feedbacks enviados entre as datas inicial e final.
+   * @param feedbacks lista com os feedbacks enviados entre as datas inicial e final.
    */
-  public void setComentarios(List<Comentario> comentarios) {
-    this.comentarios = comentarios;
+  public void setFeedbacks(List<Feedback> feedbacks) {
+    this.feedbacks = feedbacks;
   }
 
   /**
@@ -228,7 +228,7 @@ public class Relatorio {
     System.out.printf("Percentual usuários ativos: %.2f%%\n", this.percentualUsuariosAtivos());
     System.out.printf("Percentual novos usuários: %.2f%%\n", this.percentualAumentoUsuarios());
     System.out.printf("%s\n", "Feedbacks recebidos:");
-    for (Comentario comentario : this.comentarios) {
+    for (Comentario comentario : this.feedbacks) {
       System.out.printf("Usuário: %s Data: %s\n\t%s\n", comentario.getNomeUsuario(),
           dateFormatter.format(comentario.getData()),
           comentario.getTexto());

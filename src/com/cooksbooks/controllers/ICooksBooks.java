@@ -1,6 +1,7 @@
 package com.cooksbooks.controllers;
 
 import com.cooksbooks.entity.CadernoReceitas;
+import com.cooksbooks.entity.Feedback;
 import com.cooksbooks.entity.Receita;
 import com.cooksbooks.entity.Relatorio;
 import com.cooksbooks.entity.Usuario;
@@ -117,6 +118,8 @@ public interface ICooksBooks {
   List<CadernoReceitas> buscarTodosCadernosDoUsuario(String idUsuario);
 
   List<CadernoReceitas> buscarCadernosComNome(String nomeCaderno);
+
+  void cadastrarFeedback(Feedback feedback);
 
   Relatorio gerarRelatorio(LocalDate dataInicial, LocalDate dataFinal);
 }
