@@ -2,6 +2,9 @@ package com.cooksbooks.database;
 
 import com.cooksbooks.database.interfaces.IRepositorioCaderno;
 import com.cooksbooks.entity.CadernoReceitas;
+import com.cooksbooks.entity.Receita;
+import com.cooksbooks.entity.utils.Categoria;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -247,4 +250,5 @@ public class RepositorioCadernoList implements IRepositorioCaderno, Serializable
     }
     return -1;
   }
+
 }

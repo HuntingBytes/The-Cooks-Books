@@ -46,9 +46,10 @@ public class ControladorTelaCaderno {
   public void inicializar() {
     this.lbNomeCaderno.setText(cadernoSelecionado.getNomeCaderno());
     this.taDesc.setText(cadernoSelecionado.getInformacoesCaderno());
-    this.lvReceitas.getItems().setAll(sistema.buscarReceitasDoCaderno(cadernoSelecionado.getIdCaderno()));
-
-    //this.lvCategoriasCaderno.getItems().addAll(caderno.listarCategorias());
+    this.lvReceitas.getItems()
+        .setAll(sistema.buscarReceitasDoCaderno(cadernoSelecionado.getIdCaderno()));
+    this.lvCategoriasCaderno.getItems()
+        .setAll(sistema.listarCategoriasDoCaderno(cadernoSelecionado.getIdCaderno()));
   }
 
   @FXML

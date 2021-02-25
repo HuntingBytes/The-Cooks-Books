@@ -122,4 +122,6 @@ public interface ICooksBooks {
   void cadastrarFeedback(Feedback feedback);
 
   Relatorio gerarRelatorio(LocalDate dataInicial, LocalDate dataFinal);
+
+  List<Categoria> listarCategoriasDoCaderno(String idCaderno);
 }

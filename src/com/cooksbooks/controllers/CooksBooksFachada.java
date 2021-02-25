@@ -285,4 +285,9 @@ public class CooksBooksFachada implements ICooksBooks {
     relatorio.setFeedbacks(this.controladorFeedback.buscarTodosFeedbacks(dataInicial, dataFinal));
     return relatorio;
   }
+
+  @Override
+  public List<Categoria> listarCategoriasDoCaderno(String idCaderno) {
+    return this.controladorReceita.listarCategoriasDoCaderno(idCaderno);
+  }
 }

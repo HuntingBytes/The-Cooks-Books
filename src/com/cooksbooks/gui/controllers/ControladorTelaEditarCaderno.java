@@ -64,16 +64,17 @@ public class ControladorTelaEditarCaderno {
     this.screenManager = screenManager;
   }
 
-  public void incializar() {
+  public void inicializar() {
     this.lbNomeCaderno.setText(caderno.getNomeCaderno());
+    this.tfNovoNome.setText(caderno.getNomeCaderno());
     this.taAlterarDesc.setText(caderno.getInformacoesCaderno());
     List<Receita> receitas = sistema.buscarReceitasDoCaderno(caderno.getIdCaderno());
     if (receitas != null && receitas.size() > 0) {
-      this.lvReceitas.getItems().addAll(receitas);
+      this.lvReceitas.getItems().setAll(receitas);
     }
-    List<Categoria> categorias = caderno.listarCategorias();
+    List<Categoria> categorias = sistema.listarCategoriasDoCaderno(caderno.getIdCaderno());
     if (categorias != null && categorias.size() > 0) {
-      this.lvCategorias.getItems().addAll();
+      this.lvCategorias.getItems().setAll();
     }
   }
 
@@ -85,7 +86,7 @@ public class ControladorTelaEditarCaderno {
   @FXML
   void handleAddReceita(ActionEvent event) {
     screenManager.abrirTelaCriacaoReceita(this.caderno.getIdCaderno());
-    incializar();
+    inicializar();
   }
 
   @FXML

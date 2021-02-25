@@ -305,6 +305,7 @@ public class ScreenManager {
   // TelaEditarCaderno
   public void abrirTelaEditarCaderno(CadernoReceitas caderno) {
     controladorTelaEditarCaderno.setCaderno(caderno);
+    controladorTelaEditarCaderno.inicializar();
     tabPrincipal.setContent(telaEditarCaderno);
   }
 

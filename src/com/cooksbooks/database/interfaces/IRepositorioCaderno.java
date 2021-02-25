@@ -1,6 +1,8 @@
 package com.cooksbooks.database.interfaces;
 
 import com.cooksbooks.entity.CadernoReceitas;
+import com.cooksbooks.entity.utils.Categoria;
+
 import java.util.List;
 
 public interface IRepositorioCaderno {

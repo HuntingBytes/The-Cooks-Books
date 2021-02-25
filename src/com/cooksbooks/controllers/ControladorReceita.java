@@ -188,6 +188,10 @@ public class ControladorReceita {
     }
   }
 
+  public List<Categoria> listarCategoriasDoCaderno(String idCaderno) {
+    return this.repositorioReceitas.listarCategoriasDoCaderno(idCaderno);
+  }
+
   public List<Receita> listarReceitas(String idCaderno) {
     return repositorioReceitas.listarReceitasCaderno(idCaderno);
   }

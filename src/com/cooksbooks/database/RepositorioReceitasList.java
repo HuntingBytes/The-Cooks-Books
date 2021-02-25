@@ -15,9 +15,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class RepositorioReceitasList implements IRepositorioReceita, Serializable {
 
@@ -213,5 +214,13 @@ public class RepositorioReceitasList implements IRepositorioReceita, Serializabl
       }
     }
     return -1;
+  }
+
+  @Override
+  public List<Categoria> listarCategoriasDoCaderno(String idCaderno) {
+    return this.receitasList.stream()
+            .map(Receita::listarCategorias)
+            .flatMap(Collection::stream)
+            .collect(Collectors.toList());
   }
 }

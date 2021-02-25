@@ -54,6 +54,8 @@ public interface IRepositorioReceita {
 
   List<Receita> listarReceitasCaderno(String idCaderno);
 
+  List<Categoria> listarCategoriasDoCaderno(String idCaderno);
+
   long totalReceitas();
 
   void salvarArquivo();
