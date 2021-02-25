@@ -10,6 +10,7 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
@@ -21,13 +22,29 @@ public class ControladorReceitaRelatorio {
   private ListView<Receita> lvReceitasUsuario;
 
   @FXML
-  private Button btRemoverReceita;
-
-  @FXML
   private Button btFechar;
 
   @FXML
   private Label lbTitulo;
+
+  @FXML
+  public void initialize() {
+    this.lvReceitasUsuario.setCellFactory(param -> new ListCell<>() {
+      @Override
+      protected void updateItem(Receita item, boolean empty) {
+        super.updateItem(item, empty);
+
+        if (empty || item == null) {
+          setText(null);
+        } else {
+          setText(String.format("%s | %s", item.getTitulo(), item.getModoPreparo()));
+          setMaxWidth(param.getWidth());
+          setPrefWidth(param.getWidth());
+          setWrapText(false);
+        }
+      }
+    });
+  }
 
   @FXML
   private void handleRemoverItem() {

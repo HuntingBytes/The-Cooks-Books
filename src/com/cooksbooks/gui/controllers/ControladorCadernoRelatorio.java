@@ -3,11 +3,13 @@ package com.cooksbooks.gui.controllers;
 import com.cooksbooks.controllers.CooksBooksFachada;
 import com.cooksbooks.controllers.ICooksBooks;
 import com.cooksbooks.entity.CadernoReceitas;
+import com.cooksbooks.entity.Receita;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
@@ -26,6 +28,25 @@ public class ControladorCadernoRelatorio {
 
   @FXML
   private Label lbTitulo;
+
+  @FXML
+  public void initialize() {
+    this.lvCadernosUsuario.setCellFactory(param -> new ListCell<>() {
+      @Override
+      protected void updateItem(CadernoReceitas item, boolean empty) {
+        super.updateItem(item, empty);
+
+        if (empty || item == null) {
+          setText(null);
+        } else {
+          setText(String.format("%s | %s", item.getNomeCaderno(), item.getInformacoesCaderno()));
+          setMaxWidth(param.getWidth());
+          setPrefWidth(param.getWidth());
+          setWrapText(false);
+        }
+      }
+    });
+  }
 
   @FXML
   private void handleRemoverItem() {

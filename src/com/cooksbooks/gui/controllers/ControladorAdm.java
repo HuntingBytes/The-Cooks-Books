@@ -2,14 +2,16 @@ package com.cooksbooks.gui.controllers;
 
 import com.cooksbooks.controllers.CooksBooksFachada;
 import com.cooksbooks.controllers.ICooksBooks;
+import com.cooksbooks.entity.Receita;
 import com.cooksbooks.entity.Usuario;
 import com.cooksbooks.exceptions.UsuarioInexistente;
 import com.cooksbooks.gui.ScreenManager;
+import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
@@ -19,18 +21,9 @@ public class ControladorAdm {
 
   @FXML
   private TextField tfBarraPesquisa;
-  @FXML
-  private Button btPesquisar;
+
   @FXML
   private ListView<Usuario> lvResultadoPesquisa;
-  @FXML
-  private Button btGerarRelatorio;
-  @FXML
-  private Button btBanirUsuario;
-  @FXML
-  private Button btVisualizarReceitas;
-  @FXML
-  private Button btVisualizarCadernos;
 
   @FXML
   public void initialize() {
@@ -40,20 +33,34 @@ public class ControladorAdm {
       lvResultadoPesquisa.getItems().clear();
       lvResultadoPesquisa.refresh();
     });
+
+    this.lvResultadoPesquisa.setCellFactory(param -> new ListCell<>() {
+      @Override
+      protected void updateItem(Usuario item, boolean empty) {
+        super.updateItem(item, empty);
+
+        if (empty || item == null ) {
+          setText(null);
+        } else {
+          setText(String.format("%s | %s", item.getNomePerfil(), item.getLogin()));
+          setMaxWidth(param.getWidth());
+          setPrefWidth(param.getWidth());
+          setWrapText(false);
+        }
+      }
+    });
   }
 
   @FXML
   private void handlePesquisar() {
     if (isBuscaValida()) {
       String busca = this.tfBarraPesquisa.getText();
-      try {
-        Usuario u = this.sistema.buscarUsuario(busca);
-        ObservableList<Usuario> listUsuarios = FXCollections.observableArrayList(u);
+      List<Usuario> usuarios = this.sistema.buscarUsuariosComNome(busca);
+      if (usuarios.size() > 0) {
+        ObservableList<Usuario> listUsuarios = FXCollections.observableArrayList(usuarios);
         this.lvResultadoPesquisa.setItems(listUsuarios);
-      } catch (UsuarioInexistente uInexistente) {
-        System.out.println(uInexistente.getMessage());
-        this.lvResultadoPesquisa
-            .setPlaceholder(new Label("Nenhum usuário com esse login encontrado."));
+      } else {
+        this.lvResultadoPesquisa.setPlaceholder(new Label("Nenhum usuário com esse nome encontrado."));
       }
     }
   }
