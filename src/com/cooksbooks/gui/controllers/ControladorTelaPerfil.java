@@ -27,11 +27,7 @@ public class ControladorTelaPerfil {
   private Button btEditarPerfil;
 
   @FXML
-  private Button btVoltar;
-
-  @FXML
   private TextArea taSobreMim;
-
 
   @FXML
   private TextField tfExperiencia;
