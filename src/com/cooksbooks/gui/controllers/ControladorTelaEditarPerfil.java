@@ -65,11 +65,6 @@ public class ControladorTelaEditarPerfil {
   @FXML
   private Button btSalvarPerfil;
 
-  @FXML
-  public void initialize() {
-    this.cbEscolherExperiencia.getItems().addAll(ExperienciaCulinaria.values());
-  }
-
   public void setScreenManager(ScreenManager screenManager) {
     this.screenManager = screenManager;
   }
@@ -77,6 +72,7 @@ public class ControladorTelaEditarPerfil {
   public void inicializar() {
     this.lbNomeUsuario.setText(usuarioDoPerfil.getNomePerfil());
     this.lbExperiencia.setText(usuarioDoPerfil.getExperienciaCulinaria().toString());
+    this.cbEscolherExperiencia.getItems().setAll(ExperienciaCulinaria.values());
   }
 
   //Tem que ter algum lbErro para indicar as mudanças sendo feitas para o usuario
